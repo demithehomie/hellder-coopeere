@@ -203,3 +203,99 @@ ion-input {
   .dropdown-item:hover {
     background-color: #f1f1f1;
   }
+
+/* ADICIONEI ESSAS LINHAS DE CSS ABAIXO
+  PARA NÃO SOBREESCREVER O QUE JÁ TINHA E MOSTRAR O QUE EU FIZ*/
+
+  * {
+    color: #1c1c1c;
+    text-decoration: none;
+    font-family: Nunito, sans-serif;
+  }
+
+  ion-header {
+    position: relative;
+    background-color: rgb(239, 246, 255);
+
+    a span {
+        margin-top: 10px;
+        margin-left: -8px;
+    }
+    .sair {
+        color: #095aa4;
+        font-weight: 700;
+        display: block;
+        height: 70px;
+        margin-top: 20px;
+        margin-right: -60px;
+        padding: 0.5rem 1.5rem;
+        text-decoration: none;
+        font-family: Nunito, sans-serif;
+        text-transform: capitalize;
+    }
+
+    .text-right {
+        text-align: right;
+        margin-left: 500px;
+    }
+
+    .header{
+    
+    align-items: center;
+    display: flex;
+    flex-flow: column;
+    width: 100vw;
+    height: 300px;
+    }
+    ion-img{
+        width: 120px;
+        height: auto;
+        margin-bottom: 5px;
+    }
+    span {
+        color: #095aa4;
+        border: none;
+        font-size: 0.75rem;
+    }
+  }
+
+  ion-content {
+    .background {
+        z-index: -1;
+        position: absolute;
+    }
+
+    .form-with-bg .form-group-heading {
+        color: #1c1c1c;
+    }
+    .form-group-heading {
+        font-size: 2rem;
+        font-weight: 700;
+    }
+    .form-with-bg {
+        align-items: center;
+        display: flex;
+        height: 100%;
+        justify-content: end;
+        position: relative;
+        top: 320px;
+    }
+    .form-with-bg .form-actions, .form-with-bg .form-group-heading, .form-with-bg .form-group-title {
+        margin-bottom: 20px;
+        border-bottom: 1px solid rgba(75,85,99,.5);
+        border-color: rgba(75,85,99,.5);
+    }
+    .card {
+        backdrop-filter: blur(10px);
+        background: rgba(240,249,255,.5);
+        border: unset;
+        box-shadow: 0 3px 12px 0 rgb(0 0 0 / 33%);
+        margin: 2rem;
+        width: 75%;
+        border-radius: 0.25rem;
+        display: flex;
+        flex-direction: column;
+        min-width: 0;
+        position: relative;
+    }
+  }
