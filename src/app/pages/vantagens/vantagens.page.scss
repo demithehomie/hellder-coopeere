@@ -1,80 +1,36 @@
-
-.carousel {
-    overflow: hidden;
-    width: 100%;
-    height: 100%;
-    position: relative;
-}
-
-.slide {
-    display: none;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-}
-
-.slide img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.slide:first-child {
-    display: block;
-}
-
-
-ion-slide {
-   position: relative;
-}
-
-ion-slide h1, ion-slide p {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: flex-start;
-    font-size: 80px;
-    width: 50%;
-}
-
-ion-slide button {
-
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    font-size: 30px;
-    width: 250px;
-    margin-top: 200px;
-    padding: 15px;
-    border-radius: 50px;
-    background-color: green;
-}
-
-
-.container {
-    background-image: url("https://media.gazetadopovo.com.br/2019/06/08112107/energia-eolica-660x372.jpg");
-    background-size: cover;
-}
 .header-header {
-    align-items: flex-end;
+    align-items: center;
     justify-content: flex-end;
     display: flex;
     flex-direction: row;
-    padding-right: 30px;
+    padding-right: 80px;
     padding-top: 5px;
     padding-bottom: 5px;
-    background-color: green;
+    background-color:#2B571A;
+    text-align: center;
+    
+    ion-icon{
+        position: relative;
+        right: 20px;
+        top: 2px;
+        font-size: 12px;
+    }
 }
 
-.label-header {
+ion-label {
     padding-right: 10px;
     padding-left: 10px;
+    font-size: 12px;
+    text-transform: uppercase;
+    margin-right: calc(131px/2);
+    margin-left: calc(-50px/2);
+    align-self: center;
+    font-family: "Open Sans", Sans-serif;
+    font-weight: 400;
+    
 }
 
-.header {
+.header{
     padding: 18px;
     display: flex;
     flex-direction: row;
@@ -168,13 +124,6 @@ ion-input {
     background-color: green;
 }
 
-.select-text {
-    &:hover {
-      opacity: 0.75;
-      cursor: pointer;
-    }
-  }
-
   .dropdown {
     position: relative;
     display: inline-block;
@@ -204,11 +153,60 @@ ion-input {
     background-color: #f1f1f1;
   }
 
-  .text-container p {
-    line-height: 2.0;
+  .text-container{
+    display: flex;
+    position: relative;
+    margin-left: 10%;
+    max-width: 50%;
+    left: 185px;
+    margin-top: 50px;
+    margin-bottom: 40px;
+    line-height: 2;
+    p{    
+        margin-top: 0;
+        margin-bottom: 0.9rem;
+        font-size: 18px;
+    }
+  h3{
+    font-size: 1.75rem;
   }
 
-  .text-container {
-    margin-left: 10%;
-    max-width: 60%;
+  h1, h2, h3, h4, h5, h6 {
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+    font-family: inherit;
+    font-weight: 500;
+    line-height: 1.2;
+    color: inherit;
+    }
+    h1{
+        color: #020101BA ; 
+        font-size: 37px ; 
+        font-weight: 300 ;
+        font-family: "Open Sans", "Sans-serif";
+        margin-bottom: 20px; 
+        }
+    ul{
+        text-transform: uppercase;
+        list-style: none;
+        
+        li{
+            text-decoration: none;
+            width: 300px;
+            height: auto;
+            padding: 10px 20px;
+            &:hover{
+                border-bottom: 3px solid #7B9A6E;
+            }
+        } 
+        a{
+            line-height: 20px;
+            text-decoration: none;
+            color: #2A302F;
+            &:hover{
+                color: #7B9A6E;
+            }
+            
+        }
+    }
   }
