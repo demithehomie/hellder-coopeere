@@ -183,11 +183,13 @@
 <ion-content>
 
   <div class="form-with-bg">
-<img width="100%" height="1200px" class="background" src="../../../assets/img/turbinas-1.jpg">  
-
+  <div class="bg-background">
+      <img class="background" src="https://coopeere.microcampos.com.br/img/turbinas-4.jfif">  
+  </div>
+<div class="form-content">
   <div class="card p-4 mb-4">
     <form method="POST" action="https://coopeere.microcampos.com.br/precadastro_insert">
-      <input type="hidden" name="_token" value="wun3lLc9eSQ2fu62oCyBWd61pikdzsDXqkCRrD7t">        <input type="hidden" name="_method" value="put">                
+      <input type="hidden" name="_token" value="CsbBXaFkBxwza5YHajzScu1cX0T8qLxYMLNfdzDj" wfd-id="id0">        <input type="hidden" name="_method" value="put" wfd-id="id1">                
       <div class="form-group-heading">Realize o cadastro e torne-se um Coopeerado</div>
 
       <div class="form-group grid-cols-6">
@@ -197,41 +199,38 @@
         <label class="form-label" for="nome">Nome Completo*</label>
         <div class="col-span-5">
           <div class="input-group">
-            <input type="text" class="form-control" id="nome" name="nome" value="" required>
+            <input type="text" class="form-control" id="nome" name="nome" value="" required="" wfd-id="id2">
           </div>
         </div>
 
         <label class="form-label" for="email">E-mail*</label>
         <div class="input-group">
-          <input type="text" class="form-control" id="email" name="email" value="" required>
+          <input type="text" class="form-control" id="email" name="email" value="" required="" wfd-id="id3">
         </div>
 
         <label class="form-label" for="cpf_cnpj">CPF/CNPJ*</label>
         <div class="input-group w-60">
-          <input type="text" class="form-control usuario-documento" id="cpf_cnpj" name="cpf_cnpj" value=""
-            size="25" required>
+          <input type="text" class="form-control usuario-documento" id="cpf_cnpj" name="cpf_cnpj" value="" size="25" required="" maxlength="14" wfd-id="id4">
         </div>
 
         <label class="form-label" for="telefone_celular">Telefone Celular*</label>
         <div class="input-group w-60">
-          <input type="text" class="form-control" id="telefone_celular" name="telefone_celular" size="16"
-              value="" required>
+          <input type="text" class="form-control" id="telefone_celular" name="telefone_celular" size="16" value="" required="" wfd-id="id5">
         </div>
 
         <label class="form-label" for="telefone_fixo">Telefone Fixo</label>
         <div class="input-group w-60">
-          <input type="text" class="form-control" id="telefone_fixo" name="telefone_fixo" size="16"
-              value="">
+          <input type="text" class="form-control" id="telefone_fixo" name="telefone_fixo" size="16" value="" wfd-id="id6">
         </div>
 
         <label class="form-label" for="senha">Senha*</label>
         <div class="input-group">
-          <input type="password" class="form-control" id="senha" name="senha" required>
+          <input type="password" class="form-control" id="senha" name="senha" required="" wfd-id="id7">
         </div>
 
         <label class="form-label" for="confirmar_senha">Confirmar Senha*</label>
         <div class="input-group">
-          <input type="password" class="form-control" id="confirma_senha" name="confirma_senha" required>
+          <input type="password" class="form-control" id="confirma_senha" name="confirma_senha" required="" wfd-id="id8">
         </div>
 
         <div class="form-group-title">Endereço*</div>
@@ -240,13 +239,7 @@
         <div class="col-span-5">
           <div class="flex">
             <div class="input-group w-25">
-              <input class="form-control"
-                  type="text"
-                  id="cep"
-                  name="cep"
-                  value=""
-                  size="10"
-                  required>
+              <input class="form-control" type="text" id="cep" name="cep" value="" size="10" required="" wfd-id="id9">
             </div>
             <div class="p-2 d-none" id="loading-cep">
               <div class="spinner-border spinner-border-sm" role="status">
@@ -258,58 +251,58 @@
             O mesmo que consta na conta de energia
           </small>
         </div>
-
+        
         <label class="form-label" for="endereco">Endereço*</label>
         <div class="input-group">
-          <input type="text" class="form-control" id="endereco" name="endereco" value="" required>
+          <input type="text" class="form-control" id="endereco" name="endereco" value="" required="" wfd-id="id10">
         </div>
 
         <label class="form-label" for="endereco">Número*</label>
         <div class="input-group">
-          <input type="text" class="form-control" id="numero" name="numero" value="" required>
+          <input type="text" class="form-control" id="numero" name="numero" value="" required="" wfd-id="id11">
         </div>
 
         <label class="form-label" for="bairro">Bairro*</label>
         <div class="input-group">
-          <input type="text" class="form-control" id="bairro" name="bairro" value="" required>
+          <input type="text" class="form-control" id="bairro" name="bairro" value="" required="" wfd-id="id12">
         </div>
 
         <label class="form-label" for="cidade">Cidade*</label>
         <div class="input-group">
-          <input type="text" class="form-control" id="cidade" name="cidade" value="" required>
+          <input type="text" class="form-control" id="cidade" name="cidade" value="" required="" wfd-id="id13">
         </div>
 
         <label class="form-label" for="estado">Estado*</label>
         <div class="input-group">
-          <select class="form-select" id="estado" name="estado" required>
+          <select class="form-select" id="estado" name="estado" required="">
             <option value="">UF</option>
-            <option  value="AC">Acre</option>
-            <option  value="AL">Alagoas</option>
-            <option  value="AP">Amapá</option>
-            <option  value="AM">Amazonas</option>
-            <option  value="BA">Bahia</option>
-            <option  value="CE">Ceará</option>
-            <option  value="DF">Distrito Federal</option>
-            <option  value="ES">Espírito Santo</option>
-            <option  value="GO">Goiás</option>
-            <option  value="MA">Maranhão</option>
-            <option  value="MT">Mato Grosso</option>
-            <option  value="MS">Mato Grosso do Sul</option>
-            <option  value="MG">Minas Gerais</option>
-            <option  value="PA">Pará</option>
-            <option  value="PB">Paraíba</option>
-            <option  value="PR">Paraná</option>
-            <option  value="PE">Pernambuco</option>
-            <option  value="PI">Piauí</option>
-            <option  value="RJ">Rio de Janeiro</option>
-            <option  value="RN">Rio Grande do Norte</option>
-            <option  value="RS">Rio Grande do Sul</option>
-            <option  value="RO">Rondônia</option>
-            <option  value="RR">Roraima</option>
-            <option  value="SC">Santa Catarina</option>
-            <option  value="SP">São Paulo</option>
-            <option  value="SE">Sergipe</option>
-            <option  value="TO">Tocantins</option>
+            <option value="AC">Acre</option>
+            <option value="AL">Alagoas</option>
+            <option value="AP">Amapá</option>
+            <option value="AM">Amazonas</option>
+            <option value="BA">Bahia</option>
+            <option value="CE">Ceará</option>
+            <option value="DF">Distrito Federal</option>
+            <option value="ES">Espírito Santo</option>
+            <option value="GO">Goiás</option>
+            <option value="MA">Maranhão</option>
+            <option value="MT">Mato Grosso</option>
+            <option value="MS">Mato Grosso do Sul</option>
+            <option value="MG">Minas Gerais</option>
+            <option value="PA">Pará</option>
+            <option value="PB">Paraíba</option>
+            <option value="PR">Paraná</option>
+            <option value="PE">Pernambuco</option>
+            <option value="PI">Piauí</option>
+            <option value="RJ">Rio de Janeiro</option>
+            <option value="RN">Rio Grande do Norte</option>
+            <option value="RS">Rio Grande do Sul</option>
+            <option value="RO">Rondônia</option>
+            <option value="RR">Roraima</option>
+            <option value="SC">Santa Catarina</option>
+            <option value="SP">São Paulo</option>
+            <option value="SE">Sergipe</option>
+            <option value="TO">Tocantins</option>
           </select>
         </div>
 
@@ -320,6 +313,7 @@
       </div>
     </form>
   </div>
+</div>
 </div>
 
 </ion-content>
