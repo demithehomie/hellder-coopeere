@@ -26,6 +26,8 @@
 
 ion-slide {
    position: relative;
+   
+
 }
 
 ion-slide h1, ion-slide p {
@@ -39,7 +41,7 @@ ion-slide h1, ion-slide p {
     width: 50%;
     text-shadow: 2px 2px 2px #000000;
     min-width: 10%;
-    
+    color: #fff;
 }
 
 @media (max-width: 767px) {
@@ -105,7 +107,7 @@ ion-slide button {
     padding: 18px;
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
 }
 
@@ -337,9 +339,7 @@ ion-input {
         display: none;
     }
 
-    .dropdown {
-        
-    }
+  
     .dropdown-content {
         min-width: 133px;
         
@@ -359,9 +359,7 @@ ion-input {
             border: none;
         }
     }
-    .arrowicon {
-    
-    }
+
     a{
         text-decoration: none;
         margin: 0;
