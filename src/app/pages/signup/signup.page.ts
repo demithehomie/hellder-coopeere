@@ -79,6 +79,7 @@ usuario: Usuario = {
     number: 0,
     nhood: "",
     city: "",
+    province: "",
     state: "",
 
   usuario: "",

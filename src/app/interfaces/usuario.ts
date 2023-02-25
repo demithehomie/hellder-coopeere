@@ -13,6 +13,7 @@ export interface Usuario {
     city: string;
     nhood: string;
     state: string;
+    province: string;
         email: string;
         usuario: string;
         senha: string;   
