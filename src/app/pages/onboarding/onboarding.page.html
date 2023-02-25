@@ -10,8 +10,9 @@
         |
         <div style="padding-left: 15px;" [routerLink]="['/signup']" >
           <ion-icon name="pencil"></ion-icon>
-          <ion-label >Cadastro</ion-label>
+          <ion-label style="color: #fff;" >Cadastro</ion-label>
         </div>
+        
         
       
       </ion-header>
@@ -46,7 +47,6 @@
     
     
       
-      
     
     
 
@@ -58,11 +58,22 @@
 
     </div>
 
-<ion-slides pager="true" [options]="slideOpts">
+    <div class="minimum-header">
+
+        
+      <ion-img class="logo-min-header" [routerLink]="['/onboarding']"  src="../../../assets/images-coopeere/coopere.png"></ion-img>
+      
+  
+    </div>
+  
+
+<ion-slides pager="true" [options]="slideOpts" class="ion-slides-x">
+
+
 
   <div class="intro-text">
-  <ion-slide>
-    <img src="../../../assets/images-coopeere/coopeereslide2.png">
+  <ion-slide class="slide-c">
+    <img class="crescer" src="../../../assets/images-coopeere/coopeereslide2.png">
   
     <h1 class="text-slider-c">Coopere você também, torne-se um cooperado</h1>
     <button [routerLink]="['/signup']">Cadastre-Se</button>  
@@ -70,14 +81,14 @@
 </div>
 
   <ion-slide>
-    <img src="../../../assets/images-coopeere/coopeereslide1.png">
+    <img class="crescer" src="../../../assets/images-coopeere/coopeereslide1.png">
 
     <h1>O que a sociedade espera dos nossos goverantes?</h1>
     <button [routerLink]="['/signup']">Cadastre-Se</button>
   </ion-slide>
 
   <ion-slide>
-    <img src="../../../assets/images-coopeere/coopeereslide2.png">
+    <img class="crescer" src="../../../assets/images-coopeere/coopeereslide2.png">
   
     <h1>O que nossos jovens esperam do futuro?</h1>
     <button [routerLink]="['/signup']">Cadastre-Se</button>  
@@ -85,7 +96,7 @@
 
 
   <ion-slide>
-    <img style="width: 200%;" src="../../../assets/images-coopeere/coopeere-offshore.jpg">
+    <img class="crescer" src="../../../assets/images-coopeere/coopeere-offshore.jpg">
    
     <h1>Quantos milhares de empregos poderão ser criados?</h1>
     <button [routerLink]="['/signup']">Cadastre-Se</button>  
@@ -97,24 +108,6 @@
 
   </ion-slides>
 
-  <section class="p-menu1">
-    <nav id="navbar" class="navigation" role="navigation">
-      <input id="toggle1" type="checkbox" />
-      <label class="hamburger1" for="toggle1">
-        <div class="top"></div>
-        <div class="meat"></div>
-        <div class="bottom"></div>
-      </label>
-    
-      <nav class="menu1">
-        <a class="link1" href="">Our Models</a>
-        <a class="link1" href="">Specialties</a>
-        <a class="link1" href="">About</a>
-        <a class="link1" href="">Blog</a>
-        <a class="lin1 kbutton-nav" href="">Contact</a>
-      </nav>
-  </nav>
-  </section>
 
   <h1 style="text-align:start; padding: 10px;">Apoio:</h1> 
   <ion-slides style="margin: 0px;"  [options]="slideOpts2" >
@@ -155,6 +148,30 @@
     
 
   <ion-footer class="footer"> 
+
+    
+    
+  <section class="p-menu1">
+    <nav id="navbar" class="navigation" role="navigation">
+      <input id="toggle1" type="checkbox" />
+      <label class="hamburger1" for="toggle1">
+        <div class="top"></div>
+        <div class="meat"></div>
+        <div class="bottom"></div>
+      </label>
+
+      <nav class="menu1" >
+        <ion-label style="padding-left: 20px;" [routerLink]="['/eventos']">EVENTOS</ion-label>
+        <ion-label style="padding-left: 20px;" [routerLink]="['/publicacoes']">PUBLICAÇÕES</ion-label>
+        <ion-label style="padding-left: 20px;" [routerLink]="['/agenda']">AGENDA</ion-label>
+        <ion-label style="padding-left: 20px;" [routerLink]="['/galeria']" >GALERIA DE FOTOS</ion-label>
+        <ion-label style="padding-left: 20px;" [routerLink]="['/faleconosco']">FALE CONSOCO</ion-label>
+      </nav>
+  </nav>
+
+  
+
+  </section>
   
     <div class="menu-footer">
       <ion-label [routerLink]="['/eventos']">EVENTOS</ion-label>
@@ -166,14 +183,15 @@
   
     <div class="social-media-icons">
 
-<!-- ROUTER LINKS NÃO FUNCIONAM COM LINKS DE VERDADE  -->
-
-<!-- MAS DEU PRA RESOLVER USANDO UMA FUNÇÃO COM TYPESCRIPT -->
+      <!-- ROUTER LINKS NÃO FUNCIONAM COM LINKS DE VERDADE  -->
       
-      <ion-label (click)="openExternalLinkFacebook()"> <strong>Facebook</strong> </ion-label>
-      <ion-label (click)="openExternalLinkInstagram()"> <strong>Instagram</strong> </ion-label>
-      <ion-label (click)="openExternalLinkYouTube()"> <strong>Youtube</strong> </ion-label>
-    </div>
+      <!-- MAS DEU PRA RESOLVER USANDO UMA FUNÇÃO COM TYPESCRIPT -->
+            
+            <ion-label (click)="openExternalLinkFacebook()">  <ion-img class="new-social-icons" src="../../../assets/images-coopeere/facebook.png"></ion-img>  </ion-label>
+            <ion-label (click)="openExternalLinkInstagram()"> <ion-img class="new-social-icons" src="../../../assets/images-coopeere/instagram.png"></ion-img> </ion-label>
+            <ion-label (click)="openExternalLinkYouTube()"> <ion-img class="new-social-icons" src="../../../assets/images-coopeere/youtube.png"></ion-img> </ion-label>
+          </div>
+          
     
     
   </ion-footer>
