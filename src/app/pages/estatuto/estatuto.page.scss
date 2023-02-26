@@ -207,9 +207,29 @@ ion-input {
   .pdf-estatuto {
     margin-left: 10%;
     margin-top: 10%;
-    min-width: 60%;;
+    min-width: 60%;
     min-height: 100%;
     
+  }
+
+  @media screen and (max-width: 760px) {
+    .pdf-estatuto {
+        margin-left: 5%;
+        //margin-right: -20px;
+        margin-top: 25%;
+        min-width: 90%;
+        max-width: 150px;
+        min-height: 50%;
+    } 
+
+   ion-label .estatuto-label {
+        //display: none;
+        margin-top: 45%;
+        margin-left: 10%;
+        font-size: 100%;
+    }
+
+  
   }
 
   .estatuto-label {
@@ -221,7 +241,6 @@ ion-input {
 ///////////////////     TESTANDO NOVO MENU HAMBURGER    /////////////////////
   /// 
   
-
 
 
 
@@ -327,6 +346,15 @@ ion-input {
   ///////////////////////////
   /// 
 
+  @media (max-width: 768px) {
+    .header.hide-header { //esconder a header
+      display: none;
+    }
+    .show-dropdown {
+      display: none;
+    }
+  }
+
 
   ////////////// MINUMUM HEADER //////////////////
   /// 
@@ -373,3 +401,73 @@ ion-input {
   }
 
   ///////////////////////////
+  /// 
+  /// 
+
+
+  @media screen and (max-width: 700px){
+   .label-header {
+    padding-top: 10px;
+    padding-right: 500px;
+    padding-left: 100px;
+    color: #fff;
+    z-index: 10;
+}
+}
+
+@media screen and (max-width: 700px) {
+    .footer {
+        padding-right: 5px;
+        padding-top: 4px;
+        padding-bottom: 10px;
+    }
+}
+
+//////////////
+
+
+
+ion-header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+  //  z-index: 10;
+  
+    @media (max-width: 600px) {
+      ion-button {
+        display: none;
+      }
+
+      ion-header {
+        display: none;
+    }
+
+    ion-img {
+        display: none;
+    }
+
+    a { 
+        display: none;
+    }
+      
+    ion-icon {
+        display: none;
+    }
+
+    ion-label {
+        display: none;
+    }
+
+     div {
+        display: none;
+    }
+    
+    }
+
+}
+
+//////////////
+
+
+

@@ -903,7 +903,7 @@ a {
   .bar-X {
     width: 30px;
     height: 5px;
-    background-color: #000;
+    background-color: #333;
     margin: 5px 0;
   }
   
@@ -921,7 +921,7 @@ a {
   }
   
   .menu-items-X li a {
-    color: #fff;
+    color: #000;
     text-decoration: none;
     font-size: 18px;
     z-index: 10;
@@ -940,7 +940,7 @@ a {
   }
   
   .dropdown-menu-X li a {
-    color: #fff;
+    color: #000;
     text-decoration: none;
   }
   
@@ -956,7 +956,7 @@ a {
       margin-top: 500px;
       display: flex;
       flex-direction: column;
-      background-color: #000;
+      background-color: #fff;
       width: 350px;
       margin-left: -250px;
       margin-right: 100px;
