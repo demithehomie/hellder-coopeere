@@ -57,9 +57,37 @@
         
       <ion-img class="logo-min-header" [routerLink]="['/onboarding']"  src="../../../assets/images-coopeere/coopere.png"></ion-img>
 
-      <ion-icon name="menu" class="menu-min-header">Menu</ion-icon>
+     
       
+
+      <!-- TESTANDO O MENU HAMBURGUER COM DROPDOWN -->
+<div class="menu-min-header">
+      <nav class="thenav">
+        <div class="hamburger-menu-X" (click)="toggleMenu()">
+          <div class="bar-X"></div>
+          <div class="bar-X"></div>
+          <div class="bar-X"></div>
+        </div>
+        <ul class="menu-items-X" *ngIf="showMenu">
+          <br>
+          <li><a [routerLink]="['/onboarding']" routerLinkActive="active-link">Home</a></li>
+          <li><a href="#">A Coopeere</a></li>
+          <li><a [routerLink]="['/estatuto']" routerLinkActive="active-link">Estatuto</a></li>
+          <li><a href="#">Legislação</a></li>
+          <li><a [routerLink]="['/vantagens']" routerLinkActive="active-link">Vantagens</a></li>
+          <li><a href="#">Parceiros</a></li>
+          <li><a href="#">Fale Conosco</a></li>
+          
+
+          
+        </ul>
+      </nav>
+    </div>   
+      
+      <!-- FIM DO TESTE DO MENU HAMBURRGUER COM DROPDOWN -->
   
+
+      <ion-icon name="search" class="search-min-header">Procurar</ion-icon>
     </div>
   
 
