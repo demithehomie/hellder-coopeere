@@ -1,3 +1,5 @@
+
+  
   
   <ion-content>
   
@@ -16,6 +18,8 @@
         
       
       </ion-header>
+
+  
       
       <ion-header class="header hide-header">
         
@@ -40,21 +44,11 @@
         <ion-button fill="clear" [routerLink]="['/vantagens']" routerLinkActive="active-link">Vantagens</ion-button>
         <ion-button fill="clear"  [routerLink]="['/parceiros']" routerLinkActive="active-link">Parceiros</ion-button>
         <ion-button fill="clear" [routerLink]="['/faleconosco']" routerLinkActive="active-link">Fale Conosco</ion-button>
-      
-        
     
       </ion-header>
-    
-    
-      
-    
-    
 
 
     <div class="container">
-  
-   
-    
 
     </div>
 
@@ -62,6 +56,8 @@
 
         
       <ion-img class="logo-min-header" [routerLink]="['/onboarding']"  src="../../../assets/images-coopeere/coopere.png"></ion-img>
+
+      <ion-icon name="menu" class="menu-min-header">Menu</ion-icon>
       
   
     </div>
@@ -72,7 +68,7 @@
 
 
   <div class="intro-text">
-  <ion-slide class="slide-c">
+  <ion-slide class="slide-c" >
     <img class="crescer" src="../../../assets/images-coopeere/coopeereslide2.png">
   
     <h1 class="text-slider-c">Coopere você também, torne-se um cooperado</h1>
@@ -80,25 +76,25 @@
   </ion-slide>
 </div>
 
-  <ion-slide>
+  <ion-slide class="slide-c">
     <img class="crescer" src="../../../assets/images-coopeere/coopeereslide1.png">
 
-    <h1>O que a sociedade espera dos nossos goverantes?</h1>
+    <h1>O que a sociedade <br> espera dos nossos <br> goverantes?</h1>
     <button [routerLink]="['/signup']">Cadastre-Se</button>
   </ion-slide>
 
-  <ion-slide>
+  <ion-slide class="slide-c">
     <img class="crescer" src="../../../assets/images-coopeere/coopeereslide2.png">
   
-    <h1>O que nossos jovens esperam do futuro?</h1>
+    <h1>O que nossos jovens <br> esperam do futuro?</h1>
     <button [routerLink]="['/signup']">Cadastre-Se</button>  
   </ion-slide>
 
 
-  <ion-slide>
+  <ion-slide class="slide-c">
     <img class="crescer" src="../../../assets/images-coopeere/coopeere-offshore.jpg">
    
-    <h1>Quantos milhares de empregos poderão ser criados?</h1>
+    <h1>Quantos milhares <br> de empregos  poderão <br> ser criados?</h1>
     <button [routerLink]="['/signup']">Cadastre-Se</button>  
   </ion-slide>
 

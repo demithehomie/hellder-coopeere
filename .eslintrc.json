@@ -42,5 +42,11 @@
       "extends": ["plugin:@angular-eslint/template/recommended"],
       "rules": {}
     }
-  ]
+  ],
+  "plugins": [
+    "css-modules"
+  ],
+  "rules": {
+    "css-modules/no-unused-class": "error"
+  }
 }

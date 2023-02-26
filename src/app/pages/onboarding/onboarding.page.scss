@@ -44,10 +44,15 @@ ion-slide h1, ion-slide p {
     color: #fff;
 }
 
-@media (max-width: 767px) {
+@media screen and (max-width: 767px) {
    ion-slide h1 {
        font-size: 18px;
+       position: absolute;
+       top: 70%;
+       left: 30%;
     }
+
+   
  }
 
  @media (max-width: 1366px) {
@@ -75,18 +80,18 @@ ion-slide button {
 @media (max-width: 767px) {
     ion-slide button   {
       width: 25%;
-      font-size: 70%;
+      font-size: 80%;
       position: absolute;
-      top: 0.5%;
-      left: 22%;
+      top: 40%;
+      left: 11%;
+      padding: 10px;
+        border-radius: 15px;
+        width: 100px;
     }
  }
 
 
-.container {
-    background-image: url("https://media.gazetadopovo.com.br/2019/06/08112107/energia-eolica-660x372.jpg");
-    background-size: cover;
-}
+
 .header-header {
     align-items: flex-end;
     justify-content: flex-end;
@@ -98,10 +103,28 @@ ion-slide button {
     background-color: #2B571A;
 }
 
+.header-header-min {
+ background-color: #2B571A;
+ padding-left: 150px;
+}
+
+
+@media screen and (max-width: 700px){
+   .label-header {
+        padding-top: 10px;
+        padding-right: 500px;
+        padding-left: 100px;
+        color: #fff;
+        z-index: 10;
+    }
+}
+
+
 .label-header {
-    padding-right: 10px;
-    padding-left: 10px;
+    padding-right: 100px;
+    padding-left: 100px;
     color: #fff;
+    z-index: 10;
 }
 
 .header {
@@ -112,21 +135,9 @@ ion-slide button {
     align-items: center;
 }
 
-.lista-dropdown{
-    border-radius: 20px;
-    padding-right: 10px;
-}
 
-.welcome {
-    padding-top: 30px;
-    font-size: 35px;
-    font-weight: bold;
-    
-}
 
-.welcome-div {
-    padding-top: 30px ;
-}
+
 
 .logo {
     align-items: center;
@@ -136,18 +147,6 @@ ion-slide button {
     margin: auto;
 }
 
-.container-form {
-    
-    max-width: 500px;
-    align-items: center;
-    justify-content: center;
-    display: flex;
-    padding: 10px;
-    margin: auto;
-    flex-direction: column;
-    border-radius: 20px;
-
-}
 
 ion-input {
 
@@ -157,18 +156,6 @@ ion-input {
     max-width: 400px;
 }
 
-.inputs {
-    padding: 10px;
-}
-
-.input-labels {
-    padding: 10px;
-}
-
-.input-label-text {
-    font-weight: bold;
-    font-size: 17px;
-}
 
 .menu-footer {
     gap: 10px;
@@ -213,12 +200,7 @@ ion-input {
     }
 }
 
-.select-text {
-    &:hover {
-      opacity: 0.75;
-      cursor: pointer;
-    }
-  }
+
 
   .dropdown {
     position: relative;
@@ -311,7 +293,7 @@ ion-input {
         display: none;
       }
 
-      ion-header {
+      ion-header .header-header {
         display: none;
     }
 
@@ -644,6 +626,14 @@ a {
     
   }
 
+  .menu-min-header {
+    padding: 10px;
+    padding-top: 50px;
+    padding-left: 160px;
+    font-size: 40px;
+
+  }
+
   @media screen and (min-width: 700px) {
     .minimum-header {
         display: none;
@@ -805,10 +795,30 @@ a {
   // fim do esconder do menu hamb
 
   .ion-slides-x {
-    width: 1920px;
-    height: 900px;
+    width: 2000px;
+    height: 1000px;
     
   }
+
+  ////////////// SLIDES X MEDIA QUERIES ////////////
+  
+  ///////////////  ESSA MEDIA QUERY É DA TELA GRANDE   /////////////
+
+  @media screen and (min-width: 700px) {
+    .ion-slides-x {
+        width: 1920px;
+        height: 900px; 
+      }
+  }
+
+    ///////////////  ESSA MEDIA QUERY É DA TELA PEQUENA   /////////////
+
+    @media screen and (max-width: 700px) {
+        .ion-slides-x {
+            width: 800px;
+            height: 400px; 
+          }
+      }
 
   .slide-c {
     align-items: center;
@@ -818,9 +828,11 @@ a {
     background-size: contain;
   }
 
+  ////////////////   CRESCER   /////////////
+
   .crescer {
-    width: 350%;
-    height: 350%;
+    width: 3500%;
+    height: 3500%;
     
     animation-name: crescer;
     animation-duration: 5s;
@@ -840,3 +852,21 @@ a {
     }
   }
   
+  ////////////// CRESCER MEDIA QUERIES ////////////
+  
+
+  @media screen and (min-width: 700px) {
+
+    .crescer {
+        width: 2500px;
+        height: 1000px;
+        
+        animation-name: crescer;
+        animation-duration: 5s;
+        
+        animation-fill-mode: forwards;
+        animation-iteration-count: infinite;
+        ;//animation-direction: alternate;
+      }
+    
+  }
