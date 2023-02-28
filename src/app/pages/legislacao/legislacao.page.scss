@@ -58,16 +58,7 @@ ion-slide button {
     background-image: url("https://media.gazetadopovo.com.br/2019/06/08112107/energia-eolica-660x372.jpg");
     background-size: cover;
 }
-.header-header {
-    align-items: flex-end;
-    justify-content: flex-end;
-    display: flex;
-    flex-direction: row;
-    padding-right: 30px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    background-color: green;
-}
+
 
 .label-header {
     padding-right: 10px;
@@ -209,6 +200,7 @@ ion-input {
   }
 
   .text-container {
+    padding-top: 150px;
     margin-left: 10%;
     max-width: 60%;
   }
@@ -904,45 +896,7 @@ ion-input {
   // fim do esconder do menu hamb
 
 
-  .minimum-header {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    position: absolute;
-    z-index: 2;
-    top: 0;
-    left: 0;
-    
-  }
-
-  .logo-min-header {
-    padding: 10px;
-    padding-top: 42px;
-    padding-left: 42px;
-    
-  }
-
-  .menu-min-header {
-    padding: 10px;
-    padding-top: 50px;
-    padding-left: 85px;
-    font-size: 40px;
-
-  }
-
-  .search-min-header {
-    padding: 10px;
-    padding-top: 50px;
-    padding-left: 10px;
-    font-size: 40px;
-
-  }
-
-  @media screen and (min-width: 700px) {
-    .minimum-header {
-        display: none;
-    }
-  }
+ 
 
    //inicio do novo menu hamburguer (header)
 
