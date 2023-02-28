@@ -182,17 +182,17 @@
 
 <ion-content>
 
-  <div class="form-with-bg">
+  <div class="form-with-bg ">
   <div class="bg-background">
       <img class="background" src="https://coopeere.microcampos.com.br/img/turbinas-4.jfif">  
   </div>
-<div class="form-content">
-  <div class="card p-4 mb-4">
+<div class="form-content col-sm-12">
+  <div class="card p-4 mb-4 ">
     <form method="POST" action="https://coopeere.microcampos.com.br/precadastro_insert">
       <input type="hidden" name="_token" value="CsbBXaFkBxwza5YHajzScu1cX0T8qLxYMLNfdzDj" wfd-id="id0">        <input type="hidden" name="_method" value="put" wfd-id="id1">                
       <div class="form-group-heading">Realize o cadastro e torne-se um Coopeerado</div>
 
-      <div class="form-group grid-cols-6">
+      <div class="form-group grid-cols-6 ">
 
         <div class="form-group-title">Dados Pessoais</div>
 
@@ -215,7 +215,7 @@
 
         <label class="form-label" for="telefone_celular">Telefone Celular*</label>
         <div class="input-group w-60">
-          <input [(ngModel)]="usuario.phonenumber" type="text" class="form-control" id="telefone_celular" name="telefone_celular" size="16" value="" required="" wfd-id="id5">
+          <input [(ngModel)]="usuario.phonenumber" type="text" class="form-control" id="telefone_celular" name="telefone_celular" size="16" value="" required="" placeholder="Insira aqui seu telefone" wfd-id="id5">
         </div>
 
         <label class="form-label" for="telefone_fixo">Telefone Fixo</label>

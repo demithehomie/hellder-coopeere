@@ -80,60 +80,15 @@ ion-slide button {
 @media (max-width: 767px) {
     ion-slide button   {
       width: 25%;
-      font-size: 80%;
+      font-size: 95%;
       position: absolute;
-      top: 40%;
-      left: 11%;
-      padding: 10px;
-        border-radius: 15px;
-        width: 100px;
+      top: 41%;
+      left: 13%;
+      padding: 15px;
+        border-radius: 25px;
+        width: 130px;
     }
  }
-
-
-
-.header-header {
-    align-items: flex-end;
-    justify-content: flex-end;
-    display: flex;
-    flex-direction: row;
-    padding-right: 30px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    background-color: #2B571A;
-}
-
-.header-header-min {
- background-color: #2B571A;
- padding-left: 150px;
-}
-
-
-@media screen and (max-width: 700px){
-   .label-header {
-        padding-top: 10px;
-        padding-right: 500px;
-        padding-left: 100px;
-        color: #fff;
-        z-index: 10;
-    }
-}
-
-
-.label-header {
-    padding-right: 100px;
-    padding-left: 100px;
-    color: #fff;
-    z-index: 10;
-}
-
-.header {
-    padding: 18px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-}
 
 
 
@@ -155,6 +110,58 @@ ion-input {
     min-width: 300px;
     max-width: 400px;
 }
+
+
+///////// PACOTE FOOTER & HEADER /////////////////
+/// 
+/// 
+
+
+
+.header-header {
+  align-items: flex-end;
+  justify-content: flex-end;
+  display: flex;
+  flex-direction: row;
+  padding-right: 30px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  background-color: #2B571A;
+}
+
+.header-header-min {
+background-color: #2B571A;
+padding-left: 150px;
+}
+
+
+@media screen and (max-width: 700px){
+ .label-header {
+      padding-top: 10px;
+      padding-right: 500px;
+      padding-left: 100px;
+      color: #fff;
+      z-index: 10;
+  }
+}
+
+
+.label-header {
+  padding-right: 10px;
+  padding-left: 10px;
+  color: #fff;
+  z-index: 10;
+}
+
+.header {
+  padding: 18px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+
 
 
 .menu-footer {
@@ -784,15 +791,6 @@ a {
 
   //
 
-  //escondendo o menu-footer
-  
-  @media only screen and (max-width: 700px) {
-    .menu-footer {
-      display: none;
-    }
-  }
-
-  //
 
   .new-social-icons {
     width: 65%;
