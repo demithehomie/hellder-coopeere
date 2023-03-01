@@ -211,7 +211,7 @@
         <label class="form-label" for="cpf_cnpj">CPF/CNPJ*</label>
         <div class="input-group w-60">
           <input [(ngModel)]="usuario.cpfcnpj" type="text" class="form-control usuario-documento" id="cpf_cnpj" name="cpf_cnpj" value="" size="25" required="" maxlength="14" wfd-id="id4">
-          <p *ngIf="formulario.get('usuario.cpfcnpj').touched && formulario.get('usuario.cpfcnpj').errors?.usuario.cpfcnpj">CPF inválido.</p>
+         <!-- <p *ngIf="formulario.get('usuario.cpfcnpj').touched && formulario.get('usuario.cpfcnpj').errors?.usuario.cpfcnpj">CPF inválido.</p> -->
         </div>
 
         <label class="form-label" for="telefone_celular">Telefone Celular*</label>
