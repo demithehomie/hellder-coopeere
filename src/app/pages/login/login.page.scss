@@ -24,7 +24,7 @@
 }
 
 
-ion-button, a {
+.navbar-buttons, a {
 
     display: block;
     margin: 0;
@@ -68,18 +68,20 @@ ion-button, a {
   }
 
 .flex-box {
-    width: 850px;
+    width: 97%;
     padding-left: 1000px;
     margin-top: -950px;
+    max-width: 1800px;
+    
 
 }
 //
 @media screen and (max-width: 760px) and (min-width: 200px) {
     .flex-box {
         //max-width: 400px;
-        margin-top: 1%;
+        margin-top: -900px;
         width: 400px;
-        padding-left: 0px;
+        padding-left: 20px;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -258,7 +260,6 @@ ion-input {
     position: relative;
     display: inline-block;
   }
-
   .dropdown-content {
     display: none;
     position: absolute;
@@ -1181,11 +1182,11 @@ a:hover, a:visited {
           display: inline-block;
       }
   
-      ion-button {
+      .navbar-buttons {
           cursor: pointer;
       }
   
-      ion-button, a {
+      .navbar-buttons, a {
   
           display: block;
           margin: 0;
@@ -1853,4 +1854,10 @@ a {
     //////////////// FIM DO PACOTE FOOTER & HEADER /////////////////
     /// 
     /// 
+
     
+    .aaa {
+      color:#0773CE;
+      text-shadow: #000 ;
+      font-size: 13px;
+    }
