@@ -73,12 +73,12 @@ ion-button, a {
     margin-top: -950px;
 
 }
-
-@media screen and (max-width: 500px) {
+//
+@media screen and (max-width: 760px) and (min-width: 200px) {
     .flex-box {
-        max-width: 100%;
-        margin-top: -350px;
-        width: 500px;
+        //max-width: 400px;
+        margin-top: 1%;
+        width: 400px;
         padding-left: 0px;
         display: flex;
         justify-content: center;
@@ -87,7 +87,10 @@ ion-button, a {
     
     }
 }
+//
 
+
+//
 ion-slide {
    position: relative;
 }
