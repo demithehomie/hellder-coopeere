@@ -80,13 +80,13 @@ usuario: Usuario = {
   
   bday: null,
   genre: "",
-  cpfcnpj: 0,
-  homenumber: 0,
-  phonenumber: 0,
+  cpfcnpj: null,
+  homenumber: null,
+  phonenumber: null,
 
-  cep: 0,
+  cep: null,
     address: "",
-    number: 0,
+    number: null,
     nhood: "",
     city: "",
     province: "",
