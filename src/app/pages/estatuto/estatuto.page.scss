@@ -1167,9 +1167,62 @@ a {
 }
 
 
-
-
   //////////////// FIM DO PACOTE FOOTER & HEADER /////////////////
   /// 
   /// 
   
+  .aside {
+    //border: 5px solid red;
+    width: 30%;
+    float: right;
+    padding: 1%;
+    margin-top: 10px;
+  }
+  .aside li {
+    margin-top: 10px;
+    margin-left: 20px;
+    list-style: none;
+    color: black;
+    margin-right: 500px;
+    display: inline-block;
+    text-transform: uppercase;   
+  }
+  ion-button,
+  a {
+   // border: 5px solid pink;
+    display: block;
+    margin: 0;
+    position: relative;
+    color: #2a302f;
+    white-space: nowrap;
+    font-size: 14px;
+    font-family: "Open Sans", Sans-serif;
+    font-weight: 00;
+    padding: 0px 5px 0px 5px;
+    //padding-bottom: 35px;
+    //height: 65px;
+    transition: .4s;
+  
+   
+    &:hover {
+        color: #7B9A6E;
+  
+    }
+  
+    &::before {
+        content: '';
+        position: absolute;
+        top:30px;
+        width: 0;
+        right: 0;
+        bottom: 0;
+        height: 5px;
+        background: #7B9A6E;
+        transition: width .2s;
+  
+    }
+  
+    &:hover::before {
+        width: 100%;
+    }
+  } 
