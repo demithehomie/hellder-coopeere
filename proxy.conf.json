@@ -1,0 +1,12 @@
+{
+    "/api": {
+      "target": "http://apimakrom-production.up.railway.app/usuario/",
+      "secure": false,
+      "changeOrigin": true,
+      "logLevel": "debug",
+      "headers": {
+        "Access-Control-Allow-Origin": "*"
+      }
+    }
+  }
+  
