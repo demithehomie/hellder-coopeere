@@ -9,14 +9,6 @@ import { Router } from '@angular/router';
 export class FaleconoscoPage implements OnInit {
 
   selectedOption: string = '';
-
-
-  showMenu: boolean = false;
-
-  toggleMenu(): void {
-    this.showMenu = !this.showMenu;
-  }
-
  
   constructor(private router: Router) {}
 

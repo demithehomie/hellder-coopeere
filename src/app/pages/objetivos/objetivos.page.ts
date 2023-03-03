@@ -10,13 +10,6 @@ export class ObjetivosPage implements OnInit {
  
   
   selectedOption: string;
-
-  showMenu: boolean = false;
-
-  toggleMenu(): void {
-    this.showMenu = !this.showMenu;
-  }
-
   
   constructor(private navCtrl: NavController) {
     this.selectedOption = 'quemsomos';

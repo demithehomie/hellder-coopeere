@@ -10,17 +10,9 @@ import { Login } from 'src/app/interfaces/login';
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
 })
+
 export class LoginPage implements OnInit {
   selectedOption: string = '';
-
-  
-  showMenu: boolean = false;
-
-
-  toggleMenu(): void {
-    this.showMenu = !this.showMenu;
-  }
-
   constructor(
     private router: Router,
     private formBuilder:  FormBuilder,
@@ -65,13 +57,6 @@ export class LoginPage implements OnInit {
     });
   }
 
-
-
-  
-  
- 
-  
-
   goToPage(option: string) {
     switch (option) {
       case 'option1':
@@ -100,7 +85,5 @@ openExternalLinkInstagram(){
 openExternalLinkYouTube(){
   window.open('https://www.youtube.com', '_blank')
 }
-
-
 
 }

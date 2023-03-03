@@ -234,11 +234,7 @@ const routes: Routes = [
   {
     path: 'home',
     loadChildren: () => import('./pages/inside/home/home.module').then( m => m.HomePageModule)
-  },  {
-    path: 'trabalheconosco',
-    loadChildren: () => import('./pages/trabalheconosco/trabalheconosco.module').then( m => m.TrabalheconoscoPageModule)
   }
-
 
 ];
 @NgModule({

@@ -7,14 +7,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./estatuto.page.scss'],
 })
 export class EstatutoPage implements OnInit {
-  
   selectedOption: string = '';
-  showMenu: boolean = false;
-
-  toggleMenu(): void {
-    this.showMenu = !this.showMenu;
-  }
-
+ 
   constructor(private router: Router) {}
 
   goToPage(option: string) {
