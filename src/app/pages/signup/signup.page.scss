@@ -1,3 +1,13 @@
+/////////////////     ESCONDENDO OS NÚMEROS COM FUNDO TRANSPARENTE     //////////////////
+
+
+.zero-value {
+    color: #fff;
+  }
+  
+
+///////////////////////////////
+
 
 .carousel {
     overflow: hidden;
@@ -427,6 +437,8 @@ ion-input {
         min-width: 0;
         position: relative;
         width: 1%;
+       // -webkit-appearance: none;
+       // -moz-appearance: textfield;
     }
     .usuario-documento {
         white-space: nowrap;

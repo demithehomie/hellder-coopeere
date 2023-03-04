@@ -10,9 +10,17 @@ import { Login } from 'src/app/interfaces/login';
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
 })
-
 export class LoginPage implements OnInit {
   selectedOption: string = '';
+
+  
+  showMenu: boolean = false;
+
+
+  toggleMenu(): void {
+    this.showMenu = !this.showMenu;
+  }
+
   constructor(
     private router: Router,
     private formBuilder:  FormBuilder,
@@ -38,7 +46,7 @@ export class LoginPage implements OnInit {
     });
   }
   
-    onSubmit() {
+  onSubmit() {
     const body = {
       username: this.login.usuario,
       password: this.login.senha
@@ -74,16 +82,16 @@ export class LoginPage implements OnInit {
 
   }
 
-openExternalLinkFacebook(){
-  window.open('https://www.facebook.com', '_blank')
-}
+  openExternalLinkFacebook(){
+    window.open('https://www.facebook.com', '_blank')
+  }
 
-openExternalLinkInstagram(){
-  window.open('https://www.instagram.com', '_blank')
-}
+  openExternalLinkInstagram(){
+    window.open('https://www.instagram.com', '_blank')
+  }
 
-openExternalLinkYouTube(){
-  window.open('https://www.youtube.com', '_blank')
-}
+  openExternalLinkYouTube(){
+    window.open('https://www.youtube.com', '_blank')
+  }
 
 }

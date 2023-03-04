@@ -1,12 +1,12 @@
 export interface Cliente{
     name: string;
     email: string;
-    phone: string;
-    mobilePhone: string;
-    cpfCnpj: string;
-    postalCode: string;
+    phone: string | null; 
+    mobilePhone: string | null;
+    cpfCnpj: string | null;
+    postalCode: string | null;
     address: string;
-    addressNumber: string;
+    addressNumber: string | null; 
     complement: string;
     province: string;
     city: string;

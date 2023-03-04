@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NavController } from '@ionic/angular';
 import { Cliente } from 'src/app/interfaces/cliente';
+import { Login } from 'src/app/interfaces/login';
 import { Usuario } from 'src/app/interfaces/usuario';
 import { ClienteService } from 'src/app/services/cliente.service';
 import { UsuarioService } from 'src/app/services/usuario.service';
@@ -13,16 +15,16 @@ import { UsuarioService } from 'src/app/services/usuario.service';
   styleUrls: ['./signup.page.scss'],
 })
 export class SignupPage implements OnInit {
-  
+  selectedOption: string = '';
+ 
   constructor(
     private router: Router,
     private formBuilder: FormBuilder,
     private usuarioService: UsuarioService,
     private clienteService: ClienteService,
-    public navCtrl: NavController
+    public navCtrl: NavController, 
+    private http: HttpClient
     ) {}
-    
-  selectedOption: string = '';
   
   goToPage(option: string) {
     switch (option) {
@@ -38,7 +40,6 @@ export class SignupPage implements OnInit {
       default:
         break;
     }
-
   }
 
 openExternalLinkFacebook(){
@@ -55,6 +56,13 @@ openExternalLinkYouTube(){
 
 ngOnInit(): void{
   this.validaForm();
+  this.http.get('assets/buscarcep.js', { responseType: 'text'})
+    .subscribe(js => {
+      const script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.text = js;
+    document.body.appendChild(script);
+  });
 }
 
 cliente: Cliente = {
@@ -157,5 +165,14 @@ cadastro(): void{
     error: (e) => console.error(e)
     });
 }
+
+@HostListener('input', ['$event'])
+onInput(event: Event) {
+  const input = event.target as HTMLInputElement;
+  if (input.value === '0') {
+    this.cliente.cpfCnpj = null;
+  }
+}
+
 
 }

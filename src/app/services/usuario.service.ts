@@ -3,7 +3,7 @@ import { HttpClient} from '@angular/common/http'
 import { Observable } from 'rxjs';
 
 
-const usuarioURL = 'http://localhost:3000/usuario/';
+const usuarioURL = 'http://apimakrom-production.up.railway.app/usuario/';
 
 @Injectable({
   providedIn: 'root'
