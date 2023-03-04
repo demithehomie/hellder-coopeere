@@ -1,46 +1,56 @@
-<ion-header class="header-header">  
-  
+<ion-header class="header-header">
+
   <div [routerLink]="['/login']">
     <ion-icon style="color:#fff;" name="person"></ion-icon>
-    <ion-label style="color:#fff;" class="label-header" >Login</ion-label>
+    <ion-label style="color:#fff;" class="label-header">Login</ion-label>
   </div>
-    |
-    <div style="padding-left: 18px;" [routerLink]="['/signup']" >
-      <ion-icon style="color:#fff;" name="pencil"></ion-icon>
-      <ion-label style="color: #fff;" >Cadastro</ion-label>
+  |
+  <div style="padding-left: 18px;" [routerLink]="['/signup']">
+    <ion-icon style="color:#fff;" name="pencil"></ion-icon>
+    <ion-label style="color: #fff;">Cadastro</ion-label>
+  </div>
+
+
+
+</ion-header>
+
+
+
+<ion-header class="header hide-header">
+
+
+  <ion-img [routerLink]="['/onboarding']" style="max-width: 10%;"
+    src="../../../assets/images-coopeere/coopere.png"></ion-img>
+
+
+
+  <ion-button fill="clear" style="color:#000;" [routerLink]="['/']" routerLinkActive="active-link">Home</ion-button>
+
+  <div class="dropdown">
+    <a [routerLink]="['/onboarding']" style="color:#000;" routerLinkActive="active-link">A COOPEERE <svg
+        class="arrowicon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18">
+        <path fill="none" d="M0 0h24v24H0z" />
+        <path d="M12 13.172l4.95-4.95 1.414 1.414L12 16 5.636 9.636 7.05 8.222z" />
+      </svg></a>
+    <div class="dropdown-content">
+      <a [routerLink]="['/quemsomos']" class="dropdown-item">Quem Somos?</a>
+      <a [routerLink]="['/objetivos']" class="dropdown-item">Objetivo</a>
+      <a [routerLink]="['/equipe']" class="dropdown-item">A Equipe</a>
     </div>
-    
-    
-  
-  </ion-header>
+  </div>
 
+  <ion-button fill="clear" style="color:#000;" [routerLink]="['/estatuto']"
+    routerLinkActive="active-link">Estatuto</ion-button>
+  <ion-button fill="clear" style="color:#000;" [routerLink]="['/legislacao']"
+    routerLinkActive="active-link">Legislação</ion-button>
+  <ion-button fill="clear" style="color:#000;" [routerLink]="['/vantagens']"
+    routerLinkActive="active-link">Vantagens</ion-button>
+  <ion-button fill="clear" style="color:#000;" [routerLink]="['/parceiros']"
+    routerLinkActive="active-link">Parceiros</ion-button>
+  <ion-button fill="clear" style="color:#000;" [routerLink]="['/faleconosco']" routerLinkActive="active-link">Fale
+    Conosco</ion-button>
 
-
-  <ion-header class="header hide-header">
-    
-    
-      <ion-img  [routerLink]="['/onboarding']"  style="max-width: 10%;" src="../../../assets/images-coopeere/coopere.png"></ion-img>
-    
-  
-    
-    <ion-button fill="clear" style="color:#000;"  [routerLink]="['/']" routerLinkActive="active-link">Home</ion-button>
-    
-    <div class="dropdown">
-      <a [routerLink]="['/onboarding']" style="color:#000;" routerLinkActive="active-link">A COOPEERE <svg class="arrowicon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18"><path fill="none" d="M0 0h24v24H0z"/><path d="M12 13.172l4.95-4.95 1.414 1.414L12 16 5.636 9.636 7.05 8.222z"/></svg></a>
-      <div class="dropdown-content">
-        <a [routerLink]="['/quemsomos']" class="dropdown-item">Quem Somos?</a>
-        <a [routerLink]="['/objetivos']" class="dropdown-item">Objetivo</a>
-        <a [routerLink]="['/equipe']" class="dropdown-item">A Equipe</a>
-      </div>
-    </div>
-  
-    <ion-button fill="clear" style="color:#000;"  [routerLink]="['/estatuto']" routerLinkActive="active-link">Estatuto</ion-button>
-    <ion-button fill="clear" style="color:#000;"  [routerLink]="['/legislacao']" routerLinkActive="active-link">Legislação</ion-button>
-    <ion-button fill="clear" style="color:#000;" [routerLink]="['/vantagens']" routerLinkActive="active-link">Vantagens</ion-button>
-    <ion-button fill="clear" style="color:#000;"  [routerLink]="['/parceiros']" routerLinkActive="active-link">Parceiros</ion-button>
-    <ion-button fill="clear" style="color:#000;" [routerLink]="['/faleconosco']" routerLinkActive="active-link">Fale Conosco</ion-button>
-
-  </ion-header>
+</ion-header>
 
 
 <div class="container">
@@ -49,37 +59,38 @@
 
 <div class="minimum-header">
 
-    
-  <ion-img class="logo-min-header" [routerLink]="['/onboarding']"  src="../../../assets/images-coopeere/coopere.png"></ion-img>
 
- 
-  
+  <ion-img class="logo-min-header" [routerLink]="['/onboarding']"
+    src="../../../assets/images-coopeere/coopere.png"></ion-img>
+
+
+
 
   <!-- TESTANDO O MENU HAMBURGUER COM DROPDOWN -->
-<div class="menu-min-header">
-  <nav class="thenav">
-    <div class="hamburger-menu-X" (click)="toggleMenu()">
-      <div class="bar-X"></div>
-      <div class="bar-X"></div>
-      <div class="bar-X"></div>
-    </div>
-    <ul class="menu-items-X" *ngIf="showMenu">
-      <br>
-      <li><a [routerLink]="['/onboarding']" routerLinkActive="active-link">HOME</a></li>
-      <li><a href="#">A COOPEERE</a></li>
-      <li><a [routerLink]="['/estatuto']" routerLinkActive="active-link">ESTATUTO</a></li>
-      <li><a [routerLink]="['/legislacao']" routerLinkActive="active-link">LEGISLAÇÃO</a></li>
-      <li><a [routerLink]="['/vantagens']" routerLinkActive="active-link">VANTAGENS</a></li>
-      <li><a [routerLink]="['/parceiros']" routerLinkActive="active-link">PARCEIROS</a></li>
-      <li><a [routerLink]="['/faleconosco']" routerLinkActive="active-link">FALE CONOSCO</a></li>
-      
+  <div class="menu-min-header">
+    <nav class="thenav">
+      <div class="hamburger-menu-X" (click)="toggleMenu()">
+        <div class="bar-X"></div>
+        <div class="bar-X"></div>
+        <div class="bar-X"></div>
+      </div>
+      <ul class="menu-items-X" *ngIf="showMenu">
+        <br>
+        <li><a [routerLink]="['/onboarding']" routerLinkActive="active-link">HOME</a></li>
+        <li><a href="#">A COOPEERE</a></li>
+        <li><a [routerLink]="['/estatuto']" routerLinkActive="active-link">ESTATUTO</a></li>
+        <li><a [routerLink]="['/legislacao']" routerLinkActive="active-link">LEGISLAÇÃO</a></li>
+        <li><a [routerLink]="['/vantagens']" routerLinkActive="active-link">VANTAGENS</a></li>
+        <li><a [routerLink]="['/parceiros']" routerLinkActive="active-link">PARCEIROS</a></li>
+        <li><a [routerLink]="['/faleconosco']" routerLinkActive="active-link">FALE CONOSCO</a></li>
 
-      
-    </ul>
-  </nav>
-</div>   
 
-<!-- 
+
+      </ul>
+    </nav>
+  </div>
+
+  <!-- 
   
   PACK DE CLASSES EM COMUM EM TODAS AS PAGINAS
 
@@ -91,7 +102,7 @@
   * bar-X
 
 -->
-  
+
   <!-- FIM DO TESTE DO MENU HAMBURRGUER COM DROPDOWN -->
 
 
@@ -106,18 +117,61 @@
 <ion-content>
 
   <div class="text-container">
-    <p>O objetivo principal da <strong>COOPEERE</strong> é a realização de um projeto eólico offshore, reduzir os custos da energia na conta de luz do cooperado, aquecer a economia regional com criação de vagas de emprego no setor técnico em geral e no setor metalúrgico naval, com compromisso no desenvolvimento regional, respeitando as peculiaridades sociais e a vocação econômica local que já vinha crescendo com o progresso petrolífero na região, desenvolvendo soluções de negócios e apoiando ações humanitárias e sócio-ambientais sustentáveis, voltadas ao desenvolvimento da sociedade que se organiza e se fortalece, afim deste parque Eólico Offshore se encaixar perfeitamente no raio X econômico regional que se formou ao longos dos últimos 43 anos com o crescimento petrolífero regional offshore/Industria Naval, mas que hoje passam por uma crise “do preço baixo do petróleo” que impossibilita a maior das petrolíferas no Brasil, A PETROBRÁS e a indústria Naval de reagirem, gerando emprego, riqueza para o Brasil e região face a crise que parece não ter fim.</p>
-<p><strong>A COOPEERE</strong>, entra no cenário atual como uma alternativa, uma força a mais para a sociedade gerando oportunidades sustentáveis através das tecnologias disponíveis no mercado de modo a criar novos postos e novas vagas de trabalho, aquecendo a indústria Naval adormecida pela crise do preço baixo do petróleo, reduzindo o custo da energia elétrica, gerando incentivos para que outras empresas tenham interesse em instalar suas bases em nossa região atraídas pelo baixo preço da energia elétrica que buscamos hoje gerando aumento da renda familiar. Coopere você também fazendo parte como cooperado deste grupo que visa aquecer a nossa economia regional com geração de energia, emprego técnico e lembre-se: A soma de algumas centenas de milhares de cooperados poderá chamar a atenção do Congresso e do Senado pela ausência de investimentos em nossa região. Seja você também uma força a mais, Coopere!</p>
+    <p>O objetivo principal da <strong>COOPEERE</strong> é a realização de um projeto eólico offshore, reduzir os custos
+      da energia na conta de luz do cooperado, aquecer a economia regional com criação de vagas de emprego no setor
+      técnico em geral e no setor metalúrgico naval, com compromisso no desenvolvimento regional, respeitando as
+      peculiaridades sociais e a vocação econômica local que já vinha crescendo com o progresso petrolífero na região,
+      desenvolvendo soluções de negócios e apoiando ações humanitárias e sócio-ambientais sustentáveis, voltadas ao
+      desenvolvimento da sociedade que se organiza e se fortalece, afim deste parque Eólico Offshore se encaixar
+      perfeitamente no raio X econômico regional que se formou ao longos dos últimos 43 anos com o crescimento
+      petrolífero regional offshore/Industria Naval, mas que hoje passam por uma crise “do preço baixo do petróleo” que
+      impossibilita a maior das petrolíferas no Brasil, A PETROBRÁS e a indústria Naval de reagirem, gerando emprego,
+      riqueza para o Brasil e região face a crise que parece não ter fim.</p>
+    <p><strong>A COOPEERE</strong>, entra no cenário atual como uma alternativa, uma força a mais para a sociedade
+      gerando oportunidades sustentáveis através das tecnologias disponíveis no mercado de modo a criar novos postos e
+      novas vagas de trabalho, aquecendo a indústria Naval adormecida pela crise do preço baixo do petróleo, reduzindo o
+      custo da energia elétrica, gerando incentivos para que outras empresas tenham interesse em instalar suas bases em
+      nossa região atraídas pelo baixo preço da energia elétrica que buscamos hoje gerando aumento da renda familiar.
+      Coopere você também fazendo parte como cooperado deste grupo que visa aquecer a nossa economia regional com
+      geração de energia, emprego técnico e lembre-se: A soma de algumas centenas de milhares de cooperados poderá
+      chamar a atenção do Congresso e do Senado pela ausência de investimentos em nossa região. Seja você também uma
+      força a mais, Coopere!</p>
+  </div>
+
+
+  <div class="menu-lateral">
+    <div class="aside">
+      <ul>
+        <li>
+          <ion-button fill="clear" [routerLink]="['/onboarding']">EVENTOS</ion-button>
+        </li>
+        <li>
+          <ion-button fill="clear" [routerLink]="['/onboarding']">PUBLICAÇÕES</ion-button>
+        </li>
+        <li>
+          <ion-button fill="clear" [routerLink]="['/onboarding']"> AGENDA
+          </ion-button>
+        </li>
+        <li>
+          <ion-button fill="clear" [routerLink]="['/onboarding']"> GALERIA DE FOTOS
+          </ion-button>
+        </li>
+        <li>
+          <ion-button fill="clear" [routerLink]="['/onboarding']"> TRABALHE CONOSCO
+          </ion-button>
+        </li>
+      </ul>
+    </div>
   </div>
 
 </ion-content>
 
 
 
-<ion-footer class="footer"> 
+<ion-footer class="footer">
 
-    
-    
+
+
   <section class="p-menu1">
     <nav id="navbar" class="navigation" role="navigation">
       <input id="toggle1" type="checkbox" />
@@ -127,39 +181,41 @@
         <div class="bottom"></div>
       </label>
 
-      <nav class="menu1" >
+      <nav class="menu1">
         <ion-label style="padding-left: 20px;" [routerLink]="['/eventos']">EVENTOS</ion-label>
         <ion-label style="padding-left: 20px;" [routerLink]="['/publicacoes']">PUBLICAÇÕES</ion-label>
         <ion-label style="padding-left: 20px;" [routerLink]="['/agenda']">AGENDA</ion-label>
-        <ion-label style="padding-left: 20px;" [routerLink]="['/galeria']" >GALERIA DE FOTOS</ion-label>
+        <ion-label style="padding-left: 20px;" [routerLink]="['/galeria']">GALERIA DE FOTOS</ion-label>
         <ion-label style="padding-left: 20px;" [routerLink]="['/faleconosco']">FALE CONSOCO</ion-label>
       </nav>
-  </nav>
+    </nav>
 
-  
+
 
   </section>
-  
-    <div class="menu-footer">
-      <ion-label [routerLink]="['/eventos']">EVENTOS</ion-label>
-      <ion-label [routerLink]="['/publicacoes']">PUBLICAÇÕES</ion-label>
-      <ion-label [routerLink]="['/agenda']">AGENDA</ion-label>
-      <ion-label [routerLink]="['/galeria']" >GALERIA DE FOTOS</ion-label>
-      <ion-label [routerLink]="['/faleconosco']">FALE CONSOCO</ion-label>
-    </div>
-  
-    <div class="social-media-icons">
 
-      <!-- ROUTER LINKS NÃO FUNCIONAM COM LINKS DE VERDADE  -->
-      
-      <!-- MAS DEU PRA RESOLVER USANDO UMA FUNÇÃO COM TYPESCRIPT -->
-            
-            <ion-label (click)="openExternalLinkFacebook()">  <ion-img class="new-social-icons" src="../../../assets/images-coopeere/facebook.png"></ion-img>  </ion-label>
-            <ion-label (click)="openExternalLinkInstagram()"> <ion-img class="new-social-icons" src="../../../assets/images-coopeere/instagram.png"></ion-img> </ion-label>
-            <ion-label (click)="openExternalLinkYouTube()"> <ion-img class="new-social-icons" src="../../../assets/images-coopeere/youtube.png"></ion-img> </ion-label>
-          </div>
-          
-    
-    
-  </ion-footer>
+  <div class="menu-footer">
+    <ion-label [routerLink]="['/eventos']">EVENTOS</ion-label>
+    <ion-label [routerLink]="['/publicacoes']">PUBLICAÇÕES</ion-label>
+    <ion-label [routerLink]="['/agenda']">AGENDA</ion-label>
+    <ion-label [routerLink]="['/galeria']">GALERIA DE FOTOS</ion-label>
+    <ion-label [routerLink]="['/faleconosco']">FALE CONSOCO</ion-label>
+  </div>
 
+  <div class="social-media-icons">
+
+    <!-- ROUTER LINKS NÃO FUNCIONAM COM LINKS DE VERDADE  -->
+
+    <!-- MAS DEU PRA RESOLVER USANDO UMA FUNÇÃO COM TYPESCRIPT -->
+
+    <ion-label (click)="openExternalLinkFacebook()"> <ion-img class="new-social-icons"
+        src="../../../assets/images-coopeere/facebook.png"></ion-img> </ion-label>
+    <ion-label (click)="openExternalLinkInstagram()"> <ion-img class="new-social-icons"
+        src="../../../assets/images-coopeere/instagram.png"></ion-img> </ion-label>
+    <ion-label (click)="openExternalLinkYouTube()"> <ion-img class="new-social-icons"
+        src="../../../assets/images-coopeere/youtube.png"></ion-img> </ion-label>
+  </div>
+
+
+
+</ion-footer>

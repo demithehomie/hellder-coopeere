@@ -1171,13 +1171,23 @@ a {
   /// 
   /// 
   
+  .pdf-estatuto {
+    width: 50%;
+    float: left;
+    margin-left: 10%;
+    margin-top: 2%;
+    min-width: 60%;
+    min-height: 100%;
+    
+  }
+
   .aside {
-    //border: 5px solid red;
     width: 30%;
     float: right;
     padding: 1%;
     margin-top: 10px;
   }
+  
   .aside li {
     margin-top: 10px;
     margin-left: 20px;
@@ -1226,3 +1236,6 @@ a {
         width: 100%;
     }
   } 
+  
+  
+  
