@@ -15,5 +15,5 @@ RUN ionic build --prod
 
 EXPOSE 8080
 
-CMD ["--max-old-space-size=4096", "npm", "run", "start", "app.js"]
+CMD ["--max-old-space-size=4096", "app.js", "npm", "run", "start" ]
 
