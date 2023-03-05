@@ -1,7 +1,7 @@
 # Escolha uma imagem base apropriada para a sua aplicação
 FROM node:14-alpine
 
-WORKDIR /app
+WORKDIR /www
 
 COPY package*.json ./
 
@@ -15,5 +15,5 @@ RUN ionic build --prod
 
 EXPOSE 8080
 
-CMD ["--max-old-space-size=4096", "npm", "run", "start"]
+CMD ["--max-old-space-size=4096", "npm", "run", "start", "app.js"]
 
