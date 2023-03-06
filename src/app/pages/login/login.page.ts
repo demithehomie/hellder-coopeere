@@ -56,7 +56,7 @@ export class LoginPage implements OnInit {
     next: (res) => {
     console.log(res);
     console.log('Usuário autenticado.')
-    this.navCtrl.navigateForward('/inicio');
+    this.navCtrl.navigateForward('/home');
     },
     error: (e) => {
       console.error(e)
