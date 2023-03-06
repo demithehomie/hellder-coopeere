@@ -1,3 +1,2 @@
-<p>
-  searchbar works!
-</p>
+<ion-searchbar [(ngModel)]="query"></ion-searchbar>
+    <ion-button (click)="search.emit(query)">Pesquisar</ion-button>

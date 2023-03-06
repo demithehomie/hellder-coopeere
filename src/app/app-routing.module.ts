@@ -1,11 +1,9 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { SearchpageComponent } from './components/searchpage/searchpage.component';
 
 const routes: Routes = [
-/*   {
-    path: '',
-    loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
-  }, */
+
   {
     path: 'info',
     loadChildren: () => import('./pages/info/info.module').then( m => m.InfoPageModule)
@@ -234,13 +232,22 @@ const routes: Routes = [
   {
     path: 'home',
     loadChildren: () => import('./pages/inside/home/home.module').then( m => m.HomePageModule)
-  },  {
+  },
+  {
     path: 'trabalheconosco',
     loadChildren: () => import('./pages/trabalheconosco/trabalheconosco.module').then( m => m.TrabalheconoscoPageModule)
   },
   {
     path: 'admin',
     loadChildren: () => import('./pages/inside/admin/admin.module').then( m => m.AdminPageModule)
+  },
+  {
+    path: 'search',
+    component: SearchpageComponent
+  }, 
+  {
+     path: '', redirectTo: '/search', pathMatch: 'full' 
+    
   }
 
 
