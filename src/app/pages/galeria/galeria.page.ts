@@ -1,11 +1,12 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { IonSlides } from '@ionic/angular';
+import { HttpClient } from '@angular/common/http'
 
 @Component({
   selector: 'app-galeria',
   templateUrl: './galeria.page.html',
-  styleUrls: ['./galeria.page.scss'],
+  styleUrls: ['./galeria.page.scss',"lightbox.min.css"],
 })
 export class GaleriaPage implements OnInit {
 
@@ -30,7 +31,7 @@ export class GaleriaPage implements OnInit {
   selectedOption: string = '';
  
  
-  constructor(private router: Router) {}
+  constructor(private router: Router, private http: HttpClient) {}
 
   goToPage(option: string) {
     switch (option) {
@@ -62,7 +63,13 @@ openExternalLinkYouTube(){
 }
 
 ngOnInit(): void{
-
+  this.http.get('assets/lightbox-plus-jquery.min.js', { responseType: 'text' })
+  .subscribe(js => {
+    const script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.text = js;
+    document.body.appendChild(script);
+  });
 }
 
 

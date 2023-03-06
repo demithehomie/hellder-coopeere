@@ -1,0 +1,60 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-label class="botaosair">SAIR</ion-label>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+
+  <body>
+    <header>
+      <div class="logo">
+        <ion-img  [routerLink]="['/onboarding']"   src="../../../assets/images-coopeere/coopere.png"></ion-img>
+        
+      </div>
+      <div class="user-stats">
+        <p>Usuários ativos na semana: <span class="active-users">10</span></p>
+        <p>Usuários ativos nos últimos 30 dias: <span class="active-users">50</span></p>
+        <p>Usuários ativos nos últimos 6 meses: <span class="active-users">100</span></p>
+      </div>
+    </header>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nome</th>
+          <th>Data de cadastro</th>
+          <th>Último login</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>Usuário 1</td>
+          <td>01/01/2022</td>
+          <td>02/03/2023</td>
+          <td>
+            <button class="alterar">Alterar</button>
+            <button class="excluir">Excluir</button>
+          </td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Usuário 2</td>
+          <td>01/02/2022</td>
+          <td>01/03/2023</td>
+          <td>
+            <button class="alterar">Alterar</button>
+            <button class="excluir">Excluir</button>
+          </td>
+        </tr>
+        <!-- Adicione mais linhas de acordo com a quantidade de usuários -->
+      </tbody>
+    </table>
+  </body>
+
+
+
+</ion-content>
