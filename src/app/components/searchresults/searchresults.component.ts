@@ -1,15 +1,13 @@
 import { Component, Input } from '@angular/core';
 
 @Component({
-  selector: 'app-searchresults',
+  selector: 'app-search-results',
   templateUrl: './searchresults.component.html',
   styleUrls: ['./searchresults.component.scss'],
 })
 export class SearchresultsComponent {
   @Input() results: SearchResult[] = []
-
 }
-
 
 interface SearchResult {
   title: string;

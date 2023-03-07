@@ -1,11 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-searchpage',
+  selector: 'app-search-page',
   templateUrl: './searchpage.component.html',
   styleUrls: ['./searchpage.component.scss'],
 })
 export class SearchpageComponent  {
+
+  results = []
 
   pages = [
     { title: 'Página 1', link: '/page1' },
