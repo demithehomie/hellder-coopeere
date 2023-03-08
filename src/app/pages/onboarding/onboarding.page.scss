@@ -165,12 +165,13 @@ padding-left: 150px;
 
 
 .menu-footer {
-    gap: 10px;
+    gap: 50px;
     display: flex;
     flex-direction: row;
     justify-content: baseline;
     align-items: flex-start;   
     margin: auto;
+    margin-left: 15px;
 
 }
 
@@ -383,6 +384,7 @@ padding-left: 150px;
         }
         &:hover::before {
             width: 100%;
+           
         }
     }
 
@@ -803,7 +805,37 @@ a {
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
+    position: relative;
   }
+
+  .slide-c h1 {
+    font-size: 40px;
+    position: absolute; /* adiciona uma posição absoluta para o h1 */
+     bottom: -50px; /* define a distância do elemento ao fundo do slide */
+    //left: 50%; /* define a posição horizontal do elemento */
+    transform: translateY(100%); /* adiciona uma transição para o elemento aparecer de baixo para cima */
+    transition: transform 0.5s ease-in-out; /* define a duração e o tipo de transição */
+    z-index: 10;
+  }
+
+  .slide-c button {
+    position: absolute; /* adiciona uma posição absoluta para o botão */
+    bottom: -100px; /* define a distância do elemento ao fundo do slide */
+    //left: 50%; /* define a posição horizontal do elemento */
+    transform: translateY(100%); /* adiciona uma transição para o elemento aparecer de baixo para cima */
+    transition: transform 0.5s ease-in-out; /* define a duração e o tipo de transição */
+    z-index: 10;
+  
+  }
+  
+  .slide-c.active h1 {
+    transform: translateY(0); /* define o valor final da transição do h1 quando o slide estiver ativo */
+  }
+  
+  .slide-c.active button {
+    transform: translateY(0); /* define o valor final da transição do botão quando o slide estiver ativo */
+  }
+
 
   ////////////////   CRESCER   /////////////
 

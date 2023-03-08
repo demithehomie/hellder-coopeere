@@ -4,12 +4,12 @@
   
       <div [routerLink]="['/login']">
         <ion-icon class="login-icon" style="color:#fff;" name="person"></ion-icon>
-        <ion-label class="login-label" style="color:#fff;" class="label-header" >Login</ion-label>
+        <ion-label class="login-label" style="color:#fff;" class="label-header" >LOGIN</ion-label>
       </div>
         |
         <div style="padding-left: 18px;" [routerLink]="['/signup']">
           <ion-icon class="signup-icon" style="color:#fff;" name="pencil"></ion-icon>
-          <ion-label class="signup-label"  style="color: #fff;" >Cadastro</ion-label>
+          <ion-label class="signup-label"  style="color: #fff; padding-left: 10px;" >CADASTRE-SE</ion-label>
         </div>
         
         
@@ -21,9 +21,9 @@
       <ion-header class="header hide-header">
         
         
-          <ion-img  [routerLink]="['/onboarding']"  style="max-width: 10%;" src="../../../assets/images-coopeere/coopere.png"></ion-img>
+          <ion-img  [routerLink]="['/onboarding']"  style="max-width: 170px; min-width: 170px; padding-right: 60px;" src="../../../assets/images-coopeere/coopere.png"></ion-img>
         
-      
+    
         
         <ion-button fill="clear" style="color:#000;"  [routerLink]="['/']" routerLinkActive="active-link">Home</ion-button>
         
@@ -45,7 +45,7 @@
         
 
         <div>
-          <a href="#modal_1" class="btn2"><ion-icon name="search"></ion-icon></a>
+          <a href="#modal_1" class="btn2"><ion-icon style="font-size: 25px; font-weight: bold;" name="search"></ion-icon></a>
 
           <!--<div class="sidebar-bottom">
               <div class="color-box dark"></div>
@@ -190,7 +190,7 @@
 
   </ion-slides>
 
-
+<div style="display: flex; flex-direction: row;">
   <h1 style="text-align:start; padding: 10px;">Apoio:</h1> 
   <ion-slides style="margin: 0px;"  [options]="slideOpts2" >
 
@@ -222,10 +222,10 @@
     <ion-slide>
       <img style="min-width: 50%" src="../../../assets/img/forcasindical.png">
     </ion-slide>
-  
+
   
     </ion-slides>
-
+  </div>
 
     
 
@@ -247,7 +247,7 @@
         <ion-label style="padding-left: 20px;" [routerLink]="['/publicacoes']">PUBLICAÇÕES</ion-label>
         <ion-label style="padding-left: 20px;" [routerLink]="['/agenda']">AGENDA</ion-label>
         <ion-label style="padding-left: 20px;" [routerLink]="['/galeria']" >GALERIA DE FOTOS</ion-label>
-        <ion-label style="padding-left: 20px;" [routerLink]="['/faleconosco']">FALE CONSOCO</ion-label>
+        <ion-label style="padding-left: 20px;" [routerLink]="['/faleconosco']">TRABALHE CONSOCO</ion-label>
       </nav>
   </nav>
 
@@ -260,7 +260,7 @@
       <ion-label [routerLink]="['/publicacoes']">PUBLICAÇÕES</ion-label>
       <ion-label [routerLink]="['/agenda']">AGENDA</ion-label>
       <ion-label [routerLink]="['/galeria']" >GALERIA DE FOTOS</ion-label>
-      <ion-label [routerLink]="['/faleconosco']">FALE CONSOCO</ion-label>
+      <ion-label [routerLink]="['/trabalheconosco']">TRABALHE CONSOCO</ion-label>
     </div>
   
     <div class="social-media-icons">
