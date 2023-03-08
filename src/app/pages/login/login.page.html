@@ -22,12 +22,12 @@
   
     <div [routerLink]="['/login']">
       <ion-icon style="color:#fff;" name="person"></ion-icon>
-      <ion-label style="color:#fff;" class="label-header" >Login</ion-label>
+      <ion-label style="color:#fff;" class="label-header" >LOGIN</ion-label>
     </div>
       |
       <div style="padding-left: 18px;" [routerLink]="['/signup']" >
         <ion-icon style="color:#fff;" name="pencil"></ion-icon>
-        <ion-label style="color: #fff;" >Cadastro</ion-label>
+        <ion-label style="color: #fff; padding-left: 10px;" >CADASTRE-SE</ion-label>
       </div>
       
       
@@ -129,9 +129,9 @@
       <div class="linha">
         <div class="flex-box">
           <div class="">
-            <form  (submit)="onSubmit()">
+            <form class="form px-5 py-5 card animate__animated animate__slideInRight" (submit)="onSubmit()">
 
-              <div class="text-center mb-3">
+              <div class="text-center  mb-3">
                 <div class="logo">
                   <div class="splash">
                     <svg xmlns="" xmlns:xlink="" x="0px" y="0px" viewBox="0 0 389.1 411.1" xml:space="preserve">
