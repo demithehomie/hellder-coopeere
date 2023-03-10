@@ -24,6 +24,12 @@ export class OnboardingPage implements OnInit  {
 closeSearchInput(){
   this.router.navigateByUrl('/onboarding')
 }
+
+enviarFormulario() {
+
+  this.filtros = { /* ... */ };
+  this.router.navigate(['/resultados'], { queryParams: this.filtros });
+}
  
   slideOpts = {
     autoplay: {
@@ -85,11 +91,7 @@ openExternalLinkYouTube(){
 }
 
 
-enviarFormulario() {
 
-  this.filtros = { /* ... */ };
-  this.router.navigate(['/resultados'], { queryParams: this.filtros });
-}
 
 ngOnInit(): void{
 

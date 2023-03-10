@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AlertController } from '@ionic/angular';
 import { UsuarioService } from 'src/app/services/usuario.service';
 
 @Component({
@@ -11,7 +12,7 @@ export class HomePage implements OnInit {
   data: any;
   selectedTab: string = "option1";
 
-  constructor(private usuarioService: UsuarioService) { }
+  constructor(private usuarioService: UsuarioService, private alertController: AlertController) { }
 
   ngOnInit() {
     this.usuarioService.getData(this.data).subscribe(data => {
@@ -57,4 +58,25 @@ export class HomePage implements OnInit {
 
 
   }
+
+  async alertaDeSaida() {
+    const alert = await this.alertController.create({
+      header: 'Tem certeza?',
+      cssClass: 'custom-alert',
+      buttons: [
+        {
+          text: 'Não',
+          cssClass: 'alert-button-cancel',
+        },
+        {
+          text: 'Sim',
+          cssClass: 'alert-button-confirm',
+          
+        },
+      ],
+    });
+
+    await alert.present();
+  }
+
 }

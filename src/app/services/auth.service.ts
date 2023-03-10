@@ -11,7 +11,10 @@ export class AuthService {
     constructor(private http: HttpClient) { }
 
     authenticate(usuario: string, senha: string) {
-
+      //  const name = '';
+       // const cpfCnpj = '';
+        //localStorage.setItem('usuario', name);
+        //localStorage.setItem('usuario', cpfCnpj)
         return this.http.post(APIUrl + '/usuario/login', { usuario, senha });
     }
 

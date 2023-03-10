@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from "@angular/router";
 import { UsuarioService } from 'src/app/services/usuario.service';
-import { NavController } from '@ionic/angular';
+import { AlertController, NavController } from '@ionic/angular';
 import { Login } from 'src/app/interfaces/login';
 
 @Component({
@@ -26,6 +26,7 @@ export class LoginPage implements OnInit {
     private formBuilder:  FormBuilder,
     private usersService: UsuarioService,
     public navCtrl: NavController,
+    private alertController: AlertController
   ) { }
 
   login: Login = {
@@ -45,7 +46,7 @@ export class LoginPage implements OnInit {
       senha: ['', [Validators.required]]
     });
   }
-  
+  /*
   onSubmit() {
     const body = {
       username: this.login.usuario,
@@ -56,14 +57,61 @@ export class LoginPage implements OnInit {
     next: (res) => {
     console.log(res);
     console.log('Usuário autenticado.')
+
+
+    
     this.navCtrl.navigateForward('/home');
+
     },
     error: (e) => {
       console.error(e)
       console.log("Dados Enviados", body);
+    
     }
     });
   }
+*/
+
+onSubmit() {
+  const body = {
+    username: this.login.usuario,
+    password: this.login.senha
+  };
+
+  this.usersService.login(body).subscribe({
+    next: (res) => {
+      console.log(res);
+      console.log('Usuário autenticado.')
+      this.presentSuccessAlert();
+      this.navCtrl.navigateForward('/home');
+    },
+    error: (e) => {
+      console.error(e)
+      console.log("Dados Incorretos", body);
+      this.presentErrorAlert();
+    }
+  });
+}
+
+async presentSuccessAlert() {
+  const alert = await this.alertController.create({
+    header: 'Autenticação bem-sucedida',
+    message: 'Seu login foi bem-sucedido.',
+    buttons: ['OK']
+  });
+
+  await alert.present();
+}
+
+async presentErrorAlert() {
+  const alert = await this.alertController.create({
+    header: 'Falha na autenticação',
+    message: 'Seu login não pôde ser autenticado.',
+    buttons: ['OK']
+  });
+
+  await alert.present();
+}
 
   goToPage(option: string) {
     switch (option) {
@@ -93,5 +141,29 @@ export class LoginPage implements OnInit {
   openExternalLinkYouTube(){
     window.open('https://www.youtube.com', '_blank')
   }
+/*
+  async alertaDeSucesso() {
+    const alert = await this.alertController.create({
+      header: 'Bem-Vindo',
+      subHeader: 'Seja bem-vindo a Plataforma da COOPEERE',
+      message: 'Aproveite sua estadia!',
+      buttons: ['OK'],
+    });
 
+    await alert.present();
+  }
+
+  async alertaDeFracasso() {
+    const alert = await this.alertController.create({
+      header: 'DADOS INVÁLIDOS',
+      subHeader: 'Nome de usuário ou senha errados',
+      message: 'Corrija seus dados para obter o acesso',
+      buttons: ['OK'],
+    });
+
+    await alert.present();
+  }
+
+*/
+ 
 }

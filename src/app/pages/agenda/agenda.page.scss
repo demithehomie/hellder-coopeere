@@ -149,7 +149,20 @@
 
   }
 
+@media screen and (max-width: 768px) {
+  .container {
+    max-width: 90%;
+    margin-left: 2%;
+    margin-right: 2%;
+    padding-right: 15px;
 
+  }
+
+  .container section {
+    min-width: 90%;
+  }
+  
+}
   /*body*/
   
   .container{
@@ -631,6 +644,7 @@
 
       .menu-lateral-x {
         display: none;
+        margin-left: 170px;
     }
   
     }

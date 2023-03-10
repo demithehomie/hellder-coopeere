@@ -9,6 +9,27 @@ import { IonSlides } from '@ionic/angular';
 })
 export class GaleriaPage implements OnInit {
 
+  pesquisaPagina: any;
+
+  filtros: any;
+
+  showMenu: boolean = false;
+
+  toggleMenu(): void {
+    this.showMenu = !this.showMenu;
+  }
+
+  
+closeSearchInput(){
+  this.router.navigateByUrl('/onboarding')
+}
+
+enviarFormulario() {
+
+  this.filtros = { /* ... */ };
+  this.router.navigate(['/resultados'], { queryParams: this.filtros });
+}
+
   @ViewChild('slides')
   slides!: IonSlides;
   slideOpts = {
@@ -19,6 +40,9 @@ export class GaleriaPage implements OnInit {
   };
   currentIndex = 0;
   
+
+
+  //git clone --branch Final_08 link.git
   
   slidesArray = [
     { src: 'https://ariehalpern.com.br/wp-content/uploads/2021/07/blog12dejulhode2021.jpg' },
