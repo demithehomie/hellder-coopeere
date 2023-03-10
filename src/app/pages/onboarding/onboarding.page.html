@@ -65,11 +65,20 @@
               <div class="modalcontent">
 
                 <form class="modalSearch" action="submit">
-                  <input id="lista"  placeholder="Procurar..." type="hidden" style ="background-color: transparent; text-align:center; border:none; font-size:45px;" type="text">
+                  <input id="lista"  placeholder="Procurar..." type="hidden" 
+                  
+                    style ="background-color: transparent; 
+                            text-align:center; 
+                            border:none; 
+                            font-size:45px; 
+                            margin-top: -150px; 
+                            margin-left: -500px;" 
+                            
+                            type="text">
 
 
-                  <a href="index.html" class=""><img style="float:right; margin-top:-70px;" src="../../../assets/icon/iconClose.png"></a>
-          </form>
+                 <ion-icon name="close" style="color: #fff; font-size: 30px; align-items: end; justify-content: center; margin-right: -500px; margin-bottom: 150px;" (click)="closeSearchInput()"></ion-icon>
+               </form>
 
 
 
@@ -93,9 +102,7 @@
       </ion-header>
 
 
-    <div class="container">
-
-    </div>
+  
 
     <div class="minimum-header">
 
@@ -145,8 +152,10 @@
       <!-- FIM DO TESTE DO MENU HAMBURRGUER COM DROPDOWN -->
   
 
-      <ion-icon name="search" class="search-min-header">Procurar</ion-icon>
+      <a href="#modal_1" class="btn2">  <ion-icon name="search" style="color: #000; margin-right: -50px;"  class="search-min-header">Procurar</ion-icon></a>
     </div>
+
+    <!-- <a href="#modal_1" class="btn2"><ion-icon style="font-size: 25px; font-weight: bold;" name="search"></ion-icon></a> -->
   
 
 <ion-slides pager="true" [options]="slideOpts" class="ion-slides-x">
@@ -157,8 +166,8 @@
   <ion-slide class="slide-c" >
     <img class="crescer" src="../../../assets/images-coopeere/coopeereslide2.png">
   
-    <h1 class="text-slider-c">Coopere você também, torne-se um cooperado</h1>
-    <button [routerLink]="['/signup']">Cadastre-Se</button>  
+    <h1 class="text-slider-c">Coopeere você também, torne-se um cooperado</h1>
+    <button [routerLink]="['/signup']">CADASTRE-SE</button>  
   </ion-slide>
 </div>
 
@@ -166,14 +175,14 @@
     <img class="crescer" src="../../../assets/images-coopeere/coopeereslide1.png">
 
     <h1>O que a sociedade <br> espera dos nossos <br> goverantes?</h1>
-    <button [routerLink]="['/signup']">Cadastre-Se</button>
+    <button [routerLink]="['/signup']">CADASTRE-SE</button>
   </ion-slide>
 
   <ion-slide class="slide-c">
     <img class="crescer" src="../../../assets/images-coopeere/coopeereslide2.png">
   
     <h1>O que nossos jovens <br> esperam do futuro?</h1>
-    <button [routerLink]="['/signup']">Cadastre-Se</button>  
+    <button [routerLink]="['/signup']">CADASTRE-SE</button>  
   </ion-slide>
 
 
@@ -181,7 +190,7 @@
     <img class="crescer" src="../../../assets/images-coopeere/coopeere-offshore.jpg">
    
     <h1>Quantos milhares <br> de empregos  poderão <br> ser criados?</h1>
-    <button [routerLink]="['/signup']">Cadastre-Se</button>  
+    <button [routerLink]="['/signup']">CADASTRE-SE</button>  
   </ion-slide>
 
 
@@ -223,6 +232,9 @@
       <img style="min-width: 50%" src="../../../assets/img/forcasindical.png">
     </ion-slide>
 
+    <ion-slide>
+      <img class="logo-makrom" src="../../../assets/img/makrom.jpg">
+    </ion-slide>
   
     </ion-slides>
   </div>
@@ -243,11 +255,11 @@
       </label>
 
       <nav class="menu1" >
-        <ion-label style="padding-left: 20px;" [routerLink]="['/eventos']">EVENTOS</ion-label>
-        <ion-label style="padding-left: 20px;" [routerLink]="['/publicacoes']">PUBLICAÇÕES</ion-label>
-        <ion-label style="padding-left: 20px;" [routerLink]="['/agenda']">AGENDA</ion-label>
-        <ion-label style="padding-left: 20px;" [routerLink]="['/galeria']" >GALERIA DE FOTOS</ion-label>
-        <ion-label style="padding-left: 20px;" [routerLink]="['/faleconosco']">TRABALHE CONSOCO</ion-label>
+        <ion-label style="padding-left: 20px; margin-bottom: -50px;" [routerLink]="['/eventos']">EVENTOS</ion-label>
+        <ion-label style="padding-left: 20px;  margin-top: -30px;" [routerLink]="['/publicacoes']">PUBLICAÇÕES</ion-label>
+        <ion-label style="padding-left: 20px; margin-top: -60px;" [routerLink]="['/agenda']">AGENDA</ion-label>
+        <ion-label style="padding-left: 20px; margin-top: -90px;" [routerLink]="['/galeria']" >GALERIA DE FOTOS</ion-label>
+        <ion-label style="padding-left: 20px; margin-top: -120px; " [routerLink]="['/trabalheconosco']">TRABALHE CONSOCO</ion-label>
       </nav>
   </nav>
 

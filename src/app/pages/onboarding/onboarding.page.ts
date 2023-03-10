@@ -16,6 +16,10 @@ export class OnboardingPage implements OnInit  {
     this.showMenu = !this.showMenu;
   }
 
+  
+closeSearchInput(){
+  this.router.navigateByUrl('/onboarding')
+}
  
   slideOpts = {
     autoplay: {
@@ -75,6 +79,7 @@ openExternalLinkInstagram(){
 openExternalLinkYouTube(){
   window.open('https://www.youtube.com', '_blank')
 }
+
 
 ngOnInit(): void{
 

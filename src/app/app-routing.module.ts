@@ -237,6 +237,10 @@ const routes: Routes = [
   },  {
     path: 'trabalheconosco',
     loadChildren: () => import('./pages/trabalheconosco/trabalheconosco.module').then( m => m.TrabalheconoscoPageModule)
+  },
+  {
+    path: 'resultados',
+    loadChildren: () => import('./pages/resultados/resultados.module').then( m => m.ResultadosPageModule)
   }
 
 

@@ -1,63 +1,352 @@
-<ion-header class="header-header">
-  <link rel="canonical" href="https://fonts.google.com/specimen/Open%2BSans">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
-    
-    
-    <div [routerLink]="['/login']">
-      <ion-icon name="person"></ion-icon>
-      <ion-label class="label-header" >Login</ion-label>
+<ion-content>
+<ion-header class="header-header">  
+  
+  <div [routerLink]="['/login']">
+    <ion-icon class="login-icon" style="color:#fff;" name="person"></ion-icon>
+    <ion-label class="login-label" style="color:#fff;" class="label-header" >LOGIN</ion-label>
+  </div>
+    |
+    <div style="padding-left: 18px;" [routerLink]="['/signup']">
+      <ion-icon class="signup-icon" style="color:#fff;" name="pencil"></ion-icon>
+      <ion-label class="signup-label"  style="color: #fff; padding-left: 10px;" >CADASTRE-SE</ion-label>
     </div>
-      |
-      <div style="padding-left: 15px;" [routerLink]="['/signup']" >
-        <ion-icon name="pencil"></ion-icon>
-        <ion-label >Cadastro</ion-label>
+    
+    
+  
+  </ion-header>
+
+
+
+  <ion-header class="header hide-header">
+    
+    
+      <ion-img  [routerLink]="['/onboarding']"  style="max-width: 170px; min-width: 170px; padding-right: 60px;" src="../../../assets/images-coopeere/coopere.png"></ion-img>
+    
+
+    
+    <ion-button fill="clear" style="color:#000;"  [routerLink]="['/']" routerLinkActive="active-link">Home</ion-button>
+    
+    <div class="dropdown">
+      <a [routerLink]="['/onboarding']" style="color:#000;" routerLinkActive="active-link">A COOPEERE <svg class="arrowicon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18"><path fill="none" d="M0 0h24v24H0z"/><path d="M12 13.172l4.95-4.95 1.414 1.414L12 16 5.636 9.636 7.05 8.222z"/></svg></a>
+      <div class="dropdown-content">
+        <a [routerLink]="['/quemsomos']" class="dropdown-item">Quem Somos?</a>
+        <a [routerLink]="['/objetivos']" class="dropdown-item">Objetivo</a>
+        <a [routerLink]="['/equipe']" class="dropdown-item">A Equipe</a>
       </div>
-      
+    </div>
+  
+    <ion-button fill="clear" style="color:#000;"  [routerLink]="['/estatuto']" routerLinkActive="active-link">Estatuto</ion-button>
+    <ion-button fill="clear" style="color:#000;"  [routerLink]="['/legislacao']" routerLinkActive="active-link">Legislação</ion-button>
+    <ion-button fill="clear" style="color:#000;" [routerLink]="['/vantagens']" routerLinkActive="active-link">Vantagens</ion-button>
+    <ion-button fill="clear" style="color:#000;"  [routerLink]="['/parceiros']" routerLinkActive="active-link">Parceiros</ion-button>
+    <ion-button fill="clear" style="color:#000;" [routerLink]="['/faleconosco']" routerLinkActive="active-link">Fale Conosco</ion-button>
+
     
-    </ion-header>
-    
-    <ion-header class="header">
-      
-      
-        <ion-img id="logo" [routerLink]="['/onboarding']" src="../../../assets/images-coopeere/coopere.png"></ion-img>
-      
-    
-      
-      <ion-button fill="clear"  [routerLink]="['/onboarding']">Home</ion-button>
-      
-      <div class="dropdown">
-        <a [routerLink]="['/onboarding']" routerLinkActive="active-link">A COOPEERE <svg class="arrowicon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18"><path fill="none" d="M0 0h24v24H0z"/><path d="M12 13.172l4.95-4.95 1.414 1.414L12 16 5.636 9.636 7.05 8.222z"/></svg></a>
-        <div class="dropdown-content">
-          <a [routerLink]="['/quemsomos']" class="dropdown-item">Quem Somos?</a>
-          <a [routerLink]="['/objetivos']" class="dropdown-item">Objetivo</a>
-          <a [routerLink]="['/equipe']" class="dropdown-item">A Equipe</a>
+
+    <div>
+      <a href="#modal_1" class="btn2"><ion-icon style="font-size: 25px; font-weight: bold;" name="search"></ion-icon></a>
+
+      <!--<div class="sidebar-bottom">
+          <div class="color-box dark"></div>
+          <div class="color-box night"></div>
+          <div class="color-box light"></div>
+      </div>-->
+  </div>
+
+   <!--pop-up-->
+
+
+
+      <div id="modal_1" class="modal">
+
+
+
+          <div class="modalcontent">
+
+            <form class="modalSearch" action="submit">
+              <input id="lista"  placeholder="Procurar..." type="hidden" 
+              
+                style ="background-color: transparent; 
+                        text-align:center; 
+                        border:none; 
+                        font-size:45px; 
+                        margin-top: -150px; 
+                        margin-left: -500px;" 
+                        
+                        type="text">
+
+
+             <ion-icon name="close" style="color: #fff; font-size: 30px; align-items: end; justify-content: center; margin-right: -500px; margin-bottom: 150px;" (click)="closeSearchInput()"></ion-icon>
+           </form>
+
+
+
+
+
+
+
+                  <p class="modaldescription">
+
+
+
+          </div>
+
+
+
+
         </div>
-      </div>
+
+
+
+  </ion-header>
+
+
+
+
+<div class="minimum-header">
+
     
-      <ion-button fill="clear"  [routerLink]="['/estatuto']" routerLinkActive="active-link">Estatuto</ion-button>
-      <ion-button fill="clear"  [routerLink]="['/legislacao']" routerLinkActive="active-link">Legislação</ion-button>
-      <ion-button fill="clear" [routerLink]="['/vantagens']" routerLinkActive="active-link">Vantagens</ion-button>
-      <ion-button fill="clear"  [routerLink]="['/parceiros']" routerLinkActive="active-link">Parceiros</ion-button>
-      <ion-button fill="clear" [routerLink]="['/faleconosco']" routerLinkActive="active-link">Fale Conosco</ion-button>
-      <ion-icon class="search" name="search"></ion-icon>
-    </ion-header>
-  <ion-content>
+  <ion-img class="logo-min-header" [routerLink]="['/onboarding']"  src="../../../assets/images-coopeere/coopere.png"></ion-img>
+
+ 
+  
+
+  <!-- TESTANDO O MENU HAMBURGUER COM DROPDOWN -->
+<div class="menu-min-header">
+  <nav class="thenav">
+    <div class="hamburger-menu-X" (click)="toggleMenu()">
+      <div class="bar-X"></div>
+      <div class="bar-X"></div>
+      <div class="bar-X"></div>
+    </div>
+    <ul class="menu-items-X" *ngIf="showMenu">
+      <br>
+      <li><a [routerLink]="['/onboarding']" routerLinkActive="active-link">HOME</a></li>
+      <li><a href="#">A COOPEERE</a></li>
+      <li><a [routerLink]="['/estatuto']" routerLinkActive="active-link">ESTATUTO</a></li>
+      <li><a [routerLink]="['/legislacao']" routerLinkActive="active-link">LEGISLAÇÃO</a></li>
+      <li><a [routerLink]="['/vantagens']" routerLinkActive="active-link">VANTAGENS</a></li>
+      <li><a [routerLink]="['/parceiros']" routerLinkActive="active-link">PARCEIROS</a></li>
+      <li><a [routerLink]="['/faleconosco']" routerLinkActive="active-link">FALE CONOSCO</a></li>
+      
+
+      
+    </ul>
+  </nav>
+</div>   
+
+<!-- 
+  
+  PACK DE CLASSES EM COMUM EM TODAS AS PAGINAS
+
+  * menu-items-X
+  * minimum-header
+  * menu-min-header
+  * thenav
+  * hamburger-menu-X
+  * bar-X
+
+-->
+  
+  <!-- FIM DO TESTE DO MENU HAMBURRGUER COM DROPDOWN -->
+
+
+  <a href="#modal_1" class="btn2">  <ion-icon name="search" style="color: #000; margin-right: -50px;"  class="search-min-header">Procurar</ion-icon></a>
+</div>
+
+
+
   
       <div class="container">
           <section>
             <h1 class="title">Publicações</h1>
   
-            <ion-list>
-              <ion-item><ion-icon name="document-text-outline"></ion-icon>Teses de Doutorado</ion-item>
-              <ion-item><ion-icon name="document-text-outline"></ion-icon>Dissertações de Mestrado</ion-item>
-              <ion-item><ion-icon name="document-text-outline"></ion-icon>Monografias</ion-item>
-              <ion-item><ion-icon name="document-text-outline"></ion-icon>Artigos Publicados</ion-item>
-            </ion-list>
+            <ion-accordion-group >
+              <ion-accordion value="first" >
+                <ion-item slot="header" color="dark" (ionChange)="isOpen = !isOpen" style="border-top-right-radius: 10px;
+                border-top-left-radius: 10px; background-color: #fff; ">
+                  <img src="../../../assets/icon/pdf-filled.png" *ngIf="isOpen" alt="pdf-inline" style="width: 35px; padding-right: 7px;">
+                  <img src="../../../assets/icon/pdf.png" *ngIf="!isOpen" alt="pdf-filled" style="width: 35px; padding-right: 7px;">
+                  <ion-label style="color: rgb(101, 101, 244); font-size: 20px; font-weight: bold;">Teses de Doutourado</ion-label>
+                </ion-item>
+                
+
+                <div class="ion-padding" slot="content">
+                  
+                  <h2>Propostas de Políticas Específicas para Energia Eólica no Brasil após a Primeira Fase do PROINFA</h2>
+
+                  
+                  <div style="display: flex; flex-direction: row;">
+                    <h5> <strong> Autor: </strong> </h5>  &nbsp; <h5>Ricardo Marques Dutra</h5>
+                  </div>
+
+                  <div style="display: flex; flex-direction: row;">
+                    <h5> <strong> Grau: </strong> </h5>  &nbsp; <h5>Tese de D. Sc.</h5>
+                  </div>
+
+                  <div style="display: flex; flex-direction: row;">
+                    <h5> <strong> Instituição: </strong> </h5>  &nbsp; <h5>Programa de Planejamento Energético/ COPPE/ UFRJ</h5>
+                  </div>
+
+                  <div style="display: flex; flex-direction: row;">
+                    <h5> <strong> Local: </strong> </h5>  &nbsp; <h5>Rio de Janeiro</h5> &nbsp; <h5> <strong> Ano: </strong> </h5>  &nbsp; <h5>2007</h5>
+                  </div>
+                  
+                  <h5 style="text-align: justify;">
+
+                    A presente tese tem por finalidade propor possíveis estratégias, conforme diferentes critérios, para o desenvolvimento da energia eólica no Brasil, a partir da segunda fase do Programa de Incentivo a Fontes Alternativas de Energia – PROINFA. Desta forma, ela apresenta os principais mecanismos de promoção de fontes alternativas e renováveis de geração de eletricidade tanto sob o ponto de vista teórico quanto através da apresentação e análise de resultados obtidos da experiência internacional. Também é feita a análise do contexto atual do setor elétrico brasileiro, especialmente da evolução das políticas implementadas para o desenvolvimento de fontes renováveis de energia. Com a reflexão proveniente da experiência internacional e o contexto atual do setor elétrico brasileiro, são propostas e avaliadas quantitativamente estratégias para a aplicação de políticas de incentivos à fonte eólica no Brasil, além do que é apresentado pela estrutura atual do PROINFA. Os critérios para estas estratégias são: (1) redução das emissões do setor elétrico; (2) otimização do sistema hidrelétrico; (3) desenvolvimento industrial e regional e (4) aumento da participação de fontes renováveis alternativas na matriz energética. Os resultados apresentados neste trabalho mostram a viabilidade de diversas estratégias para o desenvolvimento da energia eólica no Brasil: para a estratégia (1), identificou-se que o Sistema de Cotas mostra-se mais adequado para o caso brasileiro; para as estratégias (2) e (3) identificou-se que o sistema Feed-In apresenta-se mais adequado para ambas estratégias. Finalmente, para a estratégia (4) o sistema Feed-In mostra-se mais adequado para uma estratégia a curto prazo, para um programa a longo prazo, a harmonização dos Sistemas Feed-In e Cotas mostra-se mais apropriado para o desenvolvimento da energia eólica no Brasil.
+                  </h5>
+
+                  <div style="display: flex; flex-direction: row;">
+                    <h5> <strong> Download: </strong> </h5>  &nbsp; <h5 class="link-externo" (click)="downloadTeseMarcelo()">  200704_dutra_r_m_dr.pdf</h5> &nbsp;<img style="width: 20px; height: 20px;" src="../../../assets/icon/pdfred.png" alt="pdf-red-icon">
+                  </div>
+
+
+                </div>
+              </ion-accordion>
+
+
+              <ion-accordion value="second">
+                <ion-item slot="header" color="dark">
+                  <img src="../../../assets/icon/pdf.png" style="width: 35px; padding-right: 7px;" alt="pdf-inline">
+                  <ion-label style="color: rgb(101, 101, 244); font-size: 20px; font-weight: bold;">Dissertações de Mestrado</ion-label>
+                </ion-item>
+                <div class="ion-padding" slot="content">
+                 <h5>Estamos convidando profissionais que publiquem suas Dissertações de Mestrado aqui. Aguardem!</h5>
+                </div>
+              </ion-accordion>
+              <ion-accordion value="third">
+                <ion-item slot="header" color="dark">
+                  <img src="../../../assets/icon/pdf.png" style="width: 35px; padding-right: 7px;" alt="pdf-inline">
+                  <ion-label style="color: rgb(101, 101, 244); font-size: 20px; font-weight: bold;">Monografias</ion-label>
+                </ion-item>
+                <div class="ion-padding" slot="content">
+                  
+
+                  <h2>AVALIAÇÃO DO POTENCIAL EÓLICO PARA A GERAÇÃO DE ENERGIA ELÉTRICA EM RIO DAS OSTRAS e FAROL DE SÃO TOMÉ – RJ</h2>
+                  
+                  
+                  <div style="display: flex; flex-direction: row;">
+                    <h5> <strong> Autor: </strong> </h5>  &nbsp; <h5>Marciel Vaz Marinho</h5>
+                  </div>
+
+                  <div style="display: flex; flex-direction: row;">
+                    <h5> <strong> Instituição: </strong> </h5>  &nbsp; <h5>Universidade Estadual do Norte Fluminense Darcy Ribeiro</h5>
+                  </div>
+
+                  <div style="display: flex; flex-direction: row;">
+                    <h5> <strong> Local: </strong> </h5>  &nbsp; <h5>Rio de Janeiro</h5> &nbsp; 
+                  </div>
+
+                  <div style="display: flex; flex-direction: row;">
+                    <h5> <strong> Ano: </strong> </h5>  &nbsp; <h5>2018</h5>
+                  </div>
+                  
+                  <h5 style="text-align: justify;">
+                    Monografia apresentada ao Laboratório de Meteorologia do Centro de Ciência e Tecnologia da Universidade Estadual do Norte Fluminense Darcy Ribeiro, como parte das exigências para a conclusão do Curso de Pós-Graduação em Ciências Atmosféricas para Engenheiros, Ambientalistas e Educadores.
+                  </h5>
+
+                  
+                  <div style="display: flex; flex-direction: row;">
+                    <h5> <strong> Orientador: </strong> </h5>  &nbsp; <h5>Prof. Dr. Isimar de Azevedo Santos</h5>
+                  </div>
+
+                  <div style="display: flex; flex-direction: row;">
+                    <h5> <strong> Download: </strong> </h5>  &nbsp; <h5 class="link-externo" (click)="downloadMonografiaMarciel()">Monografia_UENF_Marciel_2018</h5> &nbsp;<img style="width: 20px; height: 20px;" src="../../../assets/icon/pdfred.png" alt="pdf-red-icon">
+                  </div>
+
+
+<!-- POLYANA ABAIXO -->
+
+ 
+<h2>LEVANTAMENTO DO POTENCIAL EÓLICO NO MAR PARA GERAÇÃO DE ENERGIA ELÉTRICA</h2>
+                  
+                  
+<div style="display: flex; flex-direction: row;">
+  <h5> <strong> Autor: </strong> </h5>  &nbsp; <h5>Pollyana Rosa dos Santos Martins Nóbrega</h5>
+</div>
+
+<div style="display: flex; flex-direction: row;">
+  <h5> <strong> Instituição: </strong> </h5>  &nbsp; <h5>Universidade Estadual do Norte Fluminense Darcy Ribeiro</h5>
+</div>
+
+<div style="display: flex; flex-direction: row;">
+  <h5> <strong> Local: </strong> </h5>  &nbsp; <h5>Rio de Janeiro</h5> &nbsp; 
+</div>
+
+<div style="display: flex; flex-direction: row;">
+  <h5> <strong> Ano: </strong> </h5>  &nbsp; <h5>2019</h5>
+</div>
+
+<h5 style="text-align: justify;">
+  Monografia apresentada ao Laboratório de Meteorologia do Centro de Ciência e Tecnologia da Universidade Estadual do Norte Fluminense Darcy Ribeiro, como parte das exigências para a conclusão do Curso de Pós-Graduação Lato Sensu em Ciências Atmosféricas para Engenheiros, Ambientalistas e Educadores.</h5>
+
+
+<div style="display: flex; flex-direction: row;">
+  <h5> <strong> Orientador: </strong> </h5>  &nbsp; <h5>Prof. Dr. Isimar de Azevedo Santos</h5>
+</div>
+
+<div style="display: flex; flex-direction: row;">
+  <h5> <strong> Download: </strong> </h5>  &nbsp; <h5 class="link-externo" (click)="downloadMonografiaPolyana()">Monografia_UENF_Pollyana_2018</h5> &nbsp;<img style="width: 20px; height: 20px;" src="../../../assets/icon/pdfred.png" alt="pdf-red-icon">
+</div>
+
+<!-- THAMIRES ABAIXO -->
+
+ 
+<h2>ESTUDO DE VARIÁVEIS METEOROLÓGICAS NA CAMADA LIMITE LITORÂNEA DA REGIÃO NORTE FLUMINENSE</h2>
+                  
+                  
+<div style="display: flex; flex-direction: row;">
+  <h5> <strong> Autor: </strong> </h5>  &nbsp; <h5>Thamires Pacheco Silva</h5>
+</div>
+
+<div style="display: flex; flex-direction: row;">
+  <h5> <strong> Instituição: </strong> </h5>  &nbsp; <h5>Universidade Estadual do Norte Fluminense Darcy Ribeiro</h5>
+</div>
+
+<div style="display: flex; flex-direction: row;">
+  <h5> <strong> Local: </strong> </h5>  &nbsp; <h5>Rio de Janeiro</h5> &nbsp; 
+</div>
+
+<div style="display: flex; flex-direction: row;">
+  <h5> <strong> Ano: </strong> </h5>  &nbsp; <h5>2019</h5>
+</div>
+
+<h5 style="text-align: justify;">
+  Monografia apresentada ao Laboratório de
+  Meteorologia do Centro de Ciência e Tecnologia
+  da Universidade Estadual do Norte Fluminense
+  Darcy Ribeiro, como parte das exigências para a
+  conclusão do Curso de Pós-Graduação Lato
+  Sensu em Ciências Atmosféricas para
+  Engenheiros, Ambientalistas e Educadores</h5>
+
+
+<div style="display: flex; flex-direction: row;">
+  <h5> <strong> Orientador: </strong> </h5>  &nbsp; <h5>Prof. Dr. Isimar de Azevedo Santos</h5>
+</div>
+
+<div style="display: flex; flex-direction: row;">
+  <h5> <strong> Download: </strong> </h5>  &nbsp; <h5 class="link-externo" (click)="downloadMonografiaThamires()">Monografia_UENF_Thamires_2019</h5> &nbsp;<img style="width: 20px; height: 20px;" src="../../../assets/icon/pdfred.png" alt="pdf-red-icon">
+</div>
+
+
+                </div>
+              </ion-accordion>
+              <ion-accordion value="third">
+                <ion-item slot="header" color="dark">
+                  <img src="../../../assets/icon/pdf.png" style="width: 35px; padding-right: 7px;" alt="pdf-inline">
+                  <ion-label style="color: rgb(101, 101, 244); font-size: 20px; font-weight: bold;">Artigos Publicados</ion-label>
+                </ion-item>
+                <div class="ion-padding" slot="content">
+                 <h5 class="link-externo" (click)="downloadSistemaDeGeracao()"> TUDO SOBRE SISTEMA DE COMPENSAÇÃO & GERAÇÃO DISTRIBUIDA</h5> 
+                </div>
+              </ion-accordion>
+            </ion-accordion-group>
   
           </section>
     
+          <div class="menu-lateral-x">
           <ion-list class="menu-lateral">
             <ion-label fill="clear" [routerLink]="['/eventos']">Eventos</ion-label>
             <ion-label style="color: #7b9a6e;" fill="clear" [routerLink]="['/publicacoes']" routerLinkActive="active-link">Publicações</ion-label>
@@ -65,6 +354,7 @@
             <ion-label fill="clear" [routerLink]="['/galeria']">Galeria de fotos</ion-label>
             <ion-label fill="clear" [routerLink]="['/trabalheconosco']">Trabalhe Conosco</ion-label>
           </ion-list>
+        </div>
   
       </div>
   </ion-content>

@@ -80,13 +80,13 @@ ion-slide button {
 @media (max-width: 767px) {
     ion-slide button   {
       width: 25%;
-      font-size: 95%;
+      font-size: 85%;
       position: absolute;
       top: 41%;
-      left: 13%;
-      padding: 15px;
+      left: 15%;
+      padding: 14px;
         border-radius: 25px;
-        width: 130px;
+        width: 160px;
     }
  }
 
@@ -171,7 +171,7 @@ padding-left: 150px;
     justify-content: baseline;
     align-items: flex-start;   
     margin: auto;
-    margin-left: 15px;
+    margin-left: 55px;
 
 }
 
@@ -349,7 +349,7 @@ padding-left: 150px;
         cursor: pointer;
     }
 
-    ion-button, a {
+    ion-button, a  {
 
         display: block;
         margin: 0;
@@ -518,7 +518,7 @@ a {
     display: -ms-grid;
     display: grid;
     grid-template-rows: 0.5fr repeat(0.5fr);
-    grid-row-gap: 1px;
+    grid-row-gap: 0.5px;
     padding: 0px;
     list-style: none;
     clear: both;
@@ -808,33 +808,33 @@ a {
     position: relative;
   }
 
-  .slide-c h1 {
-    font-size: 40px;
-    position: absolute; /* adiciona uma posição absoluta para o h1 */
-     bottom: -50px; /* define a distância do elemento ao fundo do slide */
+/*  .slide-c h1 {
+  //  font-size: 40px;
+   // position: absolute; /* adiciona uma posição absoluta para o h1 */
+  //   bottom: -50px; /* define a distância do elemento ao fundo do slide */
     //left: 50%; /* define a posição horizontal do elemento */
-    transform: translateY(100%); /* adiciona uma transição para o elemento aparecer de baixo para cima */
-    transition: transform 0.5s ease-in-out; /* define a duração e o tipo de transição */
-    z-index: 10;
-  }
+   // transform: translateY(100%); /* adiciona uma transição para o elemento aparecer de baixo para cima */
+  //  transition: transform 0.5s ease-in-out; /* define a duração e o tipo de transição */
+   // z-index: 10;
+ // }
 
-  .slide-c button {
-    position: absolute; /* adiciona uma posição absoluta para o botão */
-    bottom: -100px; /* define a distância do elemento ao fundo do slide */
+ // .slide-c button {
+  //  position: absolute; /* adiciona uma posição absoluta para o botão */
+   // bottom: -100px; /* define a distância do elemento ao fundo do slide */
     //left: 50%; /* define a posição horizontal do elemento */
-    transform: translateY(100%); /* adiciona uma transição para o elemento aparecer de baixo para cima */
-    transition: transform 0.5s ease-in-out; /* define a duração e o tipo de transição */
-    z-index: 10;
+   // transform: translateY(100%); /* adiciona uma transição para o elemento aparecer de baixo para cima */
+   // transition: transform 0.5s ease-in-out; /* define a duração e o tipo de transição */
+   // z-index: 10;
   
-  }
+ // }
   
-  .slide-c.active h1 {
-    transform: translateY(0); /* define o valor final da transição do h1 quando o slide estiver ativo */
-  }
-  
+  //.slide-c.active h1 {
+  //  transform: translateY(0); /* define o valor final da transição do h1 quando o slide estiver ativo */
+ // }
+ /* 
   .slide-c.active button {
     transform: translateY(0); /* define o valor final da transição do botão quando o slide estiver ativo */
-  }
+//  }
 
 
   ////////////////   CRESCER   /////////////
@@ -913,6 +913,7 @@ a {
     justify-content: center;
     align-items: center;
     z-index: 10;
+    gap: 0;
   }
   
   .menu-items-X li {
@@ -1052,6 +1053,12 @@ box-shadow: 0 0 0 0;
   box-shadow: 0 0 0 0;
   outline: 0;
   border: 0;
+  display: flex;
+  flex-direction: row;
+  margin: auto;
+
+  align-items: center;
+  justify-content: center;
 
 
 }
@@ -1098,3 +1105,17 @@ width: 1200px;
 
 
   ///////////////////////////
+  /// 
+  
+
+  .logo-makrom {
+    max-width: 40%;
+    min-width: 40%;
+  }
+
+  @media screen and (max-width: 768px) {
+    .logo-makrom {
+      max-width: 85%;
+      min-width: 85%;
+    }
+  }
