@@ -215,8 +215,91 @@
       </div>
     </div>
     <div *ngSwitchCase="'option4'" class="ngcontent">
-      Content for option 4
+  
+<!-- FORMULÁRIO PRODIST-->
+
+<div>
+<div class="tab-title">Formulário PRODIST (deve-se preencher e salvar a etapa TRIAGEM, antes de preencher o formulário Prodist)</div>
+
+  <fieldset class="fieldset_prodist">
+
+    <div class="form_group">
+
+      <div class="form-group-title">
+        Identificação da Unidade Consumidora
     </div>
+
+
+    <div class="form-label row-span-2">
+      <label for="maior_consumo">Upload da conta de luz</label>
+      <div class="form-hint">Últimos 3 meses</div>
+  </div>
+
+  <div class="input-group row-auto">
+    <div class="bg-gray-100 rounded-lg shadow-md text-center w-100 h-100">
+      <div class="h-36">
+                          <img class="h-36 w-100 object-contain object-center" src="/uploads/null_icon.png" alt="Avatar Upload" />
+                        
+      </div>
+      <label class="cursor-pointer mt-2 w-100">
+        <span class="btn btn-primary w-100">Enviar Arquivo</span>
+                      <input class="file-uploader w-100"
+            type="file"
+            name="upfile"
+            id="arquivo"
+            value="/uploads/null_icon.png"
+            hidden>
+                                  
+                    </label>
+    </div>
+  </div>
+
+
+  <div class="grid grid-cols-2 col-span-2 gap-4 content-start">
+
+    <label class="form-label" for="codigo_uc">Código UC/Número do Cliente</label>
+    <div class="input-group">
+        <input type="text"
+            class="form-control"
+            id="codigo_uc"
+            name="codigo_uc"
+            size="15"
+            value="010112345"
+            title="Código da Unidade Consumidora ou Número do Cliente na sua conta"
+            
+        >
+    </div>
+
+    <div class="form-label">
+        <label for="classe_uc">Classe UC</label>
+        <div class="form-hint">
+            Unidade Consumidora
+        </div>
+    </div>
+    <div class="input-group">
+        <input type="text"
+            class="form-control"
+            id="classe_uc"
+            name="classe_uc"
+            size="15"
+            value="RESIDENCIAL"
+            
+        >
+    </div>
+</div>
+
+
+  
+    </div>
+
+  </fieldset>
+
+</div>
+
+<!-- FIM DO FORMULÁRIO PRODIST -->
+
+</div>
+   
     <div *ngSwitchCase="'option5'" class="ngcontent">
       
       <div class="row-of-payment-options">

@@ -180,12 +180,25 @@ ion-slide button {
 }
 
 .logo {
+  width: 100px;
+  height: 100px;
     align-items: center;
     justify-content: center;
     display: flex;
-  
+   animation: logo 5s linear infinite;
     margin: auto;
+    transform-origin: center;
 }
+
+@keyframes logo {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 
 .container-form {
     
@@ -444,7 +457,11 @@ form {
     min-width: 0;
     position: relative;
 }
+
+
+
 .splash {
+ // animation: splash 5s linear infinite;
     align-items: center;
     display: flex;
     height: 100%;

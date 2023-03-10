@@ -95,8 +95,9 @@ onSubmit() {
 
 async presentSuccessAlert() {
   const alert = await this.alertController.create({
-    header: 'Autenticação bem-sucedida',
-    message: 'Seu login foi bem-sucedido.',
+    
+    header: 'Meus parabéns! Agora você faz parte de um grupo de milhares de famílias que desejam se unir para produzir sua própria energia, diminuindo o custo, trazendo oportunidades de emprego técnico e novas tecnologias para a nossa região!     ',
+    message: '   Hellder Benjamim, Presidente',
     buttons: ['OK']
   });
 
