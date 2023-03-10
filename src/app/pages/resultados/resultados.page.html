@@ -1,9 +1,16 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>resultados</ion-title>
-  </ion-toolbar>
-</ion-header>
+
 
 <ion-content>
 
+
+
+<h2>Coopeere</h2>
+
+
+<!-- HEADER COM TODO O MENU E ROTTAS PRONTAS -->
+<div *ngFor="let page of pages | filter:pesquisaPagina">
+ 
+  <h5>{{page.titulo}}</h5>
+  <h5>{{page.conteudo}}</h5>
+</div>
 </ion-content>

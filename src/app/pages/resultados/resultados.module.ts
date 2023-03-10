@@ -7,14 +7,16 @@ import { IonicModule } from '@ionic/angular';
 import { ResultadosPageRoutingModule } from './resultados-routing.module';
 
 import { ResultadosPage } from './resultados.page';
+import { FilterPipe } from 'src/app/pipes/filter.pipes';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    ResultadosPageRoutingModule
+    ResultadosPageRoutingModule,
+   
   ],
-  declarations: [ResultadosPage]
+  declarations: [ResultadosPage,  FilterPipe]
 })
 export class ResultadosPageModule {}

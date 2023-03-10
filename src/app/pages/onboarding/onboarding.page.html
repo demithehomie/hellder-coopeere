@@ -45,7 +45,8 @@
         
 
         <div>
-          <a href="#modal_1" class="btn2"><ion-icon style="font-size: 25px; font-weight: bold;" name="search"></ion-icon></a>
+          <a href="#modal_1" class="btn2">
+            <ion-icon style="font-size: 25px; font-weight: bold;" name="search"></ion-icon></a>
 
           <!--<div class="sidebar-bottom">
               <div class="color-box dark"></div>
@@ -64,7 +65,7 @@
 
               <div class="modalcontent">
 
-                <form class="modalSearch" action="submit">
+                <form class="modalSearch" (ngSubmit)="enviarFormulario()" >
                   <input id="lista"  placeholder="Procurar..." type="hidden" 
                   
                     style ="background-color: transparent; 
@@ -74,9 +75,13 @@
                             margin-top: -150px; 
                             margin-left: -500px;" 
                             
-                            type="text">
+                            type="text"
+                            
+                            (ngModel)="pesquisaPagina"
+                           
+                            >
 
-
+<!--  [(ngModel)]="pesquisaPagina" -->
                  <ion-icon name="close" style="color: #fff; font-size: 30px; align-items: end; justify-content: center; margin-right: -500px; margin-bottom: 150px;" (click)="closeSearchInput()"></ion-icon>
                </form>
 

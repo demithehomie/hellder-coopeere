@@ -10,6 +10,10 @@ import { Router } from '@angular/router';
 })
 export class OnboardingPage implements OnInit  {
 
+  pesquisaPagina: any;
+
+  filtros: any;
+
   showMenu: boolean = false;
 
   toggleMenu(): void {
@@ -80,6 +84,12 @@ openExternalLinkYouTube(){
   window.open('https://www.youtube.com', '_blank')
 }
 
+
+enviarFormulario() {
+
+  this.filtros = { /* ... */ };
+  this.router.navigate(['/resultados'], { queryParams: this.filtros });
+}
 
 ngOnInit(): void{
 

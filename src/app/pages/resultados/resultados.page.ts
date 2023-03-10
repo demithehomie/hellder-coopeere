@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { FilterPipe } from 'src/app/pipes/filter.pipes';
 
 @Component({
   selector: 'app-resultados',
@@ -7,28 +9,78 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ResultadosPage {
 
- // constructor() { }
+  constructor(private route: ActivatedRoute) {}
 
- // ngOnInit() {
- // }
+ pesquisaPagina: any;
+ conteudo: any[] | undefined;
+  filtros: any;
+  conteudoFiltrado: any[] | undefined;
 
- paginas = [
+ pages = [
   {
-    id: 1,
+    id: 0,
+    nome: "Eventos",
     titulo: "Eventos",
     conteudo: "Não temos Eventos realizados ou agendados ainda. Tão logo sejam agendados, serão divulgados aqui"
   },
-  {
-    id: 2,
-    titulo: "",
-    conteudo: ""
-  },
-  {
-    id: 3,
-    titulo: "",
-    conteudo: ""
-  },
+
+{
+  
+    id: 1,
+    nome: "Agenda",
+    titulo: "VII CONGRESSO DE ENSINO, PESQUISA E EXTENSÃO (CONEPE)",
+    conteudo: "Prezados Congressistas,  O Instituto Federal Fluminense campus Campos Guarus realizará o VII CONGRESSO DE ENSINO, PESQUISA E EXTENSÃO (CONEPE) com o tema “Educação e Sociedade: A Nova Fronteira da Ciência”, transmitido pelo canal do campus: IFF Tube Campus Guarus, no período de 23 a 27 de novembro de 2020. O evento será constituído de Webinares no formato de palestras, mesa redondas, minicursos, oficinas, apresentações de resumos acadêmicos no formato oral e vídeo-pôsteres, além do Desafio CONEPE de Criatividade e Inovação prático, propiciando a discussão de temas relevantes para a construção e difusão de conhecimentos em nosso País. As submissões dos trabalhos ocorrerão entre os dias 08 de setembro a 08 de outubro de 2020. As inscrições para Minicursos e Oficinas serão realizadas entre os dias 09 e 20 de novembro de 2020. Confira a programação completa no site do evento http://conepe.guarus.iff.edu.br/programacao. Aproveitamos a oportunidade para solicitar a ampla divulgação do evento. Comissão Organizadora do IV Congresso de Ensino, Pesquisa e Extensão (CONEPE)  Instituto Federal Fluminense campus Campos Guarus"
+  
+},
+
+{
+  id: 2,
+  nome: "Agenda",
+  titulo: "VI CONGRESSO DE ENSINO, PESQUISA E EXTENSÃO(CONEPE)",
+  conteudo: ""
+},
+
+{
+  id: 3,
+  nome: "Agenda",
+  titulo: "V CONGRESSO DE ENSINO, PESQUISA E EXTENSÃO(CONEPE)",
+  conteudo: ""
+},
+
+{
+  id: 4,
+  nome: "Agenda",
+  titulo: "Wind Farm & Ind. Eólica Offshore",
+  conteudo: ""
+},
+
+{
+  id: 5,
+  nome: "Agenda",
+  titulo: "CONGRESSO LATINO AMERICANO DE DIREITO",
+  conteudo: ""
+},
 
 ]
+
+ngOnInit() {
+  // Obtém os filtros da query string da URL
+  this.route.queryParams.subscribe(params => {
+    this.filtros = params;
+    // Filtra o array de conteúdo com os filtros
+  //  this.conteudo = this.filtrarConteudo(this.filtros);
+  });
+}
+
+/*
+filtrarConteudo(filtros: any): any[] {
+  // Implemente aqui a lógica de filtro com base nos valores em filtros
+  this.conteudoFiltrado = this.conteudo.filter(item => {
+    // Verifique se o item atende aos critérios de filtragem
+    return /* ... ;
+  });
+}
+
+*/
 
 }

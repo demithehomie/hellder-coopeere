@@ -162,8 +162,8 @@
             <h1 class="title">Publicações</h1>
   
             <ion-accordion-group >
-              <ion-accordion value="first" >
-                <ion-item slot="header" color="dark" (ionChange)="isOpen = !isOpen" style="border-top-right-radius: 10px;
+              <ion-accordion value="first" style="background-color: #fff; " >
+                <ion-item slot="header" color="light" (ionChange)="isOpen = !isOpen" style="border-top-right-radius: 10px;
                 border-top-left-radius: 10px; background-color: #fff; ">
                   <img src="../../../assets/icon/pdf-filled.png" *ngIf="isOpen" alt="pdf-inline" style="width: 35px; padding-right: 7px;">
                   <img src="../../../assets/icon/pdf.png" *ngIf="!isOpen" alt="pdf-filled" style="width: 35px; padding-right: 7px;">
@@ -192,13 +192,16 @@
                     <h5> <strong> Local: </strong> </h5>  &nbsp; <h5>Rio de Janeiro</h5> &nbsp; <h5> <strong> Ano: </strong> </h5>  &nbsp; <h5>2007</h5>
                   </div>
                   
-                  <h5 style="text-align: justify;">
+                  <h5 style="text-align: justify; ">
 
                     A presente tese tem por finalidade propor possíveis estratégias, conforme diferentes critérios, para o desenvolvimento da energia eólica no Brasil, a partir da segunda fase do Programa de Incentivo a Fontes Alternativas de Energia – PROINFA. Desta forma, ela apresenta os principais mecanismos de promoção de fontes alternativas e renováveis de geração de eletricidade tanto sob o ponto de vista teórico quanto através da apresentação e análise de resultados obtidos da experiência internacional. Também é feita a análise do contexto atual do setor elétrico brasileiro, especialmente da evolução das políticas implementadas para o desenvolvimento de fontes renováveis de energia. Com a reflexão proveniente da experiência internacional e o contexto atual do setor elétrico brasileiro, são propostas e avaliadas quantitativamente estratégias para a aplicação de políticas de incentivos à fonte eólica no Brasil, além do que é apresentado pela estrutura atual do PROINFA. Os critérios para estas estratégias são: (1) redução das emissões do setor elétrico; (2) otimização do sistema hidrelétrico; (3) desenvolvimento industrial e regional e (4) aumento da participação de fontes renováveis alternativas na matriz energética. Os resultados apresentados neste trabalho mostram a viabilidade de diversas estratégias para o desenvolvimento da energia eólica no Brasil: para a estratégia (1), identificou-se que o Sistema de Cotas mostra-se mais adequado para o caso brasileiro; para as estratégias (2) e (3) identificou-se que o sistema Feed-In apresenta-se mais adequado para ambas estratégias. Finalmente, para a estratégia (4) o sistema Feed-In mostra-se mais adequado para uma estratégia a curto prazo, para um programa a longo prazo, a harmonização dos Sistemas Feed-In e Cotas mostra-se mais apropriado para o desenvolvimento da energia eólica no Brasil.
                   </h5>
 
-                  <div style="display: flex; flex-direction: row;">
-                    <h5> <strong> Download: </strong> </h5>  &nbsp; <h5 class="link-externo" (click)="downloadTeseMarcelo()">  200704_dutra_r_m_dr.pdf</h5> &nbsp;<img style="width: 20px; height: 20px;" src="../../../assets/icon/pdfred.png" alt="pdf-red-icon">
+                  <div class="download-pdfs">
+                    <h5> <strong> Download: </strong> </h5>  
+                    <div style="display: flex; flex-direction: row;">
+                    <h5 class="link-externo" (click)="downloadTeseMarcelo()">  200704_dutra_r_m_dr.pdf</h5> &nbsp;<img style="width: 20px; height: 20px;" src="../../../assets/icon/pdfred.png" alt="pdf-red-icon"> 
+                  </div>
                   </div>
 
 
@@ -207,7 +210,7 @@
 
 
               <ion-accordion value="second">
-                <ion-item slot="header" color="dark">
+                <ion-item slot="header" color="light" >
                   <img src="../../../assets/icon/pdf.png" style="width: 35px; padding-right: 7px;" alt="pdf-inline">
                   <ion-label style="color: rgb(101, 101, 244); font-size: 20px; font-weight: bold;">Dissertações de Mestrado</ion-label>
                 </ion-item>
@@ -216,7 +219,7 @@
                 </div>
               </ion-accordion>
               <ion-accordion value="third">
-                <ion-item slot="header" color="dark">
+                <ion-item slot="header" color="light">
                   <img src="../../../assets/icon/pdf.png" style="width: 35px; padding-right: 7px;" alt="pdf-inline">
                   <ion-label style="color: rgb(101, 101, 244); font-size: 20px; font-weight: bold;">Monografias</ion-label>
                 </ion-item>
@@ -251,8 +254,12 @@
                     <h5> <strong> Orientador: </strong> </h5>  &nbsp; <h5>Prof. Dr. Isimar de Azevedo Santos</h5>
                   </div>
 
-                  <div style="display: flex; flex-direction: row;">
-                    <h5> <strong> Download: </strong> </h5>  &nbsp; <h5 class="link-externo" (click)="downloadMonografiaMarciel()">Monografia_UENF_Marciel_2018</h5> &nbsp;<img style="width: 20px; height: 20px;" src="../../../assets/icon/pdfred.png" alt="pdf-red-icon">
+                  <div class="download-pdfs">
+                    <h5> <strong> Download: </strong> </h5>  
+                    <div style="display: flex; flex-direction: row;">
+                    <h5 class="link-externo" (click)="downloadMonografiaMarciel()">Monografia_UENF_Marciel_2018</h5> &nbsp;<img style="width: 20px; height: 20px;" src="../../../assets/icon/pdfred.png" alt="pdf-red-icon">
+                  </div>
+
                   </div>
 
 
@@ -286,8 +293,11 @@
   <h5> <strong> Orientador: </strong> </h5>  &nbsp; <h5>Prof. Dr. Isimar de Azevedo Santos</h5>
 </div>
 
-<div style="display: flex; flex-direction: row;">
-  <h5> <strong> Download: </strong> </h5>  &nbsp; <h5 class="link-externo" (click)="downloadMonografiaPolyana()">Monografia_UENF_Pollyana_2018</h5> &nbsp;<img style="width: 20px; height: 20px;" src="../../../assets/icon/pdfred.png" alt="pdf-red-icon">
+<div class="download-pdfs">
+  <h5> <strong> Download: </strong> </h5>  &nbsp; 
+  <div style="display: flex; flex-direction: row;"></div>
+  <h5 class="link-externo" (click)="downloadMonografiaPolyana()">Monografia_UENF_Pollyana_2018</h5> &nbsp;<img style="width: 20px; height: 20px;" src="../../../assets/icon/pdfred.png" alt="pdf-red-icon">
+</div>
 </div>
 
 <!-- THAMIRES ABAIXO -->
@@ -326,15 +336,18 @@
   <h5> <strong> Orientador: </strong> </h5>  &nbsp; <h5>Prof. Dr. Isimar de Azevedo Santos</h5>
 </div>
 
-<div style="display: flex; flex-direction: row;">
-  <h5> <strong> Download: </strong> </h5>  &nbsp; <h5 class="link-externo" (click)="downloadMonografiaThamires()">Monografia_UENF_Thamires_2019</h5> &nbsp;<img style="width: 20px; height: 20px;" src="../../../assets/icon/pdfred.png" alt="pdf-red-icon">
+<div class="download-pdfs">
+  <h5> <strong> Download: </strong> </h5>  
+  
+  <div style="display: flex; flex-direction: row;">
+  <h5 class="link-externo" (click)="downloadMonografiaThamires()">Monografia_UENF_Thamires_2019</h5> &nbsp;<img style="width: 20px; height: 20px;" src="../../../assets/icon/pdfred.png" alt="pdf-red-icon">
+</div>
 </div>
 
-
-                </div>
+                
               </ion-accordion>
               <ion-accordion value="third">
-                <ion-item slot="header" color="dark">
+                <ion-item slot="header" color="light">
                   <img src="../../../assets/icon/pdf.png" style="width: 35px; padding-right: 7px;" alt="pdf-inline">
                   <ion-label style="color: rgb(101, 101, 244); font-size: 20px; font-weight: bold;">Artigos Publicados</ion-label>
                 </ion-item>

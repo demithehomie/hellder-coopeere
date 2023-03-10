@@ -10,6 +10,18 @@ export class AgendaPage implements OnInit {
 
   selectedOption: string = '';
  
+
+  showMenu: boolean = false;
+
+  toggleMenu(): void {
+    this.showMenu = !this.showMenu;
+  }
+ 
+closeSearchInput(){
+  this.router.navigateByUrl('/onboarding')
+}
+ 
+
   constructor(private router: Router) {}
 
   goToPage(option: string) {

@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { OnboardingPageRoutingModule } from './onboarding-routing.module';
 
 import { OnboardingPage } from './onboarding.page';
+import { ResultadosPageModule } from '../resultados/resultados.module';
 
 @NgModule({
   imports: [
@@ -14,7 +15,8 @@ import { OnboardingPage } from './onboarding.page';
     FormsModule,
     IonicModule,
     OnboardingPageRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    //ResultadosPageModule
   ],
   declarations: [OnboardingPage]
 })
