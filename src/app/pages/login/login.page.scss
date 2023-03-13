@@ -70,7 +70,8 @@
 .flex-box {
     width: 97%;
     padding-left: 1000px;
-    margin-top: -950px;
+    margin-top: 150px;
+    padding-bottom: 100px;
     max-width: 1800px;
     
 
@@ -124,9 +125,9 @@ ion-slide button {
 
 
 .container {
-    background-image: url("../../../../src/assets/img/turbinas-3.jpg");
-    background-size: cover;
-    height: 1080px;
+    background-image: url("../../../../src/assets/images-coopeere/turbinas.jfif");
+    background-size: 100% 100%;
+    //height: 200px;
 }
 
 @media screen and (max-width: 400px) {
@@ -161,6 +162,7 @@ ion-slide button {
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
+    background-color: #fff;
 }
 
 .lista-dropdown{
@@ -185,7 +187,7 @@ ion-slide button {
     align-items: center;
     justify-content: center;
     display: flex;
-   animation: logo 5s linear infinite;
+   animation: logo 8s linear infinite;
     margin: auto;
     transform-origin: center;
 }
@@ -529,7 +531,7 @@ h4 {
     margin-block-end: 1.33em;
     margin-inline-start: 0px;
     margin-inline-end: 0px;
-    font-weight: bold;
+   // font-weight: bold;
     color: #212529;
 }
 b, strong {
@@ -953,7 +955,7 @@ a:hover, a:visited {
     flex-direction: row;
     padding-right: 30px;
     padding-top: 5px;
-    padding-bottom: 5px;
+    padding-bottom: 10px;
     background-color: #2B571A;
   }
   
