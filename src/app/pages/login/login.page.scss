@@ -985,7 +985,10 @@ a:hover, a:visited {
   
   .header {
     padding: 18px;
+    padding-left: 150px;
+    padding-right: 150px;
     display: flex;
+    margin-top: 10px;
     flex-direction: row;
     justify-content: space-around;
     align-items: center;

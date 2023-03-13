@@ -181,13 +181,13 @@
 
         <label class="form-label" for="cpf_cnpj">CPF/CNPJ*</label>
         <div class="input-group w-60">
-          <input (input)="onInput($event)" [(ngModel)]="cliente.cpfCnpj" type="text" placeholder="Digite seu CPF" class="form-control cliente-documento" id="cpf_cnpj" name="cpf_cnpj" value="" size="25" required maxlength="14" wfd-id="id4">
-          <!-- <p *ngIf="formulario.get('cliente.cpfcnpj').touched && formulario.get('cliente.cpfcnpj').errors?.cliente.cpfcnpj">CPF inválido.</p> -->
+          <input (input)="onInput($event)" [(ngModel)]="cliente.cpfCnpj" type="text" placeholder="Digite seu CPF" class="form-control cliente-documento"  (ngModelChange)="formatarCPF()" id="cpf_cnpj" name="cpf_cnpj" value="" size="25" required maxlength="14" wfd-id="id4">
+        
         </div>
 
         <label class="form-label" for="telefone_celular">Telefone Celular*</label>
         <div class="input-group w-60">
-          <input [(ngModel)]="cliente.mobilePhone" type="text" class="form-control" id="telefone_celular" name="telefone_celular" size="16" value="" required placeholder="Insira aqui seu telefone" wfd-id="id5">
+          <input [(ngModel)]="cliente.mobilePhone" (ngModelChange)="formatarTelefone()" type="text" class="form-control" id="telefone_celular" name="telefone_celular" size="16" value="" required placeholder="Insira aqui seu telefone" wfd-id="id5">
         </div>
 
         <label class="form-label" for="telefone_fixo">Telefone Fixo</label>

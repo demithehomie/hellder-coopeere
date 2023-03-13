@@ -174,5 +174,21 @@ onInput(event: Event) {
   }
 }
 
+//cpfCnpj: string = '';
+
+formatarCPF() {
+  let cpfRegex = /^(\d{3})(\d{3})(\d{3})(\d{2})$/;
+  if (this.cliente && this.cliente.cpfCnpj) {
+    this.cliente.cpfCnpj = this.cliente.cpfCnpj.replace(cpfRegex, '$1.$2.$3-$4');
+  }
+}
+
+formatarTelefone() {
+  let telefoneRegex = /^(\d{2})(\d{5})(\d{4})$/;
+  if (this.cliente !== null && this.cliente.mobilePhone !== null) {
+    this.cliente.mobilePhone = this.cliente.mobilePhone.replace(telefoneRegex, '($1) $2-$3');
+  }
+}
+
 
 }
