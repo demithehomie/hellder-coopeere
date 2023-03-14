@@ -26,6 +26,7 @@
     "firebase": "^9.17.2",
     "firebase-admin": "^11.5.0",
     "ionicons": "^6.0.3",
+    "ngx-gallery": "^5.10.0",
     "ngx-mask": "^15.1.0",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",

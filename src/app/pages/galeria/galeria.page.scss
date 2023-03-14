@@ -1226,5 +1226,112 @@
   
   
     ///////////////////////////
-    /// 
+
+
+
+
+
+    //// CARROSEL DA GALERIA ////
+  
+
+    .carousel-container {
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
     
+    .carousel-slide {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+    
+    .carousel-image {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      max-width: 100%;
+      max-height: 100%;
+    }
+    
+    .carousel-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+    }
+    
+    .carousel-nav-left {
+      color: white;
+      font-size: 36px;
+      margin-left: 10px;
+    }
+    
+    .carousel-nav-right {
+      color: white;
+      font-size: 36px;
+      margin-right: 10px;
+    }
+    
+
+
+
+
+
+    ////// FIM DO CARROSEL DA GALERIA /////
+    
+
+    .imagem-lista {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-gap: 0px;
+    }
+
+    .carousel-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 10;
+      background-color: rgba(0, 0, 0, 0.9);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .carousel-controls {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      transform: translateY(-50%);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1;
+    }
+    
+    .carousel-controls ion-button {
+      font-size: 2rem;
+    }
+    
+    .botoes-superiores {
+      margin-top: -600px;
+     // margin-right: 90%;
+    // padding-left: 500px;
+      align-items: flex-end; 
+      justify-content: flex-end;
+      display: flex;
+      font-size: 50px;
+      z-index: 10;
+      color: #fff;
+    }

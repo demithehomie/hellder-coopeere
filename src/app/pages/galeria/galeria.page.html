@@ -166,12 +166,13 @@
 
       
     <div class="container">
+
           <section class="section">
   
             <h1 class="title">Galeria de Fotos</h1>
   
-              <img src="https://www.coopeere.eco.br/wp-content/uploads/2020/10/IMG-20191119-WA0175-300x225.jpg">
-              <img src="https://www.coopeere.eco.br/wp-content/uploads/2020/10/IMG-20181203-WA0128-300x225.jpg">
+              <img src="https://www.coopeere.eco.br/wp-content/uploads/2020/10/IMG-20191119-WA0175-300x225.jpg" (click)="showCarousel()">
+              <img src="https://www.coopeere.eco.br/wp-content/uploads/2020/10/IMG-20181203-WA0128-300x225.jpg" (click)="showCarousel()">
               <img src="https://www.coopeere.eco.br/wp-content/uploads/2020/10/IMG-20200627-WA0783-300x225.jpg">
               <img src="https://www.coopeere.eco.br/wp-content/uploads/2020/10/IMG-20171123-WA0001-300x169.jpg">
               <img src="https://www.coopeere.eco.br/wp-content/uploads/2020/10/IMG-20171021-WA0002-300x225.jpg">
@@ -217,6 +218,8 @@
             
           </section>
   
+
+
           <ion-list>
             <ion-label fill="clear" [routerLink]="['/eventos']" >Eventos</ion-label>
             <ion-label fill="clear" [routerLink]="['/publicacoes']">Publicações</ion-label>
@@ -226,5 +229,38 @@
           </ion-list>
   
     </div>
+
+    <ion-slides class="imagem-lista"> 
+      <ion-slide  *ngFor="let image of images" >
+         <img [src]="image.src" (click)="showCarousel( )"/>
+      </ion-slide>
+     </ion-slides>
+
+
+     <div class="carousel-container" *ngIf="mostrarCarousel">
+      
+      <div class="botoes-superiores">
+        <ion-icon name="close" (click)="closeCarousel()"></ion-icon>
+        <ion-icon name="expand-outline" (click)="toggleFullScreen()"></ion-icon>
+      </div>
+
+
+       <div class="carousel-controls">
+
+         <ion-button fill="clear" (click)="prevSlide()">
+           <ion-icon name="arrow-back"></ion-icon>
+         </ion-button>
+         <ion-button fill="clear" (click)="nextSlide()">
+           <ion-icon name="arrow-forward"></ion-icon>
+         </ion-button>
+       </div>
+     
+       <ion-slides pager="true" [options]="slideOpts" #slides>
+         <ion-slide *ngFor="let image of images;let i = index">
+           <img [src]="image.src" />
+         </ion-slide>
+       </ion-slides>
+     </div>
+     
     
   </ion-content>
