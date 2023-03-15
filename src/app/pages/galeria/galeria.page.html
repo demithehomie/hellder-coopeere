@@ -1,5 +1,5 @@
 <ion-content>
-
+<ion-title>Galeria de Fotos</ion-title>
   
   <ion-header class="header-header">  
   
@@ -231,8 +231,8 @@
     </div>
 
     <ion-slides class="imagem-lista"> 
-      <ion-slide  *ngFor="let image of images" >
-         <img [src]="image.src" (click)="showCarousel( )"/>
+      <ion-slide  *ngFor="let image of images"  >
+         <img [src]="image.src" (click)="showCarousel( )" />
       </ion-slide>
      </ion-slides>
 
@@ -242,6 +242,7 @@
       <div class="botoes-superiores">
         <ion-icon name="close" (click)="closeCarousel()"></ion-icon>
         <ion-icon name="expand-outline" (click)="toggleFullScreen()"></ion-icon>
+        <ion-icon name="add-circle-outline" (click)="zoomIn()"></ion-icon>
       </div>
 
 
@@ -255,9 +256,9 @@
          </ion-button>
        </div>
      
-       <ion-slides pager="true" [options]="slideOpts" #slides>
-         <ion-slide *ngFor="let image of images;let i = index">
-           <img [src]="image.src" />
+       <ion-slides pager="true" [options]="slideOpts" #slides >
+         <ion-slide *ngFor="let image of images;let i = index"  >
+           <img [src]="image.src" style="height: 500px" />
          </ion-slide>
        </ion-slides>
      </div>

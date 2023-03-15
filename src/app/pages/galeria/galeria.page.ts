@@ -13,7 +13,7 @@ export class GaleriaPage implements OnInit {
   currentIndex: number = 0;
 
   slideOpts = {
-    initialSlide: 0,
+    initialSlide: this.currentIndex,
     speed: 400,
     showButtons: true
   };
@@ -71,7 +71,7 @@ export class GaleriaPage implements OnInit {
 
 
   showCarousel() {
-    this.selectedImage = this.image;
+    this.selectedImage = this.currentIndex;
     this.mostrarCarousel = !this.mostrarCarousel;
   }
 
@@ -97,7 +97,7 @@ export class GaleriaPage implements OnInit {
     this.mostrarCarousel = true;
   }
   
-currentSlide = 0;
+currentSlide = this.currentIndex;
   pesquisaPagina: any;
 
   filtros: any;
@@ -145,9 +145,16 @@ enviarFormulario() {
       }
     }
   }
-  
+
+ //slide: any;
  
+//  @ViewChild('slide', { static: true }) slide: IonSlides;
+
   constructor(private router: Router, private modalCtrl: ModalController) {}
+
+  zoomIn() {
+    //this.slide.zoom(2);
+  }
 
   goToPage(option: string) {
     switch (option) {

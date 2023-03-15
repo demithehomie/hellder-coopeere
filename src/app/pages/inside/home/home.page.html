@@ -312,18 +312,13 @@
 
           <ion-label class="price">R$ 3,50</ion-label>
 
-          <ion-radio-group value="payment-options">
+          <ion-radio-group value="payment-options" style="background-color: blue;">
             <ion-item>
               <ion-label class="u-payment-options">Pix</ion-label>
-              <ion-radio  slot="end" value="pix" [disabled]="false"></ion-radio>
+              <ion-radio  slot="start" value="pix" [disabled]="false"></ion-radio>
             </ion-item>
         
-        <ion-label></ion-label>
-
-            <ion-item>
-              <ion-label class="u-payment-options">Boleto Bancário</ion-label>
-              <ion-radio slot="end" value="boleto" [disabled]="false"></ion-radio>
-            </ion-item>
+   
           </ion-radio-group>
 
 
@@ -344,15 +339,17 @@
 
           <ion-radio-group value="payment-options">
             <ion-item>
+              <ion-radio slot="start" value="pix" [disabled]="false"></ion-radio>
               <ion-label class="u-payment-options">Pix</ion-label>
-              <ion-radio  slot="end" value="pix" [disabled]="false"></ion-radio>
+             
             </ion-item>
         
         <ion-label></ion-label>
 
             <ion-item>
+              <ion-radio slot="start" value="boleto" [disabled]="false"></ion-radio>
               <ion-label class="u-payment-options">Boleto Bancário</ion-label>
-              <ion-radio slot="end" value="boleto" [disabled]="false"></ion-radio>
+            
             </ion-item>
           </ion-radio-group>
 
@@ -372,15 +369,17 @@
 
           <ion-radio-group value="payment-options">
             <ion-item>
+              <ion-radio slot="start" value="pix" [disabled]="false"></ion-radio>
               <ion-label class="u-payment-options">Pix</ion-label>
-              <ion-radio  slot="end" value="pix" [disabled]="false"></ion-radio>
+          
             </ion-item>
         
         <ion-label></ion-label>
 
             <ion-item>
+              <ion-radio slot="start" value="boleto" [disabled]="false"></ion-radio>
               <ion-label class="u-payment-options">Boleto Bancário</ion-label>
-              <ion-radio slot="end" value="boleto" [disabled]="false"></ion-radio>
+           
             </ion-item>
           </ion-radio-group>
 
@@ -402,15 +401,17 @@
 
           <ion-radio-group value="payment-options">
             <ion-item>
+              <ion-radio slot="start" value="pix" [disabled]="false"></ion-radio>
               <ion-label class="u-payment-options">Pix</ion-label>
-              <ion-radio  slot="end" value="pix" [disabled]="false"></ion-radio>
+              
             </ion-item>
         
         <ion-label></ion-label>
 
             <ion-item>
+              <ion-radio slot="start" value="boleto" [disabled]="false"></ion-radio>
               <ion-label class="u-payment-options">Boleto Bancário</ion-label>
-              <ion-radio slot="end" value="boleto" [disabled]="false"></ion-radio>
+            
             </ion-item>
           </ion-radio-group>
 
@@ -433,22 +434,62 @@
           <ion-radio-group value="payment-options">
             <ion-item>
               <ion-label class="u-payment-options">Pix</ion-label>
-              <ion-radio  slot="end" value="pix" [disabled]="false"></ion-radio>
+              <ion-radio slot="start" value="pix" [disabled]="false"></ion-radio>
             </ion-item>
         
         <ion-label></ion-label>
 
             <ion-item>
               <ion-label class="u-payment-options">Boleto Bancário</ion-label>
-              <ion-radio slot="end" value="boleto" [disabled]="false"></ion-radio>
+              <ion-radio slot="start" value="boleto" [disabled]="false"></ion-radio>
             </ion-item>
           </ion-radio-group>
 
 
         </ion-card>
       </div>
-      </div>
 
+
+
+
+      </div>
+      <div class="more-payment-options">
+        <ion-label>Selecione o dia de vencimento</ion-label>
+        <select name="dia" style="background-color: #fff; padding: 10px; border: 1px solid #000; border-radius: 5px;">
+          <option value="">1</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+          <option value="11">11</option>
+          <option value="12">12</option>
+          <option value="13">13</option>
+          <option value="14">14</option>
+          <option value="15">15</option>
+          <option value="16">16</option>
+          <option value="17">17</option>
+          <option value="18">18</option>
+          <option value="19">19</option>
+          <option value="20">20</option>
+          <option value="21">21</option>
+          <option value="22">22</option>
+          <option value="23">23</option>
+          <option value="24">24</option>
+          <option value="25">25</option>
+          <option value="26">26</option>
+          <option value="27">27</option>
+          <option value="28">28</option>
+        </select>
+        
+        <ion-button color="success">Pagamento</ion-button>
+      </div>
+    
     </div>
     <div *ngSwitchCase="'option6'" class="ngcontent">
       Content for option 6

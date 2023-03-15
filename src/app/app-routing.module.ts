@@ -241,6 +241,22 @@ const routes: Routes = [
   {
     path: 'resultados',
     loadChildren: () => import('./pages/resultados/resultados.module').then( m => m.ResultadosPageModule)
+  },
+  {
+    path: 'pagamentoprodist',
+    loadChildren: () => import('./pages/inside/pagamentoprodist/pagamentoprodist.module').then( m => m.PagamentoprodistPageModule)
+  },
+  {
+    path: 'sms',
+    loadChildren: () => import('./pages/2fa/sms/sms.module').then( m => m.SmsPageModule)
+  },
+  {
+    path: 'email',
+    loadChildren: () => import('./pages/2fa/email/email.module').then( m => m.EmailPageModule)
+  },
+  {
+    path: 'successpage',
+    loadChildren: () => import('./pages/2fa/successpage/successpage.module').then( m => m.SuccesspagePageModule)
   }
 
 
