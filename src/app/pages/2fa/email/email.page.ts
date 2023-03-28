@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Email } from 'src/app/interfaces/email';
 
 @Component({
   selector: 'app-email',
@@ -12,4 +13,9 @@ export class EmailPage implements OnInit {
   ngOnInit() {
   }
 
+email: Email = {
+  code: ""
+}
+
+  
 }

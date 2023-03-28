@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FilterPipe } from 'src/app/pipes/filter.pipes';
+import { SearchService } from 'src/app/services/search.service';
 
 @Component({
   selector: 'app-resultados',
@@ -9,14 +10,16 @@ import { FilterPipe } from 'src/app/pipes/filter.pipes';
 })
 export class ResultadosPage {
 
-  constructor(private route: ActivatedRoute) {}
+  constructor(private route: ActivatedRoute, private searchService: SearchService ) {}
 
  pesquisaPagina: any;
  conteudo: any[] | undefined;
   filtros: any;
   conteudoFiltrado: any[] | undefined;
 
- pages = [
+  searchTerm: string = '';
+
+ pages /*:  { id: number, nome: string, titulo: string, conteudo: string }[] */ = [
   {
     id: 0,
     nome: "Eventos",
@@ -73,14 +76,27 @@ ngOnInit() {
 }
 
 /*
-filtrarConteudo(filtros: any): any[] {
-  // Implemente aqui a lógica de filtro com base nos valores em filtros
-  this.conteudoFiltrado = this.conteudo.filter(item => {
-    // Verifique se o item atende aos critérios de filtragem
-    return /* ... ;
+getFilteredItems() {
+  return this.pages.filter(page => {
+    return (
+      page.nome.toLowerCase().indexOf(this.searchTerm.toLowerCase()) > -1 ||
+      page.titulo.toLowerCase().indexOf(this.searchTerm.toLowerCase()) > -1 ||
+      page.conteudo.toLowerCase().indexOf(this.searchTerm.toLowerCase()) > -1
+    );
   });
 }
 
 */
+
+getFilteredItems() {
+  const searchTerm = this.searchService.searchTerm;
+  if (!searchTerm) {
+    return this.pages;
+  }
+  return this.pages.filter(page => {
+    return page.nome.includes(searchTerm);
+  });
+}
+
 
 }

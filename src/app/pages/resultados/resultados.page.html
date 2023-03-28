@@ -3,14 +3,26 @@
 <ion-content>
 
 
+<div style="margin-left: 18%; margin-right: 18%;">
+  <div style="display: flex; flex-direction: row; justify-content: space-between;">
+<h2 style="color:rgb(44, 66, 233); font-size: 40px; margin-right: 50px;">Coopeere</h2>
 
-<h2>Coopeere</h2>
+<h2 class="menu-items" routerLink="/onboarding">Home</h2>
+<h2 class="menu-items">A Coopeere</h2>
+<h2 class="menu-items" routerLink="/estatuto">Estatuto</h2>
+<h2 class="menu-items" routerLink="/legislacao">Legislação</h2>
+<h2 class="menu-items" routerLink="/vantagens">Vantagens</h2>
+<h2 class="menu-items" routerLink="/parceiros">Parceiros</h2>
+<h2 class="menu-items" routerLink="/faleconosco">Fale Conosco</h2>
 
+</div>
 
 <!-- HEADER COM TODO O MENU E ROTTAS PRONTAS -->
-<div *ngFor="let page of pages | filter:pesquisaPagina">
+<div *ngFor="let page of getFilteredItems()">
  
-  <h5>{{page.titulo}}</h5>
+  <h5 class="titulo">{{page.titulo}}</h5>
   <h5>{{page.conteudo}}</h5>
+</div>
+
 </div>
 </ion-content>

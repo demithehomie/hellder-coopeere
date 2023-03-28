@@ -15,11 +15,90 @@ export class GaleriaPage implements OnInit {
   slideOpts = {
     initialSlide: this.currentIndex,
     speed: 400,
-    showButtons: true
+   // showButtons: true
   };
   
 
   images = [
+
+    
+      {
+        "src": "../../../assets/images-coopeere/galeria/IMG-20191109-WA0302.jpg",
+       
+      },
+      {
+        "src": "../../../assets/images-coopeere/galeria/IMG-20171009-WA0004.jpg",
+ 
+      },
+      {
+        "src": "../../../assets/images-coopeere/galeria/IMG-20171009-WA0005.jpg"
+      },
+      {
+        "src": "../../../assets/images-coopeere/galeria/IMG-20171010-WA0022.jpg"
+      },
+      {
+        "src": "../../../assets/images-coopeere/galeria/IMG-20171010-WA0026.jpg"
+      },
+      {
+        "src": "../../../assets/images-coopeere/galeria/IMG-20171019-WA0008.jpg"
+      },
+      {
+        "src": "https://www.coopeere.eco.br/wp-content/uploads/2020/10/FB_IMG_1522538580786-300x225.jpg"
+      },
+      {
+        "src": "../../../assets/images-coopeere/galeria/IMG-20171021-WA0002.jpg"
+      },
+      {
+        "src": "../../../assets/images-coopeere/galeria/IMG-20171021-WA0002.jpg"
+      },
+      {
+        "src": "../../../assets/images-coopeere/galeria/IMG-20171023-WA0024.jpg"
+      },
+      {
+        "src": "../../../assets/images-coopeere/galeria/IMG-20171113-WA0015.jpg"
+      },
+      {
+        "src": "../../../assets/images-coopeere/galeria/IMG-20171123-WA0001.jpg"
+      },
+      {
+        "src": "../../../assets/images-coopeere/galeria/IMG-20171127-WA0004.jpg"
+      },
+      {
+        "src": "../../../assets/images-coopeere/galeria/IMG-20171127-WA0054.jpg"
+      },
+      {
+        "src": "../../../assets/images-coopeere/galeria/IMG-20171128-WA0003.jpg"
+      },
+      {
+        "src": "../../../assets/images-coopeere/galeria/IMG-20171128-WA0005.jpg"
+      },
+      {
+        "src": "../../../assets/images-coopeere/galeria/IMG-20171128-WA0006.jpg"
+      },
+      {
+        "src": "../../../assets/images-coopeere/galeria/IMG-20180505-WA0001.jpg"
+      },
+      {
+        "src": "../../../assets/images-coopeere/galeria/IMG-20180608-WA0006.jpg"
+      },
+      {
+        "src": "../../../assets/images-coopeere/galeria/IMG-20181203-WA0046.jpg"
+      },
+      {
+        "src": "../../../assets/images-coopeere/galeria/IMG-20181203-WA0093.jpg"
+      },
+      {
+        "src": "../../../assets/images-coopeere/galeria/IMG-20181203-WA0128.jpg"
+      },
+      {
+        "src": "../../../assets/images-coopeere/galeria/IMG-20181204-WA0070.jpg"
+      },
+      {
+        "src": "../../../assets/images-coopeere/galeria/IMG-20181204-WA0072.jpg"
+      }
+      
+    
+    /*
      {src: "https://www.coopeere.eco.br/wp-content/uploads/2020/10/IMG-20191119-WA0175-300x225.jpg"},
     { src: "https://www.coopeere.eco.br/wp-content/uploads/2020/10/IMG-20181203-WA0128-300x225.jpg"},
   {  src: "https://www.coopeere.eco.br/wp-content/uploads/2020/10/IMG-20200627-WA0783-300x225.jpg"},
@@ -64,6 +143,7 @@ export class GaleriaPage implements OnInit {
     { src:"https://www.coopeere.eco.br/wp-content/uploads/2020/10/20181018_170201-300x169.jpg"},
      {src:"https://www.coopeere.eco.br/wp-content/uploads/2020/10/IMG-20200716-WA1018-300x300.jpg"},
 {  src:   "https://www.coopeere.eco.br/wp-content/uploads/2020/10/Screenshot_20180411-085402-169x300.jpg"},
+*/
   ]
   selectedImage: any;
   image: any;

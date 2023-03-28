@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LocalStorage } from '@ngx-pwa/local-storage';
 import { Router } from '@angular/router';
+import { SearchService } from 'src/app/services/search.service';
 
 @Component({
   selector: 'app-onboarding',
@@ -25,11 +26,11 @@ closeSearchInput(){
   this.router.navigateByUrl('/onboarding')
 }
 
-enviarFormulario() {
+//enviarFormulario() {
 
-  this.filtros = { /* ... */ };
-  this.router.navigate(['/resultados'], { queryParams: this.filtros });
-}
+  //this.filtros = { /* ... */ };
+  //this.router.navigate(['/resultados'], { queryParams: this.filtros });
+//}
  
   slideOpts = {
     autoplay: {
@@ -48,14 +49,19 @@ enviarFormulario() {
     loop: true
   };
 
-
+  searchTerm: string = "";
   selectedOption: string = '';
  
   constructor(
     private router: Router,
-    private localStorage: LocalStorage
+    private localStorage: LocalStorage,
+    private searchService: SearchService
     ) {}
 
+    search() {
+      this.searchService.searchTerm = this.searchTerm;
+      this.router.navigate(['/resultados']);
+    }
 
     async clearCache(){
       await this.localStorage.clear().toPromise()

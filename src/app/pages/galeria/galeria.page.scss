@@ -196,6 +196,7 @@
             cursor: pointer;
             width: 300px;
             height: 225px;
+           // margin-left: -50px;
             &:hover{
                 filter: brightness(0.5)
             }
@@ -1235,12 +1236,17 @@
   
 
     .carousel-container {
-      height: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 10;
+      background-color: rgba(0, 0, 0, 0.9);
       display: flex;
-      justify-content: center;
       align-items: center;
+      justify-content: center;
     }
-    
     .carousel-slide {
       position: relative;
       display: flex;
@@ -1280,34 +1286,7 @@
       font-size: 36px;
       margin-right: 10px;
     }
-    
 
-
-
-
-
-    ////// FIM DO CARROSEL DA GALERIA /////
-    
-
-    .imagem-lista {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      grid-gap: 0px;
-    }
-
-    .carousel-container {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      z-index: 10;
-      background-color: rgba(0, 0, 0, 0.9);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    
     .carousel-controls {
       position: absolute;
       top: 50%;
@@ -1320,6 +1299,83 @@
       z-index: 1;
     }
     
+    .images-galeria {
+      height: 500px; 
+      margin-left: -50px;
+    }
+
+@media screen {
+  .images-galeria {
+    height: 500px; 
+    margin-left: 0px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  
+  .carousel-container {
+    height: 100%;
+   // transform: translateY(-0%);
+   // flex-direction: column;
+   margin-left: -150px;
+  }
+
+  .carousel-controls {
+   // position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    //transform: translateY(-50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    margin-right: 550px;
+  }
+  
+  .botoes-superiores {
+    margin-top: -300px;
+   // margin-left: 100px;
+   // margin-right: 90%;
+  // padding-left: 500px;
+    align-items: center; 
+    justify-content: center;
+    //display: flex;
+    
+    font-size: 50px;
+    z-index: 10;
+    color: #fff;
+  }
+  
+}
+
+
+
+    ////// FIM DO CARROSEL DA GALERIA /////
+    
+
+    .imagem-lista {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-gap: 0px;
+    }
+
+    /*
+    .carousel-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 10;
+      background-color: rgba(0, 0, 0, 0.9);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    */
+  
+    
     .carousel-controls ion-button {
       font-size: 2rem;
     }
@@ -1328,8 +1384,8 @@
       margin-top: -600px;
      // margin-right: 90%;
     // padding-left: 500px;
-      align-items: flex-end; 
-      justify-content: flex-end;
+      align-items: center; 
+      justify-content: center;
       display: flex;
       font-size: 50px;
       z-index: 10;

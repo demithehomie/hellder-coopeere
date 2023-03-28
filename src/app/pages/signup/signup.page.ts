@@ -160,7 +160,7 @@ cadastro(): void{
     {
       console.log(rescli);
       console.log("Cliente cadastrado com sucesso")
-      this.navCtrl.navigateForward('/login');
+      this.navCtrl.navigateForward('/sms');
     },
     error: (e) => console.error(e)
     });
