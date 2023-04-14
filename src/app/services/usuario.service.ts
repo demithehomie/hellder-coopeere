@@ -3,7 +3,7 @@ import { HttpClient} from '@angular/common/http'
 import { Observable } from 'rxjs';
 
 
-const usuarioURL = 'https://apimakrom-production.up.railway.app/usuario/';
+const usuarioURL = 'http://localhost:3000';
 
 @Injectable({
   providedIn: 'root'
@@ -12,31 +12,65 @@ export class UsuarioService {
 
   constructor(private httpClient: HttpClient) { }
 
+  // CRIAR USUÁRIO - SELF-SIGN-IN 
   create(data: any): Observable<any>{
-    return this.httpClient.post(usuarioURL+'cadastrar',data)
+    // return this.httpClient.post(usuarioURL+'/users',data)
+     return this.httpClient.post('http://localhost:3000/users',data)
   }
 
+  // ENCONTRAR TODOS OS USUÁRIOS - SOMENTE ADMINS
   findAll() {
-    return this.httpClient.get(usuarioURL+'listar');
+    return this.httpClient.get(usuarioURL);
   }
 
+  // ENCONTRAR UM USUÁRIO - SOMENTE ADMINS
   findOne(data: any): Observable<any>{
-    return this.httpClient.get(usuarioURL+'listartodos', data);
+    return this.httpClient.get(usuarioURL+':id', data);
   }
 
-  update(data: any){
+  // ATUALIZAR PARCIALMENTE - USUÁRIOS COM PERMISSÃO, E ADMINS
+  updatePartial(data: any){
     return this.httpClient.patch(usuarioURL, data);
   }
+
+  // ATUALIZAR COMPLETAMENTE - USUÁRIOS COM PERMISSÃO, E ADMINS
+  update(data: any){
+    return this.httpClient.put(usuarioURL, data);
+  }
   
+  // DELETAR CONTA - USUÁRIOS COM PERMISSÃO, E ADMINS
   delete(data: any){
-    return this.httpClient.get(usuarioURL, data);
+    return this.httpClient.delete(usuarioURL, data);
   }
 
-// autenticação
-
+  // autenticação -  - USUÁRIOS COM PERMISSÃO, E ADMINS
   login(body: any): Observable<any> {
-    return this.httpClient.post(usuarioURL+'login', body);
+    return this.httpClient.post(usuarioURL+'/auth/login', body);
   }
+
+  // ESQUECI MINHA SENHA - SOMENTE USUÁRIOS
+  forgotPassword(data: any){
+    return this.httpClient.post(usuarioURL+'/forget', data)
+  }
+
+  // RESETAR SENHA - USUÁRIOS COM PERMISSÃO, E ADMINS
+  resetarSenha(data: any){
+    return this.httpClient.post(usuarioURL+'/reset', data)
+  }
+
+  // UPLOAD DE IMAGEM - foto de perfil (ADAPTAR PARA PRODIST PARA O UPLOAD DA CONTA DE LUZ (E TALVEZ))
+
+  imageUpload(data: any){
+    return this.httpClient.post(usuarioURL+'/file/photo', data)
+  }
+
+  // UPLOAD DE ARQUIVOS - SERÁ ESSE?
+  fileUploads(data: any){
+    return this.httpClient.post(usuarioURL+'/files/files', data)
+  }
+
+
+
 
   //LOGOUT?
 
@@ -49,6 +83,7 @@ export class UsuarioService {
   }
 
 
+  // 
 
 
 }

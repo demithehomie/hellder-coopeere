@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-const APIUrl = 'https://apimakrom-production.up.railway.app/'
+const APIUrl = 'http://localhost:3000'
 
 @Injectable({
     providedIn: 'root'
@@ -10,12 +10,12 @@ export class AuthService {
 
     constructor(private http: HttpClient) { }
 
-    authenticate(usuario: string, senha: string) {
+    authenticate(email: string, password: string) {
       //  const name = '';
        // const cpfCnpj = '';
         //localStorage.setItem('usuario', name);
         //localStorage.setItem('usuario', cpfCnpj)
-        return this.http.post(APIUrl + '/usuario/login', { usuario, senha });
+        return this.http.post(APIUrl + '/auth/login', { email, password });
     }
 
     /*

@@ -315,7 +315,7 @@
           <ion-radio-group value="payment-options" style="background-color: blue;">
             <ion-item>
               <ion-label class="u-payment-options">Pix</ion-label>
-              <ion-radio  slot="start" value="pix" [disabled]="false"></ion-radio>
+              <ion-radio [(ngModel)]="frequenciaPagamento" slot="start" value="pix"  class="radio-properties"></ion-radio>
             </ion-item>
         
    
@@ -331,28 +331,22 @@
         <ion-card class="class-of-row-of-payment-options">
           <ion-label class="payment-options-h">Bimestral</ion-label>
           
-        
+       
           <br> <br>
+          <ion-label class="price">R$ 7,50</ion-label>
 
-
-          <ion-label class="price">R$ 7,00</ion-label>
-
-          <ion-radio-group value="payment-options">
+          <ion-radio-group [(ngModel)]="opcaoPagamento" type="boolean" >
             <ion-item>
-              <ion-radio slot="start" value="pix" [disabled]="false"></ion-radio>
-              <ion-label class="u-payment-options">Pix</ion-label>
-             
+              <ion-label>Pix</ion-label>
+              <ion-radio [(ngModel)]="frequenciaPagamento"class="radio-properties" slot="start" value="pix"  ></ion-radio>
             </ion-item>
-        
-        <ion-label></ion-label>
-
             <ion-item>
-              <ion-radio slot="start" value="boleto" [disabled]="false"></ion-radio>
-              <ion-label class="u-payment-options">Boleto Bancário</ion-label>
-            
+              <ion-label>Boleto Bancário</ion-label>
+              <ion-radio [(ngModel)]="frequenciaPagamento"class="radio-properties" slot="start" value="boleto"  ></ion-radio>
             </ion-item>
-          </ion-radio-group>
-
+          </ion-radio-group> <!---->
+          
+          <ion-button expand="block" (click)="verificarPagamento()">Enviar</ion-button>
 
 
         </ion-card>
@@ -369,7 +363,7 @@
 
           <ion-radio-group value="payment-options">
             <ion-item>
-              <ion-radio slot="start" value="pix" [disabled]="false"></ion-radio>
+              <ion-radio [(ngModel)]="frequenciaPagamento"slot="start" value="pix"  class="radio-properties"></ion-radio>
               <ion-label class="u-payment-options">Pix</ion-label>
           
             </ion-item>
@@ -377,7 +371,7 @@
         <ion-label></ion-label>
 
             <ion-item>
-              <ion-radio slot="start" value="boleto" [disabled]="false"></ion-radio>
+              <ion-radio [(ngModel)]="frequenciaPagamento"slot="start" value="boleto"  class="radio-properties"></ion-radio>
               <ion-label class="u-payment-options">Boleto Bancário</ion-label>
            
             </ion-item>
@@ -401,7 +395,7 @@
 
           <ion-radio-group value="payment-options">
             <ion-item>
-              <ion-radio slot="start" value="pix" [disabled]="false"></ion-radio>
+              <ion-radio [(ngModel)]="frequenciaPagamento"slot="start" value="pix"  class="radio-properties"></ion-radio>
               <ion-label class="u-payment-options">Pix</ion-label>
               
             </ion-item>
@@ -409,7 +403,7 @@
         <ion-label></ion-label>
 
             <ion-item>
-              <ion-radio slot="start" value="boleto" [disabled]="false"></ion-radio>
+              <ion-radio [(ngModel)]="frequenciaPagamento"slot="start" value="boleto"  class="radio-properties"></ion-radio>
               <ion-label class="u-payment-options">Boleto Bancário</ion-label>
             
             </ion-item>
@@ -429,19 +423,19 @@
           <br> <br>
 
 
-          <ion-label class="price">R$ 32,00</ion-label>
+          <ion-label [(ngModel)]="cobranca.value" value="32.00"  class="price">R$ 32,00</ion-label>
 
           <ion-radio-group value="payment-options">
             <ion-item>
               <ion-label class="u-payment-options">Pix</ion-label>
-              <ion-radio slot="start" value="pix" [disabled]="false"></ion-radio>
+              <ion-radio [(ngModel)]="frequenciaPagamento" slot="start" value="pix"  class="radio-properties"></ion-radio>
             </ion-item>
         
         <ion-label></ion-label>
 
             <ion-item>
               <ion-label class="u-payment-options">Boleto Bancário</ion-label>
-              <ion-radio slot="start" value="boleto" [disabled]="false"></ion-radio>
+              <ion-radio [(ngModel)]="frequenciaPagamento"slot="start" value="boleto"  class="radio-properties"></ion-radio>
             </ion-item>
           </ion-radio-group>
 
@@ -489,6 +483,14 @@
         
         <ion-button color="success">Pagamento</ion-button>
       </div>
+
+      <div *ngIf="valorTotal">
+        <h2>Resumo do Pedido</h2>
+        <p>Frequência de Pagamento: {{ frequenciaPagamento }}</p>
+        <p>Forma de Pagamento: {{ formaPagamento }}</p>
+        <p>Valor Total: R$ {{ valorTotal.toFixed(2) }}</p>
+      </div>
+      
     
     </div>
     <div *ngSwitchCase="'option6'" class="ngcontent">

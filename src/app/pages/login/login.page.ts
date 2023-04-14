@@ -30,8 +30,8 @@ export class LoginPage implements OnInit {
   ) { }
 
   login: Login = {
-    usuario: "",
-    senha: ""
+    email: "",
+    password: ""
   }
 
   ngOnInit(): void {
@@ -42,8 +42,8 @@ export class LoginPage implements OnInit {
 
   validaForm(){
     this.formulariologin = this.formBuilder.group({
-      usuario: ['', [Validators.required]],
-      senha: ['', [Validators.required]]
+      email: ['', [Validators.required]],
+      password: ['', [Validators.required]]
     });
   }
   /*
@@ -74,8 +74,8 @@ export class LoginPage implements OnInit {
 
 onSubmit() {
   const body = {
-    username: this.login.usuario,
-    password: this.login.senha
+    email: this.login.email,
+    password: this.login.password
   };
 
   this.usersService.login(body).subscribe({

@@ -74,6 +74,8 @@
          </div>  
         <ion-input [(ngModel)]="cliente.phonenumber"  type="tel" placeholder="Digite o seu telefone" [clearInput]="true"></ion-input>
       </ion-item>
+
+     
       
   <br>
   <ion-item fill="solid">
@@ -170,7 +172,7 @@
         <label class="form-label" for="nome">Nome Completo*</label>
         <div class="col-span-5">
           <div class="input-group">
-            <input [(ngModel)]="cliente.name" type="text" class="form-control" id="nome" name="nome" value="" required wfd-id="id2">
+            <input [(ngModel)]="cliente.name" [(ngModel)]="usuario.name" type="text" class="form-control" id="nome" name="nome" value="" required wfd-id="id2">
           </div>
         </div>
 
@@ -181,28 +183,48 @@
 
         <label class="form-label" for="cpf_cnpj">CPF/CNPJ*</label>
         <div class="input-group w-60">
-          <input (input)="onInput($event)" [(ngModel)]="cliente.cpfCnpj" type="text" placeholder="Digite seu CPF" class="form-control cliente-documento"  (ngModelChange)="formatarCPF()" id="cpf_cnpj" name="cpf_cnpj" value="" size="25" required maxlength="14" wfd-id="id4">
-        
+          <input (input)="onInput($event)" [(ngModel)]="cliente.cpfCnpj" [(ngModel)]="usuario.cpfCnpj" type="text" placeholder="Digite seu CPF" class="form-control cliente-documento"  (ngModelChange)="formatarCPF()" id="cpf_cnpj" name="cpf_cnpj" value="" size="25" required maxlength="14" wfd-id="id4">
+        </div>
+
+        <label class="form-label" for="cpf_cnpj">Empresa</label>
+        <div class="input-group w-60">
+          <input [(ngModel)]="cliente.company" [(ngModel)]="usuario.company"  type="text"  class="form-control cliente-documento"   name="company" value="" size="25" required maxlength="14" wfd-id="id4">
         </div>
 
         <label class="form-label" for="telefone_celular">Telefone Celular*</label>
         <div class="input-group w-60">
-          <input [(ngModel)]="cliente.mobilePhone" (ngModelChange)="formatarTelefone()" type="text" class="form-control" id="telefone_celular" name="telefone_celular" size="16" value="" required placeholder="Insira aqui seu telefone" wfd-id="id5">
+          <input [(ngModel)]="cliente.mobilePhone" [(ngModel)]="usuario.mobilePhone" (ngModelChange)="formatarTelefone()" type="text" class="form-control" id="telefone_celular" name="telefone_celular" size="16" value="" required placeholder="Insira aqui seu telefone" wfd-id="id5">
         </div>
 
         <label class="form-label" for="telefone_fixo">Telefone Fixo</label>
         <div class="input-group w-60">
-          <input [(ngModel)]="cliente.phone" type="text" class="form-control" id="telefone_fixo" name="telefone_fixo" size="16" value="" wfd-id="id6">
+          <input [(ngModel)]="cliente.phone" [(ngModel)]="usuario.phone" type="text" class="form-control" id="telefone_fixo" name="telefone_fixo" size="16" value="" wfd-id="id6">
         </div>
 
         <label class="form-label" for="senha">Senha*</label>
         <div class="input-group">
-          <input [(ngModel)]="usuario.senha" type="password" class="form-control" id="senha" name="senha" required wfd-id="id7">
+          <input [(ngModel)]="usuario.password" type="password" class="form-control" id="senha" name="senha" required wfd-id="id7">
         </div>
 
         <label class="form-label" for="confirmar_senha">Confirmar Senha*</label>
         <div class="input-group">
           <input [(ngModel)]="usuario.confirma_senha" type="password" class="form-control" id="confirma_senha" name="confirma_senha" required wfd-id="id8">
+        </div>
+
+        
+        <label class="form-label" for="endereco">Inscrição Municipal</label>
+        <div class="input-group">
+          <input [(ngModel)]="cliente.municipalInscription"  [(ngModel)]="usuario.municipalInscription" type="text" class="form-control" id="inscricaomunicipal" name="inscricaomunicipal" value="" required wfd-id="id11">
+        </div>
+
+        <label class="form-label" for="endereco">Inscrição Estadual</label>
+        <div class="input-group">
+          <input [(ngModel)]="cliente.stateInscription"  [(ngModel)]="usuario.stateInscription" type="text" class="form-control" id="inscricaoestadual" name="inscricaoestadual" value="" required wfd-id="id11">
+        </div>
+
+        <label class="form-label" for="endereco">Observações</label>
+        <div class="input-group">
+          <input [(ngModel)]="cliente.observations" [(ngModel)]="usuario.observations"  type="text" class="form-control" id="observacoes" name="observacoes" value="" required wfd-id="id11">
         </div>
 
         <div class="form-group-title">Endereço*</div>
@@ -211,7 +233,7 @@
         <div class="col-span-5">
           <div class="flex">
             <div class="input-group w-25">
-              <input [(ngModel)]="cliente.postalCode" onblur="pesquisacep(this.value);" class="form-control" type="text" id="cep" name="cep" size="10" required wfd-id="id9">
+              <input [(ngModel)]="cliente.postalCode" [(ngModel)]="usuario.postalCode" onblur="pesquisacep(this.value);" class="form-control" type="text" id="postalCode" name="postalCode" size="10" required wfd-id="id9">
             </div>
             <div class="p-2 d-none" id="loading-cep">
               <div class="spinner-border spinner-border-sm" role="status">
@@ -226,27 +248,32 @@
         
         <label class="form-label" for="endereco">Endereço*</label>
         <div class="input-group">
-          <input [(ngModel)]="cliente.address" type="text" class="form-control" id="endereco" name="endereco" required wfd-id="id10">
+          <input [(ngModel)]="cliente.address" [(ngModel)]="usuario.address" type="text" class="form-control" id="endereco" name="endereco" required wfd-id="id10">
         </div>
 
         <label class="form-label" for="endereco">Número*</label>
         <div class="input-group">
-          <input [(ngModel)]="cliente.addressNumber" type="text" class="form-control" id="numero" name="numero" value="" required wfd-id="id11">
+          <input [(ngModel)]="cliente.addressNumber" [(ngModel)]="usuario.addressNumber" type="text" class="form-control" id="numero" name="numero" value="" required wfd-id="id11">
+        </div>
+
+        <label class="form-label" for="endereco">Complemento</label>
+        <div class="input-group">
+          <input [(ngModel)]="cliente.complement" [(ngModel)]="usuario.complement"   type="text" class="form-control" id="numero" name="numero" value="" required wfd-id="id11">
         </div>
 
         <label class="form-label" for="bairro">Bairro*</label>
         <div class="input-group">
-          <input [(ngModel)]="cliente.province" type="text" class="form-control" id="bairro" name="bairro" value="" required wfd-id="id12">
+          <input [(ngModel)]="cliente.province" [(ngModel)]="usuario.province"  type="text" class="form-control" id="bairro" name="bairro" value="" required wfd-id="id12">
         </div>
 
         <label class="form-label" for="cidade">Cidade*</label>
         <div class="input-group">
-          <input [(ngModel)]="cliente.city" type="text" class="form-control" id="cidade" name="cidade" value="" required wfd-id="id13">
+          <input [(ngModel)]="cliente.city" [(ngModel)]="usuario.city" type="text" class="form-control" id="cidade" name="cidade" value="" required wfd-id="id13">
         </div>
         
         <label class="form-label" for="estado">Estado*</label>
         <div class="input-group">
-          <select [(ngModel)]="cliente.state" class="form-select" id="estado" name="estado" required>
+          <select [(ngModel)]="cliente.state" [(ngModel)]="usuario.state" class="form-select" id="estado" name="estado" required>
             <option value="">UF</option>
             <option value="AC">Acre</option>
             <option value="AL">Alagoas</option>

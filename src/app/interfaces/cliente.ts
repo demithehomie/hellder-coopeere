@@ -1,20 +1,25 @@
 export interface Cliente{
-    name: string;
-    email: string;
-    phone: string | null; 
-    mobilePhone: string | null;
-    cpfCnpj: string | null;
-    postalCode: string | null;
-    address: string;
-    addressNumber: string | null; 
-    complement: string;
-    province: string;
-    city: string;
-    state: string;
-    externalReference: string;
-    notificationDisabled: boolean;
-    additionalEmails: string;
-    municipalInscription: string;
-    stateInscription: string;
-    observations: string;
+
+
+
+	name: string,
+	email : string,
+	company : string,
+//	password : string,
+	cpfCnpj : string | null,
+	mobilePhone : string,
+	phone : string,
+	postalCode : string,
+	address : string,
+	state : string,
+    province: string,
+	city : string,
+	addressNumber : string,
+	complement : string,
+	municipalInscription: string,
+	stateInscription: string,
+	additionalEmails: Array<string>
+    externalReference: string | null,
+    notificationDisabled: boolean | null,
+    observations: string,
 }

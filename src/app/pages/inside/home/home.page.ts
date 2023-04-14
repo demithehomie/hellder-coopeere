@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertController } from '@ionic/angular';
+import { Subs } from 'src/app/interfaces/assinaturas';
+import { Cliente } from 'src/app/interfaces/cliente';
+import { Cobranca, Discount, Fine, Interest } from 'src/app/interfaces/cobranca';
+import { ClienteService } from 'src/app/services/cliente.service';
 import { UsuarioService } from 'src/app/services/usuario.service';
 
 @Component({
@@ -9,11 +13,57 @@ import { UsuarioService } from 'src/app/services/usuario.service';
 })
 export class HomePage implements OnInit {
 
+  frequenciaPagamento: string | any ;
+  formaPagamento: string = "";
+  valorTotal: number = 0;
+
   data: any;
   selectedTab: string = "option1";
+ // selectedOption: string = "pix";
+  opcaoPagamento: string = ""; 
+  valoresFrequencia: any;
 
-  constructor(private usuarioService: UsuarioService, private alertController: AlertController) { }
+  constructor(
+    private usuarioService: UsuarioService, 
+    private alertController: AlertController,
+    private clienteService: ClienteService,
+    ) { }
 
+
+    calcularValorTotal() {
+      // Definindo os valores para cada frequência de pagamento
+      const valoresFrequencia = {
+        mensal: 3.50,
+        bimestral: 7.50,
+        trimestral: 10.00,
+        semestral: 18.00,
+        anual: 32.00
+      };
+  
+     // this.valorTotal = number;
+      // Calculando o valor total com base na frequência de pagamento selecionada
+      this.valorTotal = this.valoresFrequencia[this.frequenciaPagamento];
+    }
+  
+
+    /*
+
+
+
+    selecionarFormaPagamento(forma: string) {
+      this.formaPagamento = forma;
+    }
+
+  // Método para lidar com a seleção de uma nova opção
+  onChangeOption(option: string) {
+    this.selectedOption = option; // Atualiza a variável selectedOption com a nova opção selecionada
+  }
+
+  // Método para verificar se uma opção está selecionada
+  isOptionSelected(option: string): boolean {
+    return this.selectedOption === option; // Retorna true se a opção atual for a selecionada, caso contrário, retorna false
+  }
+*/
   ngOnInit() {
     this.usuarioService.getData(this.data).subscribe(data => {
       this.data = data;
@@ -79,4 +129,152 @@ export class HomePage implements OnInit {
     await alert.present();
   }
 
+  verificarPagamento() {
+    if (this.opcaoPagamento) {
+      this.exibirAlerta('Opção selecionada: ' + this.opcaoPagamento);
+    } else {
+      this.exibirAlerta('Por favor, selecione uma opção de pagamento.');
+    }
+  }
+
+  async exibirAlerta(mensagem: string) {
+    const alert = await this.alertController.create({
+      header: 'Alerta',
+      message: mensagem,
+      buttons: ['OK']
+    });
+
+    await alert.present();
+
+
+  }
+
+  ////////// PAGAMENTO
+
+  cliente: Cliente = {
+    name: "",
+    email: "",
+    company: "",
+  //	password : " ",  
+    cpfCnpj: "",
+    mobilePhone: "",
+    phone: "",
+    postalCode: "",
+    address: "",
+    state: "",
+    province: "",
+    city: "",
+    addressNumber: "",
+    complement: "",
+    municipalInscription: "",
+    stateInscription: "",
+    additionalEmails: [],
+    externalReference: "",
+    notificationDisabled: false,
+    observations: "",
+  }
+
+  subs: Subs = {
+    customer: '',
+    billingType: '',
+    nextDueDate: '',
+    value: 0,
+    cycle: '',
+    description: '',
+    discount: {
+      value: 10.00,
+        dueDateLimitDays: 0
+    },
+    fine: {
+      value: 1.00,
+    },
+    interest: {
+      value: 2.00
+    }
+  }
+
+  cobranca: Cobranca = {
+    customer: " ",
+    billingType: " ",
+    dueDate: " ",
+    value: 0,
+    description: "",
+    postalService: false,
+    externalReference: '',
+    discount: {
+      value: 10.00,
+        dueDateLimitDays: 0
+    },
+    fine: {
+      value: 1.00,
+    },
+    interest: {
+      value: 2.00
+    }
+  }
+
+  discount: Discount =  {  // SERÁ NECESSÁRIA UMA INTERFACE DE ADMIN ONDE ESSES DADOS SERÃO ALTERADOS QUANDO NECESSÁRIO
+        value: 10.00,
+        dueDateLimitDays: 0
+    }
+    
+    fine: Fine = { // SERÁ NECESSÁRIA UMA INTERFACE DE ADMIN ONDE ESSES DADOS SERÃO ALTERADOS QUANDO NECESSÁRIO
+        value: 1.00
+    }
+    interest:  Interest = { // SERÁ NECESSÁRIA UMA INTERFACE DE ADMIN ONDE ESSES DADOS SERÃO ALTERADOS QUANDO NECESSÁRIO
+        value: 2.00
+    }
+
+
+    payingSubs(): void{
+      const dataclient = {
+        name: this.cliente.name,
+    email: this.cliente.email,
+    phone: this.cliente.phone,
+        
+      };
+      this.clienteService.create(dataclient).subscribe({next: (res) => 
+      {
+        console.log(res);
+        console.log("Dados de Pagamento salvos com sucesso")
+      },
+      error: (e) => console.error(e)
+      });
+      const datapayment = {
+        customer: this.subs.customer,
+        billingType: this.subs.billingType,
+        nextDueDate: this.subs.nextDueDate,
+        value: this.subs.value,
+    description: this.subs.description,
+    cycle: this.subs.cycle,
+   
+    discount: {
+      value: this.discount.value,
+        dueDateLimitDays: this.discount.dueDateLimitDays
+    },
+    fine: {
+      value: this.fine.value,
+    },
+    interest: {
+      value: this.interest.value
+    }
+
+
+   
+      };
+      this.clienteService.create(datapayment).subscribe({next: (rescli) => 
+        {
+          console.log(rescli);
+          console.log("Pagamento efetuado cadastrado com sucesso")
+         // this.navCtrl.navigateForward('/sms');
+        },
+        error: (e) => console.error(e)
+        });
+    }
+    
+   
 }
+
+  ////////////
+
+

@@ -68,28 +68,52 @@ ngOnInit(): void{
 cliente: Cliente = {
   name: "",
   email: "",
-  phone: "",
-  mobilePhone: "", 
+  company: "",
+//	password : " ",  
   cpfCnpj: "",
+  mobilePhone: "",
+  phone: "",
   postalCode: "",
   address: "",
-  addressNumber: "",
-  complement: "",
+  state: "",
   province: "",
   city: "",
-  state: "",
-  externalReference: "",
-  notificationDisabled: false,
-  additionalEmails: "",
+  addressNumber: "",
+  complement: "",
   municipalInscription: "",
   stateInscription: "",
+  additionalEmails: [],
+  externalReference: "",
+  notificationDisabled: false,
   observations: "",
 }
 
 usuario: Usuario = {
   id: 0,
-  email: "",
-  senha: "",
+  role: 1,
+  name: " ",
+	email : " ",
+	company : " ",
+//	password : " ",
+	cpfCnpj : " ",
+	mobilePhone : " ",
+	phone : " ",
+	postalCode : " ",
+	address : " ",
+	state : " ",
+    province: " ",
+	city : " ",
+	addressNumber : " ",
+	complement : " ",
+	municipalInscription: " ",
+	stateInscription: " ",
+	additionalEmails: [],
+    externalReference: " ",
+    notificationDisabled: false,
+    observations: " ",
+
+
+  password: "",
   confirma_senha: ""
 }
 
@@ -97,11 +121,13 @@ formulario!: FormGroup;
 
 validaForm(){
   this.formulario = this.formBuilder.group({
+   // role: ['', [1]],
     name: ['', [Validators.required]],
     cpfCnpj: ['', [Validators.required]],
     phone: ['', [Validators.required]],
     mobilePhone: ['', [Validators.required]],
     address: ['', [Validators.required]],
+    company: ['', [Validators.required]],
     addressNumber: ['', [Validators.required]],
     complement: ['', [Validators.required]],
     province: ['', [Validators.required]],
@@ -115,7 +141,7 @@ validaForm(){
     observations: ['', [Validators.required]],
     groupname: ['', [Validators.required]],
     email: ['', [Validators.required]],
-    senha: ['', [Validators.required]],
+    password: ['', [Validators.required]],
     confirma_senha: ['', [Validators.required,  this.equalTo('senha')]],
   });
 }
@@ -132,8 +158,25 @@ equalTo(field_name: string) {
 
 cadastro(): void{
   const data = {
-  email: this.usuario.email,
-  senha: this.usuario.senha
+    role: this.usuario.role,
+    name: this.usuario.name,
+    email: this.usuario.email,
+    company: this.usuario.company,
+    phone: this.usuario.phone,
+    mobilePhone: this.usuario.mobilePhone, 
+    cpfCnpj: this.usuario.cpfCnpj,
+    postalCode: this.usuario.postalCode,
+    address: this.usuario.address,
+    state: this.usuario.state,
+    province: this.usuario.state,
+    city: this.usuario.state,
+    addressNumber: this.usuario.addressNumber,
+    complement: this.usuario.complement,
+    municipalInscription: this.usuario.municipalInscription,
+    stateInscription: this.usuario.stateInscription,
+  
+    password: this.usuario.password,
+    
   };
   this.usuarioService.create(data).subscribe({next: (res) => 
   {
@@ -150,11 +193,15 @@ cadastro(): void{
     cpfCnpj: this.cliente.cpfCnpj,
     postalCode: this.cliente.postalCode,
     address: this.cliente.address,
+    state: this.cliente.state,
+    province: this.cliente.state,
+    city: this.cliente.state,
     addressNumber: this.cliente.addressNumber,
     complement: this.cliente.complement,
-    province: this.cliente.province,
-    city: this.cliente.city,
-    state: this.cliente.state,
+    municipalInscription: this.cliente.municipalInscription,
+    stateInscription: this.cliente.stateInscription,
+    additionalEmails: this.cliente.additionalEmails,
+    observations: this.cliente.observations
   };
   this.clienteService.create(datacliente).subscribe({next: (rescli) => 
     {
