@@ -18,6 +18,11 @@ export class UsuarioService {
      return this.httpClient.post('http://localhost:3000/users',data)
   }
 
+  buscarCep(postalCode: string){
+    return this.httpClient.get(`https://viacep.com.br/ws/${postalCode}/json/`)
+  }
+
+
   // ENCONTRAR TODOS OS USUÁRIOS - SOMENTE ADMINS
   findAll() {
     return this.httpClient.get(usuarioURL);

@@ -10,7 +10,7 @@ export interface Cliente{
 	mobilePhone : string,
 	phone : string,
 	postalCode : string,
-	address : string,
+	// address : HTMLElement ,
 	state : string,
     province: string,
 	city : string,

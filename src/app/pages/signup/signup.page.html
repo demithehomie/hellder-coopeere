@@ -28,7 +28,7 @@
       <ion-img src="../../../assets/images-coopeere/coopere.png"></ion-img>
       <span>CNPJ: 40.409.711/0001-39</span>
     </a>
-    
+   <!-- <script src="../../JS-Adittional-Files/buscarcep.js"></script> -->
     <ion-button fill="clear" [routerLink]="['/']" class="sair text-right">Sair</ion-button>
   </ion-header>
 
@@ -43,7 +43,7 @@
   </div>
 <div class="form-content col-sm-12">
   <div class="card p-4 mb-4 ">
-    <form id="formulario-cadastro" (submit)="cadastro()">
+    <form #f="ngForm" id="formulario-cadastro" (submit)="cadastro()" >
       <input type="hidden" name="_token" value="CsbBXaFkBxwza5YHajzScu1cX0T8qLxYMLNfdzDj" wfd-id="id0">        
       <input type="hidden" name="_method" value="put" wfd-id="id1">                
       <div class="form-group-heading">Realize o cadastro e torne-se um Coopeerado</div>
@@ -56,6 +56,7 @@
         <div class="col-span-5">
           <div class="input-group">
             <input [(ngModel)]="cliente.name" [(ngModel)]="usuario.name" type="text" class="form-control" id="name" name="name" value="" required wfd-id="id2">
+          <!-- [(ngModel)]="cliente.name" [(ngModel)]="usuario.name" -->
           </div>
         </div>
 
@@ -115,9 +116,10 @@
         <label class="form-label" for="postalCode">CEP*</label>
         <div class="col-span-5">
           <div class="flex">
-            <div class="input-group w-25">
-              <input [(ngModel)]="cliente.postalCode" [(ngModel)]="usuario.postalCode" onblur="pesquisacep(this.value);" class="form-control" type="text" id="postalCode" name="postalCode" size="10" required wfd-id="id12">
+            <div class="input-group w-25"> <!--  onblur="pesquisacep(this.value);" (ionBlur)="pesquisarCep()"    -->
+              <input name="postalCode" ngModel #cliente.postalCode="ngModel" ngModel #usuario.postalCode="ngModel"   class="form-control" type="text" id="postalCode"  size="10" onblur="pesquisacep(this.value);" required wfd-id="id12">
             </div>
+           <!-- [(ngModel)]="cliente.postalCode" [(ngModel)]="usuario.postalCode" -->
             <div class="p-2 d-none" id="loading-cep">
               <div class="spinner-border spinner-border-sm" role="status">
                 <span class="visually-hidden">Loading...</span>
@@ -129,34 +131,34 @@
           </small>
         </div>
         
-        <label class="form-label" for="address">Endereço*</label>
+        <label class="form-label" for="address">Logradouro*</label>
         <div class="input-group">
-          <input [(ngModel)]="cliente.address" [(ngModel)]="usuario.address" type="text" class="form-control" id="address" name="address" required wfd-id="id13">
+          <input name="address" ngModel #usuario.address="ngModel" ngModel #cliente.address="ngModel" type="text" class="form-control" id="address"  value=(conteudo.logradouro) required wfd-id="id13">
         </div>
 
         <label class="form-label" for="addressNumber">Número*</label>
         <div class="input-group">
-          <input [(ngModel)]="cliente.addressNumber" [(ngModel)]="usuario.addressNumber" type="text" class="form-control" id="addressNumber" name="addressNumber"  required wfd-id="id14">
+          <input name="addressNumber" [(ngModel)]="cliente.addressNumber" [(ngModel)]="usuario.addressNumber" type="text" class="form-control" id="addressNumber"   required wfd-id="id14">
         </div>
 
         <label class="form-label" for="complement">Complemento</label>
         <div class="input-group">
-          <input [(ngModel)]="cliente.complement" [(ngModel)]="usuario.complement"   type="text" class="form-control" id="complement" name="complement"  required wfd-id="id15">
+          <input name="complement" [(ngModel)]="cliente.complement" [(ngModel)]="usuario.complement"   type="text" class="form-control" id="complement"   required wfd-id="id15">
         </div>
 
         <label class="form-label" for="province">Bairro*</label>
         <div class="input-group">
-          <input [(ngModel)]="cliente.province" [(ngModel)]="usuario.province"  type="text" class="form-control" id="province" name="province"  required wfd-id="id16">
+          <input name="province" ngModel #usuario.province="ngModel" ngModel #cliente.province="ngModel" type="text" class="form-control" id="province"   required wfd-id="id16">
         </div>
 
         <label class="form-label" for="city">Cidade*</label>
         <div class="input-group">
-          <input [(ngModel)]="cliente.city" [(ngModel)]="usuario.city" type="text" class="form-control" id="city" name="city" value="" required wfd-id="id17">
+          <input name="city" ngModel #usuario.address="ngModel" ngModel #cliente.address="ngModel" type="text" class="form-control" id="city"  value="" required wfd-id="id17">
         </div>
         
         <label class="form-label" for="state">Estado*</label>
         <div class="input-group">
-          <select [(ngModel)]="cliente.state" [(ngModel)]="usuario.state" class="form-select" id="state" name="state" required wfd-id="id18">
+          <select name="state" ngModel #usuario.state="ngModel" ngModel #cliente.state="ngModel" class="form-select" id="state"  required wfd-id="id18">
             <option value="">UF</option>
             <option value="AC">Acre</option>
             <option value="AL">Alagoas</option>
