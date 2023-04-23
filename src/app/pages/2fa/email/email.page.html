@@ -31,16 +31,20 @@
 
   
   <ion-content>
-    <br>
+    <br>  
     <br>
     <br>
 <div class="container-code">
-  <form>
-    
-    <h2>Insira o código recebido <br> via E-MAIL</h2>
-    <label for="code">Código de verificação:</label>
-    <input type="text" id="code" name="code" required>
-    <button type="submit">Verificar via E-Mail</button>
+  <form (submit)="confirmar()">
+    <h1>Seja Bem-Vindo a COOPEERE!</h1>
+
+<input type="text" placeholder="Insira o código que está no seu email" maxlength="5">
+
+<ion-button >Confirmar</ion-button>
+    <br>
+    <!--
+    <h3>Clique no link de confirmação  que <br> está em seu email, para continuar</h3>
+   -->
   </form>
 </div>
 </ion-content>

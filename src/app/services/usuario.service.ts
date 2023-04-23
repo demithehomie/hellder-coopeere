@@ -42,6 +42,17 @@ export class UsuarioService {
   update(data: any){
     return this.httpClient.put(usuarioURL, data);
   }
+
+  // CONFIRMAR EMAIL DO USUÁRIO
+  confirmEmail(data: any){
+    return this.httpClient.post(usuarioURL + '/auth/confirm-email', data)
+  }
+// CONFIRMAR EMAIL DO USUÁRIO
+confirmSMS(data: any){
+  return this.httpClient.post(usuarioURL + '/auth/confirm-sms', data)
+}
+
+  
   
   // DELETAR CONTA - USUÁRIOS COM PERMISSÃO, E ADMINS
   delete(data: any){

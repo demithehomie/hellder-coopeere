@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AlertController } from '@ionic/angular';
 import { Subs } from 'src/app/interfaces/assinaturas';
 import { Cliente } from 'src/app/interfaces/cliente';
+import { PRODIST } from 'src/app/interfaces/prodist';
 import { Cobranca, Discount, Fine, Interest } from 'src/app/interfaces/cobranca';
 import { ClienteService } from 'src/app/services/cliente.service';
 import { UsuarioService } from 'src/app/services/usuario.service';
+import { ProdistService } from 'src/app/services/prodist.service';
 
 @Component({
   selector: 'app-home',
@@ -27,6 +30,8 @@ export class HomePage implements OnInit {
     private usuarioService: UsuarioService, 
     private alertController: AlertController,
     private clienteService: ClienteService,
+    private formBuilder: FormBuilder,
+    private prodistService: ProdistService
     ) { }
 
 
@@ -65,6 +70,7 @@ export class HomePage implements OnInit {
   }
 */
   ngOnInit() {
+    this.validaFormProdist();
     this.usuarioService.getData(this.data).subscribe(data => {
       this.data = data;
     });
@@ -151,7 +157,10 @@ export class HomePage implements OnInit {
 
   ////////// PAGAMENTO
 
+
+
   cliente: Cliente = {
+    id: "",
     name: "",
     email: "",
     company: "",
@@ -272,9 +281,74 @@ export class HomePage implements OnInit {
         });
     }
     
-   
+
+    ////// PRODIST /////
+
+    prodist: PRODIST = {
+      ContaDeLuz: "",
+      NumeroDoCliente: "",
+      ClasseUC: "",
+      CotaMensal: "",
+      PotenciaInstalada: "",
+      TensaoDeAtendimento: "",
+      TipoDeConexao: "",
+      TipoDeRamal: "",
+      PotenciaInstaladaGeral: "",
+      TipoDaFonteDeGeracao: "",
+      MenorConsumoUltimos12: "",
+      MaiorConsumoUltimos12: "",
+  }
+
+  formularioProdist!: FormGroup;
+
+validaFormProdist(){
+  this.formularioProdist = this.formBuilder.group({
+ 
+   ContaDeLuz: ['', [Validators.required]],
+   NumeroDoCliente: ['', [Validators.required]],
+   ClasseUC: ['', [Validators.required]],
+   CotaMensal: ['', [Validators.required]],
+   PotenciaInstalada: ['', [Validators.required]],
+   TensaoDeAtendimento: ['', [Validators.required]],
+   TipoDeConexao: ['', [Validators.required]],
+   TipoDeRamal: ['', [Validators.required]],
+   PotenciaInstaladaGeral: ['', [Validators.required]],
+   TipoDaFonteDeGeracao: ['', [Validators.required]],
+   MenorConsumoUltimos12: ['', [Validators.required]],
+   MaiorConsumoUltimos12: ['', [Validators.required]],
+
+  });
 }
 
+cadastroProdist(): void{
+  const dataprodist = {
+    ContaDeLuz: this.prodist.ContaDeLuz,
+    NumeroDoCliente: this.prodist.NumeroDoCliente,
+    ClasseUC: this.prodist.ClasseUC,
+    CotaMensal: this.prodist.CotaMensal,
+    PotenciaInstalada: this.prodist.PotenciaInstalada,
+    TensaoDeAtendimento: this.prodist.TensaoDeAtendimento, 
+    TipoDeConexao: this.prodist.TipoDeConexao,
+    TipoDeRamal: this.prodist.TipoDeRamal,
+    PotenciaInstaladaGeral: this.prodist.PotenciaInstaladaGeral,
+   TipoDaFonteDeGeracao: this.prodist.TipoDaFonteDeGeracao,
+    MenorConsumoUltimos12: this.prodist.MenorConsumoUltimos12,
+    MaiorConsumoUltimos12: this.prodist.MaiorConsumoUltimos12,
+
+  };
+  this.prodistService.create(dataprodist).subscribe({next: (res) => 
+  {
+    console.log(res);
+    console.log("Formulário cadastrado com sucesso")
+  },
+  error: (e) => console.error(e)
+  });
+
+
+    ///////
+   
+}
+}
   ////////////
 
 

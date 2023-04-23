@@ -133,6 +133,7 @@ ngOnInit(): void{
 }
 
 cliente: Cliente = {
+  id: "",
   name: "",
   email: "",
   company: "",
@@ -275,7 +276,7 @@ cadastro(): void{
     {
       console.log(rescli);
       console.log("Cliente cadastrado com sucesso")
-      this.navCtrl.navigateForward('/sms');
+      this.navCtrl.navigateForward('/email');
     },
     error: (e) => console.error(e)
     });

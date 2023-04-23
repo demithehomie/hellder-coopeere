@@ -2,6 +2,60 @@
     --color-checked: #000000  
 }
 
+.form-group-title {
+    font-size: large;
+}
+
+.form-control {
+    padding: 10px;
+}
+
+.container {
+    padding: 10px;
+}
+
+.prodist-label{
+    padding-top: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    
+}
+
+.form-inputs {
+    border-radius: 5px;
+    width: 350px;
+    padding: 10px;
+}
+
+.mini-form-inputs {
+    border-radius: 5px;
+    width: 60px;
+    padding: 10px;
+}
+
+.input-group {
+    display: flex;
+    margin: 10px;
+    flex-direction: row;
+}
+
+.space {
+    padding-left: 12px;
+}
+
+.input-group-text {
+    font-weight: bold;
+}
+
+.opcao-pagamento-content {
+    background-color: #434343;
+    padding: 18px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+}
+
 
 ////////////////////////////////////////////////////////////
 

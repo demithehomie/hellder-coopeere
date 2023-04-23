@@ -84,7 +84,7 @@
   <div class="card-infos">
     <ion-label class="blueTitle">Associado</ion-label>
       <!-- LEMBRAR QUE AQUI NA VERDADE PRECISA ESTAR O NOME DA PESSOA LOGADA -->
-    <ion-label class="associate-text">Hellder Benjamin</ion-label>
+    <ion-label class="associate-text">{{cliente.name}}</ion-label>
       <!-- LEMBRAR QUE AQUI NA VERDADE PRECISA ESTAR O CPF DA PESSOA LOGADA -->
     <ion-label class="associate-text">007.344.457-09</ion-label>
   </div>
@@ -219,80 +219,226 @@
 <!-- FORMULÁRIO PRODIST-->
 
 <div>
+  <div>
 <div class="tab-title">Formulário PRODIST (deve-se preencher e salvar a etapa TRIAGEM, antes de preencher o formulário Prodist)</div>
 
-  <fieldset class="fieldset_prodist">
+  
+<br>
+<label class="title" for="id-uc" style="font-weight: bold; font-size: 22px;">Identificação da Unidade Consumidora</label>
+<br>
+<br>
 
-    <div class="form_group">
+<label class="prodist-label" for="">Upload da conta de luz</label>
+<br><br>
+<ion-button style="align-items: center; justify-content: center; display: flex; margin: auto;">Enviar Arquivo</ion-button>
+<br><br>
+<label class="prodist-label" for="">Código UC/Número do Cliente</label>
+<br><br>
+<input class="form-inputs" type="text" [(ngModel)]="prodist.NumeroDoCliente">
+<br><br>
 
-      <div class="form-group-title">
-        Identificação da Unidade Consumidora
-    </div>
+
+<label class="prodist-label" for="">Classe UC</label>
+<br><br>
+<input class="form-inputs" type="text" [(ngModel)]="prodist.ClasseUC">
+
+<br><br>
 
 
-    <div class="form-label row-span-2">
-      <label for="maior_consumo">Upload da conta de luz</label>
-      <div class="form-hint">Últimos 3 meses</div>
+<label class="title" for="id-uc" style="font-weight: bold; font-size: 22px;">Dados da Unidade Consumidora</label>
+<br>
+<br>
+
+<label class="prodist-label" for="">Cota que deseja comprar mensalmente</label>
+<br>
+<h6>
+  Preço estimado em 50% menor do que a operadora
+</h6>
+<input class="form-inputs" type="text" [(ngModel)]="prodist.CotaMensal">
+
+
+
+<div  >
+  <br> <br>
+  <ion-label class="prodist-label" for="potencia_inst_uc">Potência Instalada</ion-label>
+  <br> <br>
+  <div class="form-hint">
+      Em função da Cota, ou seja,<br/>Potência instalada = Cota/360
+  </div>
+  <br> 
+</div>
+<div class="input-group">
+  <input
+      type="text"
+      class="form-inputs"
+      readonly
+      id="potencia_inst_uc"
+      name="potencia_inst_uc"
+      value="0.62"
+      size="15"
+      [(ngModel)]="prodist.PotenciaInstalada"
+      >
+<div class="space">
+<h5 class="input-group-text">kW</h5>
+</div>
+
+  
+</div>
+<br>
+<label class="prodist-label" for="tensao_atendimento">Tensão de atendimento (V)</label>
+<br> 
+<div class="input-group">
+  <select class="form-inputs " id="tensao_atendimento" name="tensao_atendimento" [(ngModel)]="prodist.TensaoDeAtendimento">
+      <option value="">Selecione</option>
+                      <option value="110"
+           selected                     >
+          110
+      </option>
+                      <option value="220"
+                              >
+          220
+      </option>
+      
+  </select>
+</div>
+<br>
+<div >
+  <label class="prodist-label" for="tipo_conexao">Tipo de conexão</label>
+  <br> <br>
+  <div class="form-hint">
+      Esta informação tem em sua conta de energia.
+  </div>
+</div>
+<div class="input-group">
+  <select class="form-inputs"
+      name="tipo_conexao"
+      id="tipo_conexao"
+      [(ngModel)]="prodist.TipoDeConexao"
+  >
+                      <option value="monofásica" >Monofásica
+      </option>
+                      <option value="bifásica" >Bifásica
+      </option>
+                      <option value="trifásica"  selected >Trifásica
+      </option>
+                  </select>
+</div>
+<br>
+<div>
+  <label class="prodist-label" for="tipo_ramal">Tipo de Ramal</label>
+  <br> <br>
+  <div class="form-hint">
+      A energia chega até você via postes ou debaixo da terra?
+  </div>
+</div>
+<div class="input-group">
+  <select class="form-inputs"
+      name="tipo_ramal"
+      id="tipo_ramal"
+      [(ngModel)]="prodist.TipoDeRamal"
+  >
+                      <option value="aéreo"  selected >Aéreo
+      </option>
+                      <option value="subterraneo" >Subterraneo
+      </option>
+                  </select>
+</div>
+</div>
+
+<div class="form-group">
+<div class="form-group-title">
+  Dados da Geração
+</div>
+
+<label class="prodist-label" for="potencia_inst_gerada">Potência instalada gerada</label>
+<br> <br>
+<div class="input-group">
+  <input class="form-inputs"
+      type="text"
+      id="potencia_inst_gerada"
+      name="potencia_inst_gerada"
+      value=""
+      size="20"
+      readonly
+      [(ngModel)]="prodist.PotenciaInstaladaGeral"
+  >
+
+  <div class="space">
+    <h5 class="input-group-text">kW</h5>
   </div>
 
-  <div class="input-group row-auto">
-    <div class="bg-gray-100 rounded-lg shadow-md text-center w-100 h-100">
-      <div class="h-36">
-                          <img class="h-36 w-100 object-contain object-center" src="/uploads/null_icon.png" alt="Avatar Upload" />
-                        
-      </div>
-      <label class="cursor-pointer mt-2 w-100">
-        <span class="btn btn-primary w-100">Enviar Arquivo</span>
-                      <input class="file-uploader w-100"
-            type="file"
-            name="upfile"
-            id="arquivo"
-            value="/uploads/null_icon.png"
-            hidden>
-                                  
-                    </label>
-    </div>
+  
+</div>
+
+<div>
+  <label class="prodist-label" for="tipo_fonte_geracao">Tipo da Fonte de Geração</label>
+  <br> <br>
+  <div class="form-hint">
+      O padrão é Eólica
   </div>
+</div>
+<div class="input-group">
+  <select class="form-inputs"
+  [(ngModel)]="prodist.TipoDaFonteDeGeracao"
+      name="tipo_fonte_geracao"
+      id="tipo_fonte_geracao"
+  >
+                      <option value="hidráulica" >Hidráulica
+      </option>
+                      <option value="solar"  selected >Solar
+      </option>
+                      <option value="eólica" >Eólica
+      </option>
+                      <option value="biomassa" >Biomassa
+      </option>
+                      <option value="coogeração qualificada" >Coogeração Qualificada
+      </option>
+                  </select>
+</div>
 
+<div>
+  <label class="prodist-label" for="menor_consumo">Menor consumo</label>
+  <br> <br>
+  <div class="form-hint">
+      Dos últimos 12 meses
+  </div>
+</div>
+<div class="input-group">
+  <input class="form-inputs"
+  [(ngModel)]="prodist.MenorConsumoUltimos12"
+      type="text"
+      id="menor_consumo"
+      name="menor_consumo"
+      value="67.00"
+      size="15">
 
-  <div class="grid grid-cols-2 col-span-2 gap-4 content-start">
+ <div class="space">
+  <h5 class="input-group-text">kWh</h5>
+ </div>
+  
 
-    <label class="form-label" for="codigo_uc">Código UC/Número do Cliente</label>
-    <div class="input-group">
-        <input type="text"
-            class="form-control"
-            id="codigo_uc"
-            name="codigo_uc"
-            size="15"
-            value="010112345"
-            title="Código da Unidade Consumidora ou Número do Cliente na sua conta"
-            
-        >
+</div>
+
+<div>
+  <label class="prodist-label" for="maior_consumo">Maior consumo</label>
+  <br> <br>
+  <div class="form-hint">
+      Dos últimos 12 meses
+  </div>
+</div>
+<div class="input-group">
+  <input [(ngModel)]="prodist.MaiorConsumoUltimos12" type="text" class="form-inputs" id="maior_consumo"
+      name="maior_consumo" size="15" value="368.00"
+      title="Maior consumo (em kWh) dos últimos 12 meses">
+    <div class="space">
+      <h5 class="input-group-text">kWh</h5>
     </div>
-
-    <div class="form-label">
-        <label for="classe_uc">Classe UC</label>
-        <div class="form-hint">
-            Unidade Consumidora
-        </div>
-    </div>
-    <div class="input-group">
-        <input type="text"
-            class="form-control"
-            id="classe_uc"
-            name="classe_uc"
-            size="15"
-            value="RESIDENCIAL"
-            
-        >
-    </div>
+     
 </div>
 
 
-  
-    </div>
 
-  </fieldset>
+</div>
 
 </div>
 

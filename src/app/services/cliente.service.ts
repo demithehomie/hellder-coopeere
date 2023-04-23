@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient} from '@angular/common/http'
 import { Observable } from 'rxjs';
+import { Cliente } from '../interfaces/cliente';
 
 
 const clienteURL = 'http://localhost:3000';
@@ -10,11 +11,15 @@ const clienteURL = 'http://localhost:3000';
 })
 export class ClienteService {
 
-  constructor(private httpClient: HttpClient) { }
+  constructor( private httpClient: HttpClient) { }
 
   // CRIAR CLIENTES - AUTOMÁTICO NO SELF-SIGN-IN
   create(datacliente: any): Observable<any>{
     return this.httpClient.post(clienteURL+'/customers',datacliente)
+  }
+
+  getUser(customerID: string){
+    return this.httpClient.get(clienteURL + '/users/' + `${customerID}` )
   }
 
   // ????
