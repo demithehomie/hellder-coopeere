@@ -1,9 +1,91 @@
 
+.container{
+  display: flex;
+  position: relative;
+  margin-left: 19%;
+  max-width: 59.2%;
+  left: 25px;
+  top: 19px;
+  margin-top: 150px;
+  margin-bottom: 40px;
+  line-height: 2;
+  justify-content: space-between;
+
+  .title{
+  color: #6d7882;
+  font-size: 37px;
+  font-weight: 300;
+ // font-family: "Open Sans", "Sans-serif";
+  }
+  section{
+      line-height: 1.6em;
+      font-size: 37px;
+     // font-family: "Open Sans", "Sans-serif";
+      font-weight: 500;
+      
+      p{
+          margin-top: 12rem;
+      }
+  }
+
+  ion-list{
+      text-transform: uppercase;
+      list-style: none;
+      background-color: #fff;
+      display: flex;
+      flex-direction: column;
+      
+      ion-label{
+          cursor: pointer;
+          margin: 0;
+          width: 300px;
+          position: relative;
+          color: #2a302f;
+          font-size: 1rem;
+         // font-family: "Open Sans", "Sans-serif";
+          font-weight: 400;
+          padding: 13px 20px;
+          transition: .4s;
+  
+          &:hover {
+              color: #7B9A6E;
+              
+          }
+  
+          &::before {
+              content: '';
+              position: absolute;
+              width: 0;
+              right: 0;
+              bottom: 0;
+              height: 3px;
+              background: #7B9A6E;
+  
+          }
+          &:hover::before {
+              width: 100%;
+          }
+      }
+      .active-link:before {
+      
+          width: 100%;
+          color: #7B9A6E;
+      
+      }
+  }
+}
+
+
+.menu-lateral-x {
+  display: block;
+
+}
+
 
 
 .title-equipe {
   font-size: 50px;
-  margin-top: 200px;
+  margin-top: -350px;
   margin-left: 100px;
 }
 .title-comp {
@@ -30,6 +112,15 @@
 }
 
 @media screen and (max-width: 700px) {
+ .title-equipe {
+  margin-top: 250px;
+ }
+ 
+ 
+  .container {
+    display: none;
+  }
+  
   .grid {
     display: flex;
     flex-direction: column;
@@ -146,7 +237,7 @@ ion-slide button {
 }
 
 
-.container {
+.containe2r {
     background-image: url("https://media.gazetadopovo.com.br/2019/06/08112107/energia-eolica-660x372.jpg");
     background-size: cover;
 }
