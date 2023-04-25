@@ -34,7 +34,7 @@ closeSearchInput(){
  
   slideOpts = {
     autoplay: {
-      delay: 4000
+      delay: 6000
     },
     loop: true
   };

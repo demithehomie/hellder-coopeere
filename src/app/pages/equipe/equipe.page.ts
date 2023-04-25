@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-equipe',
@@ -18,10 +19,11 @@ export class EquipePage implements OnInit {
     this.showMenu = !this.showMenu;
   }
   
-  constructor(private navCtrl: NavController) {
+  constructor(private navCtrl: NavController, private titleService: Title) {
     this.selectedOption = 'quemsomos';
     this.selectedOption = 'objetivos';
     this.selectedOption = 'equipe';
+    this.titleService.setTitle('A Equipe')
   }
 
 

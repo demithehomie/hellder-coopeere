@@ -1,4 +1,84 @@
+.title-equipe {
+  font-size: 50px;
+  margin-top: 200px;
+  margin-left: 100px;
+}
+.title-comp {
+  font-size: 50px;
+  margin-left: 100px;
+}
 
+
+.cards-image {
+  width: 150px;
+  height: 150px;
+  padding: 15px;
+  border-radius: 35px;
+}
+
+
+.cards-equipe {
+  border: 1px #fff solid;
+  box-shadow: none;
+  max-width: 352px;
+  min-width: 352px;
+  margin-left: 100px;
+  border-radius: 25px;
+}
+
+@media screen and (max-width: 700px) {
+  .title-equipe {
+    margin-left: 50px;
+  }
+
+  .title-comp {
+    margin-left: 50px; 
+  }
+
+ h5 {
+  margin-left: 50px;
+ }
+
+ .cards-equipe {
+  border: 1px #fff solid;
+  box-shadow: none;
+  max-width: 352px;
+  min-width: 352px;
+  margin-left: 50px;
+  border-radius: 25px;
+}
+
+} //
+
+@media screen and (min-width: 700px) {
+  .title-equipe {
+    margin-left: 250px;
+  }
+  .title-comp {
+    margin-left: 250px; 
+  }
+  
+ h5 {
+  margin-left: 250px;
+ }
+
+ .cards-equipe {
+  margin-left: 250px;
+ }
+
+}
+
+@media screen and (max-width: 700px) {
+  ion-grid {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+
+
+
+/////////////////////////
 .carousel {
     overflow: hidden;
     width: 100%;
