@@ -1,4 +1,43 @@
-@media screen and (max-width: 700px) {
+@media screen and (max-width:290px)  {
+    .imagem-lateral {
+        margin-top: -7800px;
+        margin-left: 10px;
+        margin-right: auto;
+        margin-bottom: auto;
+        display: flex ;
+        border-radius: 15px;
+        position: absolute;
+    }
+
+
+    h1 {
+        margin-top: 150px;
+    }
+}
+
+
+
+@media screen and (min-width:290px) and (max-width: 420px) {
+    .imagem-lateral {
+        margin-top: -7800px;
+        margin-left: 30px;
+        margin-right: auto;
+        margin-bottom: auto;
+        display: flex ;
+        border-radius: 15px;
+        position: absolute;
+    }
+
+
+    h1 {
+        margin-top: 150px;
+    }
+}
+
+
+
+
+@media screen and (max-width: 700px) and (min-width:420px) {
     .imagem-lateral {
         margin-top: -4850px;
         margin-left: 130px;
@@ -6,6 +45,7 @@
         margin-bottom: auto;
         display: flex ;
         border-radius: 15px;
+        position: absolute;
     }
 
     h1 {
@@ -14,20 +54,68 @@
     
 }
 
-@media screen and (min-width: 700px) {
+@media screen and (min-width: 700px) and (max-width: 800px) {
     .imagem-lateral {
         border-radius: 15px;
         margin-top: 30px;
-        margin-left: 450px;
+        margin-left: 310px;
         margin-right: auto;
         margin-bottom: auto;
         align-items: end;
         justify-content: end;
         display: flex;
         min-width: 70%;
+        position: absolute;
     }
     
 }
+
+@media screen and (min-width: 800px) and (max-width: 1300px) {
+    .imagem-lateral {
+        border-radius: 15px;
+        margin-top: 5px;
+        margin-left: 245px;
+        margin-right: auto;
+        margin-bottom: auto;
+        align-items: end;
+        justify-content: end;
+        display: flex;
+        min-width: 70%;
+        position: absolute;
+    }
+    
+}
+
+@media screen and (min-width: 1300px) and (max-width: 1500px) {
+    .imagem-lateral {
+        border-radius: 15px;
+        margin-top: 30px;
+        margin-left: 310px;
+        margin-right: auto;
+        margin-bottom: auto;
+        align-items: end;
+        justify-content: end;
+        display: flex;
+        min-width: 70%;
+        position: absolute;
+    }
+}
+
+@media screen and (min-width: 1500px) {
+    .imagem-lateral {
+        border-radius: 15px;
+        margin-top: 30px;
+        margin-left: 360px;
+        margin-right: auto;
+        margin-bottom: auto;
+        align-items: end;
+        justify-content: end;
+        display: flex;
+        min-width: 70%;
+        position: absolute;
+    }
+}
+
 
 ///
 

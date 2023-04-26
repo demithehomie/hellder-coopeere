@@ -1,7 +1,7 @@
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-
+import { ProdistService} from "../../../services/prodist.service"
 import { IonicModule } from '@ionic/angular';
 
 import { HomePageRoutingModule } from './home-routing.module';
@@ -20,6 +20,9 @@ import { SignupPageModule } from '../../signup/signup.module';
     HomePageRoutingModule,
     SignupPageModule
   ],
-  declarations: [HomePage, ]
+  declarations: [HomePage, ],
+  providers: [
+    ProdistService // add the service here
+  ]
 })
 export class HomePageModule {}
