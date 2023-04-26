@@ -1,9 +1,222 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>hellder-benjamin</ion-title>
-  </ion-toolbar>
-</ion-header>
+
+  
 
 <ion-content>
 
+
+  <ion-header class="header-header">  
+
+    
+
+    <div [routerLink]="['/login']">
+      <ion-icon style="color:#fff;" name="person"></ion-icon>
+      <ion-label style="color:#fff;" class="label-header" >Login</ion-label>
+    </div>
+      |
+      <div style="padding-left: 18px;" [routerLink]="['/signup']" >
+        <ion-icon style="color:#fff;" name="pencil"></ion-icon>
+        <ion-label style="color: #fff;" >Cadastro</ion-label>
+      </div>
+      
+      
+    
+    </ion-header>
+
+
+
+    <ion-header class="header hide-header">
+      
+      
+        <ion-img  [routerLink]="['/onboarding']"  style="max-width: 10%; min-width: 8%; margin-left: 200px;" src="../../../assets/images-coopeere/coopere.png"></ion-img>
+      
+    
+      
+      <ion-button fill="clear" style="color:#000; margin-left: 70px;"  [routerLink]="['/']" routerLinkActive="active-link">Home</ion-button>
+      
+      <div class="dropdown">
+        <a [routerLink]="['/onboarding']" style="color:#000;" routerLinkActive="active-link">A COOPEERE <svg class="arrowicon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18"><path fill="none" d="M0 0h24v24H0z"/><path d="M12 13.172l4.95-4.95 1.414 1.414L12 16 5.636 9.636 7.05 8.222z"/></svg></a>
+        <div class="dropdown-content">
+          <a [routerLink]="['/quemsomos']" class="dropdown-item">Quem Somos?</a>
+          <a [routerLink]="['/objetivos']" class="dropdown-item">Objetivo</a>
+          <a [routerLink]="['/equipe']" class="dropdown-item">A Equipe</a>
+        </div>
+      </div>
+    
+      <ion-button fill="clear" style="color:#000;"  [routerLink]="['/estatuto']" routerLinkActive="active-link">Estatuto</ion-button>
+      <ion-button fill="clear" style="color:#000;"  [routerLink]="['/legislacao']" routerLinkActive="active-link">Legislação</ion-button>
+      <ion-button fill="clear" style="color:#000;" [routerLink]="['/vantagens']" routerLinkActive="active-link">Vantagens</ion-button>
+      <ion-button fill="clear" style="color:#000;"  [routerLink]="['/parceiros']" routerLinkActive="active-link">Parceiros</ion-button>
+      <ion-button fill="clear" style="color:#000; margin-right: 250px;" [routerLink]="['/faleconosco']" routerLinkActive="active-link">Fale Conosco</ion-button>
+  
+    </ion-header>
+
+
+  <div class="container">
+
+  </div>
+
+  <div class="minimum-header">
+
+      
+    <ion-img class="logo-min-header" [routerLink]="['/onboarding']"  src="../../../assets/images-coopeere/coopere.png"></ion-img>
+
+   
+    
+
+    <!-- TESTANDO O MENU HAMBURGUER COM DROPDOWN -->
+<div class="menu-min-header">
+    <nav class="thenav">
+      <div class="hamburger-menu-X" (click)="toggleMenu()">
+        <div class="bar-X"></div>
+        <div class="bar-X"></div>
+        <div class="bar-X"></div>
+      </div>
+      <ul class="menu-items-X" *ngIf="showMenu">
+        <br>
+        <li><a [routerLink]="['/onboarding']" routerLinkActive="active-link">HOME</a></li>
+        <li><a href="#">A COOPEERE</a></li>
+        <li><a [routerLink]="['/estatuto']" routerLinkActive="active-link">ESTATUTO</a></li>
+        <li><a [routerLink]="['/legislacao']" routerLinkActive="active-link">LEGISLAÇÃO</a></li>
+        <li><a [routerLink]="['/vantagens']" routerLinkActive="active-link">VANTAGENS</a></li>
+        <li><a [routerLink]="['/parceiros']" routerLinkActive="active-link">PARCEIROS</a></li>
+        <li><a [routerLink]="['/faleconosco']" routerLinkActive="active-link">FALE CONOSCO</a></li>
+        
+
+        
+      </ul>
+    </nav>
+  </div>   
+
+  <!-- 
+    
+    PACK DE CLASSES EM COMUM EM TODAS AS PAGINAS
+
+    * menu-items-X
+    * minimum-header
+    * menu-min-header
+    * thenav
+    * hamburger-menu-X
+    * bar-X
+  
+  -->
+    
+    <!-- FIM DO TESTE DO MENU HAMBURRGUER COM DROPDOWN -->
+
+
+    <ion-icon name="search" class="search-min-header">Procurar</ion-icon>
+  </div>
+
+  
+
+  <ion-grid>
+    <ion-row class="grid">
+      <ion-col size="3" style="display: flex; flex-direction: row;">
+        <img class="imagem-lateral" src="https://www.coopeere.eco.br/wp-content/uploads/2020/10/20171122_155600-180x300.jpg" alt="">
+      </ion-col>
+      <ion-col size="4.5" style="display: flex; margin: auto; align-items: center; justify-content: center;">
+        <div>
+          <h1>Hellder Benjamin</h1>
+          <p>1972 – Campista há 52 anos, nascido em 26 de dezembro de 1968, dei meus primeiros passos aos quatro anos de idade no Jardim de Infância do antigo IEPAM – Instituto de Educação Prof. Aldo Muylaert.
+<br><br>
+            1977 – Terminada esta fase, ingressei-me na própria escola onde conclui os ensinos na época, Primário e Ginásio, hoje, Fundamental e Médio.
+            <br><br>        
+            1985 – Aos 16 anos, ingressei-me no SENAI, Serviço de Ensino Nacional de Aprendizagem Industrial de Campos dos Goytacazes o Curso de Torneiro Mecânico nos Turnos de Manhã e Tarde. Na Mesma época, no turno da noite, Ingressei-me na Antiga ETFC – Escola Técnica Federal de Campos o curso Técnico de Mecânica Industrial.
+            <br><br>
+            1987 a 1989 – Terminada esta fase de aprendizado procurei meu primeiro emprego, onde consegui estágio na Antiga Fundição Goytacaz, Juarez Peixoto LTDA e Fundição Rocha na cidade de Campos dos Goytacazes.
+            <br><br>
+            1990 – Fui trabalhar em Macaé na tentativa de buscar melhores salários, mas um desejo de garoto me fez seguir em frente em mais um curso profissionalizante:
+            <br><br>
+            1991 – O curso de Mergulho Profissional no CIAMA – Centro Hiperbárico, Almirante Átila Monteiro Aché na Ilha de Mocanguê Niterói. Lá, fiz todos os cursos que pude fazer de Mergulho, Mergulho Autônomo, Mergulho Dependente, Corte e Solda Submarina e Demolição Submarina, este último, com o uso de explosivos.
+            <br><br>
+            1992 – Consegui meu primeiro emprego na área técnica, mas como técnico mecânico em uma empresa de Mergulho, chamada Tecnosub. No mesmo ano, mas em dezembro de 1992,  tive a minha primeira oportunidade de trabalho como Mergulhador Raso para uma empreiteira da Petrobrás.
+            <br><br>
+            1993 – Continuei buscando trabalhos técnicos, pois o salário era sempre melhor. Os cursos de mergulho atrelados aos cursos profissionalizantes eram um diferencial que ajudavam muito conseguir as vagas. Neste mesmo ano, tive a oportunidade de trabalhar como mergulhador Raso (até 50 metros) para a Empresa Stena Marítima onde após um ano e meio trabalhando como mergulhador Raso fui transferido para trabalhar em um navio de mergulho profundo chamado Stena Marianos onde exerci a função de Técnico de Equipamentos de Mergulho e eventualmente como Chamber Man ou ´´Homem de Câmara“ onde exercia a função de apoio aos mergulhadores saturados nas Câmaras de Descompressão. O Chamber man, apelidado de Chambinho, tinha a função de atender todo e qualquer pedido que os mergulhadores saturados fizessem quando dentro das câmaras de descompressão, sejam todas as refeições diárias, roupas limpas, bombeamento de água quente e fria para banho ou qualquer outro pedido que fizessem.
+            <br><br>
+            1995 – O contrato deste navio caminhava para o fim e sem possibilidades de renovação. Então, conhecendo todos os setores do navio, pedi transferência para o setor de robótica Submarina onde no Ano de 1995 ingressei-me na Função de Operador de ROV onde pilotava estes ROV – Veículos Operados Remotamente ou veículos submarinos como também são chamados. Minha função era pilotar e prestar manutenção corretiva e preventiva nestes ROVs. Estes veículos submarinos, tínhamos dois neste navio, tinham a função de dar suporte às operações de mergulho profundo onde as profundidades variavam entre 100 metros a 320 metros de profundidade. A Empresa Stena Marítima tinha outros navios e também outros ROVs espalhados por algumas plataformas onde adquiri uma boa experiência nesta área offshore.
+            <br><br>
+            1998 – Aos 30 anos, nas minhas folgas, tentei fundar uma associação de moradores no Bairro do Turf Club em Campos dos Goytacazes onde morava. Tentei criar o jornal de bairro com dois jornalistas responsáveis para redigir o jornal. Assumi um aluguel que seria a nossa sede dando um início as nossas propostas, mas políticos moradores no mesmo bairro fizeram campanha contra, colocando suas equipes de gabinete contra a nossa chapa. No dia da eleição, colocaram carros para transporte de eleitores e de som fazendo todo tipo de promessas. Tivemos 603 votos contra 738 votos da chapa do vereador da época pelo sexto ano de mandato. Foi uma experiência diferente de tudo que vivi, onde o povo passa ser vítima vendendo suas próprias necessidades e o político oportunista e aproveitador regozijando a necessidade do eleitor!
+            <br><br>
+            1999 – Tornei-me membro da Câmara Júnior de Campos, hoje denominada JCI – Junior Chamber International, uma organização não governamental de jovens entre 18 e 40 anos. Possui membros em cerca de 124 países e organizações regionais ou nacionais na maioria deles. Esta escola de líderes deu-me uma grande visão de como o cidadão pode ser mais próspero quando a fraternidade for uma de suas virtudes, quando servir for mais importante do que receber e quanto mais unido e organizado mais próspero seremos. Não há como ficar de braços cruzados depois de dois ou três anos de ensinamentos em uma organização como esta. Muitas saudades!
+            <br><br>
+            2000 – Em agosto de 2000, ingressei-me como supervisor de ROV na empresa Oceannering, obtendo a oportunidade de conhecer a base da empresa em Morgan City nos Estados Unidos, exatamente quatro dias após o ´´onze de setembro de 2001“ com a derrubada das 2 Torres gêmeas em Nova York. Conhecer outras culturas, gestores e ver de perto como países arrojados economicamente falando lidavam com crises econômicas e situações diversas, me deram uma visão de desenvolvimento técnico e econômico satisfatória, infelizmente numa época ruim que assombrava este país nesta época após estes ataques.
+            <br><br>
+            2006 – Em julho de 2006, fui convidado a trabalhar no exterior, a convite de um antigo gerente canadense que morava na Escócia. Não pensei duas vezes, movido pelo entusiasmo e pela juventude, pois nesta época eu contava apenas 36 anos de idade e conhecer outras empresas de Robótica Submarina em diversos países e culturas me fez muito bem. Foi uma experiência profissional que me trouxe bons frutos e uma visão profissional que atreladas ao desenvolvimento Técnico e Econômico nestes países, não deixaram dúvidas que a melhor forma de crescimento profissional está diretamente ligada aos trabalhos técnicos e de engenharia que participamos, e o desenvolvimento de um país está diretamente ligado ao seu interesse de investir em tecnologias explorando o potencial de suas riquezas internas industrializando matéria prima gerando o emprego que seu povo precisa. Então fui prestando assistência a uma agência escocesa, trabalhando como Técnico/Piloto/Técnico Sênior de ROV em embarcações de construção nos mais grandiosos projetos para SHELL, PETROBRAS, STATOIL, PETRONAS, TOTAL, PHILIPS CONOCO, GAZ FLOT e outras empresas.
+            <br><br>
+            2011 – Um dos trabalhos que mais gostei, a bordo do DSV Constructor na Inglaterra ajudando no projeto de um Parque Eólico offshore que abriu a minha mente e me mostrou como uma tecnologia alternativa poderia gerar emprego e manter os profissionais offshore trabalhando.
+            <br><br>
+            2012 – Mas o desejo de conhecer mais e mais outras culturas e países, me fez esquecer um pouco as agências escocesas e aceitar outros convites. Entre 2012 e 2015, tive a oportunidade de trabalhos na Rússia e Nigéria, ambos em navios de construção e Plataformas de Perfuração.
+            <br><br>
+            2015 – Mas nem tudo foi assim tão perfeito, senti na pele duas grandes crises mundiais, a ´´Crise do Capital“ que me atingiu em dezembro de 2009 e deixou todos os maiores bancos do mundo quebrados impedindo as petrolíferas de exercerem as suas funções como petrolíferas e a ´´Crise do Preço Baixo do Petróleo“ que me atingiu em julho de 2015, provocadas pela disputa árabe e americana cada um com o seu petróleo mais barato, o árabe com seu melhor petróleo mais leve e mais cobiçado pelos países importadores de Petróleo, explorado na flor do deserto a custos muito menores que o offshore, e o petróleo americano, que através de uma nova técnica de exploração, usando um solvente capaz de dissolver o residual de petróleo de poços considerados improdutivos, porém com uma nova técnica de dissolver este residual, tornou todos seus poços produtivos novamente, tornando os Estados Unidos da América, de importador, para exportador de petróleo e derivados. Hoje o Brasil se tornou um dos seus grandes maiores clientes, onde vendemos nosso petróleo cru para comprar diesel refinado dos americanos. Parabéns ao nosso governo que está gerando desemprego aqui para gerar emprego americano. Posso dizer que eu sou também um dos desempregados no Brasil, pois nunca vi em 52 anos este potencial petrolífero brasileiro ser tão mal explorado ao nosso favor gerando desemprego e chefes de famílias impossibilitados de viverem dignamente.
+            <br><br>
+            2016 – Ainda desempregado, mas com alguma visão de desenvolvimento econômico adquirida em 2011, a bordo do navio DSV Constructor na Inglaterra, tive a oportunidade de trabalhar em um projeto Wind Farm. que me inspirou no projeto de minha autoria chamado ´´Wind Farm & Indústria Eólica“ que apresento aos senhores. Em 2016, iniciei as pesquisas sobre como desenvolver uma região com base em novas tecnologias e logo me foi apresentado o Coordenador de um grupo de pesquisa chamado GPIDMR UENF/UNIFLU & CNPq – Grupo de Pesquisa Interinstitucional de Desenvolvimento Municipal e Regional, cujo nosso coordenador e Orientador do grupo é o nosso Diretor Científico, Dr. Auner Pereira Carneiro que vem desde 2016 orientando e lapidando as linhas deste projeto que esperamos colocar em prática em toda região Sudeste. A partir daí, o projeto ganhou força e apoio onde foi aprovado no XII Seminário de Avaliação de Projetos de Pesquisa e Extensão realizado na UNIFLU no XII Encontro de Culminância do Programa de Iniciação Científica 2017 realizado também na Universidade Fluminense UNIFLU Campos dos Goytacazes RJ, II Congresso Latino Americano de Direito Realizado na UNIG Itaperuna,  V CONEPE 2018 e VII CONEPE 2020,  Congresso de Ensino, Pesquisa e Extensão, realizado no IFF, Campos dos Goytacazes RJ. A visão principal do projeto, do grupo de pesquisa e da sociedade que se organiza é: De nada vale a tecnologia se a sociedade não tiver acesso. Por isso o projeto busca descobrir e viabilizar os caminhos para que a Sociedade Organizada tenha acesso ao uso destas tecnologias de forma econômica, abundante, e o caminho que encontramos de forma a dar acesso à sociedade em geral é através do incentivo as cooperativas, e por esta razão constituímos no dia 08/07/2020 a COOPEERE – Cooperativa dos Produtores de Energia Eólica Regional e nossa meta cooperativista é a organização, união com inclusão social para que toda a sociedade tenha acesso à energia e os frutos que a união entre as pessoas podem nos ofertar.
+            <br><br>
+            2017 – Com o apoio do grupo de pesquisa GPIDMR UENF/UNIFLU & CNPq – Grupo de Pesquisa Interinstitucional de Desenvolvimento Municipal e Regional, o Projeto Wind Farm & Indústria Eólica foi aprovado no XII Seminário de Avaliação de Projetos de Pesquisa e Extensão, na UNIFLU no XII Encontro de Culminância do Programa de Iniciação Científica 2017, realizado também na Universidade Fluminense UNIFLU Campos dos Goytacazes RJ, II Congresso Latino Americano de Direito Realizado na UNIG Itaperuna.
+            <br><br>
+            2018 – Nosso projeto foi aprovado no V CONEPE 2018 – Congresso de Ensino, Pesquisa e Extensão, realizado no IFF, Campos dos Goytacazes RJ.
+            <br><br>
+            2019 – Como nos anos anteriores, atualizamos nossas pesquisas a fim de buscar  informações junto as Instituições envolvidas onde protocolamos pedidos de informação junto ao BNDES, ANEEL, ENEL, MME, EPE – Empresa de Pesquisa Energética, ANP, PETROBRAS, Laboratório de meteorologia da COPPE – UFRJ, Laboratório de Meteorologia LAMET UENF – Macaé RJ, ABEEOLICA, OCB – Organização das Cooperativas do Brasil RJ e Brasília afim de não perdermos contato, como também nos atualizarmos sobre as linhas de crédito específicas para Construção de um parque eólico, as devidas resoluções que permitiriam essa construção, buscamos nos laboratórios de meteorologia por áreas com boa intensidade e regularidade de vento e engenheiros meteorológicos que assinem essas áreas, e junto às universidades de Direito, a devida comprovação e interpretação no Artigo 2, Parágrafo VII da Resolução 687 que explica que uma cooperativa poderá produzir sua própria energia para consumo sem fins lucrativos. O Projeto também foi apresentado a algumas Instituições como Sindicatos, Associações Comerciais, Prefeituras, Secretarias de Desenvolvimento Social e Econômico.
+            <br><br>
+            2020 – Constituímos a COOPEERE, Cooperativa dos Produtores de Energia Eólica Regional no dia 8 de julho de 2020 e também fomos aprovados no VII CONEPE 2020,  Congresso de Ensino, Pesquisa e Extensão, realizado no IFF, Campos dos Goytacazes RJ.
+            <br><br>
+            2021 – Nossa meta é alcançar o interesse cooperativista que existe na maioria das pessoas, pessoas que entendam que através da união poderemos ir mais longe e com isso convida-las a serem mais uma força neste grupo que começa com apenas 30 fundadores e cooperados descritos nesta seção ´´A Equipe. “</p>
+        </div>
+
+        
+
+      </ion-col>
+    
+    </ion-row>
+  </ion-grid>
+  <ion-button style="display: flex; margin: auto;" routerLink="/equipe" fill="clear">Voltar</ion-button>
 </ion-content>
+
+
+
+<ion-footer class="footer"> 
+
+    
+    
+  <section class="p-menu1">
+    <nav id="navbar" class="navigation" role="navigation">
+      <input id="toggle1" type="checkbox" />
+      <label class="hamburger1" for="toggle1">
+        <div class="top"></div>
+        <div class="meat"></div>
+        <div class="bottom"></div>
+      </label>
+
+      <nav class="menu1" >
+        <ion-label style="padding-left: 20px;" [routerLink]="['/eventos']">EVENTOS</ion-label>
+        <ion-label style="padding-left: 20px;" [routerLink]="['/publicacoes']">PUBLICAÇÕES</ion-label>
+        <ion-label style="padding-left: 20px;" [routerLink]="['/agenda']">AGENDA</ion-label>
+        <ion-label style="padding-left: 20px;" [routerLink]="['/galeria']" >GALERIA DE FOTOS</ion-label>
+        <ion-label style="padding-left: 20px;" [routerLink]="['/faleconosco']">FALE CONSOCO</ion-label>
+      </nav>
+  </nav>
+
+  
+
+  </section>
+  
+    <div class="menu-footer">
+      <ion-label [routerLink]="['/eventos']">EVENTOS</ion-label>
+      <ion-label [routerLink]="['/publicacoes']">PUBLICAÇÕES</ion-label>
+      <ion-label [routerLink]="['/agenda']">AGENDA</ion-label>
+      <ion-label [routerLink]="['/galeria']" >GALERIA DE FOTOS</ion-label>
+      <ion-label [routerLink]="['/faleconosco']">FALE CONSOCO</ion-label>
+    </div>
+  
+    <div class="social-media-icons">
+
+      <!-- ROUTER LINKS NÃO FUNCIONAM COM LINKS DE VERDADE  -->
+      
+      <!-- MAS DEU PRA RESOLVER USANDO UMA FUNÇÃO COM TYPESCRIPT -->
+            
+            <ion-label (click)="openExternalLinkFacebook()">  <ion-img class="new-social-icons" src="../../../assets/images-coopeere/facebook.png"></ion-img>  </ion-label>
+            <ion-label (click)="openExternalLinkInstagram()"> <ion-img class="new-social-icons" src="../../../assets/images-coopeere/instagram.png"></ion-img> </ion-label>
+            <ion-label (click)="openExternalLinkYouTube()"> <ion-img class="new-social-icons" src="../../../assets/images-coopeere/youtube.png"></ion-img> </ion-label>
+          </div>
+          
+    
+    
+  </ion-footer>
