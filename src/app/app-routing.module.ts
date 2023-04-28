@@ -257,6 +257,10 @@ const routes: Routes = [
   {
     path: 'successpage',
     loadChildren: () => import('./pages/2fa/successpage/successpage.module').then( m => m.SuccesspagePageModule)
+  },
+  {
+    path: 'rosangela-paulo',
+    loadChildren: () => import('./pages/integrantes/rosangela-paulo/rosangela-paulo.module').then( m => m.RosangelaPauloPageModule)
   }
 
 

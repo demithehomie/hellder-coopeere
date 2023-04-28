@@ -1,9 +1,320 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>samil-alberto</ion-title>
-  </ion-toolbar>
-</ion-header>
+
+  
 
 <ion-content>
 
+
+  <ion-header class="header-header">  
+
+    
+
+    <div [routerLink]="['/login']">
+      <ion-icon style="color:#fff;" name="person"></ion-icon>
+      <ion-label style="color:#fff;" class="label-header" >Login</ion-label>
+    </div>
+      |
+      <div style="padding-left: 18px;" [routerLink]="['/signup']" >
+        <ion-icon style="color:#fff;" name="pencil"></ion-icon>
+        <ion-label style="color: #fff;" >Cadastro</ion-label>
+      </div>
+      
+      
+    
+    </ion-header>
+
+
+
+    <ion-header class="header hide-header">
+      
+      
+        <ion-img  [routerLink]="['/onboarding']"  style="max-width: 10%; min-width: 8%; margin-left: 200px;" src="../../../assets/images-coopeere/coopere.png"></ion-img>
+      
+    
+      
+      <ion-button fill="clear" style="color:#000; margin-left: 70px;"  [routerLink]="['/']" routerLinkActive="active-link">Home</ion-button>
+      
+      <div class="dropdown">
+        <a [routerLink]="['/onboarding']" style="color:#000;" routerLinkActive="active-link">A COOPEERE <svg class="arrowicon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18"><path fill="none" d="M0 0h24v24H0z"/><path d="M12 13.172l4.95-4.95 1.414 1.414L12 16 5.636 9.636 7.05 8.222z"/></svg></a>
+        <div class="dropdown-content">
+          <a [routerLink]="['/quemsomos']" class="dropdown-item">Quem Somos?</a>
+          <a [routerLink]="['/objetivos']" class="dropdown-item">Objetivo</a>
+          <a [routerLink]="['/equipe']" class="dropdown-item">A Equipe</a>
+        </div>
+      </div>
+    
+      <ion-button fill="clear" style="color:#000;"  [routerLink]="['/estatuto']" routerLinkActive="active-link">Estatuto</ion-button>
+      <ion-button fill="clear" style="color:#000;"  [routerLink]="['/legislacao']" routerLinkActive="active-link">Legislação</ion-button>
+      <ion-button fill="clear" style="color:#000;" [routerLink]="['/vantagens']" routerLinkActive="active-link">Vantagens</ion-button>
+      <ion-button fill="clear" style="color:#000;"  [routerLink]="['/parceiros']" routerLinkActive="active-link">Parceiros</ion-button>
+      <ion-button fill="clear" style="color:#000; margin-right: 250px;" [routerLink]="['/faleconosco']" routerLinkActive="active-link">Fale Conosco</ion-button>
+  
+    </ion-header>
+
+
+  <div class="container">
+
+  </div>
+
+  <div class="minimum-header">
+
+      
+    <ion-img class="logo-min-header" [routerLink]="['/onboarding']"  src="../../../assets/images-coopeere/coopere.png"></ion-img>
+
+   
+    
+
+    <!-- TESTANDO O MENU HAMBURGUER COM DROPDOWN -->
+<div class="menu-min-header">
+    <nav class="thenav">
+      <div class="hamburger-menu-X" (click)="toggleMenu()">
+        <div class="bar-X"></div>
+        <div class="bar-X"></div>
+        <div class="bar-X"></div>
+      </div>
+      <ul class="menu-items-X" *ngIf="showMenu">
+        <br>
+        <li><a [routerLink]="['/onboarding']" routerLinkActive="active-link">HOME</a></li>
+        <li><a href="#">A COOPEERE</a></li>
+        <li><a [routerLink]="['/estatuto']" routerLinkActive="active-link">ESTATUTO</a></li>
+        <li><a [routerLink]="['/legislacao']" routerLinkActive="active-link">LEGISLAÇÃO</a></li>
+        <li><a [routerLink]="['/vantagens']" routerLinkActive="active-link">VANTAGENS</a></li>
+        <li><a [routerLink]="['/parceiros']" routerLinkActive="active-link">PARCEIROS</a></li>
+        <li><a [routerLink]="['/faleconosco']" routerLinkActive="active-link">FALE CONOSCO</a></li>
+        
+
+        
+      </ul>
+    </nav>
+  </div>   
+
+  <!-- 
+    
+    PACK DE CLASSES EM COMUM EM TODAS AS PAGINAS
+
+    * menu-items-X
+    * minimum-header
+    * menu-min-header
+    * thenav
+    * hamburger-menu-X
+    * bar-X
+  
+  -->
+    
+    <!-- FIM DO TESTE DO MENU HAMBURRGUER COM DROPDOWN -->
+
+
+    <ion-icon name="search" class="search-min-header">Procurar</ion-icon>
+  </div>
+
+  
+
+  <ion-grid>
+    <ion-row class="grid">
+      <ion-col size="3" style="display: flex; flex-direction: row;">
+        <img class="imagem-lateral" src="https://www.coopeere.eco.br/wp-content/uploads/2021/01/samil-282x300.jpg" alt="">
+      </ion-col>
+      <ion-col size="4.5" style="display: flex; margin: auto; align-items: center; justify-content: center;">
+        <div>
+          <h1>Samil Alberto Moret Cueche</h1>
+          <h6>Diretor Ambiental - Engenheiro Ambiental</h6>
+          <p>Objetivos
+<br><br>
+            Meio Ambiente, Segurança do Trabalho, Higiene Ocupacional; Logística; Controle de Qualidade; Suporte ao Cliente; Documentação.
+            <br><br>    
+            Resumo Profissional
+            <br><br>
+            14 anos de experiência na área de segurança, higiene ocupacional e meio ambiente na área montadora de veículos nas seguintes tarefas:
+            <br><br>
+            Pedido de registro e autorização de operação perante órgãos competentes.
+            Escopo e justificativa para a contratação de serviços nas áreas de segurançae higiene ocupacional e meio ambiente.
+            Recrutamento de serviços pelas principais empresas contratadas de manutenção para a fábrica de montagem de veículos.
+            Plano e despesas de investimentos y contingências nas áreas de segurança do trabalho, higiene, meio ambiente.
+            Faça palestras sobre o assunto de meio ambiente, higiene e segurança do trabalho.
+            Auditorias de áreas para tramitação de autorizações de trabalho.
+            Inspeções periódicas nas instalações da planta, elaboração de relatórios, mensais, trimestrais, semestrais.
+            Inspeção de áreas de trabalho, equipamentos de combate a incêndio, autorizações de trabalho.
+            Apoio em primeiros socorros e transferência de pacientes e feridos para centros hospitalares.
+            Coordenação y execução de operações de recolha y disposição final de sucata, papel, madeira
+            <br><br>
+            9 anos de experiência em serviços integrais, executando as seguintes atividades:
+            <br><br>
+            Solicitação de cotação e compra com fornecedores de materiais para a unidade de produção.
+            Organização de documentação para habilitação e solvência junto às instituições estaduais.
+            Elaboração de ofertas técnicas e econômicas para licitações.
+            Elaboração de avaliações, relatórios de execução de trabalhos, notas de entrega, fatura de formulários profissionais e cobrança.
+            <br><br>
+            Formação
+            <br><br>
+            Escolaridade: Formação superior completa
+            <br><br>
+            Graduação
+            <br><br>
+            Engenharia do Meio Ambiente e Recursos Naturais
+            <br><br>
+            Universidad Gran Mariscal de Ayacucho. Venezuela- (novembro de 2009). Concluído
+            <br><br>
+            Técnico Superior Universitário em Controle de Qualidade
+            <br><br>
+            Instituto Universitário de Tecnologia “Juan Pablo Pérez Alfonso” (IUTEPAL)
+            <br><br>
+            Venezuela – (Novembro de 1998) – Concluído.
+            <br><br>
+            Cursos Complementares
+            <br><br>
+            Português Fluente, FLUENTI (outubro de 2020) – Cursando on-line.
+            <br><br>
+            Excel Completo, Udemy (agosto de 2020) – Cursando on-line.
+            <br><br>
+            Emissões Atmosféricas: Fundamentos e Efeitos. SENAC – Brasil (agosto 2020) – Cursando on-line.
+            <br><br>
+            Avaliação dos Riscos Ergonómicos e Acidentes de Trabalho. SENAC- Brasil (julho 2020) – Concluído.
+            <br><br>
+            Segurança do Trabalho- Riscos Ambientais no Ambiente de Trabalho. SENAC –Brasil (julho 2020) –Concluído.
+            <br><br>
+            Processos Logísticos. SENAC – Brasil (julho) – Concluído.
+            <br><br>
+            Transporte e Movimentação de Cargas: Modais, Ferramentas, Princípios e Documentação.
+            <br><br>
+            SENAC Brasil – (Julho 2020) – Concluído.
+            <br><br>
+            Operações Logísticas nas Organizações. SENAC – Brasil (julho) – Concluído.
+            <br><br>
+            Fundamentos de Logística, SENAI – Brasil (maio de 2020) – Concluído.
+            <br><br>
+            Diagnóstico Ambiental – Ferramentas e Métodos de Realização SENAI – Brasil (maio de 2020) – Concluído.
+            <br><br>
+            Segurança do Trabalho SENAI – Brasil (maio de 2020) – Concluído.
+            <br><br>
+            Educação Ambiental SENAI – Brasil (maio de 2020) – Concluído.
+            <br><br>
+            Gestão da Tecnologia da Informação CATHO – Brasil (abril de 2020) – Concluído.
+            <br><br>
+            Logística, CATHO – Brasil (março de 2020) – Concluído.
+            <br><br>
+            Atuação Intersetorial em Desastres Universidade Federal Fluminense (novembro de 2019) – Concluído.
+            <br><br>
+            Ações Educativas Redução de Riscos e Desastres.
+            <br><br>
+            Universidade Federal Fluminense (UFF) (novembro de 2019) – Concluído.
+            <br><br>
+            Seminário de Riscos e Desastres Socioambientais, Abordagens Interdisciplinares.
+            <br><br>
+            Universidade Federal Fluminense (UFF) (novembro de 2019) – Concluído.
+            <br><br>
+            Guias de Prevenção e Despejo de Incêndios IKARO 2006 – Venezuela (dezembro de 2010) – Concluído.
+            <br><br>
+            Investigação de Acidentes de Trabalho CASAAT – Venezuela (outubro de 2009) – Concluído.
+            <br><br>
+            Metodologia de Diagnóstico em Produção Mais Limpa FONDOIN – Venezuela (novembro de 2008) – Concluído.
+            <br><br>
+            Treinamento de Guia de Despejo CASAAT – Venezuela (outubro de 2008) – Concluído.
+            <br><br>
+            Programa de Desenvolvimento e Integração de Competências para Líderes. FUNDAMETAL – Venezuela (agosto de 2008) – Concluído.
+            <br><br>
+            Estrutura e Análise das Normas Integradas ISO 14001: 2004 e OSHAS 18001: 2007.
+            <br><br>
+            Bureau Veritas – Venezuela (março de 2008) – Concluído.
+            <br><br>
+            Higiene Postural e Distribuição de Carga MMC Automotriz, S.A – Venezuela (outubro de 2007) – Concluído.
+            <br><br>
+            Analise de Riscos MMC Automotriz, S.A – Venezuela (agosto de 2007) – Concluído.
+            <br><br>
+            Gestão de Sustâncias Perigosas CEPROCA, C.A. – Venezuela (julho de 2007) – Concluído.
+            <br><br>
+            Seminário de Engenharia e Tecnologia Ambiental.
+            <br><br>
+            Universidade Central de Venezuela (U.C.V) (abril de 2007) – Concluído.
+            <br><br>
+            Técnicas de Investigação de Acidentes e Incidentes, FUNDAMETAL–Venezuela (fevereiro de 2007) – Concluído.
+            <br><br>
+            Treinamento de Facilitador FUNDAMETAL – Venezuela (janeiro de 2007) – Concluído.
+            <br><br>
+            Métodos para Avaliação Biomecânica de Empregos MMC Automotriz, S.A – Venezuela (julho de 2006) – Concluído.
+            <br><br>
+            Proteção Respiratória 3M – Venezuela (agosto de 2005) – Concluído.
+            <br><br>
+            Habilidades de Supervisão Universidade Metropolitana – Venezuela (julho de 2005) – Concluído.
+            <br><br>
+            Autorização de Trabalho em Espaços Confinados.
+            <br><br>
+            MMC, Automotriz C.A.-Venezuela (junho de 2005) – Concluído.
+            <br><br>
+            Criatividade e Inovação SAIC – Venezuela (fevereiro de 2005) – Concluído.
+            <br><br>
+            Primeiros Socorros INCES- Venezuela (março de 2004) – Concluído.
+            <br><br>
+            Manuseio, Armazenamento, Transporte de Materiais Perigosos.
+            <br><br>
+            Arquimica Assessores, C.A – Venezuela (fevereiro de 2004) – Concluído.
+            <br><br>
+            Supervisor Seguro, ASHA – Venezuela (novembro de 2003) – Concluído.
+            <br><br>
+            Prevenção, Higiene e Segurança, Industrial, Assessoramento Gerencial – Venezuela (Maio de 2002) – Concluído.
+            <br><br>
+            Técnicas de Supervisão, CASHI C.A. – Venezuela (abril de 2001) – Concluído.
+            <br><br>
+            Qualidade Total e ISO 9000 Universidade de Oriente – Venezuela (novembro 1997).
+            <br><br>
+            Histórico profissional
+            <br><br>
+            Servicios Integrales MOCA, C.A.
+            <br><br>
+            Supervisor de Operações – Agosto/2010 até Agosto/2019
+            <br><br>
+            Preparação e coleta de coleções para solicitação de:
+            <br><br>
+            Solicitação de cotações e compra de fornecedores para fornecimento de materiais da unidade de produção.
+            <br><br>
+            Elaboração da documentação e apresentação exigidas para a qualificação e solvência das empresas do grupo perante o Registro Nacional de Contratação (RNC), Cadastro de Empresas de Produção Social (REPS) da PDVSA, Ministério do Poder Popular, o Processo de Trabalho Social ( MPPPT), Instituto Nacional de Formação e Educação Social (INCES), Instituto Venezuelano de Previdência Social (IVSS), Fundo de Poupança Obrigatória (FAOV) e outras entidades do estado (prefeitura, bombeiros, saúde, meio ambiente).
+            <br><br>
+            Elaboração e estimativa de custo de ofertas técnicas e revisão de ofertas econômicas para licitações.
+            <br><br>
+            Elaboração e apresentação de avaliações, relatórios de execução de obra, notas de entrega, proformas e faturamento.
+            <br><br>
+            Processamento de apólices de seguro geral, responsabilidade do empregador e do veículo, conformidade fiel e obrigações y trabalhistas antes das companhias de seguro. Supervisão e acompanhamento da execução do trabalho.
+            <br><br>
+            Supervisão de pessoal. Apresentação do relatório mensal de gestão à presidência.
+            <br><br>
+            MMC AUTOMOTRÍZ S.A. (Montador de veículos Mitsubishi e Hyundai)
+            <br><br>
+            Supervisor Ambiental – Agosto/1996 até Julho/2010
+            <br><br>
+            Registo de atividades suscetíveis para degradar o ambiente (RASDA). Renovação da autorização operacional perante o ministério para o meio ambiente (MPPA).
+            <br><br>
+            Autorização de conformidade sanitária perante o ministério para a Saúde.
+            <br><br>
+            Autorização de substâncias controladas perante o Corpo de Investigações Científicas, Penalidades y criminais (CICPC). Diagnóstico situacional em gestão ambiental ante de empresa de consultoria.
+            <br><br>
+            Escopo e justificativa para contratação de serviços na área de meio ambiente, segurança e higiene.
+            <br><br>
+            Serviços de teste de risco de resíduos perigosos para laboratórios autorizados, a fim de fornecer a disposição final adequada.
+            <br><br>
+            Disposição final de mais de 15.000 tambores de resíduos perigosos em 4 anos por empresas especializadas autorizadas pelo ministério para o meio ambiente (MPPA) – Venezuela em conformidade com o decreto de regulamento para o controle de recuperação de materiais perigosos e gerenciamento de resíduos perigosos.
+            <br><br>
+            Recrutamento e realização de serviços pelas principais empresas contratadas de manutenção de cabines de pintura, estação de tratamento e galpão de resíduos perigosos.
+            <br><br>
+            Serviço de caracterização de emissões atmosféricas para cumprimento sobre qualidade do ar e controle da poluição atmosférica.
+            <br><br>
+            Serviço de caracterização de efluentes líquidos e engenharia sanitária, para atendimento às normas para classificação e controle de qualidade de corpos de água e derrames ou efluentes líquidos.
+            <br><br>
+            Atendimento de caracterização de água potável para atendimento às normas sanitárias para qualidade da água potável.
+            <br><br>
+            Plano e despesas de investimento, gestão e contingência ambiental. Monitorar e avaliar orçamentos.
+            <br><br>
+            Faça palestras sobre o assunto de meio ambiente, higiene e segurança industrial. Auditorias de áreas para tramitação de permissões de trabalho. Inspeções periódicas nas instalações da planta, elaboração de relatórios, mensais, trimestrais, semestrais. Coordenação y execução de Operações de recolha de sucata de metal, cartão, madeira.
+            <br><br>
+            Inspeção de áreas de trabalho, equipamentos de combate a incêndio, autorizações de trabalho.
+            <br><br>
+            Apoio em primeiros socorros e transferência de pacientes e feridos para centros hospitalares.</p>
+        </div>
+
+        
+
+      </ion-col>
+    
+    </ion-row>
+  </ion-grid>
+  <ion-button style="display: flex; margin: auto;" routerLink="/equipe" fill="clear">Voltar</ion-button>
 </ion-content>
+
+

@@ -185,13 +185,13 @@ export class HomePage implements OnInit {
 
   subs: Subs = {
     customer: '',
-    billingType: '',
+    billingType: '',  //subs.billingType
     nextDueDate: '',
     value: 0,
     cycle: '',
     description: '',
     discount: {
-      value: 10.00,
+      value: 0.00,
         dueDateLimitDays: 0
     },
     fine: {
@@ -211,7 +211,7 @@ export class HomePage implements OnInit {
     postalService: false,
     externalReference: '',
     discount: {
-      value: 10.00,
+      value: 0.00,
         dueDateLimitDays: 0
     },
     fine: {

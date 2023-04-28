@@ -1,9 +1,214 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>pryscilla-ferreira</ion-title>
-  </ion-toolbar>
-</ion-header>
+
+  
 
 <ion-content>
 
+
+  <ion-header class="header-header">  
+
+    
+
+    <div [routerLink]="['/login']">
+      <ion-icon style="color:#fff;" name="person"></ion-icon>
+      <ion-label style="color:#fff;" class="label-header" >Login</ion-label>
+    </div>
+      |
+      <div style="padding-left: 18px;" [routerLink]="['/signup']" >
+        <ion-icon style="color:#fff;" name="pencil"></ion-icon>
+        <ion-label style="color: #fff;" >Cadastro</ion-label>
+      </div>
+      
+      
+    
+    </ion-header>
+
+
+
+    <ion-header class="header hide-header">
+      
+      
+        <ion-img  [routerLink]="['/onboarding']"  style="max-width: 10%; min-width: 8%; margin-left: 200px;" src="../../../assets/images-coopeere/coopere.png"></ion-img>
+      
+    
+      
+      <ion-button fill="clear" style="color:#000; margin-left: 70px;"  [routerLink]="['/']" routerLinkActive="active-link">Home</ion-button>
+      
+      <div class="dropdown">
+        <a [routerLink]="['/onboarding']" style="color:#000;" routerLinkActive="active-link">A COOPEERE <svg class="arrowicon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18"><path fill="none" d="M0 0h24v24H0z"/><path d="M12 13.172l4.95-4.95 1.414 1.414L12 16 5.636 9.636 7.05 8.222z"/></svg></a>
+        <div class="dropdown-content">
+          <a [routerLink]="['/quemsomos']" class="dropdown-item">Quem Somos?</a>
+          <a [routerLink]="['/objetivos']" class="dropdown-item">Objetivo</a>
+          <a [routerLink]="['/equipe']" class="dropdown-item">A Equipe</a>
+        </div>
+      </div>
+    
+      <ion-button fill="clear" style="color:#000;"  [routerLink]="['/estatuto']" routerLinkActive="active-link">Estatuto</ion-button>
+      <ion-button fill="clear" style="color:#000;"  [routerLink]="['/legislacao']" routerLinkActive="active-link">Legislação</ion-button>
+      <ion-button fill="clear" style="color:#000;" [routerLink]="['/vantagens']" routerLinkActive="active-link">Vantagens</ion-button>
+      <ion-button fill="clear" style="color:#000;"  [routerLink]="['/parceiros']" routerLinkActive="active-link">Parceiros</ion-button>
+      <ion-button fill="clear" style="color:#000; margin-right: 250px;" [routerLink]="['/faleconosco']" routerLinkActive="active-link">Fale Conosco</ion-button>
+  
+    </ion-header>
+
+
+  <div class="container">
+
+  </div>
+
+  <div class="minimum-header">
+
+      
+    <ion-img class="logo-min-header" [routerLink]="['/onboarding']"  src="../../../assets/images-coopeere/coopere.png"></ion-img>
+
+   
+    
+
+    <!-- TESTANDO O MENU HAMBURGUER COM DROPDOWN -->
+<div class="menu-min-header">
+    <nav class="thenav">
+      <div class="hamburger-menu-X" (click)="toggleMenu()">
+        <div class="bar-X"></div>
+        <div class="bar-X"></div>
+        <div class="bar-X"></div>
+      </div>
+      <ul class="menu-items-X" *ngIf="showMenu">
+        <br>
+        <li><a [routerLink]="['/onboarding']" routerLinkActive="active-link">HOME</a></li>
+        <li><a href="#">A COOPEERE</a></li>
+        <li><a [routerLink]="['/estatuto']" routerLinkActive="active-link">ESTATUTO</a></li>
+        <li><a [routerLink]="['/legislacao']" routerLinkActive="active-link">LEGISLAÇÃO</a></li>
+        <li><a [routerLink]="['/vantagens']" routerLinkActive="active-link">VANTAGENS</a></li>
+        <li><a [routerLink]="['/parceiros']" routerLinkActive="active-link">PARCEIROS</a></li>
+        <li><a [routerLink]="['/faleconosco']" routerLinkActive="active-link">FALE CONOSCO</a></li>
+        
+
+        
+      </ul>
+    </nav>
+  </div>   
+
+  <!-- 
+    
+    PACK DE CLASSES EM COMUM EM TODAS AS PAGINAS
+
+    * menu-items-X
+    * minimum-header
+    * menu-min-header
+    * thenav
+    * hamburger-menu-X
+    * bar-X
+  
+  -->
+    
+    <!-- FIM DO TESTE DO MENU HAMBURRGUER COM DROPDOWN -->
+
+
+    <ion-icon name="search" class="search-min-header">Procurar</ion-icon>
+  </div>
+
+  
+
+  <ion-grid>
+    <ion-row class="grid">
+      <ion-col size="3" style="display: flex; flex-direction: row;">
+        <img class="imagem-lateral" src="https://www.coopeere.eco.br/wp-content/uploads/2021/01/Pryscilla-191x300.jpg" alt="">
+      </ion-col>
+      <ion-col size="4.5" style="display: flex; margin: auto; align-items: center; justify-content: center;">
+        <div>
+          <h1>Pryscilla Ferreira Nunes Crespo dos Santos</h1>
+          <h6>Diretora Administrativa Financeira</h6>
+          <p>A priore gostaria de me apresentar, me chamo Pryscilla Santos, sou acadêmica em Direito e estudo na UNIFLU – FDC – Faculdade de Direito de Campos. Estou cursando o último semestre.
+            <br><br>
+            Estágios:
+            TJ Tribunal de justiça – Comarca de Campos – Dívida Ativa de jan 2017 há maio 2018
+            <br><br>
+            Procuradoria do Município de Campos dos Goytacazes – Dívida Ativa
+            Estagiária de Direito (lotada na Dívida Ativa da Prefeitura e depois na Dívida Ativa do Fórum) por 2anos
+            <br><br>
+            STAECNON- Sindicato dos Trabalhadores em Saneamento do Norte e Noroeste RJ
+            Estagiária de Direito no Jurídico trabalhista- por 1 ano. Trabalhava lá no Sindicato representando o Escritório de Dr Marcus Neves do RJ.
+            <br><br>
+            PETROBRAS – MACAÉ / RJ
+            Estagiária de Direito no Jurídico Trabalhista da própria Petrobras, atendia também ao Cível, Ambiental e Tributário – por 2 anos
+            <br><br>
+            AGU – ADVOCACIA GERAL DA UNIÃO/ Justiça Federal
+            Estagiária de Direito – por 10 meses
+            <br><br>
+            PFN – PROCURADORIA DA FAZENDA NACIONAL / Justiça Federal
+            Estagiária de Direito do setor de Execuções Fiscais – por 7 meses
+            <br><br>
+            3ª VARA DE FAMÍLIA / FÓRUM
+            Estagiária de Direito na área de Conciliação- por 6 meses
+            <br><br>
+            ESCRITÓRIO DE ADVOCACIA PERES E FERNANDES – 6 MESES
+            Estagiária de Direito
+            <br><br>
+            Quero ter a oportunidade de trabalhar com vocês porque almejo o crescimento na minha vida profissional através desta oportunidade e também quero contribuir para o desenvolvimento deste maravilhoso setor.
+            Estarei grata pelo privilégio de mostrar o meu desempenho!
+            <br><br>
+            Almejo atender bem as expectativas!!!
+            Sem mais para o momento,
+            Me coloco a disposição para o que se fizer necessário!
+            Cordialmente Pryscilla Santos</p>
+            <br><br>
+        </div>
+
+        
+
+      </ion-col>
+    
+    </ion-row>
+  </ion-grid>
+  <ion-button style="display: flex; margin: auto;" routerLink="/equipe" fill="clear">Voltar</ion-button>
 </ion-content>
+
+
+
+<ion-footer class="footer"> 
+
+    
+    
+  <section class="p-menu1">
+    <nav id="navbar" class="navigation" role="navigation">
+      <input id="toggle1" type="checkbox" />
+      <label class="hamburger1" for="toggle1">
+        <div class="top"></div>
+        <div class="meat"></div>
+        <div class="bottom"></div>
+      </label>
+
+      <nav class="menu1" >
+        <ion-label style="padding-left: 20px;" [routerLink]="['/eventos']">EVENTOS</ion-label>
+        <ion-label style="padding-left: 20px;" [routerLink]="['/publicacoes']">PUBLICAÇÕES</ion-label>
+        <ion-label style="padding-left: 20px;" [routerLink]="['/agenda']">AGENDA</ion-label>
+        <ion-label style="padding-left: 20px;" [routerLink]="['/galeria']" >GALERIA DE FOTOS</ion-label>
+        <ion-label style="padding-left: 20px;" [routerLink]="['/faleconosco']">FALE CONSOCO</ion-label>
+      </nav>
+  </nav>
+
+  
+
+  </section>
+  
+    <div class="menu-footer">
+      <ion-label [routerLink]="['/eventos']">EVENTOS</ion-label>
+      <ion-label [routerLink]="['/publicacoes']">PUBLICAÇÕES</ion-label>
+      <ion-label [routerLink]="['/agenda']">AGENDA</ion-label>
+      <ion-label [routerLink]="['/galeria']" >GALERIA DE FOTOS</ion-label>
+      <ion-label [routerLink]="['/faleconosco']">FALE CONSOCO</ion-label>
+    </div>
+  
+    <div class="social-media-icons">
+
+      <!-- ROUTER LINKS NÃO FUNCIONAM COM LINKS DE VERDADE  -->
+      
+      <!-- MAS DEU PRA RESOLVER USANDO UMA FUNÇÃO COM TYPESCRIPT -->
+            
+            <ion-label (click)="openExternalLinkFacebook()">  <ion-img class="new-social-icons" src="../../../assets/images-coopeere/facebook.png"></ion-img>  </ion-label>
+            <ion-label (click)="openExternalLinkInstagram()"> <ion-img class="new-social-icons" src="../../../assets/images-coopeere/instagram.png"></ion-img> </ion-label>
+            <ion-label (click)="openExternalLinkYouTube()"> <ion-img class="new-social-icons" src="../../../assets/images-coopeere/youtube.png"></ion-img> </ion-label>
+          </div>
+          
+    
+    
+  </ion-footer>

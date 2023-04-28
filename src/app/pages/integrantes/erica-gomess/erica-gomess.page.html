@@ -1,9 +1,422 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>erica-gomess</ion-title>
-  </ion-toolbar>
-</ion-header>
+
+  
 
 <ion-content>
 
+
+  <ion-header class="header-header">  
+
+    
+
+    <div [routerLink]="['/login']">
+      <ion-icon style="color:#fff;" name="person"></ion-icon>
+      <ion-label style="color:#fff;" class="label-header" >Login</ion-label>
+    </div>
+      |
+      <div style="padding-left: 18px;" [routerLink]="['/signup']" >
+        <ion-icon style="color:#fff;" name="pencil"></ion-icon>
+        <ion-label style="color: #fff;" >Cadastro</ion-label>
+      </div>
+      
+      
+    
+    </ion-header>
+
+
+
+    <ion-header class="header hide-header">
+      
+      
+        <ion-img  [routerLink]="['/onboarding']"  style="max-width: 10%; min-width: 8%; margin-left: 200px;" src="../../../assets/images-coopeere/coopere.png"></ion-img>
+      
+    
+      
+      <ion-button fill="clear" style="color:#000; margin-left: 70px;"  [routerLink]="['/']" routerLinkActive="active-link">Home</ion-button>
+      
+      <div class="dropdown">
+        <a [routerLink]="['/onboarding']" style="color:#000;" routerLinkActive="active-link">A COOPEERE <svg class="arrowicon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18"><path fill="none" d="M0 0h24v24H0z"/><path d="M12 13.172l4.95-4.95 1.414 1.414L12 16 5.636 9.636 7.05 8.222z"/></svg></a>
+        <div class="dropdown-content">
+          <a [routerLink]="['/quemsomos']" class="dropdown-item">Quem Somos?</a>
+          <a [routerLink]="['/objetivos']" class="dropdown-item">Objetivo</a>
+          <a [routerLink]="['/equipe']" class="dropdown-item">A Equipe</a>
+        </div>
+      </div>
+    
+      <ion-button fill="clear" style="color:#000;"  [routerLink]="['/estatuto']" routerLinkActive="active-link">Estatuto</ion-button>
+      <ion-button fill="clear" style="color:#000;"  [routerLink]="['/legislacao']" routerLinkActive="active-link">Legislação</ion-button>
+      <ion-button fill="clear" style="color:#000;" [routerLink]="['/vantagens']" routerLinkActive="active-link">Vantagens</ion-button>
+      <ion-button fill="clear" style="color:#000;"  [routerLink]="['/parceiros']" routerLinkActive="active-link">Parceiros</ion-button>
+      <ion-button fill="clear" style="color:#000; margin-right: 250px;" [routerLink]="['/faleconosco']" routerLinkActive="active-link">Fale Conosco</ion-button>
+  
+    </ion-header>
+
+
+  <div class="container">
+
+  </div>
+
+  <div class="minimum-header">
+
+      
+    <ion-img class="logo-min-header" [routerLink]="['/onboarding']"  src="../../../assets/images-coopeere/coopere.png"></ion-img>
+
+   
+    
+
+    <!-- TESTANDO O MENU HAMBURGUER COM DROPDOWN -->
+<div class="menu-min-header">
+    <nav class="thenav">
+      <div class="hamburger-menu-X" (click)="toggleMenu()">
+        <div class="bar-X"></div>
+        <div class="bar-X"></div>
+        <div class="bar-X"></div>
+      </div>
+      <ul class="menu-items-X" *ngIf="showMenu">
+        <br>
+        <li><a [routerLink]="['/onboarding']" routerLinkActive="active-link">HOME</a></li>
+        <li><a href="#">A COOPEERE</a></li>
+        <li><a [routerLink]="['/estatuto']" routerLinkActive="active-link">ESTATUTO</a></li>
+        <li><a [routerLink]="['/legislacao']" routerLinkActive="active-link">LEGISLAÇÃO</a></li>
+        <li><a [routerLink]="['/vantagens']" routerLinkActive="active-link">VANTAGENS</a></li>
+        <li><a [routerLink]="['/parceiros']" routerLinkActive="active-link">PARCEIROS</a></li>
+        <li><a [routerLink]="['/faleconosco']" routerLinkActive="active-link">FALE CONOSCO</a></li>
+        
+
+        
+      </ul>
+    </nav>
+  </div>   
+
+  <!-- 
+    
+    PACK DE CLASSES EM COMUM EM TODAS AS PAGINAS
+
+    * menu-items-X
+    * minimum-header
+    * menu-min-header
+    * thenav
+    * hamburger-menu-X
+    * bar-X
+  
+  -->
+    
+    <!-- FIM DO TESTE DO MENU HAMBURRGUER COM DROPDOWN -->
+
+
+    <ion-icon name="search" class="search-min-header">Procurar</ion-icon>
+  </div>
+
+  
+
+  <ion-grid>
+    <ion-row class="grid">
+      <ion-col size="3" style="display: flex; flex-direction: row;">
+        <img class="imagem-lateral" src="https://www.coopeere.eco.br/wp-content/uploads/2021/01/erica-296x300.jpg" alt="">
+      </ion-col>
+      <ion-col size="4.5" style="display: flex; margin: auto; align-items: center; justify-content: center;">
+        <div>
+          <h1>Erica Gomes Martins</h1>
+          <h6>Professora</h6>
+          <p>Formação acadêmica
+            <br>
+            2012 – 2017 Graduação em Licenciatura Plena em Educação do Campo.
+            Instituto Superior de Educação Professor Aldo Muylaert, ISEPAM, Brasil
+            Título: Cultura Quilombola nas Escola:Aleluia, Batatal e Cambucá de Campos dos Goytacazes Orientador: Professor Mario Colloci
+            Bolsista do(a): PROCAMPO.
+            <br><br>
+            2007 – 2010 Ensino Médio (2o grau) .
+            Escola José do Patrocínio, EJP, Brasil, Ano de obtenção: 2010
+            Formação complementar.
+            <br><br>
+            2018 – 2018 FORMAÇÃO EM CONTROLE SOCIAL PARA CONSELHEIROS E ASSESSORES TÉCNICOS. . (Carga
+            horária: 24h).
+            Conselho Municipal de Assistência Social, CMAS, Brasil.
+            <br><br>
+            2016 – 2016 Extensão universitária em SEMANA ACADÊMICA- REPENSANDO A PRATICA PEDAGÓGICA. (Carga
+            horária: 5h).
+            Instituto Superior de Educação Professor Aldo Muylaert, ISEPAM, Brasil.
+            2015 – 2015 Extensão universitária em O PLANO NACIONAL DA EDUCAÇÃO E A FORMAÇÃO DE PROFESSORES.
+            (Carga horária: 4h).
+            Instituto Superior de Educação Professor Aldo Muylaert, ISEPAM, Brasil.
+            <br><br>
+            2015 – 2015 Extensão universitária em OLHARES AFRICA-BRASIL RELAÇÃO ÉTINCO-RACIAL E EDUCAÇÃO.
+            (Carga horária: 5h).
+            Instituto Superior de Educação Professor Aldo Muylaert, ISEPAM, Brasil.
+            <br><br>
+            2014 – 2014 PIBID OS DESAFIOS DO PROGRAMA INSTITUCIONAL DE INICIAL Á DOCÊNCI. . (Carga horária: 8h).
+            Instituto Superior de Educação Professor Aldo Muylaert, ISEPAM, Brasil.
+            <br><br>
+            2014 – 2014 Curso de curta duração em ALFABETIZAÇÃO DE JOVENS E ADULTO. (Carga horária: 168h).
+            Instituto Paulo Freire, IPF, Sao Paulo, Brasil.
+            <br><br>
+            2013 – 2013 Curso de curta duração em ALFABETIZAÇÃO DE JOVENS E ADULTO. (Carga horária: 308h).
+            BRASIL ALFABETIZADO, SEEDUC, Brasil.
+            <br><br>
+            Atuação profissional
+            <br><br>
+            1. Centro Universitário Fluminense – UNIFLU.
+            <br><br>
+            2017 – Atual
+            <br><br>
+            2. Instituto Superior de Educação Professor Aldo Muylaert – ISEPAM
+            Vínculo
+            institucional
+            2016 – 2017 <br>
+            Atual Projeto Associação Municipal Cultural dos Povos das Águas, do Campo e da Cidade
+            Descrição: Através de uma trabalho de campo feito com um grupo de educadores popular, da turma de
+            Licenciatura de Educação do Campo, virmos a necessidade de criar uma Associação Municipal para
+            atender as necessidades dos povos que estão sendo desassistida pelo poder público. <br>
+            Situação: Em andamento Natureza: Projetos de pesquisa <br>
+            Alunos envolvidos: Graduação (3); Doutorado (1);<br>
+            Integrantes: Erica Gomes Martins; Prof. Dr. Auner Pereira Carneiro (Responsável); Alcilea dos Santos
+            Ricardo do Rosário; Sueli da Silva.<br>
+            <br><br>
+            2017 – Atual AS DANDARAS DO ABC <br>
+            Descrição: GRUPO SEM FINS LUCRATIVO, ORGANIZAÇÃO POPULAR, AGROECOLOGIA E
+            ECONOMIA SOLIDARIA.<br>
+            Situação: Em andamento Natureza: Projetos de pesquisa
+            Alunos envolvidos: Graduação (1); Doutorado (1);<br>
+            Integrantes: Erica Gomes Martins (Responsável); ; COLETIVO DE MULHERES QUILOMBOLAS;
+            INCUBADORA TECNOLOGICA DE EMPREENDIMENTO POPULARES; AUNER CARNEIRO <br>
+            <br><br>
+            2020 – Atual Iniciativa Para Turismo Agroecológico em Áreas Rurais de Campos dos Goytacazes
+            Descrição: Implantar a plataforma de gerenciamento, Implantar turismo agroecológico e Certificar os
+            produtos orgânicos
+            Situação: Em andamento Natureza: Outros tipos de projetos
+            Integrantes: Erica Gomes Martins (Responsável); ; Geane kristosch
+            <br><br>
+            2020 – Atual PREJETO DE LEI DA AGROECOLOGIA-PMAPO
+            Descrição: LEI QUE BUSCA O RECONHECIMENTO E VALORIZAÇÃO DOS PRODUTOS AGRÍCOLAS
+            E RESPEITA A FORMA DE TRABALHO AGROECOLÓGICO-ORGÂNICO E DE PROTEÇÃO
+            AMBIENTAL.<br>
+            Situação: Em andamento Natureza: Outros tipos de projetos
+            Alunos envolvidos: Graduação (1);
+            Integrantes: Erica Gomes Martins (Responsável)
+            <br><br>
+            2016 – 2017 Cultura Quilombola nas Escola:Aleluia, Batatal e Cambucá de Campos dos Goytacazes
+            Descrição: O trabalho de conclusão de curso intitulado “Cultura Quilombola na Escola: Aleluia Batatal e
+            Cambucá” (Quilombo ABC) têm como objetivo conhecer e fazer conhecer a cultura dessas comunidades
+            dentro das escolas. Perguntamos como essa cultura vem sendo trabalhada em sala de aula e, para tanto,
+            buscamos analisar as práticas utilizadas pelo professor numa escola quilombola. A partir do levantamento
+            bibliográfico realizado buscamos construir um material didático capaz de trazer à tona a real história das
+            comunidades quilombolas do Imbé. Assim poderemos compreender o grau de identificação com a história
+            contada em sala de aula, analisando o ponto de vista desses educandos em relação à própria
+            comunidade. Pretendemos contribuir com a produção do conhecimento sobre a cultura Quilombola a
+            partir da metodologia de Paulo Freire, desenvolvendo, assim, atividades coletivas em sala de aula
+            fomentando o senso crítico dos educandos. Para isso realizaremos uma pesquisa de levantamento de
+            dados, com um questionário para cada integrante que aceitar participar da pesquisa. A partir desse
+            trabalho identificamos que era necessário produzir algum material didático que levasse conhecimento aos
+            alunos sobre a relação dos remanescentes de quilombo com o campo e a cultura desse povo.
+            Situação: Concluído Natureza: Outros tipos de projetos
+            Alunos envolvidos: Graduação (2); Mestrado acadêmico (1); <br><br>
+            Integrantes: Erica Gomes Martins (Responsável); ; Alcilea dos Santos Ricardo do Rosário; Professor Mario Colocci
+            <br><br>
+            2016 – Atual PROJETO DE LEI DA AGRICULTURA URBANA
+            Descrição: PROJETO QUE RECONHECE A AGRICULTURA URBANA COMO PARTE DA
+            AGRICULTURA FAMILIAR QUE SÃO SUJEITO DE DIREITOS, RECONHECIMENTO DO TERRITÓRIO E
+            DA MÃO DE OBRA. <br>
+            Situação: Em andamento Natureza: Outros tipos de projetos
+            Alunos envolvidos: Graduação (1); Doutorado (1);
+            Integrantes: Erica Gomes Martins (Responsável); ; Prof. Dr. Auner Pereira Carneiro; Sueli da Silva;
+            COLETIVO DE MULHERES QUILOMBOLAS; ASSOCIAÇÃO CULTURAL DOS POVOS DAS ÁGUAS DO
+            CAMPO E DA CIDADE; LEANDRO SARDINHA
+            Áreas de atuação <br>
+            1. Educação<br>
+            Idiomas<br>
+            Português Compreende Bem , Fala Bem , Escreve Bem , Lê Bem
+            Prêmios e títulos
+            <br>
+            2018 Monção de Aplausos pelo o dia da agricultura, Câmara Municipal de Campos
+            <br><br>
+            Produção bibliográfica
+            <br><br>
+            Apresentação de trabalho e palestra
+            1. MARTINS, E. G.; CIDADE, A. C. P. A. C. E.; SILVA, S.; CARNEIRO, P. A. P.
+            AGRICULTURA URBANA, 2017. (Conferência ou palestra, Apresentação de Trabalho)
+            Referências adicionais: Brasil/Português. Meio de divulgação: Vários. Home page: AGRICULTURA
+            URBANA; Local: FACUDADE DE DIREITO DE CAMPOS; Cidade: CAMPOS DOS GOYTACAZES;
+            Evento: APRESENTAÇÃO E EXPOXIÇÃO DOS PROJETOS DA FACULDADE DE DIREITO DE
+            CAMPOS; Inst. promotora/financiadora: FACUDADE DE DIREITO DE CAMPOS<br><br>
+            Produção técnica<br>
+            Entrevistas, mesas redondas, programas e comentários na mídia
+            <br><br>
+            1. MARTINS, E. G.
+            Cultura Quilombola nas Escola, 2019
+            Referências adicionais: Brasil/Português. <br>
+            2. QUILOMBOLAS, C. M.; MARTINS, E. G.; SILVA, S.; ROSARIO, A. S. R.
+            DIA INTERNACIONAL DAS MULHERES NEGRAS, 2019
+            Referências adicionais: Brasil/Português.<br>
+            3. MARTINS, E. G.
+            COMIDA CULTURAL, 2018
+            Setores de atividade: Alimentação
+            Referências adicionais: Brasil/Português. . Home page: INTER-TV ALTO LITORAL <br>
+            4. MARTINS, E. G.; ROSARIO, A. S. R.; ALEXANDRINO, I. S. L.; SILVA, S.
+            VIOLÊNCIA CONTRA MULHERES, 2018
+            Referências adicionais: Brasil/Português.<br>
+            <br>
+            2020 – Atual Iniciativa Para Turismo Agroecológico em Áreas Rurais de Campos dos Goytacazes
+            Descrição: Implantar a plataforma de gerenciamento, Implantar turismo agroecológico e Certificar os
+            produtos orgânicos<br>
+            Situação: Em andamento Natureza: Outros tipos de projetos
+            Integrantes: Erica Gomes Martins (Responsável); ; Geane kristosch
+            Educação e Popularização de C&T
+            Entrevistas, mesas redondas, programas e comentários na mídia<br>
+            1. MARTINS, E. G.
+            Cultura Quilombola nas Escola, 2019. (Mesa redonda, Programa de Rádio ou TV)
+            Referências adicionais: Brasil/Português. <br>
+            2. QUILOMBOLAS, C. M.; MARTINS, E. G.; SILVA, S.; ROSARIO, A. S. R.
+            DIA INTERNACIONAL DAS MULHERES NEGRAS, 2019. (Mesa redonda, Programa de Rádio ou TV)
+            Referências adicionais: Brasil/Português.<br>
+            3. MARTINS, E. G.
+            COMIDA CULTURAL, 2018. (Entrevista, Programa de Rádio ou TV)
+            Setores de atividade: Alimentação
+            Referências adicionais: Brasil/Português. . Home page: INTER-TV ALTO LITORAL <br>
+            4. MARTINS, E. G.; ROSARIO, A. S. R.; ALEXANDRINO, I. S. L.; SILVA, S.
+            VIOLÊNCIA CONTRA MULHERES, 2018. (Mesa redonda, Programa de Rádio ou TV)
+            Referências adicionais: Brasil/Português.<br>
+            Organização de eventos, congressos, exposições e feiras e olimpíadas
+            1. MARTINS, E. G.; POPULARES, I. T. E.; QUILOMBOLAS, C. M.; CIDADE, A. C. P. A. C. E.
+            CRIAÇÃO DA REDE AGROECOLÓGICA DOS QUILOMBOS DO IMBÉ, 2019. (Outro, Organização de
+            evento)<br>
+            Setores de atividade: Agricultura, Pecuária e Serviços Relacionados, Alimentação, Atividades de
+            organizações associativas
+            Referências adicionais: Brasil/Português. Meio de divulgação: Outro
+            ATRAVÉS DESTE TRABALHO BUSCAMOS AMPLIAR A PRODUÇÃO E VENDAS DOS PRODUTOS
+            AGROECOLOGIA/ORGÂNICO DENTRO DA ECONOMIA SOLIDÁRIA. <br>
+            2. QUILOMBOLAS, C. M.; COMERCIO, S. S.; CIDADE, A. C. P. A. C. E.; MARTINS, E. G.
+            DIA DA CONSCIÊNCIA NEGRA, 2018. (Outro, Organização de evento)
+            Setores de atividade: Atividades de organizações associativas, Atividades esportivas e de recreação e
+            lazer, Atividades ligadas ao patrimônio cultural e ambiental
+            Referências adicionais: Brasil/Português. Meio de divulgação: Impresso
+            O COLETIVO AS DANDARAS DO ABC COM O APOIO DE SESC-RJ, LEVOU PARA AS COMUNIDADES QUILOMBOLAS DO IMBÉ, VARIAS ATRAÇÕES ARTESANAIS COMO TEATRO INFANTIL, CURSOS DE
+            ARTESANATOS E JOGOS INFANTIL.<br>
+            3. MARTINS, E. G.; RACIAL, S. I.
+            CRIAÇÃO DO COLETIVO AS DANDARAS DO ABC, 2017. (Outro, Organização de evento)
+            Setores de atividade: Atividades de organizações associativas, Atividades esportivas e de recreação e
+            lazer, Educação
+            Referências adicionais: Brasil/Português. Meio de divulgação: Impresso O COLETIVO AS DANDARAS DO ABC, É UMA ORGANIZAÇÃO NÃO GOVERNAMENTAL E SEM FINS
+            LUCRATIVO E FOI FORMADA POR MULHERES DAS COMUNIDADES QUILOMBOLAS DE ALELUIA,
+            BATATAL E CAMBUCÁ, TEM POR OBJETIVOS BUSCAR POLITICAS PUBLICAS PARA O
+            DESENVOLVIMENTO DAS COMUNIDADES, TRABALHAR O EMPODERAMENTO DAS MULHERES QUILOMBOLAS E PARTICIPAR DOS ESPAÇOS DE DECISÃO, ATUANDO NO CONTROLE SOCIAL E DO DIREITO ÉTNICO-SOCIAL.<br>
+            
+            4. MARTINS, E. G.; SILVA, S.; CARNEIRO, P. A. P.; ROSARIO, A. S. R.; ALEXANDRINO, I. S. L.
+            POSSE DA ASSOCIAÇÃO CULTURAL DOS POVOS DAS ÁGUAS DO CAMPO E DA CIDADE, 2017.
+            (Outro, Organização de evento)
+            Setores de atividade: Agricultura, Pecuária e Serviços Relacionados, Atividades artísticas, criativas e de
+            espetáculos, Atividades de organizações associativas
+            Referências adicionais: Brasil/Português. Meio de divulgação: Impresso
+            ESTE ASSOCIAÇÃO FOI CRIADA POR COLETIVOS DE MULHERES DO CAMPO E DA CIDADE, COM
+            O OBJETIVO DE UNIR OS TERRITÓRIOS PARA UNIFICAR AS LUTAS PELAS POLITICAS PUBLICAS,
+            DESENVOLVER POLITICAS PARA AS MULHERES, APOIAR OS AGRICULTORES FAMILIARES
+            RURAIS E URBANOS.<br>
+            Participação em eventos, congressos, exposições, feiras e olimpíadas
+            1. XII FÓRUM MUNICIPAL DE ASSISTÊNCIA SOCIAL, 2019. (Seminário).<br>
+            2. Homenageado no(a) BIENAL DOS LIVROS, 2018. (Feira)
+            CONHECER A CULTURA LOCAL.<br>
+            3. Homenageado no(a) VOZES QUE ECOAM VIVENCIA FEMININAS NEGRAS EM EVIDENCIA, 2018.
+            (Encontro)<br>
+            DIA DA CONSCIÊNCIA NEGRA.<br>
+            4. BOAS PRATICAS DE ALIMENTOS: GESTÃO DE SEGURANÇA DA E QUALIDADE SANITÁRIA IA,
+            2017. (Seminário).<br>
+            5. Homenageado no(a) DIA DA AGRICULTURA FAMILIAR, 2017. (Outra)
+            CAMARA MUNICIPAL DE CAMPOS.<br>
+            6. VI FORUM FLUMINENSE DE EDUCAÇÃO DO CAMPO, 2017. (Seminário). <br>
+            7. A QUESTÃO CURDA: RELATOS DA LUTA POR SOBERANIA TERRITORIAL EM ROJAWA
+            (LIBERTAÇÃO ANTI-PATRIARCADO, ECOLÓGICA E ANTI-CAPITALISTA DOÃO, 2015. (Seminário). <br>
+            8. LUTAR, CONSTRUIR REFORMA AGRARIA POPULAR, 2015. (Congresso).<br>
+            9. 2 CONFERENCIA NACIONAL DE DESENVOLVIMENTO RURAL SUSTENTÁVEL E SOLIDÁRIO, 2013.
+            (Seminário)<br>
+            10. FORUM ESTADUAL DE EDUCAÇÃO DO CAMPO-FOFEC, 2013.<br>
+            11. Homenageado no(a) MULHER NEGRA, 2013. (Encontro)
+            DIA DA MULHER NEGRA.<br>
+            1. XII FÓRUM MUNICIPAL DE ASSISTÊNCIA SOCIAL, 2019. (Seminário)<br>
+            .
+            2. Homenageado no(a) BIENAL DOS LIVROS, 2018. (Feira)
+            CONHECER A CULTURA LOCAL.<br>
+            3. Homenageado no(a) VOZES QUE ECOAM VIVENCIA FEMININAS NEGRAS EM EVIDENCIA, 2018.
+            (Encontro)
+            DIA DA CONSCIÊNCIA NEGRA.<br>
+            4. BOAS PRATICAS DE ALIMENTOS: GESTÃO DE SEGURANÇA DA E QUALIDADE SANITÁRIA IA,
+            2017. (Seminário)
+            .
+            5. Homenageado no(a) DIA DA AGRICULTURA FAMILIAR, 2017. (Outra)
+            CAMARA MUNICIPAL DE CAMPOS.<br>
+            6. VI FORUM FLUMINENSE DE EDUCAÇÃO DO CAMPO, 2017. (Seminário)
+            .<br>
+            7. A QUESTÃO CURDA: RELATOS DA LUTA POR SOBERANIA TERRITORIAL EM ROJAWA
+            (LIBERTAÇÃO ANTI-PATRIARCADO, ECOLÓGICA E ANTI-CAPITALISTA DOÃO, 2015. (Seminário)
+            .<br>
+            8. ENCONTRO ESTADUAL DOS EDUCADORES DA REFORMA AGRARIA DO RIO DE JANEIRO, 2015.
+            (Encontro)
+            .<br>
+            9. II CONFERENCIA MUNICIPAL DE EDUCAÇÃO, 2015. (Seminário)
+            .<br>
+            10. LUTAR, CONSTRUIR REFORMA AGRARIA POPULAR, 2015. (Congresso)
+            .<br>
+            11. 2 CONFERENCIA NACIONAL DE DESENVOLVIMENTO RURAL SUSTENTÁVEL E SOLIDÁRIO, 2013.
+            (Seminário)
+            .<br>
+            12. FORUM ESTADUAL DE EDUCAÇÃO DO CAMPO-FOFEC, 2013. (Outra)
+            .<br>
+            13. Homenageado no(a) MULHER NEGRA, 2013. (Encontro)
+            DIA DA MULHER NEGRA.<br><br>
+            Organização de evento<br>
+            1. MARTINS, E. G.; POPULARES, I. T. E.; QUILOMBOLAS, C. M.; CIDADE, A. C. P. A. C. E.
+            CRIAÇÃO DA REDE AGROECOLÓGICA DOS QUILOMBOS DO IMBÉ, 2019. (Outro, Organização de
+            evento)<br>
+            Setores de atividade: Agricultura, Pecuária e Serviços Relacionados, Alimentação, Atividades de
+            organizações associativas
+            Referências adicionais: Brasil/Português. Meio de divulgação: Outro
+            ATRAVÉS DESTE TRABALHO BUSCAMOS AMPLIAR A PRODUÇÃO E VENDAS DOS PRODUTOS
+            AGROECOLOGIA/ORGÂNICO DENTRO DA ECONOMIA SOLIDÁRIA.<br>
+            2. QUILOMBOLAS, C. M.; COMERCIO, S. S.; CIDADE, A. C. P. A. C. E.; MARTINS, E. G.
+            DIA DA CONSCIÊNCIA NEGRA, 2018. (Outro, Organização de evento)
+            Setores de atividade: Atividades de organizações associativas, Atividades esportivas e de recreação e lazer, Atividades ligadas ao patrimônio cultural e ambiental
+            Referências adicionais: Brasil/Português. Meio de divulgação: Impresso
+            O COLETIVO AS DANDARAS DO ABC COM O APOIO DE SESC-RJ, LEVOU PARA AS COMUNIDADES QUILOMBOLAS DO IMBÉ, VARIAS ATRAÇÕES ARTESANAIS COMO TEATRO INFANTIL, CURSOS DE
+            ARTESANATOS E JOGOS INFANTIL.<br>
+            3. MARTINS, E. G.; ROSARIO, A. S. R.; SILVA, S.
+            FEIRA DA AGRICULTURA FAMILIAR, 2018. (Feira, Organização de evento)
+            Referências adicionais: Brasil/Português. Meio de divulgação: Impresso
+            4. MARTINS, E. G.; FRANCO, N.
+            FEIRA DA ECONOMIA SOLIDARIA, 2018. (Festival, Organização de evento)
+            Referências adicionais: Brasil/Português. Meio de divulgação: Outro
+            5. MARTINS, E. G.; ROSARIO, A. S. R.; SILVA, S.<br>
+            FEIRAS E ETC, 2018. (Exposição, Organização de evento)
+            Referências adicionais: Brasil/Português. Meio de divulgação: Vários
+            <br> 6. MARTINS, E. G.; QUILOMBOLAS, C. M.; COMERCIO, S. S.; CIDADE, A. C. P. A. C. E.
+            SESC NO QUILOMBO, 2018. (Outro, Organização de evento)
+            Referências adicionais: Brasil/Português. Meio de divulgação: Outro
+            <br>  7. MARTINS, E. G.; RACIAL, S. I.
+            CRIAÇÃO DO COLETIVO AS DANDARAS DO ABC, 2017. (Outro, Organização de evento)
+            Setores de atividade: Atividades de organizações associativas, Atividades esportivas e de recreação e
+            lazer, Educação
+            Referências adicionais: Brasil/Português. Meio de divulgação: Impresso O COLETIVO AS DANDARAS DO ABC, É UMA ORGANIZAÇÃO NÃO GOVERNAMENTAL E SEM FINS
+            LUCRATIVO E FOI FORMADA POR MULHERES DAS COMUNIDADES QUILOMBOLAS DE ALELUIA,
+            BATATAL E CAMBUCÁ, TEM POR OBJETIVOS BUSCAR POLITICAS PUBLICAS PARA O
+            DESENVOLVIMENTO DAS COMUNIDADES, TRABALHAR O EMPODERAMENTO DAS MULHERES QUILOMBOLAS E PARTICIPAR DOS ESPAÇOS DE DECISÃO, ATUANDO NO CONTROLE SOCIAL E
+            DO DIREITO ÉTINCO-SOCIAL.
+            <br>8. MARTINS, E. G.; TALABI, L.; ROSARIO, A. S. R.; ALEXANDRINO, I. S. L.; SILVA, S.
+            FEIRA DOS POVOS, 2017. (Feira, Organização de evento)
+            Referências adicionais: Brasil/Português. Meio de divulgação: Vários
+            <br> 9. MARTINS, E. G.; SILVA, S.; CARNEIRO, P. A. P.; ROSARIO, A. S. R.; ALEXANDRINO, I. S. L.
+            POSSE DA ASSOCIAÇÃO CULTURAL DOS POVOS DAS ÁGUAS DO CAMPO E DA CIDADE, 2017.
+            (Outro, Organização de evento)
+            Setores de atividade: Agricultura, Pecuária e Serviços Relacionados, Atividades artísticas, criativas e de
+            espetáculos, Atividades de organizações associativas
+            Referências adicionais: Brasil/Português. Meio de divulgação: Impresso
+            ESTE ASSOCIAÇÃO FOI CRIADA POR COLETIVOS DE MULHERES DO CAMPO E DA CIDADE, COM
+            O OBJETIVO DE UNIR OS TERRITÓRIOS PARA UNIFICAR AS LUTAS PELAS POLITICAS PUBLICAS,
+            DESENVOLVER POLITICAS PARA AS MULHERES, APOIAR OS AGRICULTORES FAMILIARES RURAIS E URBANOS.</p>
+        </div>
+
+        
+
+      </ion-col>
+    
+    </ion-row>
+  </ion-grid>
+  <ion-button style="display: flex; margin: auto;" routerLink="/equipe" fill="clear">Voltar</ion-button>
 </ion-content>
+
+

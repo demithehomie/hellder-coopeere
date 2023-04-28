@@ -1,9 +1,206 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>eber-john</ion-title>
-  </ion-toolbar>
-</ion-header>
+
+  
 
 <ion-content>
 
+
+  <ion-header class="header-header">  
+
+    
+
+    <div [routerLink]="['/login']">
+      <ion-icon style="color:#fff;" name="person"></ion-icon>
+      <ion-label style="color:#fff;" class="label-header" >Login</ion-label>
+    </div>
+      |
+      <div style="padding-left: 18px;" [routerLink]="['/signup']" >
+        <ion-icon style="color:#fff;" name="pencil"></ion-icon>
+        <ion-label style="color: #fff;" >Cadastro</ion-label>
+      </div>
+      
+      
+    
+    </ion-header>
+
+
+
+    <ion-header class="header hide-header">
+      
+      
+        <ion-img  [routerLink]="['/onboarding']"  style="max-width: 10%; min-width: 8%; margin-left: 200px;" src="../../../assets/images-coopeere/coopere.png"></ion-img>
+      
+    
+      
+      <ion-button fill="clear" style="color:#000; margin-left: 70px;"  [routerLink]="['/']" routerLinkActive="active-link">Home</ion-button>
+      
+      <div class="dropdown">
+        <a [routerLink]="['/onboarding']" style="color:#000;" routerLinkActive="active-link">A COOPEERE <svg class="arrowicon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18"><path fill="none" d="M0 0h24v24H0z"/><path d="M12 13.172l4.95-4.95 1.414 1.414L12 16 5.636 9.636 7.05 8.222z"/></svg></a>
+        <div class="dropdown-content">
+          <a [routerLink]="['/quemsomos']" class="dropdown-item">Quem Somos?</a>
+          <a [routerLink]="['/objetivos']" class="dropdown-item">Objetivo</a>
+          <a [routerLink]="['/equipe']" class="dropdown-item">A Equipe</a>
+        </div>
+      </div>
+    
+      <ion-button fill="clear" style="color:#000;"  [routerLink]="['/estatuto']" routerLinkActive="active-link">Estatuto</ion-button>
+      <ion-button fill="clear" style="color:#000;"  [routerLink]="['/legislacao']" routerLinkActive="active-link">Legislação</ion-button>
+      <ion-button fill="clear" style="color:#000;" [routerLink]="['/vantagens']" routerLinkActive="active-link">Vantagens</ion-button>
+      <ion-button fill="clear" style="color:#000;"  [routerLink]="['/parceiros']" routerLinkActive="active-link">Parceiros</ion-button>
+      <ion-button fill="clear" style="color:#000; margin-right: 250px;" [routerLink]="['/faleconosco']" routerLinkActive="active-link">Fale Conosco</ion-button>
+  
+    </ion-header>
+
+
+  <div class="container">
+
+  </div>
+
+  <div class="minimum-header">
+
+      
+    <ion-img class="logo-min-header" [routerLink]="['/onboarding']"  src="../../../assets/images-coopeere/coopere.png"></ion-img>
+
+   
+    
+
+    <!-- TESTANDO O MENU HAMBURGUER COM DROPDOWN -->
+<div class="menu-min-header">
+    <nav class="thenav">
+      <div class="hamburger-menu-X" (click)="toggleMenu()">
+        <div class="bar-X"></div>
+        <div class="bar-X"></div>
+        <div class="bar-X"></div>
+      </div>
+      <ul class="menu-items-X" *ngIf="showMenu">
+        <br>
+        <li><a [routerLink]="['/onboarding']" routerLinkActive="active-link">HOME</a></li>
+        <li><a href="#">A COOPEERE</a></li>
+        <li><a [routerLink]="['/estatuto']" routerLinkActive="active-link">ESTATUTO</a></li>
+        <li><a [routerLink]="['/legislacao']" routerLinkActive="active-link">LEGISLAÇÃO</a></li>
+        <li><a [routerLink]="['/vantagens']" routerLinkActive="active-link">VANTAGENS</a></li>
+        <li><a [routerLink]="['/parceiros']" routerLinkActive="active-link">PARCEIROS</a></li>
+        <li><a [routerLink]="['/faleconosco']" routerLinkActive="active-link">FALE CONOSCO</a></li>
+        
+
+        
+      </ul>
+    </nav>
+  </div>   
+
+  <!-- 
+    
+    PACK DE CLASSES EM COMUM EM TODAS AS PAGINAS
+
+    * menu-items-X
+    * minimum-header
+    * menu-min-header
+    * thenav
+    * hamburger-menu-X
+    * bar-X
+  
+  -->
+    
+    <!-- FIM DO TESTE DO MENU HAMBURRGUER COM DROPDOWN -->
+
+
+    <ion-icon name="search" class="search-min-header">Procurar</ion-icon>
+  </div>
+
+  
+
+  <ion-grid>
+    <ion-row class="grid">
+      <ion-col size="3" style="display: flex; flex-direction: row;">
+        <img class="imagem-lateral" src="https://www.coopeere.eco.br/wp-content/uploads/2021/01/eber-john-1-181x300.jpg" alt="">
+      </ion-col>
+      <ion-col size="4.5" style="display: flex; margin: auto; align-items: center; justify-content: center;">
+        <div>
+          <h1>Eber John de Oliveira Rangel</h1>
+          <h6>Eletricista</h6>
+          <p>OBJETIVO
+<br><br>
+            Atuar na área Técnica em Eletrotécnica/ Manutenção Elétrica ou Mecânica.
+            <br><br>
+            FORMAÇÃO
+            <br><br>
+            Técnico em Eletrotécnica – CREA-RJ: 2011110104 – SENAI – Completo
+            <br><br>
+            Técnico em Mecânica – Efonape Campos – Completo
+            <br><br>
+            CURSOS ADICIONAIS
+            <br><br>
+            Idioma Inglês – Leitura, escrita e conversação – Nível Básico
+            <br><br>
+            Informática Avançada – Ambiente Windows, Microsoft Office, Internet e Hardware
+            <br><br>
+            NR 10 – Centro Integrado Educacional e Técnico Campos – CIETEC
+            <br><br>
+            NR 20 – Pilar Acessória
+            <br><br>
+            NR35 – SAMPLING
+            <br><br>
+            Curso de RD – Rede de Distribuição
+            <br><br>
+            Curso de Direção Defensiva, Condutor de Veículo de Emergência e Primeiros Socorros
+            <br><br>
+            Introdução a Microcontroladores – ARDUÍNO
+            <br><br>
+            CBSP – Curso Básico de Segurança de Plataforma – SAMPLING
+            <br><br>
+            HUET – Treinamento de Escape de Aeronave Submersa- SAMPLING
+            <br><br>
+            Curso de Iluminação de Emergência – Segure Max
+            <br><br>
+            EXPERIÊNCIA PROFISSIONAL
+            <br><br>
+            ENGELMIG ENERGIA LTDA- (Campos dos Goytacazes)- 29/07/2019 até o momento.
+            <br><br>
+            Função: Eletricista I
+            <br><br>
+            Atividades: Corte de Energia, Religação, Novas Ligações e Emergência.
+            <br><br>
+            EMPRESA CINEMAS SÃO LUIZ S/A – (Campos dos Goytacazes)- 13/10/2014 à 27/11/2018
+            <br><br>
+            Função: Encarregado de Manutenção e Serviços Gerais
+            <br><br>
+            Atividades: Manutenção elétrica e reparos em geral
+            <br><br>
+            MOELGE – ( Feira de Santana- BA)- 06/01/2014 a 10/02/2014
+            <br><br>
+            Função: Mecânico
+            <br><br>
+            Atividades: Vendas e Serviços em: Motores, bombas, ferramentas elétricas, irrigação, rebobinamento em motores, serviços e peças em geral.
+            CINE ARAÚJO- (Campos do Goytacazes) – 20/04/2011 a 15/10/2013
+            Função: Operador Cinematográfico – Técnico em Eletrotécnica
+            <br><br>
+            Atividades: Projeção Cinematográfica, manutenção e reparo em equipamentos cinematográficos
+            <br><br>
+            UENF ( Campos do Goytacazes)- 05/10/2010 a 18/01/2011
+            <br><br>
+            Realização do estágio do Curso Técnico em Eletrotécnica
+            <br><br>
+            Desenvolvimentos: Levantamentos na rede elétrica
+            <br><br>
+            Vistorias em painéis elétricos
+            <br><br>
+            Manutenção corretiva e preventiva em sistema de iluminação
+            <br><br>
+            Substituição de tomadas e outros reparos em eletricidade
+            <br><br>
+            MARINHA DO BRASIL (Rio de Janeiro) – 06/06/1998 a 10/01/2001
+            <br><br>
+            Função: Soldado – FUZILEIRO NAVAL
+            <br><br>
+            Curso Expedito de Motorista Militar (CEXPMOMIL)</p>
+        </div>
+
+        
+
+      </ion-col>
+    
+    </ion-row>
+  </ion-grid>
+  <ion-button style="display: flex; margin: auto;" routerLink="/equipe" fill="clear">Voltar</ion-button>
 </ion-content>
+
+

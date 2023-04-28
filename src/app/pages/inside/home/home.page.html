@@ -458,6 +458,13 @@
 
           <ion-label class="price">R$ 3,50</ion-label>
 
+          <ul style="list-style-type: square;">
+            <li>Cobranças realizadas mensalmente</li>
+            <li>Todos os benefícios de cooperado</li>
+            <li>Opções de pagamento: Pix </li>
+          </ul>
+          
+<!--
           <ion-radio-group value="payment-options" style="background-color: blue;">
             <ion-item>
               <ion-label class="u-payment-options">Pix</ion-label>
@@ -468,7 +475,7 @@
           </ion-radio-group>
 
 
-   
+   -->
         
         </ion-card>
       </div>
@@ -481,6 +488,13 @@
           <br> <br>
           <ion-label class="price">R$ 7,50</ion-label>
 
+          <ul style="list-style-type: square;">
+            <li>Cobranças realizadas bimestralmente</li>
+            <li>Todos os benefícios de cooperado</li>
+            <li>Opções de pagamento: Pix ou Boleto</li>
+          </ul>
+          
+<!--
           <ion-radio-group [(ngModel)]="opcaoPagamento" type="boolean" >
             <ion-item>
               <ion-label>Pix</ion-label>
@@ -490,10 +504,10 @@
               <ion-label>Boleto Bancário</ion-label>
               <ion-radio [(ngModel)]="frequenciaPagamento"class="radio-properties" slot="start" value="boleto"  ></ion-radio>
             </ion-item>
-          </ion-radio-group> <!---->
+          </ion-radio-group> 
           
           <ion-button expand="block" (click)="verificarPagamento()">Enviar</ion-button>
-
+        -->
 
         </ion-card>
       </div>
@@ -507,6 +521,14 @@
 
           <ion-label class="price">R$ 10,00</ion-label>
 
+          <ul style="list-style-type: square;">
+            <li>Cobranças realizadas trimestralmente</li>
+            <li>Todos os benefícios de cooperado</li>
+            <li>Opções de pagamento: Pix ou Boleto</li>
+          </ul>
+          
+
+          <!--
           <ion-radio-group value="payment-options">
             <ion-item>
               <ion-radio [(ngModel)]="frequenciaPagamento"slot="start" value="pix"  class="radio-properties"></ion-radio>
@@ -522,7 +544,7 @@
            
             </ion-item>
           </ion-radio-group>
-
+-->
 
         
         
@@ -539,6 +561,13 @@
 
           <ion-label class="price">R$ 18,00</ion-label>
 
+          <ul style="list-style-type: square;">
+            <li>Cobranças realizadas semestralmente</li>
+            <li>Todos os benefícios de cooperado</li>
+            <li>Opções de pagamento: Pix ou Boleto</li>
+          </ul>
+          
+<!--
           <ion-radio-group value="payment-options">
             <ion-item>
               <ion-radio [(ngModel)]="frequenciaPagamento"slot="start" value="pix"  class="radio-properties"></ion-radio>
@@ -555,7 +584,7 @@
             </ion-item>
           </ion-radio-group>
 
-
+-->
         
         
         </ion-card>
@@ -571,6 +600,14 @@
 
           <ion-label [(ngModel)]="cobranca.value" value="32.00"  class="price">R$ 32,00</ion-label>
 
+          <ul style="list-style-type: square;">
+            <li>Cobranças realizadas anualmente</li>
+            <li>Todos os benefícios de cooperado</li>
+            <li>Opções de pagamento: Pix ou Boleto</li>
+          </ul>
+          
+          
+          <!--
           <ion-radio-group value="payment-options">
             <ion-item>
               <ion-label class="u-payment-options">Pix</ion-label>
@@ -584,7 +621,7 @@
               <ion-radio [(ngModel)]="frequenciaPagamento"slot="start" value="boleto"  class="radio-properties"></ion-radio>
             </ion-item>
           </ion-radio-group>
-
+-->
 
         </ion-card>
       </div>
@@ -594,8 +631,32 @@
 
       </div>
       <div class="more-payment-options">
+        <ion-label>Escolha o seu plano</ion-label>
+        <select name="value" style="background-color: #fff; padding: 10px; border: 1px solid #000; border-radius: 5px;" [(ngModel)]="subs.value">
+          <option value="">Escolher plano</option>
+          <option value="3.5">R$ 3,50 - Mensal</option>
+          <option value="7.5">R$ 7,50 - Bimestral</option>
+          <option value="10.00">R$ 10,00 - Trimestral</option>
+          <option value="18.00">R$ 18,00 - Semestral</option>
+          <option value="32.00">R$ 32,00 - Anual</option>
+         
+          </select>
+        
+      </div>
+
+      
+      <div class="more-payment-options">
+        <ion-label>Escolha a forma de pagamento</ion-label>
+        <select [(ngModel)]="subs.billingType" name="billingType" style="background-color: #fff; padding: 10px; border: 1px solid #000; border-radius: 5px;">
+          <option value="">Escolher Pagamento</option>
+          <option value="pix">Pix</option>
+          <option value="boleto">Boleto</option>
+          </select>
+        
+      </div>
+      <div class="more-payment-options">
         <ion-label>Selecione o dia de vencimento</ion-label>
-        <select name="dia" style="background-color: #fff; padding: 10px; border: 1px solid #000; border-radius: 5px;">
+        <select [(ngModel)]="subs.nextDueDate" name="nextDueDate" style="background-color: #fff; padding: 10px; border: 1px solid #000; border-radius: 5px;">
           <option value="">1</option>
           <option value="1">1</option>
           <option value="2">2</option>
@@ -632,8 +693,8 @@
 
       <div *ngIf="valorTotal">
         <h2>Resumo do Pedido</h2>
-        <p>Frequência de Pagamento: {{ frequenciaPagamento }}</p>
-        <p>Forma de Pagamento: {{ formaPagamento }}</p>
+        <p>Frequência de Pagamento: {{ subs.nextDueDate }}</p>
+        <p>Forma de Pagamento: {{ subs.billingType }}</p>
         <p>Valor Total: R$ {{ valorTotal.toFixed(2) }}</p>
       </div>
       

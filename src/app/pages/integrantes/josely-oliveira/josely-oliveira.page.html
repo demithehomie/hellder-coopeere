@@ -1,9 +1,192 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>josely-oliveira</ion-title>
-  </ion-toolbar>
-</ion-header>
+
+  
 
 <ion-content>
 
+
+  <ion-header class="header-header">  
+
+    
+
+    <div [routerLink]="['/login']">
+      <ion-icon style="color:#fff;" name="person"></ion-icon>
+      <ion-label style="color:#fff;" class="label-header" >Login</ion-label>
+    </div>
+      |
+      <div style="padding-left: 18px;" [routerLink]="['/signup']" >
+        <ion-icon style="color:#fff;" name="pencil"></ion-icon>
+        <ion-label style="color: #fff;" >Cadastro</ion-label>
+      </div>
+      
+      
+    
+    </ion-header>
+
+
+
+    <ion-header class="header hide-header">
+      
+      
+        <ion-img  [routerLink]="['/onboarding']"  style="max-width: 10%; min-width: 8%; margin-left: 200px;" src="../../../assets/images-coopeere/coopere.png"></ion-img>
+      
+    
+      
+      <ion-button fill="clear" style="color:#000; margin-left: 70px;"  [routerLink]="['/']" routerLinkActive="active-link">Home</ion-button>
+      
+      <div class="dropdown">
+        <a [routerLink]="['/onboarding']" style="color:#000;" routerLinkActive="active-link">A COOPEERE <svg class="arrowicon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18"><path fill="none" d="M0 0h24v24H0z"/><path d="M12 13.172l4.95-4.95 1.414 1.414L12 16 5.636 9.636 7.05 8.222z"/></svg></a>
+        <div class="dropdown-content">
+          <a [routerLink]="['/quemsomos']" class="dropdown-item">Quem Somos?</a>
+          <a [routerLink]="['/objetivos']" class="dropdown-item">Objetivo</a>
+          <a [routerLink]="['/equipe']" class="dropdown-item">A Equipe</a>
+        </div>
+      </div>
+    
+      <ion-button fill="clear" style="color:#000;"  [routerLink]="['/estatuto']" routerLinkActive="active-link">Estatuto</ion-button>
+      <ion-button fill="clear" style="color:#000;"  [routerLink]="['/legislacao']" routerLinkActive="active-link">Legislação</ion-button>
+      <ion-button fill="clear" style="color:#000;" [routerLink]="['/vantagens']" routerLinkActive="active-link">Vantagens</ion-button>
+      <ion-button fill="clear" style="color:#000;"  [routerLink]="['/parceiros']" routerLinkActive="active-link">Parceiros</ion-button>
+      <ion-button fill="clear" style="color:#000; margin-right: 250px;" [routerLink]="['/faleconosco']" routerLinkActive="active-link">Fale Conosco</ion-button>
+  
+    </ion-header>
+
+
+  <div class="container">
+
+  </div>
+
+  <div class="minimum-header">
+
+      
+    <ion-img class="logo-min-header" [routerLink]="['/onboarding']"  src="../../../assets/images-coopeere/coopere.png"></ion-img>
+
+   
+    
+
+    <!-- TESTANDO O MENU HAMBURGUER COM DROPDOWN -->
+<div class="menu-min-header">
+    <nav class="thenav">
+      <div class="hamburger-menu-X" (click)="toggleMenu()">
+        <div class="bar-X"></div>
+        <div class="bar-X"></div>
+        <div class="bar-X"></div>
+      </div>
+      <ul class="menu-items-X" *ngIf="showMenu">
+        <br>
+        <li><a [routerLink]="['/onboarding']" routerLinkActive="active-link">HOME</a></li>
+        <li><a href="#">A COOPEERE</a></li>
+        <li><a [routerLink]="['/estatuto']" routerLinkActive="active-link">ESTATUTO</a></li>
+        <li><a [routerLink]="['/legislacao']" routerLinkActive="active-link">LEGISLAÇÃO</a></li>
+        <li><a [routerLink]="['/vantagens']" routerLinkActive="active-link">VANTAGENS</a></li>
+        <li><a [routerLink]="['/parceiros']" routerLinkActive="active-link">PARCEIROS</a></li>
+        <li><a [routerLink]="['/faleconosco']" routerLinkActive="active-link">FALE CONOSCO</a></li>
+        
+
+        
+      </ul>
+    </nav>
+  </div>   
+
+  <!-- 
+    
+    PACK DE CLASSES EM COMUM EM TODAS AS PAGINAS
+
+    * menu-items-X
+    * minimum-header
+    * menu-min-header
+    * thenav
+    * hamburger-menu-X
+    * bar-X
+  
+  -->
+    
+    <!-- FIM DO TESTE DO MENU HAMBURRGUER COM DROPDOWN -->
+
+
+    <ion-icon name="search" class="search-min-header">Procurar</ion-icon>
+  </div>
+
+  
+
+  <ion-grid>
+    <ion-row class="grid">
+      <ion-col size="3" style="display: flex; flex-direction: row;">
+        <img class="imagem-lateral" src="https://www.coopeere.eco.br/wp-content/uploads/2021/01/joseli-200x300.jpg" alt="">
+      </ion-col>
+      <ion-col size="4.5" style="display: flex; margin: auto; align-items: center; justify-content: center;">
+        <div>
+          <h1>Josely de Oliveira Cruz Rangel</h1>
+          <h6>Vendedora</h6>
+          <p>OBJETIVO
+<br><br>
+            Atuar na área / Vendas/ RH/ Financeiro/Administrativo
+            <br><br>    
+            FORMAÇÃO ACADEMICA
+            <br><br>
+            Superior Incompleto- Administração
+            <br><br>
+            EXPERIÊNCIA PROFISSIONAL
+            <br><br>
+            – Loja Adcos (CAMPOS DOS GOYTACAZES)- 23/12/2020 até o momento
+            <br><br>
+            Função: Consultora Dermocosmésticos
+            <br><br>
+            Atividades: Carteira de clientes, atendimento ao cliente, prospecção de clientes.
+            <br><br>
+            – Loja ADJI (CAMPOS DOS GOYTACAZES)- 02/01/2017 a 04/05/2018.
+            <br><br>
+            Função: Vendedora
+            <br><br>
+            Atividades: Atendimento ao cliente, carteira de clientes, organização interna da loja, controle de estoque, organização do almoxarifado.
+            <br><br>
+            – MRV Engenharia (CAMPOS DOS GOYTACAZES)- 01/06/2014 a 10/05/2015.
+            <br><br>
+            Função: Vendedora de Imóveis
+            <br><br>
+            Atividades: Captar clientes, atendimento ao cliente, separar documentos e anexar no sistema, pós-vendas.
+            <br><br>
+            – Free Instalações (FEIRA DE SANTANA)- 19/08/2013 a 22/01/2014.
+            <br><br>
+            Função: Caixa
+            <br><br>
+            Atividades: Abertura e fechamento do caixa, cobrança ao cliente, reposição de bobinas, embalar mercadoria.
+            <br><br>
+            – Hydrosistem Engenharia LTDA- EMBASA (SALVADOR/BA)- 07/06/2010 a 01/06/2011.
+            <br><br>
+            Função: Analista de Consumo/ Aux. Administrativo
+            <br><br>
+            Atividades: Elaboração de planilhas, emissão notas fiscais e boletos, organização de planilhas, rotinas administrativas.
+            <br><br>
+            – Hydrosistem Engenharia LTDA- EMBASA (SALVADOR/BA)- 05/01/2009 a 31/10/2009
+            <br><br>
+            Função: Cadista I/ Aux. Administrativo
+            <br><br>
+            Atividades: Cobrança de clientes, rotinas administrativas.
+            <br><br>
+            -TEL- Telemática e Marketing LTDA (SALVADOR/BA) – 11/03/2008 a 21/08/2008
+            <br><br>
+            Função: Operadora de Telemarketing Ativo
+            <br><br>
+            Atividades: Venda de planos da operadora claro.
+            <br><br>
+            – Mirrael Queiroz Gonçalves ME (SALVADOR/BA) – 01/11/2006 a 13/07/2007
+            <br><br>
+            Função: Vendedora
+            <br><br>
+            Atividades: Atendimento ao cliente, rotinas administrativas, controle de estoque, compra de mercadoria.
+            <br><br>
+            – INFORMAÇÕES COMPLEMENTARES
+            <br><br>
+            Participei de: Ações, leilões de gado, promoção de vendas e estágios na área administrativa.</p>
+        </div>
+
+        
+
+      </ion-col>
+    
+    </ion-row>
+  </ion-grid>
+  <ion-button style="display: flex; margin: auto;" routerLink="/equipe" fill="clear">Voltar</ion-button>
 </ion-content>
+
+

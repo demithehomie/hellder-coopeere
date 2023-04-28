@@ -1,15 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { Title } from '@angular/platform-browser';
 import { NavController } from '@ionic/angular';
+import { Title } from '@angular/platform-browser';
 
 @Component({
-  selector: 'app-felipe-godoy',
-  templateUrl: './felipe-godoy.page.html',
-  styleUrls: ['./felipe-godoy.page.scss'],
+  selector: 'app-rosangela-paulo',
+  templateUrl: './rosangela-paulo.page.html',
+  styleUrls: ['./rosangela-paulo.page.scss'],
 })
-export class FelipeGodoyPage implements OnInit {
-
-
+export class RosangelaPauloPage implements OnInit {
   selectedOption: string;
 
   showMenu: boolean = false;
@@ -22,7 +20,7 @@ export class FelipeGodoyPage implements OnInit {
     this.selectedOption = 'quemsomos';
     this.selectedOption = 'objetivos';
     this.selectedOption = 'equipe';
-    this.titleService.setTitle('Fillipe Godoy Azeredo')
+    this.titleService.setTitle('Rosangela Gomes Paulo')
   }
 
 

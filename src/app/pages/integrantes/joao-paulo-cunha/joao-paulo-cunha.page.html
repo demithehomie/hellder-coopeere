@@ -1,9 +1,245 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>joao-paulo-cunha</ion-title>
-  </ion-toolbar>
-</ion-header>
+
+  
 
 <ion-content>
 
+
+  <ion-header class="header-header">  
+
+    
+
+    <div [routerLink]="['/login']">
+      <ion-icon style="color:#fff;" name="person"></ion-icon>
+      <ion-label style="color:#fff;" class="label-header" >Login</ion-label>
+    </div>
+      |
+      <div style="padding-left: 18px;" [routerLink]="['/signup']" >
+        <ion-icon style="color:#fff;" name="pencil"></ion-icon>
+        <ion-label style="color: #fff;" >Cadastro</ion-label>
+      </div>
+      
+      
+    
+    </ion-header>
+
+
+
+    <ion-header class="header hide-header">
+      
+      
+        <ion-img  [routerLink]="['/onboarding']"  style="max-width: 10%; min-width: 8%; margin-left: 200px;" src="../../../assets/images-coopeere/coopere.png"></ion-img>
+      
+    
+      
+      <ion-button fill="clear" style="color:#000; margin-left: 70px;"  [routerLink]="['/']" routerLinkActive="active-link">Home</ion-button>
+      
+      <div class="dropdown">
+        <a [routerLink]="['/onboarding']" style="color:#000;" routerLinkActive="active-link">A COOPEERE <svg class="arrowicon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18"><path fill="none" d="M0 0h24v24H0z"/><path d="M12 13.172l4.95-4.95 1.414 1.414L12 16 5.636 9.636 7.05 8.222z"/></svg></a>
+        <div class="dropdown-content">
+          <a [routerLink]="['/quemsomos']" class="dropdown-item">Quem Somos?</a>
+          <a [routerLink]="['/objetivos']" class="dropdown-item">Objetivo</a>
+          <a [routerLink]="['/equipe']" class="dropdown-item">A Equipe</a>
+        </div>
+      </div>
+    
+      <ion-button fill="clear" style="color:#000;"  [routerLink]="['/estatuto']" routerLinkActive="active-link">Estatuto</ion-button>
+      <ion-button fill="clear" style="color:#000;"  [routerLink]="['/legislacao']" routerLinkActive="active-link">Legislação</ion-button>
+      <ion-button fill="clear" style="color:#000;" [routerLink]="['/vantagens']" routerLinkActive="active-link">Vantagens</ion-button>
+      <ion-button fill="clear" style="color:#000;"  [routerLink]="['/parceiros']" routerLinkActive="active-link">Parceiros</ion-button>
+      <ion-button fill="clear" style="color:#000; margin-right: 250px;" [routerLink]="['/faleconosco']" routerLinkActive="active-link">Fale Conosco</ion-button>
+  
+    </ion-header>
+
+
+  <div class="container">
+
+  </div>
+
+  <div class="minimum-header">
+
+      
+    <ion-img class="logo-min-header" [routerLink]="['/onboarding']"  src="../../../assets/images-coopeere/coopere.png"></ion-img>
+
+   
+    
+
+    <!-- TESTANDO O MENU HAMBURGUER COM DROPDOWN -->
+<div class="menu-min-header">
+    <nav class="thenav">
+      <div class="hamburger-menu-X" (click)="toggleMenu()">
+        <div class="bar-X"></div>
+        <div class="bar-X"></div>
+        <div class="bar-X"></div>
+      </div>
+      <ul class="menu-items-X" *ngIf="showMenu">
+        <br>
+        <li><a [routerLink]="['/onboarding']" routerLinkActive="active-link">HOME</a></li>
+        <li><a href="#">A COOPEERE</a></li>
+        <li><a [routerLink]="['/estatuto']" routerLinkActive="active-link">ESTATUTO</a></li>
+        <li><a [routerLink]="['/legislacao']" routerLinkActive="active-link">LEGISLAÇÃO</a></li>
+        <li><a [routerLink]="['/vantagens']" routerLinkActive="active-link">VANTAGENS</a></li>
+        <li><a [routerLink]="['/parceiros']" routerLinkActive="active-link">PARCEIROS</a></li>
+        <li><a [routerLink]="['/faleconosco']" routerLinkActive="active-link">FALE CONOSCO</a></li>
+        
+
+        
+      </ul>
+    </nav>
+  </div>   
+
+  <!-- 
+    
+    PACK DE CLASSES EM COMUM EM TODAS AS PAGINAS
+
+    * menu-items-X
+    * minimum-header
+    * menu-min-header
+    * thenav
+    * hamburger-menu-X
+    * bar-X
+  
+  -->
+    
+    <!-- FIM DO TESTE DO MENU HAMBURRGUER COM DROPDOWN -->
+
+
+    <ion-icon name="search" class="search-min-header">Procurar</ion-icon>
+  </div>
+
+  
+
+  <ion-grid>
+    <ion-row class="grid">
+      <ion-col size="3" style="display: flex; flex-direction: row;">
+        <img class="imagem-lateral" src="https://www.coopeere.eco.br/wp-content/uploads/2021/01/joaocunha-138x300.jpg" alt="">
+      </ion-col>
+      <ion-col size="4.5" style="display: flex; margin: auto; align-items: center; justify-content: center;">
+        <div>
+          <h1>João Paulo da Costa Cunha</h1>
+          <h3>Vice Presidente</h3>
+          <p>Técnico em Segurança no Trabalho pelo Centro de Especialização em Saúde Pública (2004).
+            <br><br>
+            Graduado Tecnólogo em Gestão de Segurança no Trabalho pela Universidade
+            Estácio de Sá (2009).
+            <br><br>
+            Pós Graduado em Direito do Trabalho e Processo do Trabalho / Especialização em Magistério do Ensino Superior (2015).
+            Bacharel em Direito pelo Centro Universitário Fluminense (2018)
+            <br><br>
+            Pesquisador Voluntário no GPIDMR – Grupo de Pesquisa Interinstitucional de Desenvolvimento Municipal, regional.itep, Uenf, Uniflu. (Até o presente momento)
+            <br><br>
+            Clique na foto e saiba mais: Favor colocar os dados abaixo no espaço que surgirá após clicarmos na foto.
+            <br><br>
+            Formação acadêmica/titulação.
+            <br><br>
+            2013 – 2014 Especialização em Pós Graduação em Direito do Trabalho e Processo do Trabalho.
+            Centro Universitário Fluminense, UNIFLU, Campos Dos Goytacazes, Brasil.
+            Título: A INTERDISCIPLINARIEDADE ENTRE SEGURANÇA DO TRABALHO E O DIREITO DO
+            TRABALHO.
+            Orientador: Christiano Aberlado
+            <br><br>
+            2013 – 2018 Graduação em Direito.
+            Centro Universitário Fluminense, UNIFLU, Campos Dos Goytacazes, Brasil
+            Título: SEGURANÇA E SAÚDE NO TRABALHO: ASPECTOS INTERDISCIPLINARES. BRASIL:
+            <br><br>
+            1988 – 2017 Orientador: Auner Pereira Carneiro
+            <br><br>
+            2007 – 2009 Graduação em TECNÓLOGO EM GESTÃO DE SEGURANÇA DO TRABALHO.
+            Universidade Estácio de Sá, UNESA, Rio De Janeiro, Brasil
+            Título: Implementa de Sistema de Gestão de Saúde e Segurança no Trabalho Orientador: Priscila Santiago
+            <br><br>
+            2004 – 2005 Ensino Profissional de nível técnico em Técnico em Segurança no Trabalho.
+            Cruz Vermelha Brasileira, CRUZ VERMALHA, Brasil.
+            <br><br>
+            Formação complementar
+            <br><br>
+            2016 – 2016 Curso de curta duração em Condutor de Veículo de Transporte de Passageiros. (Carga horária: 50h).
+            SERVIÇO NACIONAL DE APRENDIZAGEM DO TRANSPORTE, SEST/SENAT, Brasil.
+            <br><br>
+            2016 – 2016 Curso de curta duração em Condutor de Veículo de Transporte de Carga de Produtos Perigosos. (Carga
+            horária: 16h).
+            SERVIÇO NACIONAL DE APRENDIZAGEM DO TRANSPORTE, SEST/SENAT, Brasil.
+            <br><br>
+            2016 – 2016 Curso de curta duração em Condutor de Veículo de Emergência. (Carga horária: 40h).
+            SERVIÇO NACIONAL DE APRENDIZAGEM DO TRANSPORTE, SEST/SENAT, Brasil.
+            <br><br>
+            2014 – 2014 Curso de curta duração em Instrutor de Trânsito. (Carga horária: 180h).
+            SERVIÇO NACIONAL DE APRENDIZAGEM DO TRANSPORTE, SEST/SENAT, Brasil.
+            <br><br>
+            2014 – 2014 Curso de curta duração em Diretor Geral. (Carga horária: 40h).
+            SERVIÇO NACIONAL DE APRENDIZAGEM DO TRANSPORTE, SEST/SENAT, Brasil.
+            <br><br>
+            2014 – 2014 Curso de curta duração em Diretor Geral. (Carga horária: 40h).
+            SERVIÇO NACIONAL DE APRENDIZAGEM DO TRANSPORTE, SEST/SENAT, Brasil.
+            <br><br>
+            2010 – 2010 Curso de curta duração em INSPETOR DE SOLDA NÍVEL 1. (Carga horária: 216h).
+            SEPLAN – SOLUÇÕES EM PLANEJAMENTO, SEPLAN, Brasil.
+            <br><br>
+            2009 – 2009 Curso de curta duração em Gestão de Projetos. (Carga horária: 16h).
+            Universidade Estácio de Sá, UNESA, Rio De Janeiro, Brasil.
+            <br><br>
+            2009 – 2009 Curso de curta duração em Primeiros Socorros. (Carga horária: 16h).
+            Universidade Estácio de Sá, UNESA, Rio De Janeiro, Brasil.
+            <br><br>
+            2009 – 2009 Curso de curta duração em Gestão de Pessoas. (Carga horária: 16h).
+            Universidade Estácio de Sá, UNESA, Rio De Janeiro, Brasil.
+            <br><br>
+            2009 – 2009 Curso de curta duração em Bombeiro Profissional Civil. (Carga horária: 40h). Corpo de Bombeiro Militar (RJ), CBMERJ, Brasil
+            <br><br>
+            2008 – 2008 Curso de curta duração em Oratória. (Carga horária: 30h).
+            Faculdade de Direito de Campos, FDC, Brasil.
+            <br><br>
+            2008 – 2008 Curso de curta duração em Operador de Empilhadeira. (Carga horária: 28h).
+            Serviço Nacional de Aprendizagem do Transporte, SEST SENAT, Brasil.
+            <br><br>
+            2008 – 2008 Curso de curta duração em Ergonomia e Tratamento de Lesões no Trabalho. (Carga horária: 16h).
+            Universidade Estácio de Sá, UNESA, Rio De Janeiro, Brasil.
+            <br><br>
+            2008 – 2008 Curso de curta duração em Trein de Seg e Manuseio de Abrasivos. (Carga horária: 2h). PFERD, PFERD, Brasil.
+            <br><br>
+            2008 – 2008 Curso de curta duração em Formação de Membros da Cipa. (Carga horária: 20h). G8 Consultoria Assessoria e Treinamento, G8, Brasil.
+            <br><br>
+            2008 – 2008 Curso de curta duração em Operador de Empilhadeira. (Carga horária: 28h). SERVIÇO NACIONAL DE APRENDIZAGEM DO TRANSPORTE, SEST/SENAT, Brasil.
+            <br><br>
+            2008 – 2008 Curso de curta duração em noções básica de inglês. (Carga horária: 16h).
+            Universidade Estácio de Sá, UNESA, Rio De Janeiro, Brasil.
+            <br><br>
+            2008 – 2008 Curso de curta duração em Tratamento de águas e Efluentes Industriais. (Carga horária: 16h).
+            Universidade Estácio de Sá, UNESA, Rio De Janeiro, Brasil.
+            <br><br>
+            2008 – 2008 Curso de curta duração em Prevenção de Riscos Ambientais e Map de Riscos. (Carga horária: 16h).
+            Universidade Estácio de Sá, UNESA, Rio De Janeiro, Brasil.
+            <br><br>
+            2008 – 2008 Curso de curta duração em Avalição de Agentes de Riscos Ambientais. (Carga horária: 16h).
+            Universidade Estácio de Sá, UNESA, Rio De Janeiro, Brasil.
+            <br><br>
+            2007 – 2007 Curso de curta duração em Condutor de Veículos de Trans de Prod Perigosos. (Carga horária: 50h).
+            SENAI-SERVIÇO NACIONAL DE APRENDIZAGEM INDUSTRIAL, SENAI, Rep.Centro-Africana.
+            <br><br>
+            2007 – 2007 Curso de curta duração em Direito do Trabalho. (Carga horária: 16h).
+            Universidade Estácio de Sá, UNESA, Rio De Janeiro, Brasil.
+            <br><br>
+            2007 – 2007 Curso de curta duração em Operador de Ponte Rolante. (Carga horária: 16h).
+            Serviço Nacional de Aprendizagem do Transporte, SEST SENAT, Brasil.
+            <br><br>
+            2007 – 2007 Curso de curta duração em Operador de Ponte Rolante. (Carga horária: 16h).
+            SERVIÇO NACIONAL DE APRENDIZAGEM DO TRANSPORTE, SEST/SENAT, Brasil.
+            <br><br>
+            2005 – 2005 Curso de curta duração em Ártifices de Manutenção de Equi. Médico hospitalar. (Carga horária: 204h).
+            Escola Politécnica de Saúde Joaquim Venâncio (FIOCRUZ), EPSJV, Brasil.
+            <br><br>
+            2005 – 2005 Curso de curta duração em Boas Práticas de Láboratório de Saúde Pública. (Carga horária: 16h).
+            Escola Politécnica de Saúde Joaquim Venâncio (FIOCRUZ), EPSJV, Brasil.
+            <br><br>
+            2004 – 2004 Curso de curta duração em Prevenção e Combate a Incêndio em Lab. (Carga horária: 30h).
+            Escola Politécnica de Saúde Joaquim Venâncio (FIOCRUZ), EPSJV, Brasil.</p>
+        </div>
+
+        
+
+      </ion-col>
+    
+    </ion-row>
+  </ion-grid>
+  <ion-button style="display: flex; margin: auto;" routerLink="/equipe" fill="clear">Voltar</ion-button>
 </ion-content>
+
