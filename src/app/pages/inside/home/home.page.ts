@@ -169,7 +169,7 @@ export class HomePage implements OnInit {
     mobilePhone: "",
     phone: "",
     postalCode: "",
-   // address: document.getElementById('address'),
+    address: "",
     state: "",
     province: "",
     city: "",

@@ -2,7 +2,7 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 
-const APIUrl = "http://localhost:3000"
+const APIUrl = "http://localhost:3001"
 
 @Injectable()
 export class TwoFAService {

@@ -43,7 +43,7 @@
   </div>
 <div class="form-content col-sm-12">
   <div class="card p-4 mb-4 ">
-    <form #f="ngForm" id="formulario-cadastro" (submit)="cadastro()" >
+    <form  id="formulario-cadastro" (submit)="cadastro()" >
       <input type="hidden" name="_token" value="CsbBXaFkBxwza5YHajzScu1cX0T8qLxYMLNfdzDj" wfd-id="id0">        
       <input type="hidden" name="_method" value="put" wfd-id="id1">                
       <div class="form-group-heading">Realize o cadastro e torne-se um Coopeerado</div>
@@ -67,7 +67,7 @@
 
         <label class="form-label" for="cpfCnpj">CPF/CNPJ*</label>
         <div class="input-group w-60">
-          <input (input)="onInput($event)" [(ngModel)]="cliente.cpfCnpj" [(ngModel)]="usuario.cpfCnpj" type="text" placeholder="Digite seu CPF" class="form-control cliente-documento"  (ngModelChange)="formatarCPF()" id="cpfCnpj" name="cpfCnpj" value="" size="25" required maxlength="14" wfd-id="id4">
+          <input (input)="onInput($event)" [(ngModel)]="cliente.cpfCnpj" [(ngModel)]="usuario.cpfCnpj" type="text" placeholder="Digite seu CPF" class="form-control cliente-documento"  (ngModelChange)="formatarCPF()" id="cpfCnpj" name="cpfCnpj"  size="25" required maxlength="14" wfd-id="id4">
         </div>
 
         <label class="form-label" for="company">Empresa</label>
@@ -133,7 +133,7 @@
         
         <label class="form-label" for="address">Logradouro*</label>
         <div class="input-group">
-          <input name="address" ngModel #usuario.address="ngModel" ngModel #cliente.address="ngModel" type="text" class="form-control" id="address"  value=(conteudo.logradouro) required wfd-id="id13">
+          <input name="address" [(ngModel)]="usuario.address" [(ngModel)]="cliente.address" type="text" class="form-control" id="address"  value=(conteudo.logradouro) required wfd-id="id13">
         </div>
 
         <label class="form-label" for="addressNumber">Número*</label>
@@ -148,17 +148,17 @@
 
         <label class="form-label" for="province">Bairro*</label>
         <div class="input-group">
-          <input name="province" ngModel #usuario.province="ngModel" ngModel #cliente.province="ngModel" type="text" class="form-control" id="province"   required wfd-id="id16">
+          <input name="province" [(ngModel)]="cliente.province" [(ngModel)]="usuario.province" type="text" class="form-control" id="province"   required wfd-id="id16">
         </div>
 
         <label class="form-label" for="city">Cidade*</label>
         <div class="input-group">
-          <input name="city" ngModel #usuario.address="ngModel" ngModel #cliente.address="ngModel" type="text" class="form-control" id="city"  value="" required wfd-id="id17">
+          <input name="city" [(ngModel)]="usuario.address" [(ngModel)]="cliente.address" type="text" class="form-control" id="city"  value="" required wfd-id="id17">
         </div>
         
         <label class="form-label" for="state">Estado*</label>
         <div class="input-group">
-          <select name="state" ngModel #usuario.state="ngModel" ngModel #cliente.state="ngModel" class="form-select" id="state"  required wfd-id="id18">
+          <select name="state" [(ngModel)]="usuario.state" [(ngModel)]="cliente.state" class="form-select" id="state"  required wfd-id="id18">
             <option value="">UF</option>
             <option value="AC">Acre</option>
             <option value="AL">Alagoas</option>

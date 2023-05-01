@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-const APIUrl = 'http://localhost:3000'
+const APIUrl = 'http://localhost:3001'
 
 @Injectable({
     providedIn: 'root'
@@ -20,7 +20,7 @@ export class AuthService {
 
     /*
     autenticar(usuario: string, senha: string) {
-        const url = 'http://localhost:3000/usuario/login';
+        const url = 'http://localhost:3001/usuario/login';
         const body = JSON.stringify({usuario: this.login.usuario,
                                     senha: this.login.senha});
         const headers = new HttpHeaders();

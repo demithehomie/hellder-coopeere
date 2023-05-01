@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { HttpClient} from '@angular/common/http'
 import { Observable } from 'rxjs';
 
-const clienteURL = 'http://localhost:3000';
+const clienteURL = 'http://localhost:3001';
 
 @Injectable()
 export class ProdistService {

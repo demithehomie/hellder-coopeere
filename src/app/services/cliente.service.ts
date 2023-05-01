@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { Cliente } from '../interfaces/cliente';
 
 
-const clienteURL = 'http://localhost:3000';
+const clienteURL = 'http://localhost:3001';
 
 @Injectable({
   providedIn: 'root'
@@ -50,5 +50,15 @@ export class ClienteService {
   // GERAR LINK DE PAGAMENTO 
   generatePaymentLink(body: any){
     return this.httpClient.post(clienteURL+'/paymentLinks', body); 
+  }
+
+  // OBTER O ID DE CLIENTES DO USUÁRIO ASAAS
+  getCustomerId(){
+    return this.httpClient.get(clienteURL+'/customers ')
+  }
+
+  getCpfCnpj(id: string){
+    //const id = response.data.id;
+    return this.httpClient.get(clienteURL+`/customers/customers_from_database_by_id/${id}`)
   }
 }

@@ -3,7 +3,7 @@ import { HttpClient} from '@angular/common/http'
 import { Observable } from 'rxjs';
 
 
-const usuarioURL = 'http://localhost:3000';
+const usuarioURL = 'http://localhost:3001';
 
 @Injectable({
   providedIn: 'root'
@@ -13,9 +13,9 @@ export class UsuarioService {
   constructor(private httpClient: HttpClient) { }
 
   // CRIAR USUÁRIO - SELF-SIGN-IN 
-  create(data: any): Observable<any>{
-    // return this.httpClient.post(usuarioURL+'/users',data)
-     return this.httpClient.post('http://localhost:3000/users',data)
+  create(data: any) : Observable<any>  {
+    return this.httpClient.post(usuarioURL+'/users',data)
+    // return this.httpClient.post(usuarioURL + '/users',data)
   }
 
   buscarCep(postalCode: string){
