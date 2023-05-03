@@ -1,10 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, HostListener, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NavController } from '@ionic/angular';
 import { ViaCepResponse } from 'src/app/interfaces/viacep';
-
+import { NgForm } from '@angular/forms';
 import { Cliente } from 'src/app/interfaces/cliente';
 import { Login } from 'src/app/interfaces/login';
 import { Usuario } from 'src/app/interfaces/usuario';
@@ -38,15 +38,45 @@ export class SignupPage implements OnInit {
     uf: ''
   };
  */
+
+  ClienteUsuarioForm: FormGroup;
+
   constructor(
+    
     
     private router: Router,
     private formBuilder: FormBuilder,
     private usuarioService: UsuarioService,
     private clienteService: ClienteService,
     public navCtrl: NavController, 
-    private http: HttpClient
-    ) {}
+    private http: HttpClient,
+    
+    ) {
+
+      
+    this.ClienteUsuarioForm = new FormGroup({
+      cliente: new FormGroup({
+        name: new FormControl(),
+        email: new FormControl(),
+        cpfCnpj: new FormControl(),
+        company: new FormControl(),
+        mobilePhone: new FormControl(),
+        phone: new FormControl()
+      }),
+      usuario: new FormGroup({
+       
+        name: new FormControl(),
+        email: new FormControl(),
+        cpfCnpj: new FormControl(),
+        company: new FormControl(),
+        mobilePhone: new FormControl(),
+        phone: new FormControl(),
+        password: new FormControl(),
+        confirma_senha: new FormControl()
+      })
+    });
+    
+    }
 
   /*  
   submitForm() {
@@ -121,14 +151,102 @@ openExternalLinkYouTube(){
   window.open('https://www.youtube.com', '_blank')
 }
 
+
 ngOnInit(): void{
-  this.validaForm();
+this.validaForm();
+
+
+
   this.http.get('assets/buscarcep.js', { responseType: 'text'})
     .subscribe(js => {
     const script = document.createElement('script');
     script.type = 'text/javascript';
     script.text = js;
     document.body.appendChild(script);
+  });
+}
+
+validarSenha(formGroup: FormGroup) {
+  const senhaControl = formGroup.get('password');
+  const confirmacaoSenhaControl = formGroup.get('confirmacaoSenha');
+  if (senhaControl!.value !== confirmacaoSenhaControl!.value) {
+    confirmacaoSenhaControl!.setErrors({ senhaDiferente: true });
+  } else {
+    confirmacaoSenhaControl!.setErrors(null);
+  }
+}
+
+
+onSubmit() {
+  const usuario = this.ClienteUsuarioForm.get('usuario')!.value;
+  const cliente = this.ClienteUsuarioForm.get('cliente')!.value;
+  this.usuarioService.create(usuario).subscribe({next: (res) => 
+    {
+      console.log(res);
+      console.log("Usuário cadastrado com sucesso")
+    },
+    error: (e) => console.error(e)
+  });
+  this.clienteService.create(cliente).subscribe({next: (rescli) => 
+    {
+      console.log(rescli);
+      console.log("Cliente cadastrado com sucesso")
+      this.navCtrl.navigateForward('/email');
+    },
+    error: (e) => console.error(e)
+    });
+  // Aqui você pode fazer a chamada para a API ou salvar no banco de dados
+  console.log('Dados do usuário:', usuario);
+  console.log('Dados do cliente:', cliente);
+}
+
+validaForm(){
+  this.ClienteUsuarioForm = this.formBuilder.group({
+    usuario: this.formBuilder.group({
+      name: ['', Validators.required],
+      cpfCnpj: ['', [Validators.required]],
+      phone: ['', [Validators.required]],
+      mobilePhone: ['', [Validators.required]],
+      address: ['', [Validators.required]],
+      company: ['', [Validators.required]],
+      addressNumber: ['', [Validators.required]],
+      complement: ['', [Validators.required]],
+      province: ['', [Validators.required]],
+      city: ['', [Validators.required]],
+      state: ['', [Validators.required]],
+      postalCode: ['', [Validators.required]],
+      externalReference: ['', [Validators.required]],
+      additionalEmails: ['', [Validators.required]],
+      municipalInscription: ['', [Validators.required]],
+      stateInscription: ['', [Validators.required]],
+      observations: ['', [Validators.required]],
+      groupname: ['', [Validators.required]],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', Validators.minLength(6)],
+      confirmacaoSenha: [''], }, {}),
+   
+      cliente: this.formBuilder.group({
+        name: ['', Validators.required],
+        cpfCnpj: ['', [Validators.required]],
+        phone: ['', [Validators.required]],
+        mobilePhone: ['', [Validators.required]],
+        address: ['', [Validators.required]],
+        company: ['', [Validators.required]],
+        addressNumber: ['', [Validators.required]],
+        complement: ['', [Validators.required]],
+        province: ['', [Validators.required]],
+        city: ['', [Validators.required]],
+        state: ['', [Validators.required]],
+        postalCode: ['', [Validators.required]],
+        externalReference: ['', [Validators.required]],
+        additionalEmails: ['', [Validators.required]],
+        municipalInscription: ['', [Validators.required]],
+        stateInscription: ['', [Validators.required]],
+        observations: ['', [Validators.required]],
+        groupname: ['', [Validators.required]],
+        email: ['', [Validators.required, Validators.email]],
+        
+    })
   });
 }
 
@@ -184,6 +302,7 @@ usuario: Usuario = {
   confirma_senha: ""
 }
 
+/*
 formulario!: FormGroup;
 
 validaForm(){
@@ -212,7 +331,7 @@ validaForm(){
     confirma_senha: ['', [Validators.required,  this.equalTo('password')]],
   });
 }
-
+*/
 equalTo(field_name: string) {
   return (control: any) => {
     const field = control.parent?.get(field_name);
@@ -222,7 +341,7 @@ equalTo(field_name: string) {
     return null;
   };
 }
-
+/*
 cadastro(): void{
   const data = {
     role: this.usuario.role,
@@ -281,6 +400,9 @@ cadastro(): void{
     error: (e) => console.error(e)
     });
 }
+*/
+
+
 
 @HostListener('input', ['$event'])
 onInput(event: Event) {
