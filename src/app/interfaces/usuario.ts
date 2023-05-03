@@ -22,5 +22,5 @@ export interface Usuario {
     notificationDisabled: boolean | null,
     observations: string,
     password: string;   
-    confirma_senha: string;
+    confirm_password: string;
 }
