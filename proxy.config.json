@@ -1,0 +1,8 @@
+{
+    "/auth/*": {
+      "target": "https://accounts.google.com",
+      "secure": true,
+      "changeOrigin": true
+    }
+  }
+  

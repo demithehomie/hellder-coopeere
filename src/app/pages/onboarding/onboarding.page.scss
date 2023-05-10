@@ -1,4 +1,39 @@
 
+/// INÍCIO - IMAGEM COOPERE + MENU HAMBURGUER SUPERIOR DIREITO + LUPA COM SEARCH FEATURE
+
+@media screen and (max-width: 370px) {
+    .image-coopeere {
+       min-width: 270px; padding-right: 50px;
+    }
+}
+
+@media screen and (min-width: 450px) {
+  .image-coopeere {
+    max-width: 170px; min-width: 170px; padding-right: 60px;
+  }
+}
+
+
+/// FIM - IMAGEM COOPERE + MENU HAMBURGUER SUPERIOR DIREITO + LUPA COM SEARCH FEATURE
+
+/// INÍCIO - TEXTO DOS SLIDES ACIMA DOS BOTÕES
+
+@media screen and (max-width: 450px){
+  .text-slides-above-button {
+    font-size: 15px;
+
+  }
+}
+
+@media screen and (min-width: 450px) and (max-width: 600px){
+  .text-slides-above-button {
+    font-size: 40px;
+  }
+}
+
+//// FIM - TEXTO DOS SLIDES ACIMA DOS BOTÕES
+
+
 .carousel {
     overflow: hidden;
     width: 100%;
@@ -606,6 +641,7 @@ a {
     padding: 10px;
     padding-top: 42px;
     padding-left: 42px;
+    min-width: 50%;
     
   }
 

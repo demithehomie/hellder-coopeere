@@ -1,6 +1,7 @@
 <ion-content>
 
 <ion-header class="header-header">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-l6Vcqfblq6tQ7B6zvWVgwTHfGfWeYhbyvKbV5t3DU5+K+H0IooBZfCp9ZEDl1zTfMrqQHy1lHs+NJUpvDq+Uug==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap" rel="stylesheet">
   <link href="https://coopeere.microcampos.com.br/assets/style.css" rel="stylesheet">
   <script src="https://coopeere.microcampos.com.br/js/jquery.slim.min.js"></script>
@@ -129,7 +130,7 @@
       <div class="linha">
         <div class="flex-box">
           <div class="">
-            <form class="form px-5 py-5 card animate__animated animate__slideInRight" (submit)="onSubmit()">
+            <form class="form px-5 py-5 card animate__animated animate__slideInRight" style="min-width: 60%;" (submit)="onSubmit()">
 
               <div class="text-center  mb-3">
                 <div class="logo">
@@ -176,6 +177,8 @@
               <div class="flex justify-center">
                 <button type="submit" class="btn btn-login" >Login</button>
               </div>
+                  <br>
+          
 
               <!--  (click)="alertaDeSucessox()"  -->
               <div class="criar-conta">
@@ -187,6 +190,14 @@
               </div>
 
             </form>
+              <br>
+              <form (submit)="googleAuth()">
+            <div class="flex justify-center">
+              <button type="submit" (onSubmit)="googleAuth()" class="btn btn-login" style="color: #000; background-color: #fff; font-weight: bold;  " > 
+              <img src="../../../assets/icon/google-icon.png" alt="Google logo" style="position: absolute; max-width: 3%; min-width: 3%; top: 87%; left: 1100px; transform: translateY(-50%);" />  Entrar com Conta do Google
+            </button>
+            </div>
+          </form>
           </div>
         </div>
       </div>

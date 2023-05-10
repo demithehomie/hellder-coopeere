@@ -21,6 +21,8 @@ export class LoginPage implements OnInit {
     this.showMenu = !this.showMenu;
   }
 
+ 
+
   constructor(
     private router: Router,
     private formBuilder:  FormBuilder,
@@ -32,6 +34,17 @@ export class LoginPage implements OnInit {
   login: Login = {
     email: "",
     password: ""
+  }
+
+  //user: "";
+
+  googleAuth(){
+    return this.usersService.googleAuth().subscribe({next: (res) => 
+      {
+        console.log(res);
+        console.log("Usuário cadastrado com sucesso")
+      },
+  })
   }
 
   ngOnInit(): void {

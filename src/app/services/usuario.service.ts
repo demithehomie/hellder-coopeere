@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 const usuarioURL = 'http://localhost:3001';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root' 
 })
 export class UsuarioService {
 
@@ -14,8 +14,13 @@ export class UsuarioService {
 
   // CRIAR USUÁRIO - SELF-SIGN-IN 
   create(data: any) : Observable<any>  {
-    return this.httpClient.post(usuarioURL+'/users',data)
-    // return this.httpClient.post(usuarioURL + '/users',data)
+    return this.httpClient.post(usuarioURL+'/auth/register',data)
+ 
+  }
+
+  // AUTENTICAÇÃO COM GOOGLE (LOGIN)
+  googleAuth(){
+    return this.httpClient.get(usuarioURL+'/auth/google')
   }
 
   buscarCep(postalCode: string){
