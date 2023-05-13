@@ -2,8 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from "@angular/router";
 import { UsuarioService } from 'src/app/services/usuario.service';
-import { AlertController, NavController } from '@ionic/angular';
+import { AlertController, LoadingController, NavController } from '@ionic/angular';
 import { Login } from 'src/app/interfaces/login';
+import { AuthenticationService } from 'src/app/services/authentication.service';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-login',
@@ -11,6 +13,9 @@ import { Login } from 'src/app/interfaces/login';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
+
+  credentials!: FormGroup;
+
   selectedOption: string = '';
 
   
@@ -28,8 +33,13 @@ export class LoginPage implements OnInit {
     private formBuilder:  FormBuilder,
     private usersService: UsuarioService,
     public navCtrl: NavController,
-    private alertController: AlertController
-  ) { }
+    private alertController: AlertController,
+    private loadingController: LoadingController,
+    private authenticationService: AuthenticationService,
+    private titleController: Title
+  ) { 
+    this.titleController.setTitle('Login - Coopeere')
+  }
 
   login: Login = {
     email: "",
@@ -51,59 +61,40 @@ export class LoginPage implements OnInit {
     this.validaForm();
   }
   
-  formulariologin!: FormGroup;
+
 
   validaForm(){
-    this.formulariologin = this.formBuilder.group({
+    this.credentials = this.formBuilder.group({
       email: ['', [Validators.required]],
-      password: ['', [Validators.required]]
+      password: ['', [Validators.required, Validators.minLength(6)]]
     });
   }
-  /*
-  onSubmit() {
-    const body = {
-      username: this.login.usuario,
-      password: this.login.senha
-    };
-    this.usersService.login(body)
-    .subscribe({
-    next: (res) => {
-    console.log(res);
-    console.log('Usuário autenticado.')
 
 
-    
-    this.navCtrl.navigateForward('/home');
+async onSubmit() {
 
+  const loading = await this.loadingController.create();
+  await loading.present();
+
+ 
+
+  this.authenticationService.login(this.credentials.value).subscribe(
+    async (res) => {
+      console.log(this.credentials.value)
+      await loading.dismiss();
+      this.router.navigateByUrl('/home', { replaceUrl: true });
     },
-    error: (e) => {
-      console.error(e)
-      console.log("Dados Enviados", body);
-    
-    }
-    });
-  }
-*/
+    async (res) => {
+      await loading.dismiss();
+      const alert = await this.alertController.create({
+        header: 'O email ou a senha não correspondem á uma conta Coopeere',
+        message: res.error.error,
+        buttons: ['OK']
+      });
 
-onSubmit() {
-  const body = {
-    email: this.login.email,
-    password: this.login.password
-  };
-
-  this.usersService.login(body).subscribe({
-    next: (res) => {
-      console.log(res);
-      console.log('Usuário autenticado.')
-      this.presentSuccessAlert();
-      this.navCtrl.navigateForward('/home');
-    },
-    error: (e) => {
-      console.error(e)
-      console.log("Dados Incorretos", body);
-      this.presentErrorAlert();
+      await alert.present();
     }
-  });
+  );
 }
 
 async presentSuccessAlert() {
@@ -144,40 +135,12 @@ async presentErrorAlert() {
 
   }
 
-  openExternalLinkFacebook(){
-    window.open('https://www.facebook.com', '_blank')
+  get email() {
+    return this.credentials.get('email');
   }
-
-  openExternalLinkInstagram(){
-    window.open('https://www.instagram.com', '_blank')
+  
+  get password() {
+    return this.credentials.get('password');
   }
-
-  openExternalLinkYouTube(){
-    window.open('https://www.youtube.com', '_blank')
-  }
-/*
-  async alertaDeSucesso() {
-    const alert = await this.alertController.create({
-      header: 'Bem-Vindo',
-      subHeader: 'Seja bem-vindo a Plataforma da COOPEERE',
-      message: 'Aproveite sua estadia!',
-      buttons: ['OK'],
-    });
-
-    await alert.present();
-  }
-
-  async alertaDeFracasso() {
-    const alert = await this.alertController.create({
-      header: 'DADOS INVÁLIDOS',
-      subHeader: 'Nome de usuário ou senha errados',
-      message: 'Corrija seus dados para obter o acesso',
-      buttons: ['OK'],
-    });
-
-    await alert.present();
-  }
-
-*/
  
 }

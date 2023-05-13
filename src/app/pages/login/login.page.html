@@ -130,7 +130,7 @@
       <div class="linha">
         <div class="flex-box">
           <div class="">
-            <form class="form px-5 py-5 card animate__animated animate__slideInRight" style="min-width: 60%;" (submit)="onSubmit()">
+            <form [formGroup]="credentials" (ngSubmit)="onSubmit()" class="form px-5 py-5 card animate__animated animate__slideInRight" style="min-width: 60%;" (submit)="onSubmit()">
 
               <div class="text-center  mb-3">
                 <div class="logo">
@@ -158,24 +158,30 @@
                 <span class="input-group-text">
                   <i class="fas fa-envelope"></i>
                 </span>
-                <input type="email" class="form-control" style="height: 55px;" name="email" placeholder=" " [(ngModel)]="login.email" id="email" wfd-id="id2">
+                <input type="email" class="form-control" style="height: 55px;" name="email" placeholder=" " formControlName="email" id="email" wfd-id="id2">
                 <label for="email" class="input-group-label">E-mail</label>
               </div>
-
+              <div *ngIf="(email?.dirty || email?.touched) && email?.errors" class="errors">
+                <span *ngIf="email?.errors?.['required']">Email is required</span>
+                <span *ngIf="email?.errors?.['email']">Email is invalid</span>
+              </div>
               <div class="input-group">
                 <span class="input-group-text">
                   <i class="fas fa-lock"></i>
                 </span>
-                <input type="password" class="form-control"  style="height: 55px;"  name="senha" placeholder=" " [(ngModel)]="login.password" id="password" wfd-id="id3">
+                <input type="password" class="form-control"  style="height: 55px;"  name="senha" placeholder=" " formControlName="password" id="password" wfd-id="id3">
                 <label for="password" class="input-group-label">Senha</label>
               </div>
-
+              <div *ngIf="(password?.dirty || password?.touched) && password?.errors" class="errors">
+                <span *ngIf="password?.errors?.['required']">Você precisa inserir sua senha</span>
+                <span *ngIf="password?.errors?.['minlength']">A senha consiste no mínimo em 6 caracteres</span>
+              </div>
               <div class="esqueceu-senha">
                 <p><ion-label class="aaa" href=""><small>Esqueceu a senha?</small></ion-label></p>
               </div>
 
               <div class="flex justify-center">
-                <button type="submit" class="btn btn-login" >Login</button>
+                <button type="submit" class="btn btn-login" [disabled]="!credentials.valid">Login</button>
               </div>
                   <br>
           

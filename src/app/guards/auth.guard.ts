@@ -1,53 +1,27 @@
+import { AuthenticationService } from '../services/authentication.service';
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, Route, Router, RouterStateSnapshot, UrlSegment, UrlTree } from '@angular/router';
+import { CanLoad, Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { AuthService } from '../services/auth.service';
-
-// hardcoded user data.
-const loggedInUser = {
- id: '1zx-casd123-asdzxc132',
- name: 'Lakindu Hewawasam',
- role: '1'
-}
+import { filter, map, take } from 'rxjs/operators';
 
 @Injectable({
- providedIn: 'root'
+	providedIn: 'root'
 })
-export class AuthGuard implements CanActivate {
+export class AuthGuard implements CanLoad {
+	constructor(private authService: AuthenticationService, private router: Router) {}
 
- // inject the router service to allow navigation.
- constructor(private router: Router, private authService: AuthService) { }
-
- canActivate(
-  route: ActivatedRouteSnapshot,
-  state: RouterStateSnapshot
-): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-
-  const { role } =  loggedInUser//this.authService.getUserById();
-  const { routeConfig } = route;
-  const { path } = routeConfig as Route;
-
-  // allow access to login and signup pages without authentication
-  if (path === 'login' || path === 'signup') {
-    return true;
-  }
-
-  if (path?.includes('admin-home') && role === '2') {
-    return true;
-  }
-
-  if ((path?.includes('dashboard') || path?.includes('home')) && role === '1') {
-    return true;
-  }
-
-  this.router.navigateByUrl('/forbidden');
-  return false;
+	canLoad(): Observable<boolean> {
+		return this.authService.isAuthenticated.pipe(
+			filter((val) => val !== null), // Filter out initial Behaviour subject value
+			take(1), // Otherwise the Observable doesn't complete!
+			map((isAuthenticated) => {
+				if (isAuthenticated) {
+					return true;
+				} else {
+					this.router.navigateByUrl('/login');
+					return false;
+				}
+			})
+		);
+	}
 }
-
-}
-
-/*
-git config --local user.name "demithehomie"
-git config --local user.email "demithehomie@gmail.com"
-
-*/

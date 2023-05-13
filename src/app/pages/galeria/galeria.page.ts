@@ -1,6 +1,10 @@
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
-import { IonSlides, ModalController } from '@ionic/angular';
+import { IonSlides, IonicSlides, ModalController } from '@ionic/angular';
+import { Title } from '@angular/platform-browser';
+
+
+import Swiper from 'swiper';
 
 
 @Component({
@@ -9,6 +13,20 @@ import { IonSlides, ModalController } from '@ionic/angular';
   styleUrls: ['./galeria.page.scss'],
 })
 export class GaleriaPage implements OnInit {
+  swiperModules = [IonicSlides];
+
+  private swiper: Swiper;
+  
+	//@ViewChild(IonicSlides)
+  //slides!: typeof IonicSlides;
+
+  @ViewChild('swiper')
+  swiperRef: ElementRef | undefined;
+  //swiper?: Swiper;
+
+  //@ViewChild(SwiperNavigation) swiperNavigation!: SwiperNavigation;
+  //@ViewChild(SwiperButtonPrev) swiperButtonPrev!: SwiperButtonPrev;
+  //@ViewChild(SwiperButtonNext) swiperButtonNext!: SwiperButtonNext;
 
   currentIndex: number = 0;
 
@@ -230,7 +248,14 @@ enviarFormulario() {
  
 //  @ViewChild('slide', { static: true }) slide: IonSlides;
 
-  constructor(private router: Router, private modalCtrl: ModalController) {}
+  constructor(private router: Router, private modalCtrl: ModalController, private titleCtrl: Title ) {
+    this.titleCtrl.setTitle('Galeria de Fotos - Coopeere')
+    this.swiper = new Swiper('.swiper-container', {
+      slidesPerView: 1,
+      spaceBetween: 10,
+      // outras opções aqui
+    });
+  }
 
   zoomIn() {
     //this.slide.zoom(2);

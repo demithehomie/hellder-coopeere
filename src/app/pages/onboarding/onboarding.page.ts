@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { LocalStorage } from '@ngx-pwa/local-storage';
 import { Router } from '@angular/router';
 import { SearchService } from 'src/app/services/search.service';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-onboarding',
@@ -55,8 +56,11 @@ closeSearchInput(){
   constructor(
     private router: Router,
     private localStorage: LocalStorage,
-    private searchService: SearchService
-    ) {}
+    private searchService: SearchService,
+    private titleController: Title
+    ) {
+      this.titleController.setTitle('Home - Coopeere')
+    }
 
     search() {
       this.searchService.searchTerm = this.searchTerm;

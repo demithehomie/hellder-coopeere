@@ -8,6 +8,7 @@ import { Cobranca, Discount, Fine, Interest } from 'src/app/interfaces/cobranca'
 import { ClienteService } from 'src/app/services/cliente.service';
 import { UsuarioService } from 'src/app/services/usuario.service';
 import { ProdistService } from 'src/app/services/prodist.service';
+import { Title } from '@angular/platform-browser'
 
 @Component({
   selector: 'app-home',
@@ -31,8 +32,11 @@ export class HomePage implements OnInit {
     private alertController: AlertController,
     private clienteService: ClienteService,
     private formBuilder: FormBuilder,
-    private prodistService: ProdistService
-    ) { }
+    private prodistService: ProdistService,
+    private titleController: Title
+    ) {
+      this.titleController.setTitle('Home - Coopeere')
+     }
 
 
     calcularValorTotal() {

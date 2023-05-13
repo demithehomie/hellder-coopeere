@@ -1,6 +1,13 @@
 <ion-content>
 <ion-title>Galeria de Fotos</ion-title>
-  
+<ion-header *ngIf="mostrarCarousel">
+
+  <div style=" justify-content: flex-end; align-items: flex-end; margin-left: 90%">
+    <ion-icon name="close" style="align-items: flex-end; z-index: 100000; font-size: 50px; color: #ff0000" (click)="closeCarousel()"></ion-icon>
+    <ion-icon name="expand-outline" style="align-items: flex-end; z-index: 99999; font-size: 50px; color: #fff" (click)="toggleFullScreen()"></ion-icon>
+    <ion-icon name="add-circle-outline" style="align-items: flex-end; z-index: 99999; font-size: 50px; " (click)="zoomIn()"></ion-icon>
+  </div>
+</ion-header>
   <ion-header class="header-header">  
   
     <div [routerLink]="['/login']">
@@ -247,13 +254,12 @@
      </ion-slides>
     </div>
 
+
+
+
      <div class="carousel-container" *ngIf="mostrarCarousel">
       
-      <div class="botoes-superiores">
-        <ion-icon name="close" (click)="closeCarousel()"></ion-icon>
-        <ion-icon name="expand-outline" (click)="toggleFullScreen()"></ion-icon>
-        <ion-icon name="add-circle-outline" (click)="zoomIn()"></ion-icon>
-      </div>
+
 
 <br>
 <br>
@@ -269,13 +275,21 @@
        
      -->
     </div>
-
+   
+  
        <ion-slides pager="true" [options]="slideOpts" #slides >
+
+        
+
          <ion-slide *ngFor="let image of images;let i = index"  >
            <img [src]="image.src" class="images-galeria" />
          </ion-slide>
+       
        </ion-slides>
-     </div>
      
-    
+  
+
+   
+     
+  </div>
   </ion-content>

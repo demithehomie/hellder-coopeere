@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
@@ -13,8 +13,9 @@ import { GaleriaPage } from './galeria.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    GaleriaPageRoutingModule
+    GaleriaPageRoutingModule,
   ],
-  declarations: [GaleriaPage]
+  declarations: [GaleriaPage],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class GaleriaPageModule {}

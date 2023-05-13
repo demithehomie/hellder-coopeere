@@ -1,5 +1,9 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './guards/auth.guard';
+import { IntroGuard } from './guards/intro.guard';
+import { AutoLoginGuard } from './guards/auto-login.guard';
+
 
 const routes: Routes = [
 /*   {
@@ -24,7 +28,8 @@ const routes: Routes = [
   },
   {
     path: 'login',
-    loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
+    loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule),
+     canLoad: [IntroGuard, AutoLoginGuard]
   },
   {
     path: 'signup',
@@ -233,8 +238,10 @@ const routes: Routes = [
   },
   {
     path: 'home',
-    loadChildren: () => import('./pages/inside/home/home.module').then( m => m.HomePageModule)
-  },  {
+    loadChildren: () => import('./pages/inside/home/home.module').then( m => m.HomePageModule),
+    canLoad: [AuthGuard]
+  },
+  {
     path: 'trabalheconosco',
     loadChildren: () => import('./pages/trabalheconosco/trabalheconosco.module').then( m => m.TrabalheconoscoPageModule)
   },
@@ -261,8 +268,12 @@ const routes: Routes = [
   {
     path: 'rosangela-paulo',
     loadChildren: () => import('./pages/integrantes/rosangela-paulo/rosangela-paulo.module').then( m => m.RosangelaPauloPageModule)
-  }
+  },
 
+  /// components
+
+ 
+  // DIRECIONAL , (RIVA), FOCO ALUGUEL DE CARROS, ASSISTENTE DE VIAGENS, VOLUS, PET A PORTER
 
 ];
 @NgModule({
