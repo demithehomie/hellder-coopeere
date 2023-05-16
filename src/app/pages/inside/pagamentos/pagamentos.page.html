@@ -39,7 +39,7 @@
           <ul class="navbar-nav ml-5 nav-separator nav-exit">
             <li class="nav-item">
               <br>
-              <a class="nav-link text-right" href="https://coopeere16.netlify.app" 
+              <a class="nav-link text-right" routerLink="/onboarding" 
               
               >Sair</a>
             </li>
@@ -49,22 +49,35 @@
     </nav>
   </ion-header>
 
-<div style="margin-left: 50px; margin-top: 50px; ">
-  <h2>Pagamento</h2>
+<div>
 
-<div class="input-pack">
-  <h6>Periodiciadade</h6>
-  <ion-input class="input-pagamento" placeholder="" ></ion-input>
 </div>
 
+<form [formGroup]="payments" (ngSubmit)="makeThePayment()">
+<div style="margin-left: 50px; padding-top: 50px; padding-bottom: 150px; ">
+  <h2 style="background-color: #eff6ff;">Pagamento</h2>
+
 <div class="input-pack">
-  <h6>Meio de Pagamento</h6>
-  <ion-input class="input-pagamento" placeholder="" ></ion-input>
+  <h6>Periodicidade</h6>
+  <select class="input-pagamento" placeholder=""  formControlName="cycle" >
+    <option value="">Escolha o Tipo de Cobrança</option>
+    <option value="">Mensal</option>
+    <option value="">Bimestral</option>
+    <option value="">Trimestral</option>
+    <option value="">Semestral</option>
+    <option value="">Anual</option>
+  </select>
 </div>
+
+<!--
+
+ ionic g page pages/pagamentos/mensal && ionic g page pages/pagamentos/bimestral &&  ionic g page pages/pagamentos/trimestral && ionic g page pages/pagamentos/semestral && ionic g page pages/pagamentos/anual 
+
+-->
 
 <div class="more-payment-options">
   <ion-label>Escolha o seu plano</ion-label>
-  <select name="value" style="background-color: #fff; padding: 10px; border: 1px solid #000; border-radius: 5px;" [(ngModel)]="subs.value">
+  <select name="value" style="background-color: #fff; padding: 10px; border: 1px solid #000; border-radius: 5px;" formControlName="value">
     <option value="">Escolher plano</option>
     <option value="3.5">R$ 3,50 - Mensal</option>
     <option value="7.5">R$ 7,50 - Bimestral</option>
@@ -79,16 +92,16 @@
 
 <div class="more-payment-options">
   <ion-label>Escolha a forma de pagamento</ion-label>
-  <select [(ngModel)]="subs.billingType" name="billingType" style="background-color: #fff; padding: 10px; border: 1px solid #000; border-radius: 5px;">
+  <select formControlName="billingType" name="billingType" style="background-color: #fff; padding: 10px; border: 1px solid #000; border-radius: 5px;">
     <option value="">Escolher Pagamento</option>
-    <option value="pix">Pix</option>
-    <option value="boleto">Boleto</option>
+    <option value="PIX">Pix</option>
+    <option value="BOLETO">Boleto</option>
     </select>
   
 </div>
 <div class="more-payment-options">
   <ion-label>Selecione o dia de vencimento</ion-label>
-  <select [(ngModel)]="subs.nextDueDate" name="nextDueDate" style="background-color: #fff; padding: 10px; border: 1px solid #000; border-radius: 5px;">
+  <select formControlName="nextDueDate" name="nextDueDate" style="background-color: #fff; padding: 10px; border: 1px solid #000; border-radius: 5px;">
     <option value="">1</option>
     <option value="1">1</option>
     <option value="2">2</option>
@@ -120,7 +133,7 @@
     <option value="28">28</option>
   </select>
   
-  <ion-button color="success">Pagamento</ion-button>
+ 
 </div>
 
 <div *ngIf="valorTotal">
@@ -131,7 +144,8 @@
 </div>
 
 
-<ion-button color="success">Gerar Cobrança</ion-button>
+<ion-button type="submit" color="success">Gerar Cobrança</ion-button>
 
 </div> 
+</form>
 </ion-content>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
+import { Title } from '@angular/platform-browser'
 
 @Component({
   selector: 'app-quemsomos',
@@ -19,7 +20,14 @@ export class QuemsomosPage implements OnInit {
   }
  
   
-  constructor(private navCtrl: NavController) {
+  constructor(
+    
+    private navCtrl: NavController,
+    private titleCtrl: Title
+    
+    ) {
+
+    this.titleCtrl.setTitle('Quem somos - Coopeere') ;
     this.selectedOption = 'quemsomos';
     this.selectedOption = 'objetivos';
     this.selectedOption = 'equipe';

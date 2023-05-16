@@ -9,6 +9,7 @@ import { ClienteService } from 'src/app/services/cliente.service';
 import { UsuarioService } from 'src/app/services/usuario.service';
 import { ProdistService } from 'src/app/services/prodist.service';
 import { Title } from '@angular/platform-browser'
+import { BehaviorSubject, take } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -26,6 +27,9 @@ export class HomePage implements OnInit {
  // selectedOption: string = "pix";
   opcaoPagamento: string = ""; 
   valoresFrequencia: any;
+
+  fullName$ = new BehaviorSubject<string | null | undefined>(null);
+  fullName = '';
 
   constructor(
     private usuarioService: UsuarioService, 
@@ -77,6 +81,14 @@ export class HomePage implements OnInit {
     this.validaFormProdist();
     this.usuarioService.getData(this.data).subscribe(data => {
       this.data = data;
+    });
+
+    this.clienteService.userFullName
+    .pipe(take(1))
+    .subscribe((fullName: string | null | undefined) => {
+      this.fullName = fullName !== null && fullName !== undefined ? fullName : '';
+
+      this.fullName$.next(fullName);
     });
   }
 

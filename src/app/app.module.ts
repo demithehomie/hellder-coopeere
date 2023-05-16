@@ -12,10 +12,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { AuthenticationService } from './services/authentication.service';
 
 @NgModule({
-  declarations: [AppComponent],
+ declarations: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, FormsModule, HttpClientModule,  ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, AuthenticationService, HttpClientModule, Storage],
-  bootstrap: [AppComponent],
+ bootstrap: [AppComponent],
 })
 export class AppModule {}

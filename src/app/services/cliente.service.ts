@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient} from '@angular/common/http'
-import { Observable } from 'rxjs';
+import { HttpClient, HttpHeaders} from '@angular/common/http'
+import { BehaviorSubject, Observable, of, switchMap } from 'rxjs';
 import { Cliente } from '../interfaces/cliente';
+import { Usuario } from '../interfaces/usuario';
 
 
 const clienteURL = 'http://localhost:3001';
@@ -10,6 +11,24 @@ const clienteURL = 'http://localhost:3001';
   providedIn: 'root'
 })
 export class ClienteService {
+  
+  private user$ = new BehaviorSubject<Usuario | null>(null);
+
+  private httpOptions: { headers: HttpHeaders } = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+  };
+
+  get userFullName(): Observable<string | null | undefined> {
+    return this.user$.asObservable().pipe(
+      switchMap((user: Usuario | null) => {
+        if (!user) {
+          return of(null);
+        }
+        const fullName = user.name // + ' ' + user.lastName;
+        return of(fullName);
+      })
+    );
+  }
 
   constructor( private httpClient: HttpClient) { }
 
@@ -61,4 +80,8 @@ export class ClienteService {
     //const id = response.data.id;
     return this.httpClient.get(clienteURL+`/customers/customers_from_database_by_id/${id}`)
   }
+
+
+  
+
 }

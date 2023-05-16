@@ -4,17 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { PagamentoprodistPageRoutingModule } from './pagamentoprodist-routing.module';
+import { TrimestralPageRoutingModule } from './trimestral-routing.module';
 
-import { PagamentoprodistPage } from './pagamentoprodist.page';
+import { TrimestralPage } from './trimestral.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    PagamentoprodistPageRoutingModule
+    TrimestralPageRoutingModule
   ],
-  declarations: [PagamentoprodistPage]
+  declarations: [TrimestralPage]
 })
-export class PagamentoprodistPageModule {}
+export class TrimestralPageModule {}

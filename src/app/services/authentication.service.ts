@@ -36,7 +36,7 @@
 			}
 		}
 		login(credentials: { email: any; password: any }): Observable<any> {
-			console.log(credentials)
+			
 			return this.http.post(`${baseApiUrl}/auth/login`, credentials).pipe(
 				map((data: any) => data.token),
 				switchMap((token) => {
@@ -45,7 +45,9 @@
 				tap((_) => {
 					this.isAuthenticated.next(true);
 				})
+				
 			);
+		
 		}
 
 		logout(): Promise<void> {

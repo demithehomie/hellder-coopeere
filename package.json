@@ -23,6 +23,7 @@
     "@capacitor/preferences": "^5.0.2",
     "@ionic/angular": "^6.1.9",
     "@ionic/storage": "^3.0.6",
+    "@ionic/storage-angular": "^3.0.6",
     "@ngx-pwa/local-storage": "^15.0.0",
     "bootstrap": "^5.2.3",
     "firebase": "^9.17.2",

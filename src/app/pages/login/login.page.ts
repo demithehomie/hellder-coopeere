@@ -42,8 +42,8 @@ export class LoginPage implements OnInit {
   }
 
   login: Login = {
-    email: "",
-    password: ""
+   email: "",
+   password: ""
   }
 
   //user: "";
@@ -80,19 +80,21 @@ async onSubmit() {
 
   this.authenticationService.login(this.credentials.value).subscribe(
     async (res) => {
-      console.log(this.credentials.value)
+     // console.log(this.credentials.value)
       await loading.dismiss();
+      this.presentSuccessAlert() 
       this.router.navigateByUrl('/home', { replaceUrl: true });
     },
     async (res) => {
       await loading.dismiss();
+     // this.presentErrorAlert()
       const alert = await this.alertController.create({
-        header: 'O email ou a senha não correspondem á uma conta Coopeere',
-        message: res.error.error,
+        header: 'Falha na autenticação',
+        message: 'Seu login não pôde ser autenticado.',
         buttons: ['OK']
       });
 
-      await alert.present();
+      //await alert.present();
     }
   );
 }
@@ -101,7 +103,7 @@ async presentSuccessAlert() {
   const alert = await this.alertController.create({
     
     header: 'Meus parabéns! Agora você faz parte de um grupo de milhares de famílias que desejam se unir para produzir sua própria energia, diminuindo o custo, trazendo oportunidades de emprego técnico e novas tecnologias para a nossa região!     ',
-    message: '   Hellder Benjamim, Presidente',
+    message: 'Hellder Benjamim, Presidente',
     buttons: ['OK']
   });
 

@@ -26,7 +26,7 @@
         
         <div class="nav-usuario">
           <div class="usuario">
-            <div class="usuario-nome">HELLDER BENJAMIN</div>
+            <div class="usuario-nome"> <ion-text>{{ fullName }}</ion-text> </div>
             <div class="d-flex justify-content-md-between space-x-2">
               <div class="usuario-dados">
                 CPF: 
@@ -39,7 +39,7 @@
           <ul class="navbar-nav ml-5 nav-separator nav-exit">
             <li class="nav-item">
               <br>
-              <a class="nav-link text-right" href="https://coopeere16.netlify.app" 
+              <a class="nav-link text-right" routerLink="/onboarding" 
               
               >Sair</a>
             </li>
@@ -142,8 +142,13 @@
 </ion-card>
 </div>
 
+
+
 <div class="col-md-6 d-none d-md-block text-md-right">
-  <img class="w-full h-96 rounded-xl object-cover shadow-md" src="https://coopeere.microcampos.com.br/img/informacoes-pessoais.jpg" alt="thumb" style="height: 400px">
+  
+ <h5 style="padding: 10px; ">Salve as suas informações em local seguro, pois elas serão solicitadas nos formulários a seguir</h5>
+  
+
 </div>
 
 </div>
@@ -218,7 +223,7 @@
   
 <!-- FORMULÁRIO PRODIST-->
 
-<div>
+<div style="padding: 50px; border-radius: 30px;">
   <div>
 <div class="tab-title">Formulário PRODIST (deve-se preencher e salvar a etapa TRIAGEM, antes de preencher o formulário Prodist)</div>
 
@@ -230,17 +235,17 @@
 
 <label class="prodist-label" for="">Upload da conta de luz</label>
 <br><br>
-<ion-button style="align-items: center; justify-content: center; display: flex; margin: auto;">Enviar Arquivo</ion-button>
+<ion-button color="success">Enviar Arquivo</ion-button>
 <br><br>
 <label class="prodist-label" for="">Código UC/Número do Cliente</label>
 <br><br>
-<input class="form-inputs" type="text" [(ngModel)]="prodist.NumeroDoCliente">
+<input class="form-inputs" placeholder="Preencha para prosseguir ..." type="text" [(ngModel)]="prodist.NumeroDoCliente">
 <br><br>
 
 
 <label class="prodist-label" for="">Classe UC</label>
 <br><br>
-<input class="form-inputs" type="text" [(ngModel)]="prodist.ClasseUC">
+<input class="form-inputs" placeholder="Preencha para prosseguir ..." type="text" [(ngModel)]="prodist.ClasseUC">
 
 <br><br>
 
@@ -254,7 +259,7 @@
 <h6>
   Preço estimado em 50% menor do que a operadora
 </h6>
-<input class="form-inputs" type="text" [(ngModel)]="prodist.CotaMensal">
+<input class="form-inputs" placeholder="Preencha para prosseguir ..." type="text" [(ngModel)]="prodist.CotaMensal">
 
 
 
@@ -270,7 +275,7 @@
 <div class="input-group">
   <input
       type="text"
-      class="form-inputs"
+      class="form-inputs" placeholder="Preencha para prosseguir ..."
       readonly
       id="potencia_inst_uc"
       name="potencia_inst_uc"
@@ -289,15 +294,10 @@
 <br> 
 <div class="input-group">
   <select class="form-inputs " id="tensao_atendimento" name="tensao_atendimento" [(ngModel)]="prodist.TensaoDeAtendimento">
-      <option value="">Selecione</option>
-                      <option value="110"
-           selected                     >
-          110
-      </option>
-                      <option value="220"
-                              >
-          220
-      </option>
+     
+                      <option value="" >Escolha para prosseguir ...</option>
+                      <option value="110" selected>110</option>
+                      <option value="220">220</option>
       
   </select>
 </div>
@@ -310,17 +310,15 @@
   </div>
 </div>
 <div class="input-group">
-  <select class="form-inputs"
+  <select class="form-inputs" placeholder="Preencha para prosseguir ..."
       name="tipo_conexao"
       id="tipo_conexao"
       [(ngModel)]="prodist.TipoDeConexao"
   >
-                      <option value="monofásica" >Monofásica
-      </option>
-                      <option value="bifásica" >Bifásica
-      </option>
-                      <option value="trifásica"  selected >Trifásica
-      </option>
+                      <option value="" >Escolha para prosseguir ...</option>
+                      <option value="monofásica" >Monofásica</option>
+                      <option value="bifásica" >Bifásica</option>
+                      <option value="trifásica"  selected >Trifásica</option>
                   </select>
 </div>
 <br>
@@ -332,15 +330,14 @@
   </div>
 </div>
 <div class="input-group">
-  <select class="form-inputs"
+  <select class="form-inputs" placeholder="Preencha para prosseguir ..."
       name="tipo_ramal"
       id="tipo_ramal"
       [(ngModel)]="prodist.TipoDeRamal"
   >
-                      <option value="aéreo"  selected >Aéreo
-      </option>
-                      <option value="subterraneo" >Subterraneo
-      </option>
+                    <option value="" >Escolha para prosseguir ...</option>
+                      <option value="aéreo"  selected >Aéreo</option>
+                      <option value="subterraneo" >Subterraneo</option>
                   </select>
 </div>
 </div>
@@ -353,7 +350,7 @@
 <label class="prodist-label" for="potencia_inst_gerada">Potência instalada gerada</label>
 <br> <br>
 <div class="input-group">
-  <input class="form-inputs"
+  <input class="form-inputs" placeholder="Preencha para prosseguir ..."
       type="text"
       id="potencia_inst_gerada"
       name="potencia_inst_gerada"
@@ -378,21 +375,17 @@
   </div>
 </div>
 <div class="input-group">
-  <select class="form-inputs"
+  <select class="form-inputs" placeholder="Preencha para prosseguir ..."
   [(ngModel)]="prodist.TipoDaFonteDeGeracao"
       name="tipo_fonte_geracao"
       id="tipo_fonte_geracao"
   >
-                      <option value="hidráulica" >Hidráulica
-      </option>
-                      <option value="solar"  selected >Solar
-      </option>
-                      <option value="eólica" >Eólica
-      </option>
-                      <option value="biomassa" >Biomassa
-      </option>
-                      <option value="coogeração qualificada" >Coogeração Qualificada
-      </option>
+                      <option value="" >Escolha para prosseguir ...</option>
+                      <option value="hidráulica" >Hidráulica</option>
+                      <option value="solar"  selected >Solar</option>
+                      <option value="eólica" >Eólica</option>
+                      <option value="biomassa" >Biomassa</option>
+                      <option value="coogeração qualificada" >Coogeração Qualificada</option>
                   </select>
 </div>
 
@@ -404,7 +397,7 @@
   </div>
 </div>
 <div class="input-group">
-  <input class="form-inputs"
+  <input class="form-inputs" placeholder="Preencha para prosseguir ..."
   [(ngModel)]="prodist.MenorConsumoUltimos12"
       type="text"
       id="menor_consumo"
@@ -427,7 +420,7 @@
   </div>
 </div>
 <div class="input-group">
-  <input [(ngModel)]="prodist.MaiorConsumoUltimos12" type="text" class="form-inputs" id="maior_consumo"
+  <input [(ngModel)]="prodist.MaiorConsumoUltimos12" type="text" class="form-inputs" placeholder="Preencha para prosseguir ..." id="maior_consumo"
       name="maior_consumo" size="15" value="368.00"
       title="Maior consumo (em kWh) dos últimos 12 meses">
     <div class="space">
@@ -464,6 +457,7 @@
             <li>Opções de pagamento: Pix </li>
           </ul>
           
+          <ion-button color="success" class="plan-buttons" routerLink="/mensal">Prosseguir</ion-button>
 <!--
           <ion-radio-group value="payment-options" style="background-color: blue;">
             <ion-item>
@@ -493,6 +487,8 @@
             <li>Todos os benefícios de cooperado</li>
             <li>Opções de pagamento: Pix ou Boleto</li>
           </ul>
+
+          <ion-button color="success" class="plan-buttons" routerLink="/bimestral">Prosseguir</ion-button>
           
 <!--
           <ion-radio-group [(ngModel)]="opcaoPagamento" type="boolean" >
@@ -527,7 +523,7 @@
             <li>Opções de pagamento: Pix ou Boleto</li>
           </ul>
           
-
+          <ion-button color="success" class="plan-buttons" routerLink="/trimestral">Prosseguir</ion-button>
           <!--
           <ion-radio-group value="payment-options">
             <ion-item>
@@ -565,8 +561,10 @@
             <li>Cobranças realizadas semestralmente</li>
             <li>Todos os benefícios de cooperado</li>
             <li>Opções de pagamento: Pix ou Boleto</li>
+          
           </ul>
           
+          <ion-button color="success" class="plan-buttons" routerLink="/semestral">Prosseguir</ion-button>
 <!--
           <ion-radio-group value="payment-options">
             <ion-item>
@@ -604,9 +602,12 @@
             <li>Cobranças realizadas anualmente</li>
             <li>Todos os benefícios de cooperado</li>
             <li>Opções de pagamento: Pix ou Boleto</li>
+
+            
+
           </ul>
           
-          
+          <ion-button color="success" class="plan-buttons" routerLink="/anual">Prosseguir</ion-button>
           <!--
           <ion-radio-group value="payment-options">
             <ion-item>

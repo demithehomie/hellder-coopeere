@@ -5,7 +5,7 @@ import { IntroGuard } from './guards/intro.guard';
 import { AutoLoginGuard } from './guards/auto-login.guard';
 
 
-const routes: Routes = [
+export const routes: Routes = [
 /*   {
     path: '',
     loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
@@ -100,10 +100,7 @@ const routes: Routes = [
     path: 'inicio',
     loadChildren: () => import('./pages/inicio/inicio.module').then( m => m.InicioPageModule)
   },
-  {
-    path: 'pagamentos',
-    loadChildren: () => import('./pages/pagamentos/pagamentos.module').then( m => m.PagamentosPageModule)
-  },
+
   {
     path: 'logout',
     loadChildren: () => import('./pages/logout/logout.module').then( m => m.LogoutPageModule)
@@ -239,7 +236,7 @@ const routes: Routes = [
   {
     path: 'home',
     loadChildren: () => import('./pages/inside/home/home.module').then( m => m.HomePageModule),
-    canLoad: [AuthGuard]
+    //canLoad: [AuthGuard]
   },
   {
     path: 'trabalheconosco',
@@ -250,8 +247,8 @@ const routes: Routes = [
     loadChildren: () => import('./pages/resultados/resultados.module').then( m => m.ResultadosPageModule)
   },
   {
-    path: 'pagamentoprodist',
-    loadChildren: () => import('./pages/inside/pagamentoprodist/pagamentoprodist.module').then( m => m.PagamentoprodistPageModule)
+    path: 'pagamentos',
+    loadChildren: () => import('./pages/inside/pagamentos/pagamentos.module').then( m => m.PagamentosPageModule)
   },
   {
     path: 'sms',
@@ -269,6 +266,35 @@ const routes: Routes = [
     path: 'rosangela-paulo',
     loadChildren: () => import('./pages/integrantes/rosangela-paulo/rosangela-paulo.module').then( m => m.RosangelaPauloPageModule)
   },
+  {
+    path: 'mensal',
+    loadChildren: () => import('./pages/pagamentos/mensal/mensal.module').then( m => m.MensalPageModule)
+  },
+  {
+    path: 'bimestral',
+    loadChildren: () => import('./pages/pagamentos/bimestral/bimestral.module').then( m => m.BimestralPageModule)
+  },
+  {
+    path: 'trimestral',
+    loadChildren: () => import('./pages/pagamentos/trimestral/trimestral.module').then( m => m.TrimestralPageModule)
+  },
+  {
+    path: 'semestral',
+    loadChildren: () => import('./pages/pagamentos/semestral/semestral.module').then( m => m.SemestralPageModule)
+  },
+  {
+    path: 'anual',
+    loadChildren: () => import('./pages/pagamentos/anual/anual.module').then( m => m.AnualPageModule)
+  },  {
+    path: 'forgot-password',
+    loadChildren: () => import('./pages/forgot-password/forgot-password.module').then( m => m.ForgotPasswordPageModule)
+  },
+  {
+    path: 'reset-password',
+    loadChildren: () => import('./pages/reset-password/reset-password.module').then( m => m.ResetPasswordPageModule)
+  },
+
+
 
   /// components
 
