@@ -35,16 +35,29 @@
     <br>
     <br>
 <div class="container-code">
-  <form (submit)="confirmar()">
-    <h1>Seja Bem-Vindo a COOPEERE!</h1>
-
-<input type="text" placeholder="Insira o código que está no seu email" maxlength="5">
-
-<ion-button >Confirmar</ion-button>
-    <br>
-    <!--
-    <h3>Clique no link de confirmação  que <br> está em seu email, para continuar</h3>
-   -->
+  <form  (submit)="confirmEmailCode()">
+    <h2>Seja Bem-Vindo a COOPEERE!</h2>
+  
+    <ion-item>
+      <ion-label style="font-size: x-large;"  position="stacked">Código de verificação E-Mail</ion-label>
+      <ion-input [(ngModel)]="email.emailVerificationCode" type="text" placeholder="Insira o código que foi enviado para o seu email" [ngModelOptions]="{standalone: true}" maxlength="5" name="emailVerificationCode"  id="emailVerificationCode" ></ion-input>
+    </ion-item>
+<ion-button type="submit" >Confirmar código</ion-button>
+  
+   
   </form>
+
+
+  <div *ngIf="errorMessage" class="error-message">
+    {{ errorMessage }}
+  </div>
+  
+  <div *ngIf="successMessage" class="success-message">
+    {{ successMessage }}
+  </div>
+  
+  <ion-button style=" display: flex;" (click)="forward()" (click)="shootSMS(body)" color="success" position="end">Próximo passo</ion-button>
+
 </div>
+
 </ion-content>

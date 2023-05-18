@@ -1,3 +1,3 @@
 export interface SMS {
-    code: string;
+    verificationCode: string;
 }

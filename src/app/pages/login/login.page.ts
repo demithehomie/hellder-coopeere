@@ -76,7 +76,7 @@ async onSubmit() {
   const loading = await this.loadingController.create();
   await loading.present();
 
- 
+
 
   this.authenticationService.login(this.credentials.value).subscribe(
     async (res) => {

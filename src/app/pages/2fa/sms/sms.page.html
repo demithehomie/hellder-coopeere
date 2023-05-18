@@ -33,13 +33,25 @@
         <br>
         <br>
         <br>
-    <div class="container-code">
-      <form>
-        
-        <h2>Insira o código recebido <br> via SMS</h2>
-        <label for="code">Código de verificação:</label>
-        <input type="text" id="code" name="code" required>
-        <button type="submit">Verificar via SMS</button>
+        <div class="container-code">
+        <form (submit)="confirmSMSCode()">
+          <h2>Seja Bem-Vindo a COOPEERE!</h2>
+        <ion-item>
+          <ion-label style="font-size: x-large;"   position="stacked">Código de verificação SMS</ion-label>
+          <ion-input [(ngModel)]="sms.verificationCode" placeholder="Insira o código que foi enviado para o seu celular" maxlength="5" type="text" [ngModelOptions]="{standalone: true}"></ion-input>
+        </ion-item>
+      
+        <ion-button type="submit" >Confirmar</ion-button>
       </form>
-    </div>
+        <div *ngIf="errorMessage" class="error-message">
+          {{ errorMessage }}
+        </div>
+      
+        <div *ngIf="successMessage" class="success-message">
+          {{ successMessage }}
+        </div>
+
+        <ion-button style=" display: flex;" (click)="forward()" color="success" position="end">Próximo passo</ion-button>
+        
+      </div>
   </ion-content>

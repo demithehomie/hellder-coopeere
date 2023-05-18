@@ -1,3 +1,3 @@
 export interface Email {
-    code: string;
+    emailVerificationCode: string;
 }

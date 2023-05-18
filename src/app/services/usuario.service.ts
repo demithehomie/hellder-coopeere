@@ -3,24 +3,27 @@ import { HttpClient} from '@angular/common/http'
 import { Observable } from 'rxjs';
 
 
-const usuarioURL = 'http://localhost:3001';
+const base_URL = 'http://localhost:3001';
 
 @Injectable({
   providedIn: 'root' 
 })
 export class UsuarioService {
+  //  base_URL: any;
+
+ 
 
   constructor(private httpClient: HttpClient) { }
 
   // CRIAR USUÁRIO - SELF-SIGN-IN 
   create(data: any) : Observable<any>  {
-    return this.httpClient.post(usuarioURL+'/auth/register',data)
+    return this.httpClient.post(base_URL+'/auth/register',data)
  
   }
 
   // AUTENTICAÇÃO COM GOOGLE (LOGIN)
   googleAuth(){
-    return this.httpClient.get(usuarioURL+'/auth/google')
+    return this.httpClient.get(base_URL+'/auth/google')
   }
 
   buscarCep(postalCode: string){
@@ -30,64 +33,71 @@ export class UsuarioService {
 
   // ENCONTRAR TODOS OS USUÁRIOS - SOMENTE ADMINS
   findAll() {
-    return this.httpClient.get(usuarioURL);
+    return this.httpClient.get(base_URL);
   }
 
   // ENCONTRAR UM USUÁRIO - SOMENTE ADMINS
   findOne(data: any): Observable<any>{
-    return this.httpClient.get(usuarioURL+':id', data);
+    return this.httpClient.get(base_URL+':id', data);
   }
 
   // ATUALIZAR PARCIALMENTE - USUÁRIOS COM PERMISSÃO, E ADMINS
   updatePartial(data: any){
-    return this.httpClient.patch(usuarioURL, data);
+    return this.httpClient.patch(base_URL, data);
   }
 
   // ATUALIZAR COMPLETAMENTE - USUÁRIOS COM PERMISSÃO, E ADMINS
   update(data: any){
-    return this.httpClient.put(usuarioURL, data);
+    return this.httpClient.put(base_URL, data);
   }
 
   // CONFIRMAR EMAIL DO USUÁRIO
-  confirmEmail(data: any){
-    return this.httpClient.post(usuarioURL + '/auth/confirm-email', data)
+  confirmEmail(emailVerificationCode: any): Observable<any> {
+    return this.httpClient.post(base_URL + '/auth/confirm-email', emailVerificationCode)
   }
-// CONFIRMAR EMAIL DO USUÁRIO
-confirmSMS(data: any){
-  return this.httpClient.post(usuarioURL + '/auth/confirm-sms', data)
+
+// INICIAR CONFIRMAÇÃO DO SMS
+startConfirmSMS(data: any): Observable<any> {
+  return this.httpClient.post(base_URL + '/auth/start-confirm-sms', data)
+}
+
+  
+// CONFIRMAR SMS DO USUÁRIO
+confirmSMS(data: any): Observable<any> {
+  return this.httpClient.post(base_URL + '/auth/confirm-sms', data)
 }
 
   
   
   // DELETAR CONTA - USUÁRIOS COM PERMISSÃO, E ADMINS
   delete(data: any){
-    return this.httpClient.delete(usuarioURL, data);
+    return this.httpClient.delete(base_URL, data);
   }
 
   // autenticação -  - USUÁRIOS COM PERMISSÃO, E ADMINS
   login(body: any): Observable<any> {
-    return this.httpClient.post(usuarioURL+'/auth/login', body);
+    return this.httpClient.post(base_URL+'/auth/login', body);
   }
 
   // ESQUECI MINHA SENHA - SOMENTE USUÁRIOS
   forgotPassword(data: any){
-    return this.httpClient.post(usuarioURL+'/forget', data)
+    return this.httpClient.post(base_URL+'/forget', data)
   }
 
   // RESETAR SENHA - USUÁRIOS COM PERMISSÃO, E ADMINS
   resetarSenha(data: any){
-    return this.httpClient.post(usuarioURL+'/reset', data)
+    return this.httpClient.post(base_URL+'/reset', data)
   }
 
   // UPLOAD DE IMAGEM - foto de perfil (ADAPTAR PARA PRODIST PARA O UPLOAD DA CONTA DE LUZ (E TALVEZ))
 
   imageUpload(data: any){
-    return this.httpClient.post(usuarioURL+'/file/photo', data)
+    return this.httpClient.post(base_URL+'/file/photo', data)
   }
 
   // UPLOAD DE ARQUIVOS - SERÁ ESSE?
   fileUploads(data: any){
-    return this.httpClient.post(usuarioURL+'/files/files', data)
+    return this.httpClient.post(base_URL+'/files/files', data)
   }
 
 
@@ -100,11 +110,36 @@ confirmSMS(data: any){
   //
 
   getData(data: any) {
-    return this.httpClient.get(usuarioURL, data);
+    return this.httpClient.get(base_URL, data);
   }
 
 
   // 
 
+  async startSMSConfirmation(body: any) {
+    try {
+      const response = await this.httpClient.post(`${base_URL}/auth/confirm-sms`, {body} )//.toPromise();
+      return response;
+    } catch (error) {
+      throw new Error('Falha ao iniciar a confirmação de SMS');
+    }
+  }
 
-}
+ // response: any
+
+  async verifySMSCode(verificationCode: string) {
+    try {
+     
+        const response = await this.httpClient.post(`${base_URL}/auth/confirm-sms`, { verificationCode })//.toPromise();
+        return response;
+      } catch (error) {
+        throw new Error('Falha ao verificar o código de verificação SMS');
+      }
+    }
+  }
+  
+
+
+
+
+
