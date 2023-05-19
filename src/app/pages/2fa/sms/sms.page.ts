@@ -21,6 +21,7 @@ export class SmsPage implements OnInit {
   errorMessage!: string;
   successMessage!: string;
   data: any;
+  id!: number;
 
   constructor(
     private router: Router,
@@ -41,26 +42,32 @@ export class SmsPage implements OnInit {
       verificationCode: ""
     }
 
-  ngOnInit() {
-    this.data = this.formBuilder.group({
-  
-          verificationCode: ['', [Validators.required]],
-        });
-  }
+    ngOnInit(): void {
+      this.data = this.formBuilder.group({
+        verificationCode: ["", 
+          [Validators.required, 
+            Validators.minLength(1), 
+              Validators.maxLength(5),
+                
+            ]],
+      });
+    }
 
   async confirmSMSCode() {
-    try {
-      await this.usuarioService.verifySMSCode(this.data.value);
-      this.successMessage = 'Código SMS confirmado com sucesso!';
-      this.errorMessage = '';
-    } catch (e: unknown) {
-      if (e instanceof Error) {
-        this.errorMessage = e.message;
-      } else {
-        this.errorMessage = 'Ocorreu um erro desconhecido.';
-      }
-      this.successMessage = '';
-    }
+    this.usuarioService.confirmSMS(this.sms.verificationCode)
+      .subscribe({
+        next: (res) => {
+          console.log(res);
+          console.log("Código confirmado com sucesso");
+          this.successMessage = 'Código SMS confirmado com sucesso!';
+        this.errorMessage = '';
+        },
+        error: (e) => {
+          console.error(e);
+          this.errorMessage = 'Ocorreu um erro desconhecido.';
+          this.successMessage = '';
+          },    
+        });
   }
   
   async forward(){
@@ -69,8 +76,9 @@ export class SmsPage implements OnInit {
 
   body!: any
 
- async resend(body: any){
-  this.usuarioService.startSMSConfirmation()
+ async resend(id: number){
+  this.usuarioService.startConfirmSMS(id)
+  console.log(id)
  }
   
  
@@ -107,6 +115,11 @@ reiniciarCronometro() {
   this.minutos = 5;
   this.segundos = 0;
   this.startCronometro();
+}
+
+executeBoth(){
+  this.reiniciarCronometro();
+  this.resend(this.id)
 }
 
 }

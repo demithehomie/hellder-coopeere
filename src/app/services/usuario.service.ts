@@ -62,14 +62,14 @@ export class UsuarioService {
   }
 
 // INICIAR CONFIRMAÇÃO DO SMS
-startConfirmSMS(data: any): Observable<any> {
-  return this.httpClient.post(base_URL + '/auth/start-confirm-sms', data)
+startConfirmSMS(id: number) {
+  return this.httpClient.post(`${base_URL}/auth/start-confirm-sms`,  id ).toPromise();
 }
 
   
 // CONFIRMAR SMS DO USUÁRIO
-confirmSMS(data: any): Observable<any> {
-  return this.httpClient.post(base_URL + '/auth/confirm-sms', data)
+confirmSMS(verificationCode: string): Observable<any> {
+  return this.httpClient.post(`${base_URL}/auth/confirm-sms`,  { verificationCode })
 }
 
   

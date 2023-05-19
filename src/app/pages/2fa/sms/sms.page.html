@@ -57,7 +57,7 @@
         <div *ngIf="successMessage" class="success-message">
           {{ successMessage }}
         </div>
-        <ion-button style=" display: flex;" (click)="resend(body); reiniciarCronometro()" color="danger" position="end">Reenviar código</ion-button>
+        <ion-button style=" display: flex;" (click)="executeBoth()" color="danger" position="end">Reenviar código</ion-button>
         <ion-button style=" display: flex;" (click)="forward()" color="success" position="end">Próximo passo</ion-button>
         
       </div>
