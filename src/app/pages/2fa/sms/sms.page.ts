@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { AlertController, LoadingController } from '@ionic/angular';
 import { SMS } from 'src/app/interfaces/sms';
@@ -12,6 +13,10 @@ import { UsuarioService } from 'src/app/services/usuario.service';
 })
 export class SmsPage implements OnInit {
 
+  minutos!: number;
+  segundos!: number;
+  interval: any;
+
   verificationCode!: string;
   errorMessage!: string;
   successMessage!: string;
@@ -22,9 +27,15 @@ export class SmsPage implements OnInit {
     private formBuilder: FormBuilder,
     private alertController: AlertController,
     private loadingController: LoadingController,
-    private usuarioService: UsuarioService
+    private usuarioService: UsuarioService,
+    private title: Title
     
-    ) { }
+    ) { 
+
+      this.title.setTitle('Confirme seu Celular')
+      this.minutos = 5;
+      this.segundos = 0;
+    }
 
     sms: SMS = {
       verificationCode: ""
@@ -56,64 +67,46 @@ export class SmsPage implements OnInit {
     this.router.navigateByUrl('/login')
   }
 
+  body!: any
+
+ async resend(body: any){
+  this.usuarioService.startSMSConfirmation()
+ }
+  
  
 
-  // data!: FormGroup;
+ ionViewDidEnter() {
+  this.startCronometro();
+}
 
-  // validaForm(){
-  //   this.data = this.formBuilder.group({
-  
-  //     verificationCode: ['', [Validators.required]],
-  //   });
-  // }
-  
-  // equalTo(field_name: string) {
-  //   return (control: any) => {
-  //     const field = control.parent?.get(field_name);
-  //     if (field && control.value !== field.value) {
-  //       return { equalTo: true };
-  //     }
-  //     return null;
-  //   };
-  // }
-  
-  // async confirmar(){
-  
-  //   const loading = await this.loadingController.create();
-  //   await loading.present();
-    
-  
-  //   this.usuarioService.confirmSMS(this.data.value).subscribe(
-  //     async (res) => {
-  //      // console.log(this.credentials.value)
-  //       await loading.dismiss();
-  //       this.presentSuccessAlert() 
-  //       this.router.navigateByUrl('/login', { replaceUrl: true });
-  //     },
-  //     async (res) => {
-  //       await loading.dismiss();
-  //      // this.presentErrorAlert()
-  //       const alert = await this.alertController.create({
-  //         header: 'Celular não verificado',
-  //         message: 'Verifique seu código.',
-  //         buttons: ['OK']
-  //       });
-  
-  //       //await alert.present();
-  //     }
-  //   );
-  // }
-  
-  // async presentSuccessAlert() {
-  //   const alert = await this.alertController.create({
-      
-  //     header: 'Código confirmado! Tudo certo! ',
-  //     message: 'Aguarde para ser redirecionado para o login',
-  //     buttons: ['OK']
-  //   });
-  
-  //  // await alert.present();
-  // }
-  
+ionViewWillLeave() {
+  clearInterval(this.interval);
+}
+
+startCronometro() {
+  this.interval = setInterval(() => {
+    if (this.segundos > 0) {
+      this.segundos--;
+    } else {
+      if (this.minutos === 0) {
+        clearInterval(this.interval);
+      } else {
+        this.minutos--;
+        this.segundos = 59;
+      }
+    }
+  }, 1000);
+}
+
+formatTime(time: number) {
+  return time < 10 ? `0${time}` : time;
+}
+
+reiniciarCronometro() {
+  clearInterval(this.interval);
+  this.minutos = 5;
+  this.segundos = 0;
+  this.startCronometro();
+}
 
 }

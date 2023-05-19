@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, HostListener, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { NavController } from '@ionic/angular';
 import { Cliente } from 'src/app/interfaces/cliente';
@@ -23,8 +24,11 @@ export class SignupPage implements OnInit {
     private usuarioService: UsuarioService,
     private clienteService: ClienteService,
     public navCtrl: NavController, 
-    private http: HttpClient
-    ) {}
+    private http: HttpClient,
+    private title: Title
+    ) {
+      this.title.setTitle('Continue Seu Cadastro')
+    }
   
   goToPage(option: string) {
     switch (option) {

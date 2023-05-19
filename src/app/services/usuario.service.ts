@@ -51,9 +51,14 @@ export class UsuarioService {
     return this.httpClient.put(base_URL, data);
   }
 
+  // INICIAR CONFIRMAÇÃO DO SMS
+  startConfirmByEmail(id: number) {
+    return this.httpClient.post(`${base_URL}/auth/start-confirm-email`, id).toPromise();
+  }
+
   // CONFIRMAR EMAIL DO USUÁRIO
-  confirmEmail(emailVerificationCode: any): Observable<any> {
-    return this.httpClient.post(base_URL + '/auth/confirm-email', emailVerificationCode)
+  confirmEmail(emailVerificationCode: string): Observable<any>  {
+    return this.httpClient.post(`${base_URL}/auth/confirm-email`, { emailVerificationCode }) //.toPromise();
   }
 
 // INICIAR CONFIRMAÇÃO DO SMS
@@ -116,14 +121,25 @@ confirmSMS(data: any): Observable<any> {
 
   // 
 
-  async startSMSConfirmation(body: any) {
+ startSMSConfirmation(): Observable<any> {
     try {
-      const response = await this.httpClient.post(`${base_URL}/auth/confirm-sms`, {body} )//.toPromise();
+      const response =  this.httpClient.post(`${base_URL}/auth/start-confirm-sms`, {} )//.toPromise();
       return response;
     } catch (error) {
       throw new Error('Falha ao iniciar a confirmação de SMS');
     }
   }
+
+  startEmailConfirmation(): Observable<any> {
+    try {
+      const response = this.httpClient.post(`${base_URL}/auth/start-confirm-email`, {});
+      console.log(response);
+      return response;
+    } catch (error) {
+      throw new Error('Falha ao iniciar a confirmação de SMS');
+    }
+  }
+  
 
  // response: any
 
@@ -136,8 +152,10 @@ confirmSMS(data: any): Observable<any> {
         throw new Error('Falha ao verificar o código de verificação SMS');
       }
     }
+
+
+
   }
-  
 
 
 
