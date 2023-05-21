@@ -42,6 +42,8 @@ export class HomePage implements OnInit {
   state: any=""
   addressNumber: any=""
   
+  customer_id: any=""
+
   res: any="";
   accessToken: any="";
 
@@ -60,6 +62,7 @@ export class HomePage implements OnInit {
 
   fullName$ = new BehaviorSubject<string | null | undefined>(null);
   fullName = '';
+  buscandoCpfCnpj!: Promise<any>;
 
   constructor(
     private appStorageService: AppStorageService,
@@ -117,10 +120,23 @@ export class HomePage implements OnInit {
 //   });
 // }
 
-ionViewWillEnter() {
-  this.ativarTodososDados()
+setCustomerId(id: string){
+  this.appStorageService.set(`customer_id`, `${id}`)
 }
 
+async ionViewWillEnter() {
+  
+  this.ativarTodososDados()
+ 
+  const cpfCnpj = await this.appStorageService.get(`cpfCnpj`)
+  await this.clienteService.getCpfCnpj(`${cpfCnpj}`).subscribe(
+    async (res: any) => {
+      this.setCustomerId(res.id)
+      console.log(res)
+    }
+  )
+}
+//
 
 ativarTodososDados(){
   this.exibirNomeDoUsuario()

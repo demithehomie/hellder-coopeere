@@ -76,9 +76,9 @@ export class ClienteService {
     return this.httpClient.get(clienteURL+'/customers ')
   }
 
-  getCpfCnpj(id: string){
+  getCpfCnpj(cpfCnpj: string){
     //const id = response.data.id;
-    return this.httpClient.get(clienteURL+`/customers/customers_from_database_by_id/${id}`)
+    return this.httpClient.get(clienteURL+`/customers/customers_from_database/${cpfCnpj}`)
   }
 
 
