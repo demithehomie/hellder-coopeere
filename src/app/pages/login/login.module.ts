@@ -5,11 +5,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
 import { LoginPageRoutingModule } from './login-routing.module';
-
+import { HttpClientModule } from '@angular/common/http';
 import { LoginPage } from './login.page';
+import { AuthenticationService } from 'src/app/services/authentication.service';
+import { AppStorageService } from 'src/app/services/app-storage.service';
 
 @NgModule({
   imports: [
+    HttpClientModule,
     CommonModule,
     FormsModule,
     IonicModule,
@@ -17,6 +20,7 @@ import { LoginPage } from './login.page';
     ReactiveFormsModule,
   ],
   declarations: [LoginPage],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  providers: [AuthenticationService, Storage, AppStorageService]
 })
 export class LoginPageModule {}

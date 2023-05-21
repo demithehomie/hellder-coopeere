@@ -10,6 +10,15 @@ import { UsuarioService } from 'src/app/services/usuario.service';
 import { ProdistService } from 'src/app/services/prodist.service';
 import { Title } from '@angular/platform-browser'
 import { BehaviorSubject, take } from 'rxjs';
+import { Plugins } from '@capacitor/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { AppStorageService } from 'src/app/services/app-storage.service';
+//import { FileTransfer, FileUploadOptions, FileTransferObject } from '@awesome-cordova-plugins/file-transfer/ngx';
+//import { File } from '@awesome-cordova-plugins/file';
+
+
+// const { Filesystem, Modals } = Plugins;
+// const { Directory, Encoding } = Filesystem;
 
 @Component({
   selector: 'app-home',
@@ -17,6 +26,27 @@ import { BehaviorSubject, take } from 'rxjs';
   styleUrls: ['./home.page.scss'],
 })
 export class HomePage implements OnInit {
+
+  name: any=""
+  cpfCnpj: any=""
+  value: any="";
+  mobilePhone: any=""
+  phone: any=""
+  company: any=""
+  email: any=""
+  id: any=""
+  address: any=""
+  city: any=""
+  province: any=""
+  postalCode: any=""
+  state: any=""
+  addressNumber: any=""
+  
+  res: any="";
+  accessToken: any="";
+
+    operadoraSelecionada: number;
+    ehTitular: boolean;
 
   frequenciaPagamento: string | any ;
   formaPagamento: string = "";
@@ -32,15 +62,176 @@ export class HomePage implements OnInit {
   fullName = '';
 
   constructor(
+    private appStorageService: AppStorageService,
     private usuarioService: UsuarioService, 
     private alertController: AlertController,
     private clienteService: ClienteService,
     private formBuilder: FormBuilder,
     private prodistService: ProdistService,
-    private titleController: Title
+    private titleController: Title,
+    //private transfer: FileTransfer, 
+    //private file: File,
+    private httpClient: HttpClient
+    //private prodistService: ProdistService
     ) {
       this.titleController.setTitle('Home - Coopeere')
-     }
+      this.operadoraSelecionada = 1; // Defina um valor padrão para a operadora selecionada
+      this.ehTitular = true; // Defina um valor padrão para a opção de titularidade
+    }
+     
+    
+//     const fileTransfer: FileTransferObject = this.transfer.create();
+
+// // Upload a file:
+// fileTransfer.upload(..).then(..).catch(..);
+
+// // Download a file:
+// fileTransfer.download(..).then(..).catch(..);
+
+// // Abort active transfer:
+// fileTransfer.abort();
+
+// // full example
+// upload() {
+//   let options: FileUploadOptions = {
+//      fileKey: 'file',
+//      fileName: 'name.jpg',
+//      headers: {},
+//      // .....
+//   };
+
+//   fileTransfer.upload('<file path>', '<api endpoint>', options)
+//    .then((data) => {
+//      // success
+//    }, (err) => {
+//      // error
+//    });
+// }
+
+// download() {
+//   const url = 'http://www.example.com/file.pdf';
+//   fileTransfer.download(url, this.file.dataDirectory + 'file.pdf').then((entry) => {
+//     console.log('download complete: ' + entry.toURL());
+//   }, (error) => {
+//     // handle error
+//   });
+// }
+
+ionViewWillEnter() {
+  this.ativarTodososDados()
+}
+
+
+ativarTodososDados(){
+  this.exibirNomeDoUsuario()
+  this.exibirCPFDoUsuario()
+  this.exibirEmailDoUsuario()
+  this.exibirTokenDoUsuario()
+  this.exibirMobilePhone()
+  this.exibirPhone()
+  this.exibirCompany()
+  this.exibirID()
+  this.exibirEndereco()
+  this.exibirNumero()
+  this.exibirCidade()
+  this.exibirBairro()
+  this.exibirCEP()
+  this.exibirEstado()
+}
+  
+
+async exibirTokenDoUsuario(){
+  this.value = await this.appStorageService.get(`token`)
+}
+
+async exibirNomeDoUsuario(){
+  this.name = await this.appStorageService.get(`name`)
+}
+
+async removerNome(){
+  await this.appStorageService.remove('name')
+}
+
+async exibirEmailDoUsuario(){
+  this.email = await this.appStorageService.get(`email`)
+}
+
+async exibirCPFDoUsuario(){
+  this.cpfCnpj = await this.appStorageService.get(`cpfCnpj`)
+}
+
+async exibirMobilePhone(){
+  this.mobilePhone = await this.appStorageService.get(`mobilePhone`)
+}
+
+async exibirPhone(){
+  this.phone = await this.appStorageService.get(`phone`)
+}
+
+
+async exibirCompany(){
+  this.company = await this.appStorageService.get(`company`)
+}
+
+async exibirID(){
+  this.id = await this.appStorageService.get(`id`)
+}
+
+async exibirEndereco(){
+  this.address = await this.appStorageService.get(`address`)
+}
+
+async exibirNumero(){
+  this.addressNumber = await this.appStorageService.get(`addressNumber`)
+}
+
+
+async exibirCidade(){
+  this.city = await this.appStorageService.get(`city`)
+}
+
+async exibirBairro(){
+  this.province = await this.appStorageService.get(`province`)
+}
+
+async exibirCEP(){
+  this.postalCode = await this.appStorageService.get(`postalCode`)
+}
+
+async exibirEstado(){
+  this.state = await this.appStorageService.get(`state`)
+}
+
+async setToken(res: any, accessToken:any) {
+  //await this.users.setToken(res)
+  //await this.appStorageService.set('token', `${accessToken}`)
+}
+
+///////////////////////
+
+async setValue() {
+  await this.appStorageService.set('testando', '123')
+}
+
+
+
+async getValue() {
+  this.value = await this.appStorageService.get('testando')
+}
+
+async removeValue(){
+  await this.appStorageService.remove('testando')
+}
+
+async clearStorage(){
+  await this.appStorageService.clear()
+}
+
+  
+
+selectFile(){
+  
+}
 
 
     calcularValorTotal() {
@@ -238,6 +429,7 @@ export class HomePage implements OnInit {
     }
   }
 
+
   discount: Discount =  {  // SERÁ NECESSÁRIA UMA INTERFACE DE ADMIN ONDE ESSES DADOS SERÃO ALTERADOS QUANDO NECESSÁRIO
         value: 10.00,
         dueDateLimitDays: 0
@@ -296,7 +488,31 @@ export class HomePage implements OnInit {
         error: (e) => console.error(e)
         });
     }
+
+    ///// TRIAGEM
+
+    selecionarOperadora(operadora: number) {
+      this.operadoraSelecionada = operadora;
+    }
+  
+    selecionarTitularidade(titular: boolean) {
+      this.ehTitular = titular;
+    }
     
+    submitForm() {
+      // Aqui você pode processar os dados do formulário
+      console.log('Operadora selecionada:', this.operadoraSelecionada);
+      console.log('Titularidade:', this.ehTitular);
+  
+      // Você também pode enviar os dados para um serviço ou executar outras ações necessárias
+      // Exemplo:
+      this.prodistService.enviarDadosTriagem(this.operadoraSelecionada, this.ehTitular)
+        .subscribe(response => {
+          console.log('Dados enviados com sucesso');
+        }, error => {
+          console.error('Erro ao enviar dados do formulário', error);
+        });
+    }
 
     ////// PRODIST /////
 
@@ -316,6 +532,10 @@ export class HomePage implements OnInit {
   }
 
   formularioProdist!: FormGroup;
+
+  uploadContaDeLuz(){
+
+  }
 
 validaFormProdist(){
   this.formularioProdist = this.formBuilder.group({
@@ -355,7 +575,7 @@ cadastroProdist(): void{
   this.prodistService.create(dataprodist).subscribe({next: (res) => 
   {
     console.log(res);
-    console.log("Formulário cadastrado com sucesso")
+    console.log("Formulário PRODIST cadastrado com sucesso")
   },
   error: (e) => console.error(e)
   });

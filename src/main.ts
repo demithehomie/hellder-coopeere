@@ -9,6 +9,7 @@ import { RouteReuseStrategy, provideRouter } from '@angular/router';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { IonicStorageModule } from '@ionic/storage-angular';
 import { Drivers } from '@ionic/storage';
+import '@angular/compiler'
 
 if (environment.production) {
   enableProdMode();

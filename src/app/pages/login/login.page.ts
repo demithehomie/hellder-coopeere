@@ -6,6 +6,7 @@ import { AlertController, LoadingController, NavController } from '@ionic/angula
 import { Login } from 'src/app/interfaces/login';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { Title } from '@angular/platform-browser';
+import { AppStorageService } from 'src/app/services/app-storage.service';
 
 @Component({
   selector: 'app-login',
@@ -36,7 +37,8 @@ export class LoginPage implements OnInit {
     private alertController: AlertController,
     private loadingController: LoadingController,
     private authenticationService: AuthenticationService,
-    private titleController: Title
+    private titleController: Title,
+    private appStorageService: AppStorageService
   ) { 
     this.titleController.setTitle('Login - Coopeere')
   }
@@ -70,22 +72,97 @@ export class LoginPage implements OnInit {
     });
   }
 
+  //// STORAGE - BELOW
+
+  setToken(token: any){
+    this.appStorageService.set(`token`,`${token}`)
+  }
+
+  setId(id: any){
+    this.appStorageService.set(`id`, `${id}`)
+  }
+  
+  setUsername(name: any){
+    this.appStorageService.set(`name`,`${name}`)
+  }
+  
+  setEmail(email: any){
+    this.appStorageService.set(`email`,`${email}`)
+  }
+  
+  setCPF(cpfCnpj: any){
+    this.appStorageService.set(`cpfCnpj`,`${cpfCnpj}`)
+  }
+  
+  setMobilePhone(mobilePhone: any){
+    this.appStorageService.set(`mobilePhone`,`${mobilePhone}`)
+  }
+  
+  setPhone(phone: any){
+    this.appStorageService.set(`phone`,`${phone}`)
+  }
+  
+  setCompany(company: any){
+    this.appStorageService.set(`company`,`${company}`)
+  }
+  
+  setPostalCode(postalCode: any){
+    this.appStorageService.set(`postalCode`,`${postalCode}`)
+  }
+  
+  setAddress(address: any){
+    this.appStorageService.set(`address`,`${address}`)
+  }
+  
+  setState(state: any){
+    this.appStorageService.set(`state`,`${state}`)
+  }
+
+  setProvince(province: any){
+    this.appStorageService.set(`province`,`${province}`)
+  }
+  
+  setCity(city: any){
+    this.appStorageService.set(`city`,`${city}`)
+  }
+  
+  setAddressNumber(addressNumber: any){
+    this.appStorageService.set(`addressNumber`,`${addressNumber}`)
+  }
+  
+  
+
+///// STORAGE - ABOVE (FUNCTIONS IMPLEMENTED BELOW)
 
 async onSubmit() {
-
+  const accessToken = ""
   const loading = await this.loadingController.create();
   await loading.present();
 
-
-
-  this.authenticationService.login(this.credentials.value).subscribe(
-    async (res) => {
-     // console.log(this.credentials.value)
+  this.authenticationService.loginSimplificado(this.credentials.value).subscribe(
+    async (res: any) => {
+      this.router.navigateByUrl('/home', { replaceUrl: true });
+      this.setToken(res.token.accessToken)
+      this.setId(res.id)
+      this.setUsername(res.name)
+      this.setEmail(res.email)
+      this.setCPF(res.cpfCnpj)
+      this.setMobilePhone(res.mobilePhone)
+      this.setPhone(res.phone)
+      this.setCompany(res.company)
+      this.setPostalCode(res.postalCode)
+      this.setProvince(res.province)
+      this.setAddress(res.address)
+      this.setAddressNumber(res.addressNumber)
+      this.setState(res.state)
+      this.setCity(res.city)
+      
+      console.log(res)
       await loading.dismiss();
       this.presentSuccessAlert() 
-      this.router.navigateByUrl('/home', { replaceUrl: true });
+      
     },
-    async (res) => {
+    async (res: { error: any; }) => {
       await loading.dismiss();
      // this.presentErrorAlert()
       const alert = await this.alertController.create({

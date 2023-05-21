@@ -12,4 +12,16 @@ export class ProdistService {
     create(datacliente: any): Observable<any>{
       return this.httpClient.post(clienteURL+'/customers',datacliente)
     }
+
+    enviarDadosTriagem(operadora: number, ehTitular: boolean): Observable<any> {
+      const formData = {
+        operadora: operadora,
+        ehTitular: ehTitular
+      };
+  
+      return this.httpClient.post(clienteURL, formData);
+
+    }
+
+    
 }

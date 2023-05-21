@@ -1,6 +1,9 @@
 {
   "name": "crud_frontend",
-  "integrations": {},
+  "integrations": {
+    "cordova": {},
+    "capacitor": {}
+  },
   "type": "angular",
   "serve": {
     "host": "localhost",

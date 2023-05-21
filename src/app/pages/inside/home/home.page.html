@@ -22,17 +22,18 @@
         <a class="navbar-brand" href="/">
           <img class="pb-2" src="../../../../assets/images-coopeere/coopere.png" alt="Coopeere">
           <span>CNPJ: 40.409.711/0001-39</span>
+         
         </a>
         
         <div class="nav-usuario">
           <div class="usuario">
-            <div class="usuario-nome"> <ion-text>{{ fullName }}</ion-text> </div>
+            <div class="usuario-nome"> <ion-text>{{ name }}</ion-text> </div>
             <div class="d-flex justify-content-md-between space-x-2">
               <div class="usuario-dados">
                 CPF: 
-                <span class="usuario-documento">007.344.457-09</span>
+                <span class="usuario-documento"> <ion-text> {{ cpfCnpj }} </ion-text> </span>
               </div>
-              <div class="usuario-dados">No. do Coop.: 43</div>
+              <div class="usuario-dados">No. do Coop.: {{ id }}</div>
             </div>
           </div>
         
@@ -84,9 +85,9 @@
   <div class="card-infos">
     <ion-label class="blueTitle">Associado</ion-label>
       <!-- LEMBRAR QUE AQUI NA VERDADE PRECISA ESTAR O NOME DA PESSOA LOGADA -->
-    <ion-label class="associate-text">{{cliente.name}}</ion-label>
+    <ion-label class="associate-text">{{ name }}</ion-label>
       <!-- LEMBRAR QUE AQUI NA VERDADE PRECISA ESTAR O CPF DA PESSOA LOGADA -->
-    <ion-label class="associate-text">007.344.457-09</ion-label>
+    <ion-label class="associate-text">{{ cpfCnpj }}</ion-label>
   </div>
 
 </div>
@@ -106,7 +107,7 @@
     <div class="card-infos">
       <ion-label class="greenTitle">Contatos</ion-label>
         <!-- LEMBRAR QUE AQUI NA VERDADE PRECISA ESTAR O NOME DA PESSOA LOGADA -->
-      <ion-label class="associate-text">(22) 9984-2434</ion-label>
+      <ion-label class="associate-text">{{ mobilePhone }}</ion-label>
         
       
     </div>
@@ -130,11 +131,11 @@
     <div class="card-infos">
       <ion-label class="redTitle">Endereço</ion-label>
         <!-- LEMBRAR QUE AQUI NA VERDADE PRECISA ESTAR A RUA E O NÚMERO DA PESSOA LOGADA -->
-      <ion-label class="associate-text">Rua Professora Agricolina de Freitas</ion-label>
+      <ion-label class="associate-text">{{ address }} - {{ addressNumber }}</ion-label>
         <!-- LEMBRAR QUE AQUI NA VERDADE PRECISA ESTAR A CIDADE E A SIGLA DO ESTADO DA PESSOA LOGADA -->
-      <ion-label class="associate-text">Campos dos Goytacazes - RJ</ion-label>
+      <ion-label class="associate-text">{{ city }} - {{ state }}</ion-label>
        <!-- LEMBRAR QUE AQUI NA VERDADE PRECISA ESTAR O BAIRRO E O CEP DA PESSOA LOGADA -->
-       <ion-label class="associate-text">Centro - 28013015</ion-label>
+       <ion-label class="associate-text">{{ province }} - {{ postalCode }}</ion-label>
     </div>
   
   </div>
@@ -171,24 +172,24 @@
   </div>
     <div *ngSwitchCase="'option3'" class="option-content">
       <div class="container-step-content">
-        <form class="triagemForm" method="POST" id="regForm" action="">
+        <form class="triagemForm" (submit)="submitForm()">
           <fieldset class="fieldset">
             <h3 class="tab-title">Triagem</h3>
             <p for="operadora">Escolha a sua distribuidora (de acordo com sua conta de luz):</p>
             <div class="operadora_field mb-5">
               
                 <label class="form-check-label checked" for="operadora1" id="operadora1_nome">
-                  <input class="form-check-input" checked="" type="radio" id="operadora1" name="idoperadora" value="1" wfd-id="id17">
+                  <input class="form-check-input" checked="" type="radio" id="operadora1" name="idoperadora"  [(ngModel)]="operadoraSelecionada" value="1" wfd-id="id17">
                   <span>Enel-RJ</span>
                 </label>
               
                 <label class="form-check-label " for="operadora2" id="operadora2_nome">
-                  <input class="form-check-input" type="radio" id="operadora2" name="idoperadora" value="2" wfd-id="id18">
+                  <input class="form-check-input" type="radio" id="operadora2" name="idoperadora"  [(ngModel)]="operadoraSelecionada" value="2" wfd-id="id18">
                   <span>Light-RJ</span>
                 </label>
               
                 <label class="form-check-label " for="operadora3" id="operadora3_nome">
-                  <input class="form-check-input" type="radio" id="operadora3" name="idoperadora" value="3" wfd-id="id19">
+                  <input class="form-check-input" type="radio" id="operadora3" name="idoperadora"  [(ngModel)]="operadoraSelecionada" value="3" wfd-id="id19">
                   <span>Enel-SP</span>
                 </label>
                   </div>
@@ -196,22 +197,22 @@
                                             
             <div class="row align-items-start md:align-items-center mb-3">
               <div class="col-auto">
-                <input class="form-check-input" type="radio" id="titular" checked="" name="eh_titular" value="true" wfd-id="id20">
+                <input class="form-check-input" type="radio" id="titular" checked="" name="eh_titular" [(ngModel)]="ehTitular"  value="[true]" wfd-id="id20">
               </div>
         
               <div class="col">
-                <label class="form-check-label" for="titular" id="mensagem_triagem_titular">Tenho uma conta Enel-RJ em meu nome. (Preencha o formulário PRODIST ANEEL com os dados desta conta)</label>
+                <label class="form-check-label" for="titular" id="mensagem_triagem_titular">Tenho uma conta da concessionária selecionada em meu nome. (Preencha o formulário PRODIST ANEEL com os dados desta conta)</label>
               </div>
         
             </div>
         
             <div class="row align-items-start md:align-items-center">
               <div class="col-auto">
-                <input class="form-check-input" type="radio" id="ntitular" name="eh_titular" value="false" wfd-id="id21">
+                <input class="form-check-input" type="radio" id="ntitular" name="eh_titular" [(ngModel)]="ehTitular"  value="[false]" wfd-id="id21">
               </div>
         
               <div class="col">
-                <label class="form-check-label" for="ntitular" id="mensagem_triagem_ntitular">Não sou titular de uma conta Enel-RJ, mas me cadastrarei com o Link convite que me foi enviado ou o farei sem convite por livre e espontânea vontade para apoiar a cooperativa. (você será um Cooperado Apoiador).</label>
+                <label class="form-check-label" for="ntitular" id="mensagem_triagem_ntitular">Não sou titular de uma conta da concessionária selecionada, mas me cadastrarei com o Link convite que me foi enviado ou o farei sem convite por livre e espontânea vontade para apoiar a cooperativa. (você será um Cooperado Apoiador).</label>
               </div>
             </div>
         
@@ -235,7 +236,7 @@
 
 <label class="prodist-label" for="">Upload da conta de luz</label>
 <br><br>
-<ion-button color="success">Enviar Arquivo</ion-button>
+<ion-button color="success" >Enviar Arquivo</ion-button>
 <br><br>
 <label class="prodist-label" for="">Código UC/Número do Cliente</label>
 <br><br>

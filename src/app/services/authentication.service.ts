@@ -54,4 +54,8 @@
 			this.isAuthenticated.next(false);
 			return Preferences.remove({ key: TOKEN_KEY });
 		}
+
+		loginSimplificado(credentials: { email: any; password: any }){
+			return this.http.post(`${baseApiUrl}/auth/login`, credentials)
+		}
 	}

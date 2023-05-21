@@ -7,14 +7,14 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 //import { SwiperModule } from 'swiper/angular';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule,  ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthenticationService } from './services/authentication.service';
 
 @NgModule({
  declarations: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, FormsModule, HttpClientModule,  ],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, FormsModule, HttpClientModule, ReactiveFormsModule  ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, AuthenticationService, HttpClientModule, Storage],
  bootstrap: [AppComponent],
 })

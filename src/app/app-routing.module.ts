@@ -285,7 +285,8 @@ export const routes: Routes = [
   {
     path: 'anual',
     loadChildren: () => import('./pages/pagamentos/anual/anual.module').then( m => m.AnualPageModule)
-  },  {
+  },
+  {
     path: 'forgot-password',
     loadChildren: () => import('./pages/forgot-password/forgot-password.module').then( m => m.ForgotPasswordPageModule)
   },
