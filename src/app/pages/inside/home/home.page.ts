@@ -387,38 +387,40 @@ selectFile(){
   
 
   
-
-  nextPage() {
-    if (this.selectedTab === 'option1') {
-      this.selectedTab = 'option2';
-    } else if (this.selectedTab === 'option2') {
-      this.selectedTab = 'option3';
-    } else if (this.selectedTab === 'option3') {
-      this.selectedTab = 'option4';
-    } else if (this.selectedTab === 'option4') {
-      this.selectedTab = 'option5';
-    } else if (this.selectedTab === 'option5') {
-      this.selectedTab = 'option6';
-    } else if (this.selectedTab === 'option6') {
-      this.selectedTab = 'option7';
-    }
-
+nextPage() {
+  if (this.selectedTab === 'option1') {
+    this.selectedTab = 'option2';
+  } else if (this.selectedTab === 'option2') {
+    this.selectedTab = 'option3';
+  } else if (this.selectedTab === 'option3') {
+    this.selectedTab = 'option4';
+  } else if (this.selectedTab === 'option4') {
+    this.selectedTab = 'option5';
+  } else if (this.selectedTab === 'option5') {
+    this.selectedTab = 'option6';
+  } else if (this.selectedTab === 'option6') {
+    this.selectedTab = 'option7';
+  } else if (this.selectedTab === 'option7') {
+    this.selectedTab = 'option8';
   }
+}
 
-  previousPage() {
-    if (this.selectedTab === 'option7'){
-      this.selectedTab = 'option6';
-    } else if (this.selectedTab === 'option6'){
-      this.selectedTab = 'option5';
-    } else if (this.selectedTab === 'option5'){
-      this.selectedTab = 'option4';
-    } else if (this.selectedTab === 'option4'){
-      this.selectedTab = 'option3';
-    } else if (this.selectedTab === 'option3'){
-      this.selectedTab = 'option2';
-    } else if (this.selectedTab === 'option2'){
-      this.selectedTab = 'option1';
-    }
+previousPage() {
+  if (this.selectedTab === 'option8'){
+    this.selectedTab = 'option7';
+  } else if (this.selectedTab === 'option7'){
+    this.selectedTab = 'option6';
+  } else if (this.selectedTab === 'option6'){
+    this.selectedTab = 'option5';
+  } else if (this.selectedTab === 'option5'){
+    this.selectedTab = 'option4';
+  } else if (this.selectedTab === 'option4'){
+    this.selectedTab = 'option3';
+  } else if (this.selectedTab === 'option3'){
+    this.selectedTab = 'option2';
+  } else if (this.selectedTab === 'option2'){
+    this.selectedTab = 'option1';
+  }
 
 
 
