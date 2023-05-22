@@ -663,14 +663,14 @@ selectFile(){
       MaiorConsumoUltimos12: "",
   }
 
-  formularioProdist!: FormGroup;
+  formProdist!: FormGroup;
 
   uploadContaDeLuz(){
 
   }
 
 validaFormProdist(){
-  this.formularioProdist = this.formBuilder.group({
+  this.formProdist = this.formBuilder.group({
  
    ContaDeLuz: ['', [Validators.required]],
    NumeroDoCliente: ['', [Validators.required]],
