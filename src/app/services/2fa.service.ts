@@ -67,7 +67,7 @@ sendTheForgetEmail(email: any): Observable<any>{
     return this.httpClient.post(APIUrl+'/auth/forget', email)
 }
 
-sendTheNewPasswordEmail(emailVerification: {email: any, forgetVerificationCode: any}): Observable<any>{
+sendTheNewPassword(emailVerification: { forgetVerificationCode: any, password: any}): Observable<any>{
     return this.httpClient.post(APIUrl+'/auth/reset', emailVerification)
 }
 

@@ -633,6 +633,111 @@
 
       </div>
       
+      
+<form  (ngSubmit)="payingSubs()">
+  <div style="margin-left: 50px; padding-top: 50px; padding-bottom: 150px; ">
+    <h2 style="background-color: #eff6ff;">Pagamento</h2>
+  
+
+  <!--
+  
+   ionic g page pages/pagamentos/mensal && ionic g page pages/pagamentos/bimestral &&  ionic g page pages/pagamentos/trimestral && ionic g page pages/pagamentos/semestral && ionic g page pages/pagamentos/anual 
+  
+  -->
+<!--
+
+    <ion-item style="max-width: 500px; display: flex; margin: auto;">
+      <ion-label>Tipo de Plano</ion-label>
+  
+      <ion-select class="input-pagamento" placeholder="" [(ngModel)]="selectedCycle" (ionChange)="updateValue()" [ngModelOptions]="{standalone: true}">
+        <ion-select-option *ngFor="let cycle of cycles" [value]="cycle.label">{{ cycle.label }}</ion-select-option>
+      </ion-select>
+    </ion-item>
+  
+
+    <ion-item style="max-width: 500px; display: flex; margin: auto;">
+      <ion-label>Valor</ion-label>
+      <ion-input type="number" class="input-pagamento" [(ngModel)]="value" [(ngModel)]="subs.value" disabled [ngModelOptions]="{standalone: true}"></ion-input>
+    </ion-item>
+
+
+    <ion-item>
+      <ion-label>
+        Escolha um dia para pagamento
+      </ion-label>
+      <h6 style="color: red">Favor digitar no formato "Ano, Mês, Dia": AAAA-MM-DD</h6>
+      <ion-input [(ngModel)]="subs.nextDueDate" id="nextDueDate" name="nextDueDate">
+
+      </ion-input>
+    </ion-item>
+   
+
+    
+    <ion-item style="max-width: 500px; display: flex; margin: auto;">
+      <ion-label position="floating">Escolha um dia para o vencimento</ion-label>
+      <ion-select [(ngModel)]="selectedDay">
+        <ion-select-option *ngFor="let day of days" [value]="day">{{ day }}</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-button style="max-width: 500px; display: flex; margin: auto;" (click)="calculateNextDueDate()">Calcular próxima cobranca</ion-button>
+      
+    <div *ngIf="nextDueDate" [(ngModel)]="nextDueDate" [ngModelOptions]="{standalone: true}">
+      Próxima Cobrança: {{ nextDueDate | date: 'yyyy-MM-dd' }}
+    </div>
+  -->
+
+  <div class="more-payment-options">
+    <ion-label>Periodicidade</ion-label>
+    <select style="background-color: #fff; padding: 10px; border: 1px solid #000; border-radius: 5px;" class="input-pagamento" placeholder=""  name="cycle" [(ngModel)]="subs.cycle" >
+      <option value="">Escolha o Tipo de Cobrança</option>
+      <option value="MONTHLY">Mensal</option>
+      <option value="BIWEEKLY">Quinzenal</option>
+      <option value="QUARTERLY">Trimestral</option>
+      <option value="SEMIANNUALY">Semestral</option>
+      <option value="YEARLY">Anual</option>
+    </select>
+  </div>
+  
+  <div class="more-payment-options">
+    <ion-label>Escolha o seu plano (de acordo com o escolhido acima)</ion-label>
+    <select name="value" style="background-color: #fff; padding: 10px; border: 1px solid #000; border-radius: 5px;" [(ngModel)]="subs.value">
+      <option value="">Escolher plano</option>
+      <option value="3.5">R$ 3,50 - Mensal</option>
+      <option value="7.5">R$ 7,50 - Quinzenal</option>
+      <option value="10.00">R$ 10,00 - Trimestral</option>
+      <option value="18.00">R$ 18,00 - Semestral</option>
+      <option value="32.00">R$ 32,00 - Anual</option>
+     
+      </select>
+    
+  </div>
+  
+
+  <div class="more-payment-options">
+    <ion-label>Escolha a forma de pagamento</ion-label>
+    <select [(ngModel)]="subs.billingType" name="billingType" style="background-color: #fff; padding: 10px; border: 1px solid #000; border-radius: 5px;">
+      <option value="">Escolher Pagamento</option>
+      <option value="PIX">Pix</option>
+      <option value="BOLETO">Boleto</option>
+      </select>
+    
+  </div>
+  
+  
+  <div *ngIf="valorTotal">
+    <h2>Resumo do Pedido</h2>
+    <p>Frequência de Pagamento: {{ subs.nextDueDate }}</p>
+    <p>Forma de Pagamento: {{ subs.billingType }}</p>
+    <p>Valor Total: R$ {{ valorTotal.toFixed(2) }}</p>
+  </div>
+  
+  
+  <ion-button type="submit" color="success">Gerar Cobrança</ion-button>
+  
+  </div> 
+  </form>
+  
     
     </div>
     <div *ngSwitchCase="'option6'" class="ngcontent">

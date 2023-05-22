@@ -57,8 +57,8 @@ export class ClienteService {
   }
 
   // CRIAR ASSINATURA (BOLETO OU PIX)
-  generateSubs(body: any){
-    return this.httpClient.post(clienteURL+'/subscriptions', body); 
+  generateSubs(datapayment: any){
+    return this.httpClient.post(clienteURL+'/subscriptions', datapayment); 
   }
 
   // CRIAR ASSINATURA (CARTÃO DE CRÉDITO)

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AlertController } from '@ionic/angular';
+import { AlertController, LoadingController } from '@ionic/angular';
 import { Subs } from 'src/app/interfaces/assinaturas';
 import { Cliente } from 'src/app/interfaces/cliente';
 import { PRODIST } from 'src/app/interfaces/prodist';
@@ -27,9 +27,15 @@ import { AppStorageService } from 'src/app/services/app-storage.service';
 })
 export class HomePage implements OnInit {
 
+  selectedCycle!: string;
+  value!: number;
+  cycle!: string
+
+  dataConvertida! : string;
+
   name: any=""
   cpfCnpj: any=""
-  value: any="";
+  //value: any="";
   mobilePhone: any=""
   phone: any=""
   company: any=""
@@ -64,6 +70,9 @@ export class HomePage implements OnInit {
   fullName = '';
   buscandoCpfCnpj!: Promise<any>;
 
+  dataHoje: Date;
+  dataDaquiA30Dias: Date;
+
   constructor(
     private appStorageService: AppStorageService,
     private usuarioService: UsuarioService, 
@@ -72,6 +81,7 @@ export class HomePage implements OnInit {
     private formBuilder: FormBuilder,
     private prodistService: ProdistService,
     private titleController: Title,
+    private loadingController: LoadingController,
     //private transfer: FileTransfer, 
     //private file: File,
     private httpClient: HttpClient
@@ -80,8 +90,98 @@ export class HomePage implements OnInit {
       this.titleController.setTitle('Home - Coopeere')
       this.operadoraSelecionada = 1; // Defina um valor padrão para a operadora selecionada
       this.ehTitular = true; // Defina um valor padrão para a opção de titularidade
+      this.dataHoje = new Date();
+
+      // Use o método setDate() para adicionar 30 dias à data atual
+      this.dataDaquiA30Dias = new Date();
+      const data_selecionada = this.dataDaquiA30Dias.setDate(this.dataDaquiA30Dias.getDate() + 30);
     }
+
+
+    // O problema de "Data inválida" ocorre quando os valores passados para criar um objeto `Date` não correspondem a uma data válida. No código fornecido, a variável `selectedDay` é usada para criar a data `this.nextDueDate`. Se o valor de `selectedDay` for maior do que o número de dias no mês selecionado, ou menor do que 1, uma data inválida será criada.
+
+    // Para resolver esse problema, você pode adicionar uma verificação para garantir que `selectedDay` esteja dentro do intervalo válido para o mês selecionado. Você pode fazer isso modificando a função `calculateNextDueDate()` da seguinte forma:
+    
+    selectedDay!: number;
+    nextDueDate: any="";
+
+    days: number[] =  Array.from({length: 30}, (_, i) => i + 1);
+
+    calculateNextDueDate() {
+      
+      const currentDate = new Date();
+      const currentYear = currentDate.getFullYear();
+      const currentMonth = currentDate.getMonth();
+      const selectedMonth = currentMonth + 1; // Since JavaScript months are zero-based
+    
+      let nextMonth;
+      let nextYear;
+    
+      if (selectedMonth === 12) {
+        nextMonth = 1;
+        nextYear = currentYear + 1;
+      } else {
+        nextMonth = selectedMonth + 1;
+        nextYear = currentYear;
+      }
+    
+      const lastDayOfMonth = new Date(nextYear, nextMonth - 1, 0).getDate();
+    
+      if (this.selectedDay < 1 || this.selectedDay > lastDayOfMonth) {
+        console.log("Dia selecionado é inválido.");
+        return;
+      }
+    
+      // this.nextDueDate = new Date(nextYear, nextMonth, this.selectedDay);
+      this.nextDueDate = new Date(nextYear, nextMonth - 1, this.selectedDay + 1).toISOString().split('T')[0];
+
+      console.log(this.nextDueDate);
+    }
+    
+    
+    // Neste código, a variável `lastDayOfMonth` é usada para obter o último dia do mês selecionado. Em seguida, é feita uma verificação para garantir que `selectedDay` esteja dentro do intervalo válido (entre 1 e `lastDayOfMonth`). Se `selectedDay` estiver fora desse intervalo, uma mensagem de erro será exibida no console e a função será interrompida. Caso contrário, a data será criada corretamente.
+  
      
+    cycles = [
+      { label: 'MENSAL', cycle: 'MONTHLY', value: 3.5 },
+      { label: 'BIMESTRAL', cycle: 'BIMONTHLY', value: 7.5 },
+      { label: 'TRIMESTRAL', cycle: 'QUARTERLY', value: 10 },
+      { label: 'SEMESTRAL', cycle: 'SEMIANNUALY', value: 18 },
+      { label: 'ANUAL', cycle: 'ANNUALY', value: 32 }
+    ];
+
+    updateValue() {
+      switch (this.selectedCycle) {
+        case 'MENSAL':
+          this.cycle = 'MONTHLY'
+          this.value = 3.5; 
+          console.log(this.value)
+          break;
+        case 'BIMESTRAL':
+          this.cycle = 'BIMONTHLY'
+          this.value = 7.5;
+          console.log(this.value)
+          break;
+        case 'TRIMESTRAL':
+          this.cycle = 'QUARTERLY'
+          this.value = 10;
+          console.log(this.value)
+          break;
+        case 'SEMESTRAL':
+          this.cycle = 'SEMIANNUALY'
+          this.value = 18;
+          console.log(this.value)
+          break;
+        case 'ANUAL':
+          this.cycle = 'ANNUALY '
+          this.value = 32;
+          console.log(this.value)
+          break;
+        default:
+          this.value = 0;
+      }
+    }
+    
     
 //     const fileTransfer: FileTransferObject = this.transfer.create();
 
@@ -284,20 +384,7 @@ selectFile(){
     return this.selectedOption === option; // Retorna true se a opção atual for a selecionada, caso contrário, retorna false
   }
 */
-  ngOnInit() {
-    this.validaFormProdist();
-    this.usuarioService.getData(this.data).subscribe(data => {
-      this.data = data;
-    });
-
-    this.clienteService.userFullName
-    .pipe(take(1))
-    .subscribe((fullName: string | null | undefined) => {
-      this.fullName = fullName !== null && fullName !== undefined ? fullName : '';
-
-      this.fullName$.next(fullName);
-    });
-  }
+  
 
   
 
@@ -406,24 +493,7 @@ selectFile(){
     observations: "",
   }
 
-  subs: Subs = {
-    customer: '',
-    billingType: '',  //subs.billingType
-    nextDueDate: '',
-    value: 0,
-    cycle: '',
-    description: '',
-    discount: {
-      value: 0.00,
-        dueDateLimitDays: 0
-    },
-    fine: {
-      value: 1.00,
-    },
-    interest: {
-      value: 2.00
-    }
-  }
+
 
   cobranca: Cobranca = {
     customer: " ",
@@ -458,25 +528,65 @@ selectFile(){
         value: 2.00
     }
 
+    converterTimestampParaData(timestamp: number): string {
+      const data = new Date(timestamp);
+      const year = data.getFullYear();
+      const month = String(data.getMonth() + 1).padStart(2, '0');
+      const day = String(data.getDate()).padStart(2, '0');
+  
+      return `${year}_${month}_${day}`;
+    }
+    
+  payments!: FormGroup
 
-    payingSubs(): void{
-      const dataclient = {
-        name: this.cliente.name,
-    email: this.cliente.email,
-    phone: this.cliente.phone,
+  subs: Subs = {
+    customer:  '',//`${await this.appStorageService.get(`customer_id`)}`,
+    billingType: '',  //subs.billingType
+    nextDueDate: '',
+    value: 0,
+    cycle: '',
+    description: 'COOPEERE',
+    discount: {
+      value: 0.00,
+        dueDateLimitDays: 1
+    },
+    fine: {
+      value: 1.00,
+    },
+    interest: {
+      value: 2.00
+    }
+  }
+
+   async payingSubs(){
+      const loading = await this.loadingController.create();
+      await loading.present();
+
+    //   const dataclient = {
+    //     name: this.cliente.name,
+    // email: this.cliente.email,
+    // phone: this.cliente.phone,
         
-      };
-      this.clienteService.create(dataclient).subscribe({next: (res) => 
-      {
-        console.log(res);
-        console.log("Dados de Pagamento salvos com sucesso")
-      },
-      error: (e) => console.error(e)
-      });
+    //   };
+    //   this.clienteService.create(dataclient).subscribe({next: (res) => 
+    //   {
+    //     console.log(res);
+    //     console.log("Dados de Pagamento salvos com sucesso")
+    //   },
+    //   error: (e) => console.error(e)
+    //   });
+
+     
+
+
+    this.dataDaquiA30Dias = new Date();
+      const data_selecionada = this.dataDaquiA30Dias.setDate(this.dataDaquiA30Dias.getDate() + 30);
+
+    await loading.dismiss();
       const datapayment = {
-        customer: this.subs.customer,
+        customer: `${await this.appStorageService.get(`customer_id`)}`,
         billingType: this.subs.billingType,
-        nextDueDate: this.subs.nextDueDate,
+        nextDueDate: this.converterTimestampParaData(data_selecionada),
         value: this.subs.value,
     description: this.subs.description,
     cycle: this.subs.cycle,
@@ -495,14 +605,20 @@ selectFile(){
 
    
       };
-      this.clienteService.create(datapayment).subscribe({next: (rescli) => 
-        {
-          console.log(rescli);
+      this.clienteService.generateSubs(datapayment).subscribe(
+        async (res: any) =>  {
+          console.log(datapayment)
+          await loading.dismiss();
+          console.log(res);
           console.log("Pagamento efetuado cadastrado com sucesso")
          // this.navCtrl.navigateForward('/sms');
         },
-        error: (e) => console.error(e)
-        });
+        async (res: { error: any}) => {
+          console.log(res.error)
+          console.log(datapayment)
+        }
+    
+        );
     }
 
     ///// TRIAGEM
@@ -600,6 +716,52 @@ cadastroProdist(): void{
     ///////
    
 }
+/////////////pagamentos
+
+
+
+
+
+
+//////////////////pagamentos
+ 
+
+
+
+
+  
+  ngOnInit() {
+ 
+    this.validaFormProdist();
+    // this.usuarioService.getData(this.data).subscribe(data => {
+    //   this.data = data;
+    // });
+
+    // this.clienteService.userFullName
+    // .pipe(take(1))
+    // .subscribe((fullName: string | null | undefined) => {
+    //   this.fullName = fullName !== null && fullName !== undefined ? fullName : '';
+    //   this.fullName$.next(fullName);
+    // }),
+    this.payments = this.formBuilder.group({
+      object: ['', [Validators.required]],
+      //transaction_id: ['', [Validators.required]],
+      customer_id: ['', [Validators.required]],
+      value: ['', [Validators.required]],
+      billingType: ['', [Validators.required]],
+      nextDueDate: ['', [Validators.required]],
+      cycle: ['', [Validators.required]],
+      description: ['', [Validators.required]],
+      discount: ['', [Validators.required]],
+      fine: ['', [Validators.required]],
+      interest: ['', [Validators.required]],
+    });
+  }
+
+  makeThePayment(){
+
+  }
+
 }
   ////////////
 

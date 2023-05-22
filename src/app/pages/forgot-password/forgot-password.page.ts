@@ -32,10 +32,12 @@ export class ForgotPasswordPage implements OnInit {
     await loading.present();
     this.twofaService.sendTheForgetEmail(this.emailVerification.value).subscribe(
       async (res) => {
+        console.log(res)
         await loading.dismiss();
         this.router.navigateByUrl('/reset-password', { replaceUrl: true })
       },
-      async (res) =>{
+      async (res: { error: any}) =>{
+        console.log(res.error)
         await loading.dismiss();
         const alert = await this.alertController.create({
           header: 'Código Inválido',
