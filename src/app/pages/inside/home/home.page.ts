@@ -220,6 +220,28 @@ export class HomePage implements OnInit {
 //   });
 // }
 
+selectedFile!: File;
+
+handleFileInput(event: any) {
+  this.selectedFile = event.target.files[0];
+}
+
+upload() {
+  if (this.selectedFile) {
+    // Aqui você pode enviar o arquivo para o servidor ou realizar outras ações necessárias
+    console.log('Arquivo selecionado:', this.selectedFile);
+    /*
+    this.prodistService.enviarContaDeLuz().subscribe(
+      async (res: any){
+        console.log('Arquivo enviado:', this.selectedFile);
+      }
+    )
+    */
+  } else {
+    console.log('Nenhum arquivo selecionado.');
+  }
+}
+
 setCustomerId(id: string){
   this.appStorageService.set(`customer_id`, `${id}`)
 }
@@ -536,7 +558,7 @@ previousPage() {
       const month = String(data.getMonth() + 1).padStart(2, '0');
       const day = String(data.getDate()).padStart(2, '0');
   
-      return `${year}_${month}_${day}`;
+      return `${year}-${month}-${day}`;
     }
     
   payments!: FormGroup
@@ -665,14 +687,12 @@ previousPage() {
       MaiorConsumoUltimos12: "",
   }
 
-  formProdist!: FormGroup;
+  bigProdist!: FormGroup;
 
-  uploadContaDeLuz(){
-
-  }
+ 
 
 validaFormProdist(){
-  this.formProdist = this.formBuilder.group({
+  this.bigProdist = this.formBuilder.group({
  
    ContaDeLuz: ['', [Validators.required]],
    NumeroDoCliente: ['', [Validators.required]],
@@ -691,33 +711,34 @@ validaFormProdist(){
 }
 
 cadastroProdist(): void{
-  const dataprodist = {
-    ContaDeLuz: this.prodist.ContaDeLuz,
-    NumeroDoCliente: this.prodist.NumeroDoCliente,
-    ClasseUC: this.prodist.ClasseUC,
-    CotaMensal: this.prodist.CotaMensal,
-    PotenciaInstalada: this.prodist.PotenciaInstalada,
-    TensaoDeAtendimento: this.prodist.TensaoDeAtendimento, 
-    TipoDeConexao: this.prodist.TipoDeConexao,
-    TipoDeRamal: this.prodist.TipoDeRamal,
-    PotenciaInstaladaGeral: this.prodist.PotenciaInstaladaGeral,
-   TipoDaFonteDeGeracao: this.prodist.TipoDaFonteDeGeracao,
-    MenorConsumoUltimos12: this.prodist.MenorConsumoUltimos12,
-    MaiorConsumoUltimos12: this.prodist.MaiorConsumoUltimos12,
+  // const data = {
+  //   ContaDeLuz: this.prodist.ContaDeLuz,
+  //   NumeroDoCliente: this.prodist.NumeroDoCliente,
+  //   ClasseUC: this.prodist.ClasseUC,
+  //   CotaMensal: this.prodist.CotaMensal,
+  //   PotenciaInstalada: this.prodist.PotenciaInstalada,
+  //   TensaoDeAtendimento: this.prodist.TensaoDeAtendimento, 
+  //   TipoDeConexao: this.prodist.TipoDeConexao,
+  //   TipoDeRamal: this.prodist.TipoDeRamal,
+  //   PotenciaInstaladaGeral: this.prodist.PotenciaInstaladaGeral,
+  //  TipoDaFonteDeGeracao: this.prodist.TipoDaFonteDeGeracao,
+  //   MenorConsumoUltimos12: this.prodist.MenorConsumoUltimos12,
+  //   MaiorConsumoUltimos12: this.prodist.MaiorConsumoUltimos12,
 
-  };
-  this.prodistService.create(dataprodist).subscribe({next: (res) => 
-  {
-    console.log(res);
-    console.log("Formulário PRODIST cadastrado com sucesso")
-  },
-  error: (e) => console.error(e)
-  });
+  // };
+  this.prodistService.create(this.bigProdist.value).subscribe(
+    async (res: any) => {
+      console.log(res)
+      
+    },
+    async (res: { error: any}) => {
+      console.log(res.error)
+    }
+  )
 
-
+  }
     ///////
    
-}
 /////////////pagamentos
 
 
@@ -735,19 +756,10 @@ cadastroProdist(): void{
   ngOnInit() {
  
     this.validaFormProdist();
-    // this.usuarioService.getData(this.data).subscribe(data => {
-    //   this.data = data;
-    // });
-
-    // this.clienteService.userFullName
-    // .pipe(take(1))
-    // .subscribe((fullName: string | null | undefined) => {
-    //   this.fullName = fullName !== null && fullName !== undefined ? fullName : '';
-    //   this.fullName$.next(fullName);
-    // }),
+   
     this.payments = this.formBuilder.group({
       object: ['', [Validators.required]],
-      //transaction_id: ['', [Validators.required]],
+    
       customer_id: ['', [Validators.required]],
       value: ['', [Validators.required]],
       billingType: ['', [Validators.required]],
@@ -758,10 +770,6 @@ cadastroProdist(): void{
       fine: ['', [Validators.required]],
       interest: ['', [Validators.required]],
     });
-  }
-
-  makeThePayment(){
-
   }
 
 }

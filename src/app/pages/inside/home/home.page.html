@@ -22,7 +22,6 @@
         <a class="navbar-brand" href="/">
           <img class="pb-2" src="../../../../assets/images-coopeere/coopere.png" alt="Coopeere">
           <span>CNPJ: 40.409.711/0001-39</span>
-         
         </a>
         
         <div class="nav-usuario">
@@ -31,7 +30,7 @@
             <div class="d-flex justify-content-md-between space-x-2">
               <div class="usuario-dados">
                 CPF: 
-                <span class="usuario-documento"> <ion-text> {{ cpfCnpj }} </ion-text> </span>
+                <span class="usuario-documento">{{ cpfCnpj }}</span>
               </div>
               <div class="usuario-dados">No. do Coop.: {{ id }}</div>
             </div>
@@ -70,19 +69,27 @@
       <h2 class="insertInfo"><br>
         Informações Pessoais 
       </h2>
-        <div class="allCards">
-          <ion-card class="blue-associate">
-            <div class="card-infos-group">
-              <div class="blue-associate-icon">
-                <ion-icon class="far fa-lightbulb"></ion-icon>
-              </div>
-                <br><br>
-                <div class="card-infos">
-                    <ion-label class="blueTitle">Associado</ion-label>
-                    <ion-label class="associate-text">{{ name }}</ion-label>
-                    <ion-label class="associate-text">{{ cpfCnpj }}</ion-label>
-                </div>
-            </div>
+<div class="allCards">
+<ion-card class="blue-associate">
+
+<div class="card-infos-group">
+
+  <div class="blue-associate-icon">
+    <ion-icon class="far fa-lightbulb">
+    </ion-icon>
+  </div>
+
+  <br><br>
+
+  <div class="card-infos">
+    <ion-label class="blueTitle">Associado</ion-label>
+      <!-- LEMBRAR QUE AQUI NA VERDADE PRECISA ESTAR O NOME DA PESSOA LOGADA -->
+    <ion-label class="associate-text">{{ name }}</ion-label>
+      <!-- LEMBRAR QUE AQUI NA VERDADE PRECISA ESTAR O CPF DA PESSOA LOGADA -->
+    <ion-label class="associate-text">{{ cpfCnpj  }}</ion-label>
+  </div>
+
+</div>
 
 </ion-card>
 
@@ -93,9 +100,12 @@
     <div class="green-associate-icon">
       <ion-icon class="fa fa-volume-control-phone" aria-hidden="true"></ion-icon>
     </div>
+  
     <br><br>
+  
     <div class="card-infos">
       <ion-label class="greenTitle">Contatos</ion-label>
+        <!-- LEMBRAR QUE AQUI NA VERDADE PRECISA ESTAR O NOME DA PESSOA LOGADA -->
       <ion-label class="associate-text">{{ mobilePhone }}</ion-label>
         
       
@@ -106,54 +116,79 @@
 </ion-card>
 
 <ion-card class="red-associate">
+  
+
+
   <div class="card-infos-group">
+
     <div class="red-associate-icon">
       <ion-icon class="fa fa-map-marker"></ion-icon>
     </div>
+  
     <br><br>
+  
     <div class="card-infos">
-      <ion-label class="redTitle">Endereço</ion-label> 
-      <ion-label class="associate-text">{{ address }} - {{ addressNumber }}</ion-label>
+      <ion-label class="redTitle">Endereço</ion-label>
+        <!-- LEMBRAR QUE AQUI NA VERDADE PRECISA ESTAR A RUA E O NÚMERO DA PESSOA LOGADA -->
+      <ion-label class="associate-text">{{ address }} , {{ addressNumber }}</ion-label>
+        <!-- LEMBRAR QUE AQUI NA VERDADE PRECISA ESTAR A CIDADE E A SIGLA DO ESTADO DA PESSOA LOGADA -->
       <ion-label class="associate-text">{{ city }} - {{ state }}</ion-label>
-      <ion-label class="associate-text">{{ province }} - {{ postalCode }}</ion-label>
+       <!-- LEMBRAR QUE AQUI NA VERDADE PRECISA ESTAR O BAIRRO E O CEP DA PESSOA LOGADA -->
+       <ion-label class="associate-text">{{ province }} - {{ postalCode }}</ion-label>
     </div>
+  
   </div>
+
 </ion-card>
 </div>
 
 
 
 <div class="col-md-6 d-none d-md-block text-md-right">
+  
  <h5 style="padding: 10px; ">Salve as suas informações em local seguro, pois elas serão solicitadas nos formulários a seguir</h5>
+  
+
+</div>
+
 </div>
 
     <div *ngSwitchCase="'option2'" class="ngcontent">
-     
-<h1>OPS</h1>
-
-  </div>
-
-
-    <div *ngSwitchCase="'option3'" class="ngcontent">
       <div class="container-step-content">
-        <form class="triagemForm" (submit)="submitForm()">
+      <h2 class="insertInfo">Informações de Preenchimento</h2>
+      <p>Pedimos que use as funções a seguir durante o preenchimento:</p>
+      
+      <p>A função <strong>"Enviar"</strong> deverá ser utilizada somente quando todo formulário estiver preenchido e ao menos uma mensalidade for paga clicando no último item da barra de opções. Havendo necessidade de mudança nos dados enviados, clique na função "Reeditar" e todas as lacunas de preenchimento estarão aptas a serem modificadas. Um link será enviado para o e-mail ou um código para o celular. Siga as instruções.</p>
+      
+      <p>A função <strong>"Salvar"</strong> poderá ser utilizada a qualquer momento durante o preenchimento e assim garantir o que já foi preenchido não será perdido. Usando esta função, você poderá concluir o preenchimento novamente quando desejar.</p>
+      
+      <p>A função <strong>"Visualizar/Imprimir"</strong> encontrará o Formulário PRODIST padrão ANEEL pag. 73. Será neste formulário que enviaremos seus dados a Distribuidora de Energia responsável pelo seu município.</p>
+      
+      <p>A função <strong>"Reeditar"</strong> Clique em reeditar quando for fazer alterações nos dados já enviados a cooperativa. Será enviado um link para o e-mail usado no ato do cadastro. No caso de mudança de celular, será necessário o envio de link para o mesmo e-mail usado no cadastro. Mudança de e-mail enviaremos código via SMS para o celular usado no ato do cadastro.</p>
+      
+      <p>A função <strong>"Deletar conta"</strong>. Clique em deletar conta para remover todos seus dados e sair da cooperativa. Agradecemos se deixar um feedback sobre as razões de sua saída.</p>
+    </div>
+  </div>
+    <div *ngSwitchCase="'option3'" class="option-content">
+      <div class="container-step-content">
+        <form class="triagemForm" method="POST" id="regForm" action="">
           <fieldset class="fieldset">
             <h3 class="tab-title">Triagem</h3>
             <p for="operadora">Escolha a sua distribuidora (de acordo com sua conta de luz):</p>
             <div class="operadora_field mb-5">
               
                 <label class="form-check-label checked" for="operadora1" id="operadora1_nome">
-                  <input class="form-check-input" checked="" type="radio" id="operadora1" name="operadoraSelecionada"  [(ngModel)]="operadoraSelecionada" value="1" wfd-id="id17">
+                  <input class="form-check-input" checked="" type="radio" id="operadora1" name="idoperadora" value="1" wfd-id="id17">
                   <span>Enel-RJ</span>
                 </label>
               
-                <label class="form-check-label" for="operadora2" id="operadora2_nome">
-                  <input class="form-check-input" type="radio" id="operadora2" name="operadoraSelecionada"  [(ngModel)]="operadoraSelecionada" value="2" wfd-id="id18">
+                <label class="form-check-label " for="operadora2" id="operadora2_nome">
+                  <input class="form-check-input" type="radio" id="operadora2" name="idoperadora" value="2" wfd-id="id18">
                   <span>Light-RJ</span>
                 </label>
               
-                <label class="form-check-label" for="operadora3" id="operadora3_nome">
-                  <input class="form-check-input" type="radio" id="operadora3" name="operadoraSelecionada"  [(ngModel)]="operadoraSelecionada" value="3" wfd-id="id19">
+                <label class="form-check-label " for="operadora3" id="operadora3_nome">
+                  <input class="form-check-input" type="radio" id="operadora3" name="idoperadora" value="3" wfd-id="id19">
                   <span>Enel-SP</span>
                 </label>
                   </div>
@@ -161,22 +196,22 @@
                                             
             <div class="row align-items-start md:align-items-center mb-3">
               <div class="col-auto">
-                <input class="form-check-input" type="radio" id="titular" checked="" name="ehTitular" [(ngModel)]="ehTitular"  value="[true]" wfd-id="id20">
+                <input class="form-check-input" type="radio" id="titular" checked="" name="eh_titular" value="true" wfd-id="id20">
               </div>
         
               <div class="col">
-                <label class="form-check-label" for="titular" id="mensagem_triagem_titular">Tenho uma conta da concessionária selecionada em meu nome. (Preencha o formulário PRODIST ANEEL com os dados desta conta)</label>
+                <label class="form-check-label" for="titular" id="mensagem_triagem_titular">Tenho uma conta Enel-RJ em meu nome. (Preencha o formulário PRODIST ANEEL com os dados desta conta)</label>
               </div>
         
             </div>
         
             <div class="row align-items-start md:align-items-center">
               <div class="col-auto">
-                <input class="form-check-input" type="radio" id="ntitular" name="ehTitular" [(ngModel)]="ehTitular"  value="[false]" wfd-id="id21">
+                <input class="form-check-input" type="radio" id="ntitular" name="eh_titular" value="false" wfd-id="id21">
               </div>
         
               <div class="col">
-                <label class="form-check-label" for="ntitular" id="mensagem_triagem_ntitular">Não sou titular de uma conta da concessionária selecionada, mas me cadastrarei com o Link convite que me foi enviado ou o farei sem convite por livre e espontânea vontade para apoiar a cooperativa. (você será um Cooperado Apoiador).</label>
+                <label class="form-check-label" for="ntitular" id="mensagem_triagem_ntitular">Não sou titular de uma conta Enel-RJ, mas me cadastrarei com o Link convite que me foi enviado ou o farei sem convite por livre e espontânea vontade para apoiar a cooperativa. (você será um Cooperado Apoiador).</label>
               </div>
             </div>
         
@@ -185,205 +220,223 @@
       </div>
     </div>
 
+<!-- FORMULÁRIO PRODIST-->
 
-<div *ngSwitchCase="'option4'" class="ngcontent">
-  <div style="padding: 50px; border-radius: 30px;">
-    <div class="tab-title">Formulário PRODIST (deve-se preencher e salvar a etapa TRIAGEM, antes de preencher o formulário Prodist)</div>
-
-  <form [formGroup]="formProdist" (ngSubmit)="cadastroProdist()">
+<div [formGroup]="bigProdist" (ngSubmit)="cadastroProdist()" *ngSwitchCase="'option4'" class="ngcontent">
   
-    <br>
-    <label class="title" for="id-uc" style="font-weight: bold; font-size: 22px;">Identificação da Unidade Consumidora</label>
-    <br>
-    <br>
 
-    <label class="prodist-label" for="Upload">Upload da conta de luz</label>
-    <br><br>
-    <ion-button color="success">Enviar Arquivo</ion-button>
-    <br><br>
-    
-    <label class="prodist-label" for="NumeroDoCliente">Código UC/Número do Cliente</label>
-    <br><br>
-    <input class="form-inputs" placeholder="Preencha para prosseguir ..." type="text" name="NumeroDoCliente" [(ngModel)]="prodist.NumeroDoCliente">
-    <br><br>
+<div style="padding: 50px; border-radius: 30px;">
+  <div>
+    <div class="tab-title">Formulário PRODIST (deve-se preencher e salvar a etapa TRIAGEM, antes de preencher o formulário Prodist)</div>
+      <br>
+      <label class="title" for="id-uc" style="font-weight: bold; font-size: 22px;">Identificação da Unidade Consumidora</label>
+      <br><br>
+      <label class="prodist-label" for="">Upload da conta de luz</label>
+      <br><br>
+        <input type="file" (change)="handleFileInput($event)" formControlName="ContaDeLuz">
+        <br>
+          <ion-button color="success" (click)="upload()">Enviar Arquivo</ion-button>
+          <br><br>
+            <label class="prodist-label" for="">Código UC/Número do Cliente</label>
+<br><br>
+<input class="form-inputs" placeholder="Preencha para prosseguir ..." type="text" formControlName="NumeroDoCliente">
+<br><br>
 
-    <label class="prodist-label" for="ClasseUC">Classe UC</label>
-    <br><br>
-    <input class="form-inputs" placeholder="Preencha para prosseguir ..." type="text" name="ClasseUC" [(ngModel)]="prodist.ClasseUC">
-    <br><br>
 
-    <label class="title" for="id-uc" style="font-weight: bold; font-size: 22px;">Dados da Unidade Consumidora</label>
-    <br>
-    <br>
+<label class="prodist-label" for="">Classe UC</label>
+<br><br>
+<input class="form-inputs" placeholder="Preencha para prosseguir ..." type="text" formControlName="ClasseUC">
 
-    <label class="prodist-label" for="CotaMensal">Cota que deseja comprar mensalmente</label>
-    <br>
-    <h6>
-      Preço estimado em 50% menor do que a operadora
-    </h6>
-    <input class="form-inputs" placeholder="Preencha para prosseguir ..."  name="CotaMensal" type="text" [(ngModel)]="prodist.CotaMensal">
+<br><br>
 
-    <div>
-      <br> <br>
-      <ion-label class="prodist-label" for="potencia_inst_uc">Potência Instalada</ion-label>
-      <br> <br>
-      <div class="form-hint">
-          Em função da Cota, ou seja, Potência instalada = Cota/360
-      </div>
-      <br> 
-    </div>
-    <div class="input-group">
-      <input type="text" class="form-inputs" placeholder="Preencha para prosseguir ..." readonly id="potencia_inst_uc" name="PotenciaInstalada" value="0.62" size="15" [(ngModel)]="prodist.PotenciaInstalada">
-      <div class="space">
-        <h5 class="input-group-text">kW</h5>
-      </div>
-    </div>
-    <br>
+
+<label class="title" for="id-uc" style="font-weight: bold; font-size: 22px;">Dados da Unidade Consumidora</label>
+<br>
+<br>
+
+<label class="prodist-label" for="">Cota que deseja comprar mensalmente</label>
+<br>
+<h6>
+  Preço estimado em 50% menor do que a operadora
+</h6>
+<input class="form-inputs" placeholder="Preencha para prosseguir ..." type="text" formControlName="CotaMensal">
 
 
 
+<div  >
+  <br> <br>
+  <ion-label class="prodist-label" for="potencia_inst_uc">Potência Instalada</ion-label>
+  <br> <br>
+  <div class="form-hint">
+      Em função da Cota, ou seja,<br/>Potência instalada = Cota/360
+  </div>
+  <br> 
+</div>
+<div class="input-group">
+  <input
+      type="text"
+      class="form-inputs" 
+      readonly
+      id="potencia_inst_uc"
+      name="potencia_inst_uc"
+      value="0.62"
+      size="15"
+      formControlName="PotenciaInstalada"
+      >
+<div class="space">
+<h5 class="input-group-text">kW</h5>
+</div>
+
+  
+</div>
+<br>
 <label class="prodist-label" for="tensao_atendimento">Tensão de atendimento (V)</label>
 <br> 
 <div class="input-group">
-  <select class="form-inputs" id="tensao_atendimento" name="TensaoDeAtendimento" [(ngModel)]="prodist.TensaoDeAtendimento">
-    <option value="">Escolha para prosseguir ...</option>
-    <option value="110" selected>110</option>
-    <option value="220">220</option>
+  <select class="form-inputs " id="tensao_atendimento" name="tensao_atendimento" formControlName="TensaoDeAtendimento">
+     
+                      <option value="" >Escolha para prosseguir ...</option>
+                      <option value="110" selected>110</option>
+                      <option value="220">220</option>
+      
   </select>
 </div>
 <br>
-
-<div>
+<div >
   <label class="prodist-label" for="tipo_conexao">Tipo de conexão</label>
   <br> <br>
   <div class="form-hint">
-    Esta informação está na sua conta de energia.
+      Esta informação tem em sua conta de energia.
   </div>
 </div>
 <div class="input-group">
   <select class="form-inputs" placeholder="Preencha para prosseguir ..."
       name="tipo_conexao"
       id="tipo_conexao"
-      [(ngModel)]="prodist.TipoDeConexao"
+      formControlName="TipoDeConexao"
   >
-    <option value="">Escolha para prosseguir ...</option>
-    <option value="monofásica">Monofásica</option>
-    <option value="bifásica">Bifásica</option>
-    <option value="trifásica" selected>Trifásica</option>
-  </select>
+                      <option value="" >Escolha para prosseguir ...</option>
+                      <option value="monofásica" >Monofásica</option>
+                      <option value="bifásica" >Bifásica</option>
+                      <option value="trifásica"  selected >Trifásica</option>
+                  </select>
 </div>
 <br>
-
 <div>
   <label class="prodist-label" for="tipo_ramal">Tipo de Ramal</label>
   <br> <br>
   <div class="form-hint">
-    A energia chega até você via postes ou debaixo da terra?
+      A energia chega até você via postes ou debaixo da terra?
   </div>
 </div>
 <div class="input-group">
   <select class="form-inputs" placeholder="Preencha para prosseguir ..."
       name="tipo_ramal"
       id="tipo_ramal"
-      [(ngModel)]="prodist.TipoDeRamal"
+      formControlName="TipoDeRamal"
   >
-    <option value="">Escolha para prosseguir ...</option>
-    <option value="aéreo" selected>Aéreo</option>
-    <option value="subterraneo">Subterrâneo</option>
-  </select>
+                    <option value="" >Escolha para prosseguir ...</option>
+                      <option value="aéreo"  selected >Aéreo</option>
+                      <option value="subterraneo" >Subterraneo</option>
+                  </select>
+</div>
 </div>
 
 <div class="form-group">
-  <div class="form-group-title">
-    Dados da Geração
+<div class="form-group-title">
+  Dados da Geração
+</div>
+
+<label class="prodist-label" for="potencia_inst_gerada">Potência instalada gerada</label>
+<br> <br>
+<div class="input-group">
+  <input class="form-inputs" placeholder="Preencha para prosseguir ..."
+      type="text"
+      id="potencia_inst_gerada"
+      name="potencia_inst_gerada"
+      value=""
+      size="20"
+      readonly
+      formControlName="PotenciaInstaladaGeral"
+  >
+
+  <div class="space">
+    <h5 class="input-group-text">kW</h5>
   </div>
 
-  <label class="prodist-label" for="potencia_inst_gerada">Potência instalada gerada</label>
+  
+</div>
+
+<div>
+  <label class="prodist-label" for="tipo_fonte_geracao">Tipo da Fonte de Geração</label>
   <br> <br>
-  <div class="input-group">
-    <input class="form-inputs" placeholder="Preencha para prosseguir ..."
-        type="text"
-        id="potencia_inst_gerada"
-        name="potencia_inst_gerada"
-        value=""
-        size="20"
-        readonly
-        [(ngModel)]="prodist.PotenciaInstaladaGeral"
-    >
-    <div class="space">
-      <h5 class="input-group-text">kW</h5>
-    </div>
-  </div>
-
-  <div>
-    <label class="prodist-label" for="tipo_fonte_geracao">Tipo da Fonte de Geração</label>
-    <br> <br>
-    <div class="form-hint">
+  <div class="form-hint">
       O padrão é Eólica
-    </div>
   </div>
+</div>
+<div class="input-group">
+  <select class="form-inputs" placeholder="Preencha para prosseguir ..."
+  formControlName="TipoDaFonteDeGeracao"
+      name="tipo_fonte_geracao"
+      id="tipo_fonte_geracao"
+  >
+                      <option value="" >Escolha para prosseguir ...</option>
+                      <option value="hidráulica" >Hidráulica</option>
+                      <option value="solar"  selected >Solar</option>
+                      <option value="eólica" >Eólica</option>
+                      <option value="biomassa" >Biomassa</option>
+                      <option value="coogeração qualificada" >Coogeração Qualificada</option>
+                  </select>
+</div>
+
+<div>
+  <label class="prodist-label" for="menor_consumo">Menor consumo</label>
+  <br> <br>
+  <div class="form-hint">
+      Dos últimos 12 meses
+  </div>
+</div>
+<div class="input-group">
+  <input class="form-inputs" 
+  formControlName="MenorConsumoUltimos12"
+      type="text"
+      id="menor_consumo"
+      name="menor_consumo"
+      value="67.00"
+      size="15">
+
+ <div class="space">
+  <h5 class="input-group-text">kWh</h5>
+ </div>
+  
 
 </div>
-  <div class="input-group">
-    <select class="form-inputs" placeholder="Preencha para prosseguir ..."
-    [(ngModel)]="prodist.TipoDaFonteDeGeracao"
-        name="tipo_fonte_geracao"
-        id="tipo_fonte_geracao"
-    >
-      <option value="">Escolha para prosseguir ...</option>
-      <option value="hidráulica">Hidráulica</option>
-      <option value="solar" selected>Solar</option>
-      <option value="eólica">Eólica</option>
-      <option value="biomassa">Biomassa</option>
-      <option value="coogeração qualificada">Coogeração Qualificada</option>
-    </select>
-  </div>
 
-  <div>
-    <label class="prodist-label" for="menor_consumo">Menor consumo</label>
-    <br> <br>
-    <div class="form-hint">
+<div>
+  <label class="prodist-label" for="maior_consumo">Maior consumo</label>
+  <br> <br>
+  <div class="form-hint">
       Dos últimos 12 meses
-    </div>
   </div>
-  <div class="input-group">
-    <input class="form-inputs" placeholder="Preencha para prosseguir ..."
-    [(ngModel)]="prodist.MenorConsumoUltimos12"
-        type="text"
-        id="menor_consumo"
-        name="menor_consumo"
-        value="67.00"
-        size="15">
+</div>
+<div class="input-group">
+  <input formControlName="MaiorConsumoUltimos12" type="text" class="form-inputs" id="maior_consumo"
+      name="maior_consumo" size="15" value="368.00"
+      title="Maior consumo (em kWh) dos últimos 12 meses">
     <div class="space">
       <h5 class="input-group-text">kWh</h5>
     </div>
-  </div>
+     
+    <ion-button type="submit" (click)="cadastroProdist()"  >ATUALIZAR FORMULÁRIO</ion-button>
+</div>
 
-  <div>
-    <label class="prodist-label" for="maior_consumo">Maior consumo</label>
-    <br> <br>
-    <div class="form-hint">
-      Dos últimos 12 meses
-    </div>
-  </div>
-  <div class="input-group">
-    <input [(ngModel)]="prodist.MaiorConsumoUltimos12" type="text" class="form-inputs" placeholder="Preencha para prosseguir ..." id="maior_consumo"
-        name="maior_consumo" size="15" value="368.00"
-        title="Maior consumo (em kWh) dos últimos 12 meses">
-    <div class="space">
-      <h5 class="input-group-text">kWh</h5>
-    </div>
-  </div>
-
-  <ion-button type="submit">ATUALIZAR FORMULÁRIO PRODIST</ion-button>
-</form>
 
 
 </div>
 
 </div>
 
-
+<!-- FIM DO FORMULÁRIO PRODIST -->
 
 </div>
    
@@ -438,6 +491,20 @@
 
           <ion-button color="success" class="plan-buttons" routerLink="/bimestral">Prosseguir</ion-button>
           
+<!--
+          <ion-radio-group [(ngModel)]="opcaoPagamento" type="boolean" >
+            <ion-item>
+              <ion-label>Pix</ion-label>
+              <ion-radio [(ngModel)]="frequenciaPagamento"class="radio-properties" slot="start" value="pix"  ></ion-radio>
+            </ion-item>
+            <ion-item>
+              <ion-label>Boleto Bancário</ion-label>
+              <ion-radio [(ngModel)]="frequenciaPagamento"class="radio-properties" slot="start" value="boleto"  ></ion-radio>
+            </ion-item>
+          </ion-radio-group> 
+          
+          <ion-button expand="block" (click)="verificarPagamento()">Enviar</ion-button>
+        -->
 
         </ion-card>
       </div>
@@ -458,6 +525,25 @@
           </ul>
           
           <ion-button color="success" class="plan-buttons" routerLink="/trimestral">Prosseguir</ion-button>
+          <!--
+          <ion-radio-group value="payment-options">
+            <ion-item>
+              <ion-radio [(ngModel)]="frequenciaPagamento"slot="start" value="pix"  class="radio-properties"></ion-radio>
+              <ion-label class="u-payment-options">Pix</ion-label>
+          
+            </ion-item>
+        
+        <ion-label></ion-label>
+
+            <ion-item>
+              <ion-radio [(ngModel)]="frequenciaPagamento"slot="start" value="boleto"  class="radio-properties"></ion-radio>
+              <ion-label class="u-payment-options">Boleto Bancário</ion-label>
+           
+            </ion-item>
+          </ion-radio-group>
+-->
+
+        
         
         </ion-card>
       </div>
@@ -476,24 +562,69 @@
             <li>Cobranças realizadas semestralmente</li>
             <li>Todos os benefícios de cooperado</li>
             <li>Opções de pagamento: Pix ou Boleto</li>
+          
           </ul>
           
           <ion-button color="success" class="plan-buttons" routerLink="/semestral">Prosseguir</ion-button>
+<!--
+          <ion-radio-group value="payment-options">
+            <ion-item>
+              <ion-radio [(ngModel)]="frequenciaPagamento"slot="start" value="pix"  class="radio-properties"></ion-radio>
+              <ion-label class="u-payment-options">Pix</ion-label>
+              
+            </ion-item>
+        
+        <ion-label></ion-label>
 
+            <ion-item>
+              <ion-radio [(ngModel)]="frequenciaPagamento"slot="start" value="boleto"  class="radio-properties"></ion-radio>
+              <ion-label class="u-payment-options">Boleto Bancário</ion-label>
+            
+            </ion-item>
+          </ion-radio-group>
+
+-->
+        
+        
         </ion-card>
       </div>
 
       <div>
         <ion-card class="class-of-row-of-payment-options">
+          
           <ion-label class="payment-options-h">Anual</ion-label>
+
           <br> <br>
+
+
           <ion-label [(ngModel)]="cobranca.value" value="32.00"  class="price">R$ 32,00</ion-label>
+
           <ul style="list-style-type: square;">
             <li>Cobranças realizadas anualmente</li>
             <li>Todos os benefícios de cooperado</li>
             <li>Opções de pagamento: Pix ou Boleto</li>
+
+            
+
           </ul>
+          
           <ion-button color="success" class="plan-buttons" routerLink="/anual">Prosseguir</ion-button>
+          <!--
+          <ion-radio-group value="payment-options">
+            <ion-item>
+              <ion-label class="u-payment-options">Pix</ion-label>
+              <ion-radio [(ngModel)]="frequenciaPagamento" slot="start" value="pix"  class="radio-properties"></ion-radio>
+            </ion-item>
+        
+        <ion-label></ion-label>
+
+            <ion-item>
+              <ion-label class="u-payment-options">Boleto Bancário</ion-label>
+              <ion-radio [(ngModel)]="frequenciaPagamento"slot="start" value="boleto"  class="radio-properties"></ion-radio>
+            </ion-item>
+          </ion-radio-group>
+-->
+
         </ion-card>
       </div>
 
@@ -502,81 +633,126 @@
 
       </div>
       
+      <form  (ngSubmit)="payingSubs()">
+        <div style="margin-left: 50px; padding-top: 50px; padding-bottom: 150px; ">
+          <h2 style="background-color: #eff6ff;">Pagamento</h2>
+        
       
-<form  (ngSubmit)="payingSubs()">
-  <div style="margin-left: 50px; padding-top: 50px; padding-bottom: 150px; ">
-    <h2 style="background-color: #eff6ff;">Pagamento</h2>
-  
-
-  <div class="more-payment-options">
-    <ion-label>Periodicidade</ion-label>
-    <select style="background-color: #fff; padding: 10px; border: 1px solid #000; border-radius: 5px;" class="input-pagamento" placeholder=""  name="cycle" [(ngModel)]="subs.cycle" >
-      <option value="">Escolha o Tipo de Cobrança</option>
-      <option value="MONTHLY">Mensal</option>
-      <option value="BIWEEKLY">Quinzenal</option>
-      <option value="QUARTERLY">Trimestral</option>
-      <option value="SEMIANNUALY">Semestral</option>
-      <option value="YEARLY">Anual</option>
-    </select>
-  </div>
-  
-  <div class="more-payment-options">
-    <ion-label>Escolha o seu plano (de acordo com o escolhido acima)</ion-label>
-    <select name="value" style="background-color: #fff; padding: 10px; border: 1px solid #000; border-radius: 5px;" [(ngModel)]="subs.value">
-      <option value="">Escolher plano</option>
-      <option value="3.5">R$ 3,50 - Mensal</option>
-      <option value="7.5">R$ 7,50 - Quinzenal</option>
-      <option value="10.00">R$ 10,00 - Trimestral</option>
-      <option value="18.00">R$ 18,00 - Semestral</option>
-      <option value="32.00">R$ 32,00 - Anual</option>
-     
-      </select>
-    
-  </div>
-  
-
-  <div class="more-payment-options">
-    <ion-label>Escolha a forma de pagamento</ion-label>
-    <select [(ngModel)]="subs.billingType" name="billingType" style="background-color: #fff; padding: 10px; border: 1px solid #000; border-radius: 5px;">
-      <option value="">Escolher Pagamento</option>
-      <option value="PIX">Pix</option>
-      <option value="BOLETO">Boleto</option>
-      </select>
-    
-  </div>
-  
-  
-  <div *ngIf="valorTotal">
-    <h2>Resumo do Pedido</h2>
-    <p>Frequência de Pagamento: {{ subs.nextDueDate }}</p>
-    <p>Forma de Pagamento: {{ subs.billingType }}</p>
-    <p>Valor Total: R$ {{ valorTotal.toFixed(2) }}</p>
-  </div>
-  
-  
-  <ion-button type="submit" color="success">Gerar Cobrança</ion-button>
-  
-  </div> 
-  </form>
-  
-
+        <!--
+        
+         ionic g page pages/pagamentos/mensal && ionic g page pages/pagamentos/bimestral &&  ionic g page pages/pagamentos/trimestral && ionic g page pages/pagamentos/semestral && ionic g page pages/pagamentos/anual 
+        
+        -->
+      <!--
+      
+          <ion-item style="max-width: 500px; display: flex; margin: auto;">
+            <ion-label>Tipo de Plano</ion-label>
+        
+            <ion-select class="input-pagamento" placeholder="" [(ngModel)]="selectedCycle" (ionChange)="updateValue()" [ngModelOptions]="{standalone: true}">
+              <ion-select-option *ngFor="let cycle of cycles" [value]="cycle.label">{{ cycle.label }}</ion-select-option>
+            </ion-select>
+          </ion-item>
+        
+      
+          <ion-item style="max-width: 500px; display: flex; margin: auto;">
+            <ion-label>Valor</ion-label>
+            <ion-input type="number" class="input-pagamento" [(ngModel)]="value" [(ngModel)]="subs.value" disabled [ngModelOptions]="{standalone: true}"></ion-input>
+          </ion-item>
+      
+      
+          <ion-item>
+            <ion-label>
+              Escolha um dia para pagamento
+            </ion-label>
+            <h6 style="color: red">Favor digitar no formato "Ano, Mês, Dia": AAAA-MM-DD</h6>
+            <ion-input [(ngModel)]="subs.nextDueDate" id="nextDueDate" name="nextDueDate">
+      
+            </ion-input>
+          </ion-item>
+         
+      
+          
+          <ion-item style="max-width: 500px; display: flex; margin: auto;">
+            <ion-label position="floating">Escolha um dia para o vencimento</ion-label>
+            <ion-select [(ngModel)]="selectedDay">
+              <ion-select-option *ngFor="let day of days" [value]="day">{{ day }}</ion-select-option>
+            </ion-select>
+          </ion-item>
+      
+          <ion-button style="max-width: 500px; display: flex; margin: auto;" (click)="calculateNextDueDate()">Calcular próxima cobranca</ion-button>
+            
+          <div *ngIf="nextDueDate" [(ngModel)]="nextDueDate" [ngModelOptions]="{standalone: true}">
+            Próxima Cobrança: {{ nextDueDate | date: 'yyyy-MM-dd' }}
+          </div>
+        -->
+      
+        <div class="more-payment-options">
+          <ion-label>Periodicidade</ion-label>
+          <select style="background-color: #fff; padding: 10px; border: 1px solid #000; border-radius: 5px;" class="input-pagamento" placeholder=""  name="cycle" [(ngModel)]="subs.cycle" >
+            <option value="">Escolha o Tipo de Cobrança</option>
+            <option value="MONTHLY">Mensal</option>
+            <option value="BIWEEKLY">Quinzenal</option>
+            <option value="QUARTERLY">Trimestral</option>
+            <option value="SEMIANNUALY">Semestral</option>
+            <option value="YEARLY">Anual</option>
+          </select>
+        </div>
+        
+        <div class="more-payment-options">
+          <ion-label>Escolha o seu plano (de acordo com o escolhido acima)</ion-label>
+          <select name="value" style="background-color: #fff; padding: 10px; border: 1px solid #000; border-radius: 5px;" [(ngModel)]="subs.value">
+            <option value="">Escolher plano</option>
+            <option value="3.5">R$ 3,50 - Mensal</option>
+            <option value="7.5">R$ 7,50 - Quinzenal</option>
+            <option value="10.00">R$ 10,00 - Trimestral</option>
+            <option value="18.00">R$ 18,00 - Semestral</option>
+            <option value="32.00">R$ 32,00 - Anual</option>
+           
+            </select>
+          
+        </div>
+        
+      
+        <div class="more-payment-options">
+          <ion-label>Escolha a forma de pagamento</ion-label>
+          <select [(ngModel)]="subs.billingType" name="billingType" style="background-color: #fff; padding: 10px; border: 1px solid #000; border-radius: 5px;">
+            <option value="">Escolher Pagamento</option>
+            <option value="PIX">Pix</option>
+            <option value="BOLETO">Boleto</option>
+            </select>
+          
+        </div>
+        
+        
+        <div *ngIf="valorTotal">
+          <h2>Resumo do Pedido</h2>
+          <p>Frequência de Pagamento: {{ subs.nextDueDate }}</p>
+          <p>Forma de Pagamento: {{ subs.billingType }}</p>
+          <p>Valor Total: R$ {{ valorTotal.toFixed(2) }}</p>
+        </div>
+        
+        
+        <ion-button type="submit" color="success">Gerar Cobrança</ion-button>
+        
+        </div> 
+        </form>
+        
+          
+          
     
     </div>
-    
     <div *ngSwitchCase="'option6'" class="ngcontent">
       Content for option 6
     </div>
-    
     <div *ngSwitchCase="'option7'" class="ngcontent">
       Content for option 7
     </div>
-    
     <div *ngSwitchCase="'option8'" class="ngcontent">
       Content for option 8
     </div>
    
   </div>
-
+  
 </ion-content>
 
 <ion-footer>

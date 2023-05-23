@@ -9,8 +9,8 @@ export class ProdistService {
     constructor( private httpClient: HttpClient) { }
 
     // CRIAR FORMULÁRIO PRODIST
-    create(datacliente: any): Observable<any>{
-      return this.httpClient.post(clienteURL+'/customers',datacliente)
+    create(data: any): Observable<any>{
+      return this.httpClient.post(clienteURL+'/prodist/criar',data)
     }
 
     enviarDadosTriagem(operadora: number, ehTitular: boolean): Observable<any> {
@@ -21,6 +21,10 @@ export class ProdistService {
   
       return this.httpClient.post(clienteURL, formData);
 
+    }
+
+    enviarContaDeLuz(){
+      
     }
 
     
