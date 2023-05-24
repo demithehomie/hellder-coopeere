@@ -10,8 +10,11 @@ import { UsuarioService } from 'src/app/services/usuario.service';
 import { ProdistService } from 'src/app/services/prodist.service';
 import { Title } from '@angular/platform-browser'
 import { BehaviorSubject, take } from 'rxjs';
+import { from } from 'rxjs';
+import { saveAs } from 'file-saver';
+
 import { Plugins } from '@capacitor/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpResponse, HttpParams } from '@angular/common/http';
 import { AppStorageService } from 'src/app/services/app-storage.service';
 //import { FileTransfer, FileUploadOptions, FileTransferObject } from '@awesome-cordova-plugins/file-transfer/ngx';
 //import { File } from '@awesome-cordova-plugins/file';
@@ -278,6 +281,8 @@ ativarTodososDados(){
 }
   
 
+
+
 async exibirTokenDoUsuario(){
   this.value = await this.appStorageService.get(`token`)
 }
@@ -323,7 +328,6 @@ async exibirNumero(){
   this.addressNumber = await this.appStorageService.get(`addressNumber`)
 }
 
-
 async exibirCidade(){
   this.city = await this.appStorageService.get(`city`)
 }
@@ -365,49 +369,9 @@ async clearStorage(){
   await this.appStorageService.clear()
 }
 
-  
-
 selectFile(){
   
 }
-
-
-    calcularValorTotal() {
-      // Definindo os valores para cada frequência de pagamento
-      const valoresFrequencia = {
-        mensal: 3.50,
-        bimestral: 7.50,
-        trimestral: 10.00,
-        semestral: 18.00,
-        anual: 32.00
-      };
-  
-     // this.valorTotal = number;
-      // Calculando o valor total com base na frequência de pagamento selecionada
-      this.valorTotal = this.valoresFrequencia[this.frequenciaPagamento];
-    }
-  
-
-    /*
-
-
-
-    selecionarFormaPagamento(forma: string) {
-      this.formaPagamento = forma;
-    }
-
-  // Método para lidar com a seleção de uma nova opção
-  onChangeOption(option: string) {
-    this.selectedOption = option; // Atualiza a variável selectedOption com a nova opção selecionada
-  }
-
-  // Método para verificar se uma opção está selecionada
-  isOptionSelected(option: string): boolean {
-    return this.selectedOption === option; // Retorna true se a opção atual for a selecionada, caso contrário, retorna false
-  }
-*/
-  
-
   
 nextPage() {
   if (this.selectedTab === 'option1') {
@@ -444,10 +408,10 @@ previousPage() {
     this.selectedTab = 'option1';
   }
 
-
-
-
   }
+
+
+
 
   async alertaDeSaida() {
     const alert = await this.alertController.create({
@@ -586,22 +550,6 @@ previousPage() {
       const loading = await this.loadingController.create();
       await loading.present();
 
-    //   const dataclient = {
-    //     name: this.cliente.name,
-    // email: this.cliente.email,
-    // phone: this.cliente.phone,
-        
-    //   };
-    //   this.clienteService.create(dataclient).subscribe({next: (res) => 
-    //   {
-    //     console.log(res);
-    //     console.log("Dados de Pagamento salvos com sucesso")
-    //   },
-    //   error: (e) => console.error(e)
-    //   });
-
-     
-
 
     this.dataDaquiA30Dias = new Date();
       const data_selecionada = this.dataDaquiA30Dias.setDate(this.dataDaquiA30Dias.getDate() + 30);
@@ -687,9 +635,12 @@ previousPage() {
       MaiorConsumoUltimos12: "",
   }
 
-  bigProdist!: FormGroup;
+  setNumeroDoCliente(NumeroDoCliente: any){
+   this.appStorageService.set(`NumeroDoCliente`, `${NumeroDoCliente}`) 
+  }
 
- 
+
+  bigProdist!: FormGroup;
 
 validaFormProdist(){
   this.bigProdist = this.formBuilder.group({
@@ -711,23 +662,10 @@ validaFormProdist(){
 }
 
 cadastroProdist(): void{
-  // const data = {
-  //   ContaDeLuz: this.prodist.ContaDeLuz,
-  //   NumeroDoCliente: this.prodist.NumeroDoCliente,
-  //   ClasseUC: this.prodist.ClasseUC,
-  //   CotaMensal: this.prodist.CotaMensal,
-  //   PotenciaInstalada: this.prodist.PotenciaInstalada,
-  //   TensaoDeAtendimento: this.prodist.TensaoDeAtendimento, 
-  //   TipoDeConexao: this.prodist.TipoDeConexao,
-  //   TipoDeRamal: this.prodist.TipoDeRamal,
-  //   PotenciaInstaladaGeral: this.prodist.PotenciaInstaladaGeral,
-  //  TipoDaFonteDeGeracao: this.prodist.TipoDaFonteDeGeracao,
-  //   MenorConsumoUltimos12: this.prodist.MenorConsumoUltimos12,
-  //   MaiorConsumoUltimos12: this.prodist.MaiorConsumoUltimos12,
-
-  // };
+  
   this.prodistService.create(this.bigProdist.value).subscribe(
     async (res: any) => {
+      this.setNumeroDoCliente(res.NumeroDoCliente)
       console.log(res)
       
     },
@@ -737,22 +675,8 @@ cadastroProdist(): void{
   )
 
   }
-    ///////
-   
-/////////////pagamentos
 
 
-
-
-
-
-//////////////////pagamentos
- 
-
-
-
-
-  
   ngOnInit() {
  
     this.validaFormProdist();
@@ -769,10 +693,53 @@ cadastroProdist(): void{
       discount: ['', [Validators.required]],
       fine: ['', [Validators.required]],
       interest: ['', [Validators.required]],
-    });
+    }); 
   }
 
-}
+  async emissaoDoPdf() {
+
+    const loading = await this.loadingController.create();
+    await loading.present();
+    const id = await this.appStorageService.get('id');
+    const NumeroDoCliente = await this.appStorageService.get('NumeroDoCliente');
+ 
+  
+    from(this.prodistService.imprimirPdf(id, NumeroDoCliente)).subscribe(
+      async (res: any) => {
+        console.log(res);
+        await loading.dismiss();
+      },
+      async (res: {error: any}) => {
+        console.log(res.error);
+        await loading.dismiss();
+      }
+    );
+  }
+
+  async gerarPDFSingle() {
+    const id = await this.appStorageService.get('id'); // Recupera o valor do id do localStorage
+    const NumeroDoCliente = await this.appStorageService.get('NumeroDoCliente'); // Recupera o valor do NumeroDoCliente do localStorage
+  
+    if (id && NumeroDoCliente) {
+      const url = `http://localhost:3001/usuarios/pdf-single/${id}/${NumeroDoCliente}`;
+      const headers = new HttpHeaders({ 'Content-Type': 'application/pdf' });
+  
+      this.httpClient.get(url, { headers, responseType: 'blob' })
+        .subscribe((response: Blob) => {
+          const filename = 'usuario.pdf';
+          saveAs(response, filename);
+          console.log(url, id, NumeroDoCliente, response);
+        }, (error) => {
+          // Trate os erros da requisição GET
+          console.log(error);
+        });
+    } else {
+      // Trate o caso em que os valores não estão armazenados
+    }
+  
+    }
+  
+
   ////////////
 
-
+  }

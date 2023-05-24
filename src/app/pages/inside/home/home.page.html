@@ -426,8 +426,10 @@
     <div class="space">
       <h5 class="input-group-text">kWh</h5>
     </div>
-     
-    <ion-button type="submit" (click)="cadastroProdist()"  >ATUALIZAR FORMULÁRIO</ion-button>
+     <br>
+    <ion-button type="submit" color="success" (click)="cadastroProdist()"  >ATUALIZAR FORMULÁRIO</ion-button>
+    <br>
+    <ion-button color="attention" (click)="gerarPDFSingle()">Emitir PDF</ion-button>
 </div>
 
 
@@ -458,8 +460,8 @@
             <li>Opções de pagamento: Pix </li>
           </ul>
           
-          <ion-button color="success" class="plan-buttons" routerLink="/mensal">Prosseguir</ion-button>
-<!--
+ <!--         <ion-button color="success" class="plan-buttons" routerLink="/mensal">Prosseguir</ion-button>
+
           <ion-radio-group value="payment-options" style="background-color: blue;">
             <ion-item>
               <ion-label class="u-payment-options">Pix</ion-label>
@@ -489,9 +491,9 @@
             <li>Opções de pagamento: Pix ou Boleto</li>
           </ul>
 
-          <ion-button color="success" class="plan-buttons" routerLink="/bimestral">Prosseguir</ion-button>
+  <!--        <ion-button color="success" class="plan-buttons" routerLink="/bimestral">Prosseguir</ion-button>
           
-<!--
+
           <ion-radio-group [(ngModel)]="opcaoPagamento" type="boolean" >
             <ion-item>
               <ion-label>Pix</ion-label>
@@ -524,8 +526,8 @@
             <li>Opções de pagamento: Pix ou Boleto</li>
           </ul>
           
-          <ion-button color="success" class="plan-buttons" routerLink="/trimestral">Prosseguir</ion-button>
-          <!--
+       <!--     <ion-button color="success" class="plan-buttons" routerLink="/trimestral">Prosseguir</ion-button>
+        
           <ion-radio-group value="payment-options">
             <ion-item>
               <ion-radio [(ngModel)]="frequenciaPagamento"slot="start" value="pix"  class="radio-properties"></ion-radio>
@@ -565,8 +567,8 @@
           
           </ul>
           
-          <ion-button color="success" class="plan-buttons" routerLink="/semestral">Prosseguir</ion-button>
-<!--
+  <!--        <ion-button color="success" class="plan-buttons" routerLink="/semestral">Prosseguir</ion-button>
+
           <ion-radio-group value="payment-options">
             <ion-item>
               <ion-radio [(ngModel)]="frequenciaPagamento"slot="start" value="pix"  class="radio-properties"></ion-radio>
@@ -608,8 +610,8 @@
 
           </ul>
           
-          <ion-button color="success" class="plan-buttons" routerLink="/anual">Prosseguir</ion-button>
-          <!--
+         <!--      <ion-button color="success" class="plan-buttons" routerLink="/anual">Prosseguir</ion-button>
+     
           <ion-radio-group value="payment-options">
             <ion-item>
               <ion-label class="u-payment-options">Pix</ion-label>
@@ -635,7 +637,7 @@
       
       <form  (ngSubmit)="payingSubs()">
         <div style="margin-left: 50px; padding-top: 50px; padding-bottom: 150px; ">
-          <h2 style="background-color: #eff6ff;">Pagamento</h2>
+          <h2 style="background-color: #eff6ff; text-align: center; display: flex; margin: auto;">Escolha o plano desejado abaixo</h2>
         
       
         <!--
@@ -707,9 +709,7 @@
             <option value="10.00">R$ 10,00 - Trimestral</option>
             <option value="18.00">R$ 18,00 - Semestral</option>
             <option value="32.00">R$ 32,00 - Anual</option>
-           
             </select>
-          
         </div>
         
       
@@ -720,17 +720,9 @@
             <option value="PIX">Pix</option>
             <option value="BOLETO">Boleto</option>
             </select>
-          
         </div>
         
-        
-        <div *ngIf="valorTotal">
-          <h2>Resumo do Pedido</h2>
-          <p>Frequência de Pagamento: {{ subs.nextDueDate }}</p>
-          <p>Forma de Pagamento: {{ subs.billingType }}</p>
-          <p>Valor Total: R$ {{ valorTotal.toFixed(2) }}</p>
-        </div>
-        
+      
         
         <ion-button type="submit" color="success">Gerar Cobrança</ion-button>
         

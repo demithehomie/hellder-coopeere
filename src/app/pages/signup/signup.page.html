@@ -170,8 +170,15 @@
         <div class="col-span-5">
           <div class="input-group">
             <input [(ngModel)]="cliente.name"  [(ngModel)]="usuario.name" type="text" class="form-control" id="name" name="name" value="" required wfd-id="id2">
+            <div *ngIf="(name?.dirty || name?.touched) && name?.errors" class="errors">
+              <span *ngIf="name?.errors?.['required']">Name is required</span>
+              <span *ngIf="name?.errors?.['name']">Name is invalid</span>
+            </div>
+         
           </div>
         </div>
+
+       
 
         <label class="form-label" for="nome">Empresa*</label>
         <div class="input-group w-60">
@@ -187,7 +194,10 @@
         <label class="form-label" for="cpf_cnpj">CPF/CNPJ*</label>
         <div class="input-group w-60">
           <input (input)="onInput($event)" [(ngModel)]="cliente.cpfCnpj" [(ngModel)]="usuario.cpfCnpj" type="text" placeholder="Digite seu CPF" class="form-control cliente-documento" id="cpfCnpj" name="cpfCnpj" value="" size="25" required maxlength="14" wfd-id="id4">
-          <!-- <p *ngIf="formulario.get('cliente.cpfcnpj').touched && formulario.get('cliente.cpfcnpj').errors?.cliente.cpfcnpj">CPF inválido.</p> -->
+          <div *ngIf="(cpfCnpj?.dirty || cpfCnpj?.touched) && cpfCnpj?.errors" class="errors">
+            <span *ngIf="cpfCnpj?.errors?.['required']">cpfCnpj is required</span>
+            <span *ngIf="cpfCnpj?.errors?.['cpfCnpj']">cpfCnpj is invalid</span>
+          </div>
         </div>
 
         <label class="form-label" for="telefone_celular">Telefone Celular*</label>

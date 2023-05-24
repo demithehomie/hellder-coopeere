@@ -16,6 +16,9 @@ import { UsuarioService } from 'src/app/services/usuario.service';
   styleUrls: ['./signup.page.scss'],
 })
 export class SignupPage implements OnInit {
+
+  name!: any;
+  cpfCnpj!: any;
   selectedOption: string = '';
  
   constructor(

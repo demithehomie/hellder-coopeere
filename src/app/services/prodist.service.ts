@@ -27,5 +27,15 @@ export class ProdistService {
       
     }
 
+    async obterDados(data: any){
+      this.httpClient.get(clienteURL+'/usuarios/pdf-single', data)
+    }
+
+    async imprimirPdf(id: any, NumeroDoCliente: any){
+      const data = { id: id, NumeroDoCliente: NumeroDoCliente }
+       
+      return this.obterDados(data)
+    }
+
     
 }
