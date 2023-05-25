@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Injectable, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from "@angular/router";
 import { UsuarioService } from 'src/app/services/usuario.service';
@@ -12,6 +12,10 @@ import { AppStorageService } from 'src/app/services/app-storage.service';
   selector: 'app-login',
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
+})
+
+@Injectable({
+  providedIn: 'root'
 })
 export class LoginPage implements OnInit {
 

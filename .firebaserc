@@ -1,5 +1,8 @@
 {
   "projects": {
-    "default": "makrom-9aefd"
-  }
+    "default": "coopeere-eco",
+    "coopeere-eco-prod": "coopeere-eco"
+  },
+  "targets": {},
+  "etags": {}
 }

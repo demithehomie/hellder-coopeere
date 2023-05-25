@@ -9,6 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { LoginPage } from './login.page';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { AppStorageService } from 'src/app/services/app-storage.service';
+import { UsuarioService } from 'src/app/services/usuario.service';
 
 @NgModule({
   imports: [
@@ -21,6 +22,6 @@ import { AppStorageService } from 'src/app/services/app-storage.service';
   ],
   declarations: [LoginPage],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  providers: [AuthenticationService, Storage, AppStorageService]
+  providers: [AuthenticationService, Storage, AppStorageService, UsuarioService]
 })
 export class LoginPageModule {}

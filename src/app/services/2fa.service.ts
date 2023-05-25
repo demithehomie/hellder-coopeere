@@ -3,7 +3,7 @@ import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-const APIUrl = "http://localhost:3001"
+const APIUrl = "https://grandfinale.onrender.com"
 
 @Injectable({
     providedIn: 'root'
@@ -23,7 +23,7 @@ constructor(private httpClient: HttpClient, private formBuilder: FormBuilder) {
 
 startConfirmEmail() {
     const id = this.authForm.value.id;
-    this.httpClient.post('http://localhost:3001/auth/start-confirm-email', id).subscribe(response => {
+    this.httpClient.post(APIUrl+'/auth/start-confirm-email', id).subscribe(response => {
       console.log(response);
     });
   }

@@ -16,6 +16,7 @@ import { saveAs } from 'file-saver';
 import { Plugins } from '@capacitor/core';
 import { HttpClient, HttpHeaders, HttpResponse, HttpParams } from '@angular/common/http';
 import { AppStorageService } from 'src/app/services/app-storage.service';
+import { Router } from '@angular/router';
 //import { FileTransfer, FileUploadOptions, FileTransferObject } from '@awesome-cordova-plugins/file-transfer/ngx';
 //import { File } from '@awesome-cordova-plugins/file';
 
@@ -78,6 +79,7 @@ export class HomePage implements OnInit {
 
   constructor(
     private appStorageService: AppStorageService,
+    private router: Router,
     private usuarioService: UsuarioService, 
     private alertController: AlertController,
     private clienteService: ClienteService,
@@ -366,6 +368,7 @@ async removeValue(){
 }
 
 async clearStorage(){
+  this.router.navigateByUrl('/onboarding')
   await this.appStorageService.clear()
 }
 
@@ -720,8 +723,9 @@ cadastroProdist(): void{
     const id = await this.appStorageService.get('id'); // Recupera o valor do id do localStorage
     const NumeroDoCliente = await this.appStorageService.get('NumeroDoCliente'); // Recupera o valor do NumeroDoCliente do localStorage
   
+    const apiurl = `https://grandfinale.onrender.com`
     if (id && NumeroDoCliente) {
-      const url = `http://localhost:3001/usuarios/pdf-single/${id}/${NumeroDoCliente}`;
+      const url = `${apiurl}/usuarios/pdf-single/${id}/${NumeroDoCliente}`;
       const headers = new HttpHeaders({ 'Content-Type': 'application/pdf' });
   
       this.httpClient.get(url, { headers, responseType: 'blob' })

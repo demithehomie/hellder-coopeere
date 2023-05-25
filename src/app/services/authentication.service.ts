@@ -7,7 +7,7 @@
 
 
 	const TOKEN_KEY = 'my-token';
-	const baseApiUrl = 'http://localhost:3001'
+	const baseApiUrl = 'https://grandfinale.onrender.com'
 	@Injectable({
 		providedIn: 'root'
 	})

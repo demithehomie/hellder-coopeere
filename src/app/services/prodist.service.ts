@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { HttpClient} from '@angular/common/http'
 import { Observable } from 'rxjs';
 
-const clienteURL = 'http://localhost:3001';
+const clienteURL = 'https://grandfinale.onrender.com';
 
 @Injectable()
 export class ProdistService {

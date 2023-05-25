@@ -29,7 +29,7 @@ export const routes: Routes = [
   {
     path: 'login',
     loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule),
-     canLoad: [IntroGuard, AutoLoginGuard]
+    // canLoad: [IntroGuard, AutoLoginGuard]
   },
   {
     path: 'signup',
