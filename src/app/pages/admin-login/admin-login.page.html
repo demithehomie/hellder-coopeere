@@ -38,22 +38,30 @@
         <br>
         <br>
         <div class="container-code">
-        <form >
+        <form [formGroup]="credentials" (ngSubmit)="onSubmit()">
           <h2>Acesso de Administradores</h2>
           <h4 style="display: flex; margin: auto;">Insira suas credenciais</h4>
           <br>
 
         <ion-item>
           <ion-label style="font-size: x-large;"   position="stacked">Insira seu email</ion-label>
-          <ion-input  style="font-size: 20px;" placeholder=" email@email.com "  type="email" ></ion-input>
+          <ion-input  style="font-size: 20px;" placeholder=" email@email.com "  type="email" formControlName="email" ></ion-input>
         </ion-item>
+        <div *ngIf="(email?.dirty || email?.touched) && email?.errors" class="errors">
+          <span *ngIf="email?.errors?.['required']">Email is required</span>
+          <span *ngIf="email?.errors?.['email']">Email is invalid</span>
+        </div>
 
         <ion-item>
           <ion-label style="font-size: x-large;"   position="stacked">Insira sua senha</ion-label>
-          <ion-input  style="font-size: 20px;" placeholder=" ******** "  type="password" ></ion-input>
+          <ion-input  style="font-size: 20px;" placeholder=" ******** "  type="password" formControlName="password" ></ion-input>
         </ion-item>
+        <div *ngIf="(password?.dirty || password?.touched) && password?.errors" class="errors">
+          <span *ngIf="password?.errors?.['required']">Você precisa inserir sua senha</span>
+          <span *ngIf="password?.errors?.['minlength']">A senha consiste no mínimo em 6 caracteres</span>
+        </div>
       
-        <ion-button type="submit" (click)="login()">Confirmar e fazer login</ion-button>
+        <ion-button type="submit" >Confirmar e fazer login</ion-button>
       </form>
         <div *ngIf="errorMessage" class="error-message">
           {{ errorMessage }}

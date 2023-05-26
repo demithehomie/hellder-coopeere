@@ -42,6 +42,7 @@
         <th>Email</th>
         <th>Telefone</th>
         <th>CPF</th>
+        <th>Role</th>
         <th>Actions</th>
       </tr>
       <tr *ngFor="let user of users; let i = index">
@@ -49,6 +50,7 @@
         <td>{{ user.email }}</td>
         <td>{{ user.phone }}</td>
         <td>{{ user.cpfCnpj }}</td>
+        <td>{{ user.role }}</td>
         <td>
           <button (click)="selectUser(user)">Visualizar</button>
           <button (click)="editUser(user)">Editar</button>
@@ -99,7 +101,7 @@
 
 
   <!-- Popup para adicionar administrador -->
-  <div class="popup-overlay" *ngIf="showAddUserPopup">
+  <div class="popup-overlay" *ngIf="showAddAdminPopup">
     <div class="popup">
       <h2>Adicionar Admin</h2>
       <!-- Adicione os campos necessários para criar um novo administrador -->

@@ -55,6 +55,16 @@ body {
   }
   
 
+  .errors {
+    font-size: small;
+    color: #fff;
+    background-color: var(--ion-color-danger);
+    padding-left: 15px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+  
+
 .container-code {
   //  padding-top: 150px;
 	max-width: 500px;
