@@ -26,7 +26,7 @@
 
         
         <button (click)="addUser()">Add User</button>
-      
+        <button (click)="addAdmin()">Add Admin</button>
       </div>
     </nav>
   </ion-header>
@@ -51,7 +51,7 @@
         <td>{{ user.cpfCnpj }}</td>
         <td>
           <button (click)="selectUser(user)">Visualizar</button>
-          <button (click)="editUser()">Editar</button>
+          <button (click)="editUser(user)">Editar</button>
           <button (click)="deleteUser(i)">Deletar</button>
         </td>
       </tr>
@@ -68,6 +68,86 @@
     <p>CPF: {{ selectedUser.cpfCnpj }}</p>
     <!-- Adicione as demais informações do usuário aqui -->
     <button (click)="closePopup()">Close</button>
+  </div>
+</div>
+
+  <!-- Popup para adicionar usuário -->
+  <div class="popup-overlay" *ngIf="showAddUserPopup">
+    <div class="popup">
+      <h2>Adicionar Usuário</h2>
+      <!-- Adicione os campos necessários para criar um novo usuário -->
+      <input type="text" [(ngModel)]="name" placeholder="Nome">
+      <input type="email" [(ngModel)]="email" placeholder="Email">
+      <input type="tel" [(ngModel)]="phone" placeholder="Telefone">
+      <input type="text" [(ngModel)]="cpfCnpj" placeholder="CPF">
+      <input type="text" [(ngModel)]="mobilePhone" placeholder="Celular">
+      <input type="text" [(ngModel)]="postalCode" placeholder="CEP">
+      <input type="text" [(ngModel)]="address" placeholder="Endereço">
+      <input type="text" [(ngModel)]="addressNumber" placeholder="Número">
+      <input type="text" [(ngModel)]="complement" placeholder="Complemento">
+      <input type="text" [(ngModel)]="province" placeholder="Bairro">
+      <input type="text" [(ngModel)]="city" placeholder="Cidade">
+      <input type="text" [(ngModel)]="state" placeholder="Estado">
+      <input type="password" [(ngModel)]="password" placeholder="Senha">
+
+
+      <!-- Botões para criar o usuário ou fechar o popup -->
+      <button (click)="createUser()">Criar</button>
+      <button (click)="closeAddUserPopup()">Fechar</button>
+    </div>
+  </div>
+
+
+  <!-- Popup para adicionar administrador -->
+  <div class="popup-overlay" *ngIf="showAddUserPopup">
+    <div class="popup">
+      <h2>Adicionar Admin</h2>
+      <!-- Adicione os campos necessários para criar um novo administrador -->
+      <input type="text" [(ngModel)]="name" placeholder="Nome">
+      <input type="email" [(ngModel)]="email" placeholder="Email">
+      <input type="tel" [(ngModel)]="phone" placeholder="Telefone">
+      <input type="text" [(ngModel)]="cpfCnpj" placeholder="CPF">
+      <input type="text" [(ngModel)]="mobilePhone" placeholder="Celular">
+      <input type="text" [(ngModel)]="postalCode" placeholder="CEP">
+      <input type="text" [(ngModel)]="address" placeholder="Endereço">
+      <input type="text" [(ngModel)]="addressNumber" placeholder="Número">
+      <input type="text" [(ngModel)]="complement" placeholder="Complemento">
+      <input type="text" [(ngModel)]="province" placeholder="Bairro">
+      <input type="text" [(ngModel)]="city" placeholder="Cidade">
+      <input type="text" [(ngModel)]="state" placeholder="Estado">
+      <input type="password" [(ngModel)]="password" placeholder="Senha">
+
+
+      <!-- Botões para criar o usuário ou fechar o popup -->
+      <button (click)="createAdmin()">Criar</button>
+      <button (click)="closeAddAdminPopup()">Fechar</button>
+    </div>
+  </div>
+
+
+
+
+  <!-- Popup para editar usuário -->
+<div class="popup-overlay" *ngIf="showEditUserPopup">
+  <div class="popup">
+    <h2>Editar Usuário</h2>
+    <!-- Adicione os campos necessários para editar o usuário -->
+    <input type="text" [(ngModel)]="selectedUser.name" placeholder="Nome">
+    <input type="email" [(ngModel)]="selectedUser.email" placeholder="Email">
+    <input type="tel" [(ngModel)]="selectedUser.phone" placeholder="Telefone">
+    <input type="text" [(ngModel)]="selectedUser.cpfCnpj" placeholder="CPF">
+    <input type="text" [(ngModel)]="selectedUser.mobilePhone" placeholder="Celular">
+      <input type="text" [(ngModel)]="selectedUser.postalCode" placeholder="CEP">
+      <input type="text" [(ngModel)]="selectedUser.address" placeholder="Endereço">
+      <input type="text" [(ngModel)]="selectedUser.addressNumber" placeholder="Número">
+      <input type="text" [(ngModel)]="selectedUser.complement" placeholder="Complemento">
+      <input type="text" [(ngModel)]="selectedUser.province" placeholder="Bairro">
+      <input type="text" [(ngModel)]="selectedUser.city" placeholder="Cidade">
+      <input type="text" [(ngModel)]="selectedUser.state" placeholder="Estado">
+      <input type="password" [(ngModel)]="selectedUser.password" placeholder="Senha">
+    <!-- Adicione outros campos de edição conforme necessário -->
+    <button (click)="updateUser()">Atualizar</button>
+    <button (click)="closeEditUserPopup()">Fechar</button>
   </div>
 </div>
 

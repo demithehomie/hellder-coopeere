@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { AlertController, LoadingController } from '@ionic/angular';
 import { AdminService } from 'src/app/services/admin.service';
+import { UsuarioService } from 'src/app/services/usuario.service';
 
 @Component({
   selector: 'app-admin-dashboard',
@@ -9,68 +11,233 @@ import { AdminService } from 'src/app/services/admin.service';
 export class AdminDashboardPage implements OnInit {
   users: any[] = []; // Initialize users as an empty array
 
-  constructor(private adminService: AdminService) {}
+  newUser: any = {}; // Objeto para armazenar os dados do novo usuário
+  newAdmin: any = {}; // Objeto para armazenar os dados do co novo administrador
+  showAddUserPopup = false; // Variável para controlar a exibição do popup
+  showEditUserPopup = false;
+  showAddAdminPopup = false;
+  showEditAdminPopup = false;
+  
+  role: number = 1
+  name!: any
+  email!: any
+  phone!: any
+  company: string = 'COOPEERE'
+  additionalEmails: string = 'faleconosco@coopeere.eco.br'
+  mobilePhone!: any 
+  cpfCnpj!: any
+  postalCode!: any
+  address!: any
+  addressNumber!: any
+  complement!: any
+  province!: any
+  city!: any
+  state!: any
+  password!: any
+  observations: string = 'Cooperado da COOPEERE'
+
+  constructor(
+    private adminService: AdminService,
+    private usersService: UsuarioService,
+    private alertController: AlertController,
+    private loadingCtrl: LoadingController,
+     
+    ) {}
 
  // users
  
 // users = this.adminService.showUsers()
+
+refreshPage() {
+  window.location.reload();
+}
   
   selectedUser: any = null;
 
   selectUser(user: any) {
-    this.selectedUser = user;
+    this.selectedUser = { ...user }; // Faz uma cópia do usuário selecionado
   }
 
   closePopup() {
     this.selectedUser = null;
   }
 
-  addUser(){
 
+  addUser() {
+    this.showAddUserPopup = true; // Exibe o popup de adicionar usuário
   }
 
+  addAdmin(){
+    this.showAddAdminPopup = true; 
+  }
 
+  closeAddUserPopup() {
+    this.showAddAdminPopup = false; // Fecha o popup de adicionar usuário
+    this.newAdmin = {}; // Limpa os dados do novo usuário
+  }
 
+  closeAddAdminPopup() {
+    this.showAddUserPopup = false; // Fecha o popup de adicionar usuário
+    this.newUser = {}; // Limpa os dados do novo usuário
+  }
 
-  criarUsuario() {
-    const novoUsuario = { nome: 'João', email: 'joao@example.com' };
-    this.adminService.createUser(novoUsuario)
+  createAdmin(){
+    
+    this.usersService.create(
+      this.role = 2,
+      this.name,
+      this.email,
+      this.phone,
+      this.company,
+      this.additionalEmails,
+      this.mobilePhone,
+      this.cpfCnpj,
+      this.postalCode,
+      this.address,
+      this.addressNumber,
+      this.complement,
+      this.province,
+      this.city,
+      this.state,
+      this.password,
+      this.observations
+     
+    )
+      .subscribe(
+        response => {
+          console.log('Admin criado com sucesso:', response);
+          this.users.push(response); // Adiciona o novo usuário à lista
+          this.closeAddAdminPopup(); // Fecha o popup de adicionar usuário
+          this.refreshPage()
+        },
+        error => {
+          console.error('Erro ao criar admin:', error);
+          this.alertController.create({
+            header: 'Erro ao cadastrar admin',
+            message: 'Reveja suas informações',
+            buttons: ['OK']
+          })
+        }
+      );
+  }
+
+  createUser() {
+
+    this.usersService.create(
+      this.role,
+      this.name,
+      this.email,
+      this.phone,
+      this.company,
+      this.additionalEmails,
+      this.mobilePhone,
+      this.cpfCnpj,
+      this.postalCode,
+      this.address,
+      this.addressNumber,
+      this.complement,
+      this.province,
+      this.city,
+      this.state,
+      this.password,
+      this.observations
+     
+    )
       .subscribe(
         response => {
           console.log('Usuário criado com sucesso:', response);
+          this.users.push(response); // Adiciona o novo usuário à lista
+          this.closeAddUserPopup(); // Fecha o popup de adicionar usuário
+          this.refreshPage()
         },
         error => {
           console.error('Erro ao criar usuário:', error);
+          this.alertController.create({
+            header: 'Erro ao cadastrar usuário',
+            message: 'Reveja suas informações',
+            buttons: ['OK']
+          })
         }
       );
   }
 
-  editUser() {
-    const usuarioAtualizado = { nome: 'Maria', email: 'maria@example.com' };
-    const userId = 1; // ID do usuário a ser editado
-    this.adminService.editUser(userId, usuarioAtualizado)
+  editUser(user: any) {
+    this.selectedUser = { ...user };
+    this.showEditUserPopup = true; // Exibe o popup de edição de usuário
+  }
+
+  closeEditUserPopup() {
+    this.showEditUserPopup = false; // Fecha o popup de edição de usuário
+  }
+
+  editAdmin(user: any) {
+    this.selectedUser = { ...user };
+    this.showEditAdminPopup = true; // Exibe o popup de edição de usuário
+  }
+
+  closeEditAdminPopup() {
+    this.showEditAdminPopup = false; // Fecha o popup de edição de usuário
+  }
+
+  updateUser() {
+    const userId = this.selectedUser.id; // ID do usuário a ser atualizado
+
+    // Chame o serviço adequado para atualizar o usuário
+    this.adminService.updateUser(userId, this.selectedUser)
       .subscribe(
         response => {
-          console.log('Usuário editado com sucesso:', response);
+          this.refreshPage()
+          console.log('Usuário atualizado com sucesso:', response);
+          this.closeEditUserPopup(); // Fecha o popup de edição de usuário
         },
         error => {
-          console.error('Erro ao editar usuário:', error);
+          console.error('Erro ao atualizar usuário:', error);
         }
       );
   }
 
-  deleteUser(index: number) {
-    const userId = 1; // ID do usuário a ser deletado
+  async deleteUser(index: number) {
+    const alert = await this.alertController.create({
+      header: 'Excluir Usuário',
+      message: 'Tem certeza de que deseja excluir este usuário?',
+      buttons: [
+        {
+          text: 'Cancelar',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: () => {
+            console.log('Exclusão cancelada');
+          }
+        },
+        {
+          text: 'Confirmar',
+          handler: () => {
+            // Chame o método de exclusão de usuário aqui
+            this.confirmDeleteUser(index);
+          }
+        }
+      ]
+    });
+  
+    await alert.present();
+  }
+
+  confirmDeleteUser(index: number) {
+    const userId = this.users[index].id; // Obtenha o ID do usuário a ser excluído
+  
     this.adminService.deleteUser(userId)
       .subscribe(
         response => {
-          console.log('Usuário deletado com sucesso:', response);
+          console.log('Usuário excluído com sucesso:', response);
+          // Remova o usuário excluído da lista de usuários exibida na tabela
+          this.users.splice(index, 1);
         },
         error => {
-          console.error('Erro ao deletar usuário:', error);
+          console.error('Erro ao excluir usuário:', error);
         }
       );
   }
+  
   
   ngOnInit() {
     this.adminService.showUsers().subscribe(

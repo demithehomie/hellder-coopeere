@@ -8,7 +8,7 @@ import { Preferences } from '@capacitor/preferences';
 
 //const TOKEN_KEY = 'my-token';
 
-const baseApiUrl = 'https://grandfinale.onrender.com'
+const baseApiUrl = 'http://localhost:3001'
 
 @Injectable({
     providedIn: 'root'

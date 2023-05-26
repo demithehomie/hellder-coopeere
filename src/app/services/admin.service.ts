@@ -24,6 +24,12 @@ export class AdminService {
     return this.httpClient.put(`${this.apiUrl}/users/${userId}`, updatedUser);
   }
 
+  updateUser(userId: number, userData: any) {
+    const url = `${this.apiUrl}/users/${userId}`; // Substitua "users" pelo endpoint correto da sua API
+
+    return this.httpClient.put(url, userData);
+  }
+
   // Deletar usuário
   deleteUser(userId: number): Observable<any> {
     return this.httpClient.delete(`${this.apiUrl}/users/${userId}`);
