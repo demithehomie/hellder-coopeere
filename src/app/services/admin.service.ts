@@ -28,4 +28,8 @@ export class AdminService {
   deleteUser(userId: number): Observable<any> {
     return this.httpClient.delete(`${this.apiUrl}/users/${userId}`);
   }
+
+  showUsers(){
+    return this.httpClient.get(`${this.apiUrl}/users`)
+  }
 }

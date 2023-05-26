@@ -50,9 +50,9 @@
         <td>{{ user.phone }}</td>
         <td>{{ user.cpfCnpj }}</td>
         <td>
+          <button (click)="selectUser(user)">Visualizar</button>
           <button (click)="editUser()">Editar</button>
           <button (click)="deleteUser(i)">Deletar</button>
-          <button (click)="selectUser(user)">Visualizar</button>
         </td>
       </tr>
     </table>

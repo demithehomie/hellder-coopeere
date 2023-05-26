@@ -1,0 +1,108 @@
+body {
+	font-family: Arial, sans-serif;
+	background-color: #F9F9F9;
+	margin: 0;
+	padding: 0;
+    
+}
+
+@keyframes animatedBackground {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  
+  .background {
+    background: linear-gradient(to right, #c8f7c8, #6de56d, #00cc00, #008800, #004400);
+    background-size: 200% auto;
+    animation: animatedBackground 15s ease infinite;
+    padding-bottom: 500px;
+  }
+  
+
+@keyframes animatedBackground {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  
+  .background {
+    background: linear-gradient(to right, #c8d9f7, #6d8ce5, #0055cc, #003380, #001a66);
+    background-size: 200% auto;
+    animation: animatedBackground 15s ease infinite;
+    padding-bottom: 500px;
+  }
+  
+
+.cronometro {
+	.timer {
+	  font-size: 48px;
+	  text-align: center;
+	  margin-top: 50px;
+	}
+  }
+  
+
+.container-code {
+  //  padding-top: 150px;
+	max-width: 500px;
+	margin: 0 auto;
+	padding: 20px;
+	background-color: #FFFFFF;
+	border-radius: 5px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+form {
+	display: flex;
+	flex-direction: column;
+}
+
+h2 {
+	margin-top: 0;
+	text-align: center;
+}
+
+label {
+	font-weight: bold;
+	margin-top: 10px;
+}
+
+input {
+	padding: 10px;
+	margin-bottom: 20px;
+	border-radius: 5px;
+	border: none;
+	background-color: #F2F2F2;
+}
+
+.success-message {
+    color: red;
+
+}
+
+button {
+	padding: 10px;
+	border-radius: 5px;
+	border: none;
+	background-color: #007ACC;
+	color: #FFFFFF;
+	font-weight: bold;
+	cursor: pointer;
+}
+
+button:hover {
+	background-color: #005B9C;
+}

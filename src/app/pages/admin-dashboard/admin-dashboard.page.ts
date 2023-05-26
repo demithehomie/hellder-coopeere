@@ -7,31 +7,14 @@ import { AdminService } from 'src/app/services/admin.service';
   styleUrls: ['./admin-dashboard.page.scss'],
 })
 export class AdminDashboardPage implements OnInit {
+  users: any[] = []; // Initialize users as an empty array
 
   constructor(private adminService: AdminService) {}
 
-  users = [
-    {
-      name: 'John Doe',
-      email: 'john@example.com',
-      phone: '123456789',
-      company: 'Example Company',
-      additionalEmails: ['john.doe@example.com', 'johndoe@example.com'],
-      mobilePhone: '987654321',
-      cpfCnpj: '1234567890',
-      postalCode: '12345',
-      address: '123 Example Street',
-      addressNumber: '1',
-      complement: 'Apartment 2B',
-      province: 'Example Province',
-      city: 'Example City',
-      state: 'Example State',
-      password: 'password123',
-      observations: 'Example observations'
-    },
-    // Add more user objects as needed
-  ];
-
+ // users
+ 
+// users = this.adminService.showUsers()
+  
   selectedUser: any = null;
 
   selectUser(user: any) {
@@ -46,13 +29,8 @@ export class AdminDashboardPage implements OnInit {
 
   }
 
-  editUser(){
 
-  }
 
-  deleteUser(index: number) {
-    this.users.splice(index, 1);
-  }
 
   criarUsuario() {
     const novoUsuario = { nome: 'João', email: 'joao@example.com' };
@@ -67,7 +45,7 @@ export class AdminDashboardPage implements OnInit {
       );
   }
 
-  editarUsuario() {
+  editUser() {
     const usuarioAtualizado = { nome: 'Maria', email: 'maria@example.com' };
     const userId = 1; // ID do usuário a ser editado
     this.adminService.editUser(userId, usuarioAtualizado)
@@ -81,7 +59,7 @@ export class AdminDashboardPage implements OnInit {
       );
   }
 
-  deletarUsuario() {
+  deleteUser(index: number) {
     const userId = 1; // ID do usuário a ser deletado
     this.adminService.deleteUser(userId)
       .subscribe(
@@ -95,6 +73,14 @@ export class AdminDashboardPage implements OnInit {
   }
   
   ngOnInit() {
+    this.adminService.showUsers().subscribe(
+      (response: any) => { // Update the parameter type to 'any'
+        this.users = response; // Assign the response to the users property
+      },
+      (error) => {
+        console.error('Error fetching users:', error);
+      }
+    );
   }
 
 }
