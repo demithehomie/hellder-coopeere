@@ -33,8 +33,41 @@ export class ClienteService {
   constructor( private httpClient: HttpClient) { }
 
   // CRIAR CLIENTES - AUTOMÁTICO NO SELF-SIGN-IN
-  create(datacliente: any): Observable<any>{
-    return this.httpClient.post(clienteURL+'/customers',datacliente)
+  create(
+
+    name: any,
+    email: any ,
+    phone: any,
+    mobilePhone: any, 
+    cpfCnpj: any,    
+    company: any,     
+    additionalEmails: any,
+    postalCode: any,
+    address: any,    
+    addressNumber: any,
+    complement: any,
+    province: any, 
+    city: any,     
+    observations: any
+    
+    ): Observable<any>{
+      const body = {
+        name,
+        email ,
+        phone,
+        mobilePhone, 
+        cpfCnpj,    
+        company,     
+        additionalEmails,
+        postalCode,
+        address,    
+        addressNumber,
+        complement,
+        province, 
+        city,     
+        observations
+      }
+    return this.httpClient.post(clienteURL+'/customers',body)
   }
 
   getUser(customerID: string){

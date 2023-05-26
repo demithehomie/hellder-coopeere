@@ -16,7 +16,44 @@ export class UsuarioService {
   constructor(private httpClient: HttpClient) { }
 
   // CRIAR USUÁRIO - SELF-SIGN-IN 
-  create(data: any) : Observable<any>  {
+  create(
+    role: any,
+    name: any,
+    email: any,
+    phone: any,
+    company: any,
+    additionalEmails: any,
+    mobilePhone: any, 
+    cpfCnpj: any,
+    postalCode: any,
+    address: any,
+    addressNumber: any,
+    complement: any,
+    province: any,
+    city: any,
+    state: any,
+    password: any,
+    observations: any
+  ) : Observable<any>  {
+    const data = {
+      role,
+      name,
+      email,
+      phone,
+      company,
+      additionalEmails,
+      mobilePhone, 
+      cpfCnpj,
+      postalCode,
+      address,
+      addressNumber,
+      complement,
+      province,
+      city,
+      state,
+      password,
+      observations
+    }
     return this.httpClient.post(base_URL+'/auth/register',data)
  
   }

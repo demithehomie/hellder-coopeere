@@ -3,7 +3,7 @@ import { Component, HostListener, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
-import { NavController } from '@ionic/angular';
+import { AlertController, LoadingController, NavController } from '@ionic/angular';
 import { Cliente } from 'src/app/interfaces/cliente';
 import { Login } from 'src/app/interfaces/login';
 import { Usuario } from 'src/app/interfaces/usuario';
@@ -17,9 +17,21 @@ import { UsuarioService } from 'src/app/services/usuario.service';
 })
 export class SignupPage implements OnInit {
 
+  value!: any
   name!: any;
-  cpfCnpj!: any;
+  cpfCnpj: any ;
   selectedOption: string = '';
+  email: any;
+  mobilePhone: any;
+  phone: any;
+  password: any;
+  confirm_password: any;
+  address: any;
+  addressNumber: any;
+  province: any;
+  city: any;
+  state: any;
+  postalCode: any;
  
   constructor(
     private router: Router,
@@ -28,11 +40,47 @@ export class SignupPage implements OnInit {
     private clienteService: ClienteService,
     public navCtrl: NavController, 
     private http: HttpClient,
-    private title: Title
+    private title: Title,
+    private alertController: AlertController,
+    private loadingController: LoadingController
+
     ) {
       this.title.setTitle('Continue Seu Cadastro')
     }
   
+    formataCPF(cpfCnpj: HTMLInputElement): void {
+      const elementoAlvo: HTMLInputElement = cpfCnpj;
+      const cpfAtual: string = cpfCnpj.value;
+    
+      let cpfAtualizado: string;
+    
+      cpfAtualizado = cpfAtual.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, function (
+        regex,
+        argumento1,
+        argumento2,
+        argumento3,
+        argumento4
+      ) {
+        return `${argumento1}.${argumento2}.${argumento3}-${argumento4}`;
+      });
+    
+      elementoAlvo.value = cpfAtualizado;
+    }
+    
+    
+    
+    
+    
+    
+    
+ 
+ 
+  
+ 
+
+
+    
+
   goToPage(option: string) {
     switch (option) {
       case 'option1':
@@ -75,7 +123,7 @@ ngOnInit(): void{
 cliente: Cliente = {
   name: " ",
   email: " ",
-  company: " ",
+  company: "COOPEERE",
   //	password : " ",
   cpfCnpj: " ",
   mobilePhone: " ",
@@ -89,10 +137,10 @@ cliente: Cliente = {
   complement: " ",
   municipalInscription: " ",
   stateInscription: " ",
-  additionalEmails: [],
+  additionalEmails: ['fale.conosco@coopeere.eco.br'],
   externalReference: " ",
   notificationDisabled: false,
-  observations: " ",
+  observations: 'Usuário faz parte da COOPEERE, consulte fale.conosco@coopeere.eco.br para retirar dúvidas',
   id: ''
 }
 
@@ -103,7 +151,7 @@ usuario: Usuario = {
   confirm_password: "",
   role: 1,
   name: '',
-  company: '',
+  company: 'COOPEERE',
   cpfCnpj: null,
   mobilePhone: '',
   phone: '',
@@ -119,7 +167,7 @@ usuario: Usuario = {
   additionalEmails: [],
   externalReference: null,
   notificationDisabled: null,
-  observations: ''
+  observations: 'Usuário faz parte da COOPEERE, consulte fale.conosco@coopeere.eco.br para retirar dúvidas'
 }
 
 formulario!: FormGroup;
@@ -127,8 +175,10 @@ formulario!: FormGroup;
 validaForm(){
   this.formulario = this.formBuilder.group({
     name: ['', [Validators.required]],
+    role: [1, [Validators.required]],
     cpfCnpj: ['', [Validators.required]],
     phone: ['', [Validators.required]],
+    company: ['COOPEERE', [Validators.required]],
     mobilePhone: ['', [Validators.required]],
     address: ['', [Validators.required]],
     addressNumber: ['', [Validators.required]],
@@ -138,15 +188,30 @@ validaForm(){
     state: ['', [Validators.required]],
     postalCode: ['', [Validators.required]],
     externalReference: ['', [Validators.required]],
-    additionalEmails: ['', [Validators.required]],
+    additionalEmails: ['fale.conosco@coopeere.eco.br', [Validators.required]],
     municipalInscription: ['', [Validators.required]],
     stateInscription: ['', [Validators.required]],
-    observations: ['', [Validators.required]],
+    observations: ['Usuário faz parte da COOPEERE, consulte fale.conosco@coopeere.eco.br para retirar dúvidas', [Validators.required]],
     groupname: ['', [Validators.required]],
     email: ['', [Validators.required]],
     password: ['', [Validators.required]],
     confirm_password: ['', [Validators.required,  this.equalTo('senha')]],
   });
+
+  this.name = this.formulario.get('name');
+  this.email = this.formulario.get('email');
+  this.cpfCnpj = this.formulario.get('cpfCnpj');
+  this.mobilePhone = this.formulario.get('mobilePhone');
+  this.phone = this.formulario.get('phone');
+  this.password = this.formulario.get('password');
+  this.confirm_password = this.formulario.get('confirm_password');
+  this.postalCode = this.formulario.get('postalCode');
+  this.address = this.formulario.get('address');
+  this.addressNumber = this.formulario.get('addressNumber');
+  this.province = this.formulario.get('province');
+  this.city = this.formulario.get('city');
+  this.state = this.formulario.get('state');
+
 }
 
 equalTo(field_name: string) {
@@ -159,68 +224,160 @@ equalTo(field_name: string) {
   };
 }
 
-cadastro(): void{
-  const data = {
-    role: this.usuario.role,
-    name: this.usuario.name,
-    email: this.usuario.email,
-    phone: this.usuario.phone,
-    company: this.usuario.company,
-    additionalEmails: this.usuario.additionalEmails,
-    mobilePhone: this.usuario.mobilePhone, 
-    cpfCnpj: this.usuario.cpfCnpj,
-    postalCode: this.usuario.postalCode,
-    address: this.usuario.address,
-    addressNumber: this.usuario.addressNumber,
-    complement: this.usuario.complement,
-    province: this.usuario.province,
-    city: this.usuario.city,
-    state: this.usuario.state,
-    password: this.usuario.password,
-    observations: this.usuario.observations
+async cadastro(){
+   const loading = await this.loadingController.create();
+  await loading.present();
+
+  const {
+    role,
+    name,
+    email,
+    phone,
+    company,
+    additionalEmails,
+    mobilePhone, 
+    cpfCnpj,
+    postalCode,
+    address,
+    addressNumber,
+    complement,
+    province,
+    city,
+    state,
+    password,
+    observations
     
-  };
-  this.usuarioService.create(data).subscribe({next: (res) => 
-  {
-    console.log(res);
-    console.log("Usuário cadastrado com sucesso")
-  },
-  error: (e) => console.error(e)
-  });
-  const datacliente = {
-    name: this.cliente.name,
-    email: this.cliente.email,
-    phone: this.cliente.phone,
-    mobilePhone: this.cliente.mobilePhone, 
-    cpfCnpj: this.cliente.cpfCnpj,
-    company: this.cliente.company,
-    additionalEmails: this.cliente.additionalEmails,
-    postalCode: this.cliente.postalCode,
-    address: this.cliente.address,
-    addressNumber: this.cliente.addressNumber,
-    complement: this.cliente.complement,
-    province: this.cliente.province,
-    city: this.cliente.city,
-    state: this.cliente.state,
-    observations: this.cliente.observations
-  };
-  this.clienteService.create(datacliente).subscribe({next: (rescli) => 
-    {
-      console.log(rescli);
-      console.log("Cliente cadastrado com sucesso")
+  }= this.formulario.value
+  this.usuarioService.create(
+    role,
+    name,
+    email,
+    phone,
+    company,
+    additionalEmails,
+    mobilePhone, 
+    cpfCnpj,
+    postalCode,
+    address,
+    addressNumber,
+    complement,
+    province,
+    city,
+    state,
+    password,
+    observations
+  ).subscribe(
+    async (res: any) => {
+     // this.router.navigateByUrl('/home', { replaceUrl: true });
+      this.cadastroCliente()
       this.navCtrl.navigateForward('/email');
-    },
-    error: (e) => console.error(e)
-    });
+      console.log(res)
+      
+      console.log('Usuário cadastrado com Sucesso')
+      await loading.dismiss();
+       const alert = await this.alertController.create({
+        header: 'Tudo certo!',
+        message: 'Usuário cadastrado com sucesso.',
+        buttons: ['OK']
+      });
+
+      await alert.present();
+      
+    },  
+    async (res: { error: any; }) => {
+      await loading.dismiss();
+      console.log(res.error)
+      
+     // this.presentErrorAlert()
+      const alert = await this.alertController.create({
+        header: 'Falha na autenticação',
+        message: 'Seu cadastro não pôde ser autorizado.',
+        buttons: ['OK']
+      });
+
+      await alert.present();
+    }
+  );
+  
 }
 
-@HostListener('input', ['$event'])
-onInput(event: Event) {
-  const input = event.target as HTMLInputElement;
-  if (input.value === '0') {
-    this.cliente.cpfCnpj = null;
-  }
+async cadastroCliente(){
+  const loading = await this.loadingController.create();
+  await loading.present();
+
+const  {
+    name,
+    email ,
+    phone,
+    mobilePhone, 
+    cpfCnpj,    
+    company,     
+    additionalEmails,
+    postalCode,
+    address,    
+    addressNumber,
+    complement,
+    province, 
+    city,     
+    observations
+  } = this.formulario.value
+  this.clienteService.create(
+    name,
+    email ,
+    phone,
+    mobilePhone, 
+    cpfCnpj,    
+    company,     
+    additionalEmails,
+    postalCode,
+    address,    
+    addressNumber,
+    complement,
+    province, 
+    city,     
+    observations
+  ).subscribe( async (res: any) => {
+     // this.router.navigateByUrl('/home', { replaceUrl: true });
+    
+    
+      
+      console.log(res)
+     
+      console.log('Cliente cadastrado com Sucesso')
+      await loading.dismiss();
+       const alert = await this.alertController.create({
+        header: 'Seja bem-vindo!',
+        message: 'Conta Asaas configurada com sucesso.',
+        buttons: ['OK']
+      });
+
+      await alert.present();
+      
+    },  
+    async (res: { error: any; }) => {
+      await loading.dismiss();
+      console.log(res.error)
+      
+     // this.presentErrorAlert()
+      const alert = await this.alertController.create({
+        header: 'Não foi possível configurar sua conta Asaas',
+        message: 'Verifique seus dados.',
+        buttons: ['OK']
+      });
+
+      await alert.present();
+    }
+  );
 }
+
+// 
+// @HostListener('input', ['$event'])
+// onInput(event: Event) {
+//   const input = event.target as HTMLInputElement;
+//   if (input.value === '0') {
+//     this.cliente.cpfCnpj = null;
+//   }
+// }
 
 
 }

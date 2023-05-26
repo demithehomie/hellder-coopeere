@@ -1,56 +1,32 @@
-import { Directive } from '@angular/core';
-import { NG_VALIDATORS, Validator, AbstractControl } from '@angular/forms';
-
-function validarCPF(cpf: string): boolean {
-  cpf = cpf.replace(/[^\d]+/g,'');
-
-  if(cpf.length !== 11 || /^(\d)\1{10}$/.test(cpf)) return false;
-
-  let sum = 0;
-  let rest;
-
-  for (let i = 1; i <= 9; i++) {
-    sum = sum + parseInt(cpf.substring(i-1, i)) * (11 - i);
-  }
-
-  rest = (sum * 10) % 11;
-
-  if ((rest === 10) || (rest === 11)) rest = 0;
-
-  if (rest !== parseInt(cpf.substring(9, 10))) return false;
-
-  sum = 0;
-
-  for (let i = 1; i <= 10; i++) {
-    sum = sum + parseInt(cpf.substring(i-1, i)) * (12 - i);
-  }
-
-  rest = (sum * 10) % 11;
-
-  if ((rest === 10) || (rest === 11)) rest = 0;
-
-  if (rest !== parseInt(cpf.substring(10, 11))) return false;
-
-  return true;
-}
+import { Directive, ElementRef, HostListener } from '@angular/core';
 
 @Directive({
-  selector: '[validateCPF][ngModel]',
-  providers: [
-    {
-      provide: NG_VALIDATORS,
-      useExisting: ValidateCpfDirective,
-      multi: true
-    }
-  ]
+  selector: '[appCpfFormat]'
 })
-export class ValidateCpfDirective implements Validator {
+export class CpfFormatDirective {
 
-  validate(c: AbstractControl): { [key: string]: any } | null {
-    if (c.value && !validarCPF(c.value)) {
-      return { cpf: true };
+  constructor(private el: ElementRef) { }
+
+  @HostListener('input', ['$event'])
+  onInput(event: any) {
+    const cpf = event.target.value.replace(/\D/g, ''); // Remove todos os caracteres não numéricos
+
+    if (cpf.length > 0) {
+      event.target.value = this.formatCpf(cpf);
+    } else {
+      event.target.value = '';
     }
-    return null;
+  }
+
+  private formatCpf(cpf: string): string {
+    cpf = cpf.padStart(11, '0'); // Garante que o CPF tenha 11 dígitos
+
+    const part1 = cpf.substr(0, 3);
+    const part2 = cpf.substr(3, 3);
+    const part3 = cpf.substr(6, 3);
+    const part4 = cpf.substr(9);
+
+    return `${part1}.${part2}.${part3}-${part4}`;
   }
 
 }

@@ -24,12 +24,8 @@
  
         </a>
 
-        <div class="cronometro">
-          <div class="timer">
-            {{ formatTime(minutos) }}:{{ formatTime(segundos) }}
-          </div>
-        </div>
         
+        <button (click)="addUser()">Add User</button>
       
       </div>
     </nav>
@@ -37,33 +33,42 @@
 
   
   <ion-content>
-    <br>  
-    <br>
-    <br>
-<div class="container-code">
-  <form  (submit)="confirmEmailCode()">
-    <h2>Seja Bem-Vindo a COOPEERE!</h2>
-    <h4 style="display: flex; margin: auto;">Insira o código enviado via E-Mail</h4>
-    <ion-item>
-      <ion-label style="font-size: x-large;"  position="stacked">Verificação por E-Mail</ion-label>
-      <ion-input [(ngModel)]="email.emailVerificationCode" style="font-size: 40px;" placeholder=" * * * * * " maxlength="5" type="text"  [ngModelOptions]="{standalone: true}" maxlength="5" name="emailVerificationCode"  id="emailVerificationCode" ></ion-input>
-    </ion-item>
-<ion-button type="submit" >Confirmar código</ion-button>
-    
+
    
-  </form>
 
-
-  <div *ngIf="errorMessage" class="error-message">
-    {{ errorMessage }}
-  </div>
+    <table>
+      <tr>
+        <th>Nome</th>
+        <th>Email</th>
+        <th>Telefone</th>
+        <th>CPF</th>
+        <th>Actions</th>
+      </tr>
+      <tr *ngFor="let user of users; let i = index">
+        <td>{{ user.name }}</td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.phone }}</td>
+        <td>{{ user.cpfCnpj }}</td>
+        <td>
+          <button (click)="editUser()">Editar</button>
+          <button (click)="deleteUser(i)">Deletar</button>
+          <button (click)="selectUser(user)">Visualizar</button>
+        </td>
+      </tr>
+    </table>
+    
   
-  <div *ngIf="successMessage" class="success-message">
-    {{ successMessage }}
-  </div>
-  <ion-button style=" display: flex;" (click)="executeBoth()" color="danger" position="end">Reenviar código</ion-button>
-  <ion-button style=" display: flex;" (click)="forward()" (click)="shootSMS(body)" color="success" position="end">Próximo passo</ion-button>
 
+    <!-- Popup -->
+<div class="popup-overlay" *ngIf="selectedUser">
+  <div class="popup">
+    <h2>{{ selectedUser.name }}</h2>
+    <p>Email: {{ selectedUser.email }}</p>
+    <p>Telefone: {{ selectedUser.phone }}</p>
+    <p>CPF: {{ selectedUser.cpfCnpj }}</p>
+    <!-- Adicione as demais informações do usuário aqui -->
+    <button (click)="closePopup()">Close</button>
+  </div>
 </div>
 
 </ion-content>

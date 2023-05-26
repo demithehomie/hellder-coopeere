@@ -40,7 +40,7 @@
             <li class="nav-item">
               <br>
               
-              <button (click)="clearStorage()">SAIR</button>
+              <ion-button color="danger" (click)="clearStorage()">SAIR</ion-button>
             </li>
           </ul>
         </div>
@@ -420,18 +420,18 @@
 </div>
 <div class="input-group">
   <input formControlName="MaiorConsumoUltimos12" type="text" class="form-inputs" id="maior_consumo"
-      name="maior_consumo" size="15" value="368.00"
+      name="maior_consumo" size="15" value="368.00" placeholder=value
       title="Maior consumo (em kWh) dos últimos 12 meses">
     <div class="space">
       <h5 class="input-group-text">kWh</h5>
     </div>
-     <br>
-    <ion-button type="submit" color="success" (click)="cadastroProdist()"  >ATUALIZAR FORMULÁRIO</ion-button>
-    <br>
-    <ion-button color="attention" (click)="gerarPDFSingle()">Emitir PDF</ion-button>
+     
+  
 </div>
 
-
+<ion-button type="submit" color="success" (click)="cadastroProdist()"  >ATUALIZAR FORMULÁRIO</ion-button>
+<br>
+<ion-button color="warning" (click)="gerarPDFSingle()">Emitir PDF</ion-button>
 
 </div>
 
@@ -609,22 +609,7 @@
 
           </ul>
           
-         <!--      <ion-button color="success" class="plan-buttons" routerLink="/anual">Prosseguir</ion-button>
-     
-          <ion-radio-group value="payment-options">
-            <ion-item>
-              <ion-label class="u-payment-options">Pix</ion-label>
-              <ion-radio [(ngModel)]="frequenciaPagamento" slot="start" value="pix"  class="radio-properties"></ion-radio>
-            </ion-item>
-        
-        <ion-label></ion-label>
 
-            <ion-item>
-              <ion-label class="u-payment-options">Boleto Bancário</ion-label>
-              <ion-radio [(ngModel)]="frequenciaPagamento"slot="start" value="boleto"  class="radio-properties"></ion-radio>
-            </ion-item>
-          </ion-radio-group>
--->
 
         </ion-card>
       </div>
@@ -636,60 +621,14 @@
       
       <form  (ngSubmit)="payingSubs()">
         <div style="margin-left: 50px; padding-top: 50px; padding-bottom: 150px; ">
-          <h2 style="background-color: #eff6ff; text-align: center; display: flex; margin: auto;">Escolha o plano desejado abaixo</h2>
+          <h2 style="background-color: #eff6ff; text-align: center; display: flex; margin: auto; align-items: center; justify-content: center;">Escolha o plano desejado abaixo</h2>
         
       
-        <!--
-        
-         ionic g page pages/pagamentos/mensal && ionic g page pages/pagamentos/bimestral &&  ionic g page pages/pagamentos/trimestral && ionic g page pages/pagamentos/semestral && ionic g page pages/pagamentos/anual 
-        
-        -->
-      <!--
+    
       
-          <ion-item style="max-width: 500px; display: flex; margin: auto;">
-            <ion-label>Tipo de Plano</ion-label>
-        
-            <ion-select class="input-pagamento" placeholder="" [(ngModel)]="selectedCycle" (ionChange)="updateValue()" [ngModelOptions]="{standalone: true}">
-              <ion-select-option *ngFor="let cycle of cycles" [value]="cycle.label">{{ cycle.label }}</ion-select-option>
-            </ion-select>
-          </ion-item>
-        
-      
-          <ion-item style="max-width: 500px; display: flex; margin: auto;">
-            <ion-label>Valor</ion-label>
-            <ion-input type="number" class="input-pagamento" [(ngModel)]="value" [(ngModel)]="subs.value" disabled [ngModelOptions]="{standalone: true}"></ion-input>
-          </ion-item>
-      
-      
-          <ion-item>
-            <ion-label>
-              Escolha um dia para pagamento
-            </ion-label>
-            <h6 style="color: red">Favor digitar no formato "Ano, Mês, Dia": AAAA-MM-DD</h6>
-            <ion-input [(ngModel)]="subs.nextDueDate" id="nextDueDate" name="nextDueDate">
-      
-            </ion-input>
-          </ion-item>
-         
-      
-          
-          <ion-item style="max-width: 500px; display: flex; margin: auto;">
-            <ion-label position="floating">Escolha um dia para o vencimento</ion-label>
-            <ion-select [(ngModel)]="selectedDay">
-              <ion-select-option *ngFor="let day of days" [value]="day">{{ day }}</ion-select-option>
-            </ion-select>
-          </ion-item>
-      
-          <ion-button style="max-width: 500px; display: flex; margin: auto;" (click)="calculateNextDueDate()">Calcular próxima cobranca</ion-button>
-            
-          <div *ngIf="nextDueDate" [(ngModel)]="nextDueDate" [ngModelOptions]="{standalone: true}">
-            Próxima Cobrança: {{ nextDueDate | date: 'yyyy-MM-dd' }}
-          </div>
-        -->
-      
-        <div class="more-payment-options">
-          <ion-label>Periodicidade</ion-label>
-          <select style="background-color: #fff; padding: 10px; border: 1px solid #000; border-radius: 5px;" class="input-pagamento" placeholder=""  name="cycle" [(ngModel)]="subs.cycle" >
+        <div class="more-payment-options" style="display: flex">
+          <ion-label style="text-align: center;">Periodicidade</ion-label>
+          <select style="background-color: #fff; padding: 10px; border: 1px solid #000; border-radius: 5px;"  placeholder=""  name="cycle" [(ngModel)]="subs.cycle" >
             <option value="">Escolha o Tipo de Cobrança</option>
             <option value="MONTHLY">Mensal</option>
             <option value="BIWEEKLY">Quinzenal</option>
@@ -701,7 +640,7 @@
         
         <div class="more-payment-options">
           <ion-label>Escolha o seu plano (de acordo com o escolhido acima)</ion-label>
-          <select name="value" style="background-color: #fff; padding: 10px; border: 1px solid #000; border-radius: 5px;" [(ngModel)]="subs.value">
+          <select  style="background-color: #fff; padding: 10px; border: 1px solid #000; border-radius: 5px;"  placeholder="" name="value" [(ngModel)]="subs.value">
             <option value="">Escolher plano</option>
             <option value="3.5">R$ 3,50 - Mensal</option>
             <option value="7.5">R$ 7,50 - Quinzenal</option>
@@ -721,9 +660,9 @@
             </select>
         </div>
         
-      
+      <br><br>
         
-        <ion-button type="submit" color="success">Gerar Cobrança</ion-button>
+        <ion-button style="display: flex; margin: auto; width: 250px; align-items: center; justify-content: center;" type="submit" color="success">Gerar Cobrança</ion-button>
         
         </div> 
         </form>

@@ -10,9 +10,10 @@ import { AppComponent } from './app.component';
 import { FormsModule,  ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthenticationService } from './services/authentication.service';
+import { CpfFormatDirective } from './directives/validate-cpf.directive';
 
 @NgModule({
- declarations: [AppComponent],
+ declarations: [AppComponent, CpfFormatDirective],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, FormsModule, HttpClientModule, ReactiveFormsModule  ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, AuthenticationService, HttpClientModule, Storage],
