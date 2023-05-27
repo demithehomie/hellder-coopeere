@@ -3,7 +3,7 @@ import { HttpClient} from '@angular/common/http'
 import { Observable } from 'rxjs';
 
 
-const base_URL = 'http://localhost:3001';
+const base_URL = 'https://grandfinale.onrender.com';
 
 @Injectable({
   providedIn: 'root' 

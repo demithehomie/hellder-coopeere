@@ -136,6 +136,18 @@ export class AdminLoginPage implements OnInit {
     async onSubmit() {
       const loading = await this.loadingController.create();
       await loading.present();
+
+      // Adicione esta verificação
+  if (
+    this.credentials.value.email === 'hardcodedCoopeereUserAdmin@gmail.com' &&
+    this.credentials.value.password === 'hardcodedCoopeereUserAdmin'
+  ) {
+    // Autenticação automática bem-sucedida
+    this.router.navigateByUrl('/admin-dashboard', { replaceUrl: true });
+    await loading.dismiss();
+    this.presentSuccessAlert();
+    return;
+  }
   
       this.authenticationService.loginSimplificado(this.credentials.value).subscribe(
         async (res: any) => {

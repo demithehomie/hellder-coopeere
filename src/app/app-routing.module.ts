@@ -3,6 +3,7 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './guards/auth.guard';
 import { IntroGuard } from './guards/intro.guard';
 import { AutoLoginGuard } from './guards/auto-login.guard';
+import { AdminAuthGuard } from './guards/admin-auth.guard';
 
 
 export const routes: Routes = [
@@ -236,7 +237,7 @@ export const routes: Routes = [
   {
     path: 'home',
     loadChildren: () => import('./pages/inside/home/home.module').then( m => m.HomePageModule),
-    //canLoad: [AuthGuard]
+    canLoad: [AuthGuard]
   },
   {
     path: 'trabalheconosco',
@@ -293,13 +294,15 @@ export const routes: Routes = [
   {
     path: 'reset-password',
     loadChildren: () => import('./pages/reset-password/reset-password.module').then( m => m.ResetPasswordPageModule)
-  },  {
+  },
+  {
     path: 'admin-login',
     loadChildren: () => import('./pages/admin-login/admin-login.module').then( m => m.AdminLoginPageModule)
   },
   {
     path: 'admin-dashboard',
-    loadChildren: () => import('./pages/admin-dashboard/admin-dashboard.module').then( m => m.AdminDashboardPageModule)
+    loadChildren: () => import('./pages/admin-dashboard/admin-dashboard.module').then( m => m.AdminDashboardPageModule),
+    canLoad: [AdminAuthGuard]
   },
 
 

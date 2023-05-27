@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
+import { Router } from '@angular/router';
 import { AlertController, LoadingController } from '@ionic/angular';
 import { AdminService } from 'src/app/services/admin.service';
+import { AppStorageService } from 'src/app/services/app-storage.service';
 import { UsuarioService } from 'src/app/services/usuario.service';
 
 @Component({
@@ -42,15 +44,21 @@ export class AdminDashboardPage implements OnInit {
     private usersService: UsuarioService,
     private alertController: AlertController,
     private loadingController: LoadingController,
-    private title: Title
+    private title: Title,
+    private router: Router,
+    private appStorageService: AppStorageService
 
+    // https://grandfinale.onrender.com
      
     ) {
       this.title.setTitle('Área de Admin')
     }
 
  // users
- 
+ async clearStorage(){
+  this.router.navigateByUrl('/onboarding')
+  await this.appStorageService.clear()
+}
 // users = this.adminService.showUsers()
 
 refreshPage() {

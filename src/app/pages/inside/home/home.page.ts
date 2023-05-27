@@ -723,7 +723,7 @@ cadastroProdist(): void{
     const id = await this.appStorageService.get('id'); // Recupera o valor do id do localStorage
     const NumeroDoCliente = await this.appStorageService.get('NumeroDoCliente'); // Recupera o valor do NumeroDoCliente do localStorage
   
-    const apiurl = `http://localhost:3001`
+    const apiurl = `https://grandfinale.onrender.com`
     if (id && NumeroDoCliente) {
       const url = `${apiurl}/usuarios/pdf-single/${id}/${NumeroDoCliente}`;
       const headers = new HttpHeaders({ 'Content-Type': 'application/pdf' });
