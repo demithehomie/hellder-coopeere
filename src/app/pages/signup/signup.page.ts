@@ -18,12 +18,14 @@ import { UsuarioService } from 'src/app/services/usuario.service';
 export class SignupPage implements OnInit {
 
   cpfControl: FormControl = new FormControl('');
+  mobilePhoneControl: FormControl = new FormControl('');
+  fixoControl: FormControl = new FormControl('');
   value!: any
   name!: any;
   cpfCnpj: any = '' 
   selectedOption: string = '';
   email: any;
-  mobilePhone: any;
+  mobilePhone: any = '';
   phone: any;
   password: any;
   confirm_password: any;
@@ -50,6 +52,12 @@ export class SignupPage implements OnInit {
       this.cpfControl.valueChanges.subscribe((value: string) => {
         this.formatarCPF();
       });
+      this.mobilePhoneControl.valueChanges.subscribe((value: string) => {
+        this.formatarTelefone();
+      });
+      this.fixoControl.valueChanges.subscribe((value: string) => {
+        this.formatarTelefoneFixo();
+      });
     }
   
     formatarCPF() {
@@ -60,12 +68,19 @@ export class SignupPage implements OnInit {
     }
     
     formatarTelefone() {
-      let telefoneRegex = /^(\d{2})(\d{5})(\d{4})$/;
-      if (this.cliente !== null && this.cliente.mobilePhone !== null) {
-        this.cliente.mobilePhone = this.cliente.mobilePhone.replace(telefoneRegex, '($1) $2-$3');
+      let celularRegex = /^(\d{2})(\d{5})(\d{4})$/;
+      if (this.mobilePhone !== null) {
+        this.mobilePhoneControl.setValue(this.mobilePhoneControl.value.replace(celularRegex, '($1) $2-$3'));
       }
     }
     
+    
+    formatarTelefoneFixo() {
+      let fixoRegex = /^(\d{2})(\d{4})(\d{4})$/;
+      if (this.phone !== null) {
+        this.fixoControl.setValue(this.fixoControl.value.replace(fixoRegex, '($1) $2-$3'));
+      }
+    }
     
     
     

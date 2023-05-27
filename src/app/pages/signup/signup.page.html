@@ -208,7 +208,7 @@
         
         <ion-item>
           <ion-label position="floating">Telefone Celular*</ion-label>
-          <ion-input formControlName="mobilePhone" type="tel" placeholder="(00) 00000-0000"></ion-input>
+          <ion-input formControlName="mobilePhone" id="mobilePhone" name="mobilePhone" type="tel" placeholder="(00) 00000-0000" [formControl]="mobilePhoneControl"></ion-input>
         </ion-item>
         
         <div *ngIf="mobilePhone.invalid && (mobilePhone.dirty || mobilePhone.touched)" class="errors">
@@ -219,7 +219,7 @@
 
         <ion-item>
           <ion-label position="floating">Telefone Fixo</ion-label>
-          <ion-input formControlName="phone" type="tel" placeholder="(00) 0000-0000"></ion-input>
+          <ion-input formControlName="phone" id="phone" name="phone" type="tel" placeholder="(00) 0000-0000" [formControl]="fixoControl"></ion-input>
         </ion-item>
         
         <ion-item>
