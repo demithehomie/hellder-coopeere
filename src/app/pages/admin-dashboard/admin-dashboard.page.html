@@ -25,8 +25,8 @@
         </a>
 
         
-        <button (click)="addUser()">Add User</button>
-        <button (click)="addAdmin()">Add Admin</button>
+        <button (click)="addUser()">Criar Novo Usuário</button>
+        <button (click)="addAdmin()">Criar Novo Admin</button>
       </div>
     </nav>
   </ion-header>
@@ -51,10 +51,10 @@
         <td>{{ user.phone }}</td>
         <td>{{ user.cpfCnpj }}</td>
         <td>{{ user.role }}</td>
-        <td>
-          <button (click)="selectUser(user)">Visualizar</button>
-          <button (click)="editUser(user)">Editar</button>
-          <button (click)="deleteUser(i)">Deletar</button>
+        <td >
+          <ion-button color="success" (click)="selectUser(user)" style="margin-left: 5px; margin-right: 5px;">Visualizar</ion-button>
+          <ion-button color="warning" (click)="editUser(user)" style="margin-left: 5px; margin-right: 5px;">Editar</ion-button>
+          <ion-button color="danger" (click)="deleteUser(i)" style="margin-left: 5px; margin-right: 5px;">Deletar</ion-button>
         </td>
       </tr>
     </table>
@@ -69,7 +69,7 @@
     <p>Telefone: {{ selectedUser.phone }}</p>
     <p>CPF: {{ selectedUser.cpfCnpj }}</p>
     <!-- Adicione as demais informações do usuário aqui -->
-    <button (click)="closePopup()">Close</button>
+    <button (click)="closePopup()">Fechar</button>
   </div>
 </div>
 

@@ -199,10 +199,10 @@
         
         <ion-item>
           <ion-label position="floating">CPF/CNPJ*</ion-label>
-          <ion-input formControlName="cpfCnpj" appCpfFormat type="text" placeholder="Digite seu CPF"></ion-input>
+          <ion-input formControlName="cpfCnpj" id="cpfCnpj" name="cpfCnpj" appCpfFormat type="text" [formControl]="cpfControl" placeholder="Digite seu CPF"></ion-input>
         </ion-item>
         
-        <div *ngIf="cpfCnpj.invalid && (cpfCnpj.dirty || cpfCnpj.touched)" onblur="formataCPF(this)" pattern="[0-9]{11}" class="errors">
+        <div *ngIf="cpfCnpj.invalid && (cpfCnpj.dirty || cpfCnpj.touched)"  pattern="[0-9]{11}" class="errors">
           <span *ngIf="cpfCnpj.errors.required">Preencha seu CPF/CNPJ</span>
         </div>
         

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { AlertController, LoadingController } from '@ionic/angular';
 import { AdminService } from 'src/app/services/admin.service';
 import { UsuarioService } from 'src/app/services/usuario.service';
@@ -40,9 +41,13 @@ export class AdminDashboardPage implements OnInit {
     private adminService: AdminService,
     private usersService: UsuarioService,
     private alertController: AlertController,
-    private loadingCtrl: LoadingController,
+    private loadingController: LoadingController,
+    private title: Title
+
      
-    ) {}
+    ) {
+      this.title.setTitle('Área de Admin')
+    }
 
  // users
  
@@ -81,7 +86,10 @@ refreshPage() {
     this.newUser = {}; // Limpa os dados do novo usuário
   }
 
-  createAdmin(){
+  async createAdmin(){
+
+    const loading = await this.loadingController.create();
+    await loading.present();
     
     this.usersService.create(
       this.role = 2,
@@ -121,7 +129,10 @@ refreshPage() {
       );
   }
 
-  createUser() {
+  async createUser() {
+
+    const loading = await this.loadingController.create();
+    await loading.present();
 
     this.usersService.create(
       this.role,
@@ -145,12 +156,14 @@ refreshPage() {
     )
       .subscribe(
         response => {
+          loading.dismiss();
           console.log('Usuário criado com sucesso:', response);
           this.users.push(response); // Adiciona o novo usuário à lista
           this.closeAddUserPopup(); // Fecha o popup de adicionar usuário
           this.refreshPage()
         },
         error => {
+          loading.dismiss();
           console.error('Erro ao criar usuário:', error);
           this.alertController.create({
             header: 'Erro ao cadastrar usuário',

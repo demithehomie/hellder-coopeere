@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, HostListener, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { AlertController, LoadingController, NavController } from '@ionic/angular';
@@ -17,9 +17,10 @@ import { UsuarioService } from 'src/app/services/usuario.service';
 })
 export class SignupPage implements OnInit {
 
+  cpfControl: FormControl = new FormControl('');
   value!: any
   name!: any;
-  cpfCnpj: any ;
+  cpfCnpj: any = '' 
   selectedOption: string = '';
   email: any;
   mobilePhone: any;
@@ -46,29 +47,24 @@ export class SignupPage implements OnInit {
 
     ) {
       this.title.setTitle('Continue Seu Cadastro')
+      this.cpfControl.valueChanges.subscribe((value: string) => {
+        this.formatarCPF();
+      });
     }
   
-    formataCPF(cpfCnpj: HTMLInputElement): void {
-      const elementoAlvo: HTMLInputElement = cpfCnpj;
-      const cpfAtual: string = cpfCnpj.value;
-    
-      let cpfAtualizado: string;
-    
-      cpfAtualizado = cpfAtual.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, function (
-        regex,
-        argumento1,
-        argumento2,
-        argumento3,
-        argumento4
-      ) {
-        return `${argumento1}.${argumento2}.${argumento3}-${argumento4}`;
-      });
-    
-      elementoAlvo.value = cpfAtualizado;
+    formatarCPF() {
+      let cpfRegex = /^(\d{3})(\d{3})(\d{3})(\d{2})$/;
+      if (this.cpfControl.value) {
+        this.cpfControl.setValue(this.cpfControl.value.replace(cpfRegex, '$1.$2.$3-$4'));
+      }
     }
     
-    
-    
+    formatarTelefone() {
+      let telefoneRegex = /^(\d{2})(\d{5})(\d{4})$/;
+      if (this.cliente !== null && this.cliente.mobilePhone !== null) {
+        this.cliente.mobilePhone = this.cliente.mobilePhone.replace(telefoneRegex, '($1) $2-$3');
+      }
+    }
     
     
     
@@ -110,6 +106,10 @@ openExternalLinkYouTube(){
 }
 
 ngOnInit(): void{
+  // this.cpfControl = new FormControl('');
+  // this.cpfControl.valueChanges.subscribe((value: string) => {
+  //     this.formatarCPF();
+  //   });
   this.validaForm();
   this.http.get('assets/buscarcep.js', { responseType: 'text'})
     .subscribe(js => {
