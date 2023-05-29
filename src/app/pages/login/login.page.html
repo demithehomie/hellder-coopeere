@@ -169,9 +169,13 @@
                 <span class="input-group-text">
                   <i class="fas fa-lock"></i>
                 </span>
-                <input type="password" class="form-control"  style="height: 55px;"  name="senha" placeholder=" " formControlName="password" id="password" wfd-id="id3">
+                <input type="{{ exibirSenha ? 'text' : 'password' }}" class="form-control" style="height: 55px;" name="senha" placeholder=" " formControlName="password" id="password" wfd-id="id3">
                 <label for="password" class="input-group-label">Senha</label>
+                <span class="input-group-text" (click)="alternarExibicaoSenha()">
+                  <i class="fas" [ngClass]="{'fa-eye': !exibirSenha, 'fa-eye-slash': exibirSenha}"></i>
+                </span>
               </div>
+              
               <div *ngIf="(password?.dirty || password?.touched) && password?.errors" class="errors">
                 <span *ngIf="password?.errors?.['required']">Você precisa inserir sua senha</span>
                 <span *ngIf="password?.errors?.['minlength']">A senha consiste no mínimo em 6 caracteres</span>

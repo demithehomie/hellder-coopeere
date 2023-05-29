@@ -19,6 +19,8 @@ import { AppStorageService } from 'src/app/services/app-storage.service';
 })
 export class LoginPage implements OnInit {
 
+  exibirSenha: boolean = false;
+
   credentials!: FormGroup;
 
   selectedOption: string = '';
@@ -53,6 +55,11 @@ export class LoginPage implements OnInit {
   }
 
   //user: "";
+
+  alternarExibicaoSenha() {
+    this.exibirSenha = !this.exibirSenha;
+  }
+  
 
   googleAuth(){
     return this.usersService.googleAuth().subscribe({next: (res) => 

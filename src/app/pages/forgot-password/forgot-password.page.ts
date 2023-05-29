@@ -27,27 +27,43 @@ export class ForgotPasswordPage implements OnInit {
    }
 
 
-  async sendTheEmail(){
+   async sendTheEmail() {
     const loading = await this.loadingController.create();
     await loading.present();
     this.twofaService.sendTheForgetEmail(this.emailVerification.value).subscribe(
       async (res) => {
-        console.log(res)
+        console.log(res);
         await loading.dismiss();
-        this.router.navigateByUrl('/reset-password', { replaceUrl: true })
-      },
-      async (res: { error: any}) =>{
-        console.log(res.error)
-        await loading.dismiss();
+        this.router.navigateByUrl('/reset-password', { replaceUrl: true });
         const alert = await this.alertController.create({
-          header: 'Código Inválido',
-          message: 'Revise o código inserido, por favor.',
+          header: 'Pronto!',
+          message: 'Verifique seu email, e insira o código recebido',
           buttons: ['OK']
         });
+        await alert.present(); // Exibe o alerta
+      },
+      async (res: { error: any }) => {
+        console.log(res.error);
+        await loading.dismiss();
+        const alert = await this.alertController.create({
+          header: 'Opa, tem algo errado',
+          message: 'Esse email não está em nossa base de dados.',
+          buttons: ['OK']
+        });
+        await alert.present(); // Exibe o alerta
       }
-    )
+    );
   }
+  
  
+  // emailSuccessAlert(){
+  //   this.alertController.create({
+  //     header: ``,
+  //     message: ``,
+  //     buttons: ['CONTINUAR']
+  //   })
+  // }
+
   ngOnInit() {
     this.emailVerification = this.formBuilder.group({
       email: ['', [Validators.required]],

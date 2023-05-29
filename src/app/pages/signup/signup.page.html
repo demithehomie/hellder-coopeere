@@ -1,18 +1,4 @@
 
-<!-- <ion-header class="header-header">
-  
-  <div [routerLink]="['/login']">
-    <ion-icon name="person"></ion-icon>
-    <ion-label class="label-header" >Login</ion-label>
-  </div>
-    |
-    <div style="padding-left: 15px;" [routerLink]="['/signup']" >
-      <ion-icon name="pencil"></ion-icon>
-      <ion-label >Cadastro</ion-label>
-    </div>
-    
-  
-  </ion-header> -->
   
   <ion-header class="header">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
@@ -31,122 +17,7 @@
     <ion-button fill="clear" [routerLink]="['/']" class="sair text-right">Sair</ion-button>
   </ion-header>
 
-  <!--
-  
-    <div class="container">
- 
-      <br>
-      <br><br>
-  
-  
-   
-    <ion-card class="container-form">
-        
-        <form [formGroup]="formulario" (submit)="cadastro()">    
-              <div class="welcome-div">
-                <ion-label class="welcome">Seja Bem-Vindo!</ion-label>
-              </div><br><br>
-      <div class="inputs">
-        <ion-item fill="solid">
-          
-          <div class="input-labels"> 
-            <ion-label position="floating" class="input-label-text">Nome Completo </ion-label>
-          </div>
-        <ion-input  type="text"  name="name" id="name" formControlName="name" class="form-control" formControlName="name" placeholder="Digite o seu nome completo" ></ion-input>
-      
-      </ion-item>
-    -->
-      <!-- [clearInput]="true" [clearInput]="true"  
-      
-        <ion-item fill="solid">
-            <div class="input-labels"> 
-              <ion-label position="floating" class="input-label-text">Email</ion-label>
-            </div>
-          
-            <ion-input  type="email" name="email" id="email"  formControlName="email" class="form-control" formControlName="email"  placeholder="Digite o seu email"  ></ion-input>
-        
-          </ion-item>
-  
-        <ion-item fill="solid">
-          <div class="input-labels">  
-            <ion-label position="floating" class="input-label-text">Telefone Celular</ion-label>
-         </div>  
-        <ion-input formControlName="phonenumber"  type="tel" placeholder="Digite o seu telefone" [clearInput]="true"></ion-input>
-      </ion-item>
-      
-  <br>
-  <ion-item fill="solid">
-    <div class="input-labels">  
-      <ion-label position="floating" class="input-label-text">Telefone Fixo</ion-label>
-   </div>  
-  <ion-input formControlName="homenumber"  type="tel" placeholder="Digite o seu telefone" [clearInput]="true"></ion-input>
-</ion-item>
-<br>
-  <ion-item fill="solid">
-    <div class="input-labels">  
-      <ion-label position="floating" class="input-label-text">CPF/CNPJ</ion-label>
-   </div>  
-  <ion-input formControlName="cpfcnpj"  type="number" placeholder="Digite o seu CPF e CNPJ" [clearInput]="true"></ion-input>
-</ion-item>
-<br>
-      
-        <ion-item fill="solid">
-          <div class="input-labels">  
-            <ion-label position="floating" class="input-label-text">Senha</ion-label>
-         </div>  
-        <ion-input formControlName="password"  type="password" placeholder="Digite a sua senha" [clearInput]="true"></ion-input>
-      </ion-item>
-   
-    
-<ion-item fill="solid">
-  <div class="input-labels">  
-    <ion-label position="floating" class="input-label-text">CEP</ion-label>
- </div>  
-<ion-input formControlName="cep"  type="text" placeholder="Digite o seu CEP" [clearInput]="true"></ion-input>
-</ion-item>
-<br>
-<ion-item fill="solid">
-  <div class="input-labels">  
-    <ion-label position="floating" class="input-label-text">Endereço</ion-label>
- </div>  
-<ion-input formControlName="address" type="text" placeholder="Digite o seu endereço" [clearInput]="true"></ion-input>
-</ion-item>
-<br>
-<ion-item fill="solid">
-  <div class="input-labels">  
-    <ion-label position="floating" class="input-label-text">Bairro</ion-label>
- </div>  
-<ion-input formControlName="nhood" type="text" placeholder="Digite o seu bairro" [clearInput]="true"></ion-input>
-</ion-item>
-<br>
-<ion-item fill="solid">
-  <div class="input-labels">  
-    <ion-label position="floating" class="input-label-text">Numero</ion-label>
- </div>  
-<ion-input formControlName="number" type="number" placeholder="Digite o seu numero" [clearInput]="true"></ion-input>
-</ion-item>
-<br>
-<ion-item fill="solid">
-  <div class="input-labels">  
-    <ion-label position="floating" class="input-label-text">Estado</ion-label>
- </div>  
-<ion-input formControlName="state" type="text" placeholder="Digite o seu estado" ></ion-input>
-</ion-item>
--->
-<!--  [clearInput]="true" 
-<br>
-    
-  <br>
-        <div>
-          <ion-button type="submit">Entrar</ion-button>
-        </div>
-      </div>
-      
-    </form>
-    
-    <br><br>
-  
-  -->
+
 
 
 <ion-content>
@@ -240,12 +111,12 @@
           <span *ngIf="confirm_password.errors.required">Confirme sua senha</span>
         </div>
 
-        <div ></div>
+        <div >
         <div class="form-group-title">Endereço*</div>
-
+<!-- (blur)="consultaCEP($event.target.value, f)" -->
         <ion-item>
           <ion-label position="floating">CEP*</ion-label>
-          <ion-input formControlName="postalCode"  type="text" placeholder="00000-000"></ion-input>
+          <ion-input formControlName="postalCode" id="postalCode" name="postalCode"   type="text" placeholder="00000-000"></ion-input>
           <h6>  O mesmo que consta na conta de energia </h6>
         </ion-item>
 
@@ -257,11 +128,12 @@
             O mesmo que consta na conta de energia
           </small> -->
 
+          <ion-button color="warning" (click)="searchCep()">VALIDAR CEP</ion-button>
           
         
           <ion-item>
             <ion-label position="floating">Endereço*</ion-label>
-            <ion-input formControlName="address" type="text"></ion-input>
+            <ion-input formControlName="address" id="address" name="address" type="text"></ion-input>
           </ion-item>
           
           <div *ngIf="address.invalid && (address.dirty || address.touched)" class="errors">
@@ -270,7 +142,7 @@
           
           <ion-item>
             <ion-label position="floating">Número*</ion-label>
-            <ion-input formControlName="addressNumber" type="text"></ion-input>
+            <ion-input formControlName="addressNumber" id="addressNumber" type="text"></ion-input>
           </ion-item>
           
           <div *ngIf="addressNumber.invalid && (addressNumber.dirty || addressNumber.touched)" class="errors">
@@ -279,7 +151,7 @@
           
           <ion-item>
             <ion-label position="floating">Bairro*</ion-label>
-            <ion-input formControlName="province" type="text"></ion-input>
+            <ion-input formControlName="province" id="province" name="province" type="text"></ion-input>
           </ion-item>
           
           <div *ngIf="province.invalid && (province.dirty || province.touched)" class="errors">
@@ -288,7 +160,7 @@
           
           <ion-item>
             <ion-label position="floating">Cidade*</ion-label>
-            <ion-input formControlName="city" type="text"></ion-input>
+            <ion-input formControlName="city" id="city" name="city" type="text"></ion-input>
           </ion-item>
           
           <div *ngIf="city.invalid && (city.dirty || city.touched)" class="errors">
@@ -297,7 +169,7 @@
           
           <ion-item>
             <ion-label position="floating">Estado*</ion-label>
-            <ion-select formControlName="state">
+            <ion-select formControlName="state" id="state" name="state">
               <ion-select-option value="">UF</ion-select-option>
               <ion-select-option value="AC">Acre</ion-select-option>
               <ion-select-option value="AL">Alagoas</ion-select-option>
@@ -333,7 +205,7 @@
             <span *ngIf="state.errors.required">Selecione o estado</span>
           </div>
 
-
+        </div> <!-- FIM DA DIV DOS CEPS -->
        
 
         <div class="form-actions mt-4">

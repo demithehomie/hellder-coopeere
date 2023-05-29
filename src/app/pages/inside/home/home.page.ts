@@ -107,6 +107,28 @@ export class HomePage implements OnInit {
       const data_selecionada = this.dataDaquiA30Dias.setDate(this.dataDaquiA30Dias.getDate() + 30);
     }
 
+    sairDaSessao() {
+      this.alertController.create({
+        header: 'Você está prestes a deixar a sessão',
+        message: 'Deseja Prosseguir?',
+        buttons: [
+          {
+            text: 'SIM',
+            handler: () => {
+              this.clearStorage();
+              this.router.navigateByUrl('/onboarding'); // Substitua o caminho ("/") pela rota desejada
+            }
+          },
+          {
+            text: 'NÃO',
+            role: 'cancel'
+          }
+        ]
+      }).then(alert => {
+        alert.present();
+      });
+    }
+    
 
    async copiarLink() {
       const link = 'https://coopeere-eco.web.app'; // Substitua pelo seu link

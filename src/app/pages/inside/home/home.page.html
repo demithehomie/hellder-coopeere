@@ -40,7 +40,7 @@
             <li class="nav-item">
               <br>
               
-              <ion-button color="danger" (click)="clearStorage()">SAIR</ion-button>
+              <ion-button color="danger" (click)="sairDaSessao()">SAIR</ion-button>
             </li>
           </ul>
         </div>
@@ -169,10 +169,15 @@
     </div>
   </div>
     <div *ngSwitchCase="'option3'" class="option-content">
+
       <div class="container-step-content">
+
         <form class="triagemForm" method="POST" id="regForm" action="">
+
           <fieldset class="fieldset">
+
             <h3 class="tab-title">Triagem</h3>
+
             <p for="operadora">Escolha a sua distribuidora (de acordo com sua conta de luz):</p>
             <div class="operadora_field mb-5">
               
@@ -186,7 +191,7 @@
                   <span>Light-RJ</span>
                 </label>
               
-                <label class="form-check-label " for="operadora3" id="operadora3_nome">
+                <label class="form-check-label" for="operadora3" id="operadora3_nome">
                   <input class="form-check-input" type="radio" id="operadora3" name="idoperadora" value="3" wfd-id="id19">
                   <span>Enel-SP</span>
                 </label>
@@ -273,18 +278,21 @@
 </div>
 <div class="input-group">
   <input
-      type="text"
-      class="form-inputs" 
+      type="hidden"
+      
       readonly
-      id="potencia_inst_uc"
-      name="potencia_inst_uc"
-      value="0.62"
+ 
       size="15"
-      formControlName="PotenciaInstalada"
+      
       >
-<div class="space">
+
+      <select name="potencia_inst_uc" id="potencia_inst_uc" class="form-inputs"  formControlName="PotenciaInstalada">
+        <option value="">Selecione a Potência Instalada</option>
+        <option value="0.62" selected>0.62 KW</option>
+      </select>
+<!-- <div class="space">
 <h5 class="input-group-text">kW</h5>
-</div>
+</div> -->
 
   
 </div>
@@ -294,7 +302,7 @@
 <div class="input-group">
   <select class="form-inputs " id="tensao_atendimento" name="tensao_atendimento" formControlName="TensaoDeAtendimento">
      
-                      <option value="" >Escolha para prosseguir ...</option>
+                      <option value="" >Escolha a Tensão ...</option>
                       <option value="110" selected>110</option>
                       <option value="220">220</option>
       
@@ -349,19 +357,24 @@
 <label class="prodist-label" for="potencia_inst_gerada">Potência instalada gerada</label>
 <br> <br>
 <div class="input-group">
-  <input class="form-inputs" placeholder="Preencha para prosseguir ..."
-      type="text"
+  <input  placeholder="Preencha para prosseguir ..."
+      type="hidden"
       id="potencia_inst_gerada"
       name="potencia_inst_gerada"
       value=""
       size="20"
       readonly
-      formControlName="PotenciaInstaladaGeral"
+     
   >
 
-  <div class="space">
+  <select  name="potencia_inst_gerada"   id="potencia_inst_gerada"  formControlName="PotenciaInstaladaGeral" class="form-inputs">
+    <option value="">Selecione a Potência</option>
+    <option value="20" selected>20 KW</option>
+  </select>
+
+  <!-- <div class="space">
     <h5 class="input-group-text">kW</h5>
-  </div>
+  </div> -->
 
   
 </div>
@@ -396,17 +409,16 @@
   </div>
 </div>
 <div class="input-group">
-  <input class="form-inputs" 
-  formControlName="MenorConsumoUltimos12"
-      type="text"
-      id="menor_consumo"
-      name="menor_consumo"
-      value="67.00"
-      size="15">
+  
 
- <div class="space">
+      <select name="menor_consumo"  id="menor_consumo"  formControlName="MenorConsumoUltimos12" class="form-inputs">
+        <option value="">Selecione o Menor Consumo</option>
+        <option value="67.00">67.00 kWh</option>
+      </select>
+
+ <!-- <div class="space">
   <h5 class="input-group-text">kWh</h5>
- </div>
+ </div> -->
   
 
 </div>
@@ -419,12 +431,18 @@
   </div>
 </div>
 <div class="input-group">
-  <input formControlName="MaiorConsumoUltimos12" type="text" class="form-inputs" id="maior_consumo"
-      name="maior_consumo" size="15" value="368.00" placeholder=value
+  <input  type="hidden"  
+       size="15" value="368.00"
       title="Maior consumo (em kWh) dos últimos 12 meses">
-    <div class="space">
+
+
+      <select name="maior_consumo" id="maior_consumo" formControlName="MaiorConsumoUltimos12" class="form-inputs">
+        <option value="">Selecione o Maior Consumo</option>
+        <option value="368.00" selected>368 kWh</option>
+      </select>
+    <!-- <div class="space">
       <h5 class="input-group-text">kWh</h5>
-    </div>
+    </div> -->
      
   
 </div>
@@ -687,8 +705,8 @@
       <h3>Clique no ícone para copiar o link</h3>
       <ion-item style="max-width: 350px; display: flex; margin: auto;">
        
-        <ion-label>https://coopeere-eco.web.app</ion-label>
-        <ion-icon name="copy" (click)="copiarLink()"></ion-icon>
+        <ion-label style="font-size: 35px;">https://coopeere-eco.web.app</ion-label>
+        <ion-icon style="font-size: 35px;" name="copy" (click)="copiarLink()"></ion-icon>
       </ion-item>
       
 

@@ -10,6 +10,9 @@ import { Usuario } from 'src/app/interfaces/usuario';
 import { ViaCepService } from 'src/app/services/cep.service';
 import { ClienteService } from 'src/app/services/cliente.service';
 import { UsuarioService } from 'src/app/services/usuario.service';
+import { NgxViacepService, Endereco, CEPError } from "@brunoc/ngx-viacep";
+import { error } from 'console';
+
 
 @Component({
   selector: 'app-signup',
@@ -17,6 +20,8 @@ import { UsuarioService } from 'src/app/services/usuario.service';
   styleUrls: ['./signup.page.scss'],
 })
 export class SignupPage implements OnInit {
+  title = "app";
+  enderecoForm!: FormGroup;
 
   cpfControl: FormControl = new FormControl('');
   mobilePhoneControl: FormControl = new FormControl('');
@@ -42,18 +47,19 @@ buscaCep: FormGroup
  
   constructor(
     private router: Router,
+    private viacep: NgxViacepService,
     private formBuilder: FormBuilder,
     private usuarioService: UsuarioService,
     private clienteService: ClienteService,
     public navCtrl: NavController, 
     private http: HttpClient,
-    private title: Title,
+    private titlePage: Title,
     private alertController: AlertController,
     private loadingController: LoadingController,
     private viaCepService: ViaCepService
 
     ) {
-      this.title.setTitle('Continue Seu Cadastro')
+      this.titlePage.setTitle('Continue Seu Cadastro')
       this.cpfControl.valueChanges.subscribe((value: string) => {
         this.formatarCPF();
       });
@@ -65,7 +71,7 @@ buscaCep: FormGroup
       });
 
       this.buscaCep = this.formBuilder.group({
-        cep: [''],
+        postalCode: [''],
         logradouro: [''],
         bairro: [''],
         cidade: [''],
@@ -76,21 +82,57 @@ buscaCep: FormGroup
     }
   
     searchCep() {
-      const cep = this.buscaCep.get('cep')?.value;
-      this.viaCepService.getAddressByCep(cep).subscribe(
-        (response) => {
-          this.buscaCep.patchValue({
-            logradouro: response.logradouro,
-            bairro: response.bairro,
-            cidade: response.localidade,
-            estado: response.uf
-          });
-        },
-        (error) => {
-          console.error('Erro ao buscar o CEP:', error);
-        }
-      );
+      // const cepControl = this.buscaCep.get('postalCode');
+      // if (cepControl && cepControl.value) {
+      //   const cep = cepControl.value;
+      //   this.viaCepService.getAddressByCep(cep).subscribe(
+      //     (response) => {
+      //       this.buscaCep.patchValue({
+      //         address: response.logradouro,
+      //         province: response.bairro,
+      //         city: response.localidade,
+      //         state: response.uf
+      //       });
+      //     },
+      //     (error) => {
+      //       console.error('Erro ao buscar o CEP:', error);
+      //     }
+      //   );
+      // } else {
+      //   console.error('CEP inválido');
+      //  console.log(cepControl)
+      // }
     }
+    
+    
+    // consultaCEP() {
+    //   const cep = this.formulario.get('endereco.cep').value;
+  
+    //   if (cep != null && cep !== '') {
+    //     this.cepService.consultaCEP(cep)
+    //     .subscribe(dados => this.populaDadosForm(dados));
+    //   }
+    // }
+  
+    // populaDadosForm(dados) {
+    //   // this.formulario.setValue({});
+  
+    //   this.formulario.patchValue({
+    //     endereco: {
+    //       rua: dados.logradouro,
+    //       // cep: dados.cep,
+    //       complemento: dados.complemento,
+    //       bairro: dados.bairro,
+    //       cidade: dados.localidade,
+    //       estado: dados.uf
+    //     }
+    //   });
+  
+    //   //this.formulario.get('nome').setValue('Loiane');
+  
+    //   // console.log(form);
+    // }
+
 
     formatarCPF() {
       let cpfRegex = /^(\d{3})(\d{3})(\d{3})(\d{2})$/;
@@ -152,6 +194,7 @@ openExternalLinkYouTube(){
 }
 
 ngOnInit(): void{
+  this.searchCep()
   // this.cpfControl = new FormControl('');
   // this.cpfControl.valueChanges.subscribe((value: string) => {
   //     this.formatarCPF();
