@@ -36,22 +36,45 @@
   <ion-content>
 
    
-
+    <div style="overflow: auto;">
     <table>
       <tr>
+        <th>Role</th>
         <th>Nome</th>
         <th>Email</th>
         <th>Telefone</th>
         <th>CPF</th>
-        <th>Role</th>
+        <th>Celular</th>
+        <th>Telefone Fixo</th>
+        <th>CEP</th>
+        <th>Logradouro</th>
+        <th>Número</th>
+        <th>Bairro</th>
+        <th>Cidade</th>
+        <th>Estado</th>
+        <th>Complemento</th>
+        <th>Inscrição Municipal</th> 
+        <th>Inscrição Estadual</th>   
         <th>Actions</th>
       </tr>
       <tr *ngFor="let user of users; let i = index">
+        <td>{{ user.role }}</td>
         <td>{{ user.name }}</td>
         <td>{{ user.email }}</td>
         <td>{{ user.phone }}</td>
         <td>{{ user.cpfCnpj }}</td>
-        <td>{{ user.role }}</td>
+        <td>{{ user.mobilePhone }}</td>
+        <td>{{ user.phone }}</td>
+        <td>{{ user.postalCode }}</td>
+        <td>{{ user.address }}</td>
+        <td>{{ user.addressNumber }}</td>
+        <td>{{ user.province }}</td>
+        <td>{{ user.city }}</td>
+        <td>{{ user.state }}</td>
+        <td>{{ user.complement }}</td>
+        <td>{{ user.municipalInscription }}</td>
+        <td>{{ user.stateInscription }}</td>
+      
         <td >
           <ion-button color="success" (click)="selectUser(user)" style="margin-left: 5px; margin-right: 5px;">Visualizar</ion-button>
           <ion-button color="warning" (click)="editUser(user)" style="margin-left: 5px; margin-right: 5px;">Editar</ion-button>
@@ -59,7 +82,7 @@
         </td>
       </tr>
     </table>
-    
+  </div>
   
 
     <!-- Popup -->
@@ -69,6 +92,17 @@
     <p>Email: {{ selectedUser.email }}</p>
     <p>Telefone: {{ selectedUser.phone }}</p>
     <p>CPF: {{ selectedUser.cpfCnpj }}</p>
+    <p>Celular: {{ selectedUser.mobilePhone }}</p>
+    <p>Telefone Fixo: {{ selectedUser.phone }}</p>
+    <p>CEP: {{ selectedUser.postalCode }}</p>
+    <p>Logradouro: {{ selectedUser.address }}</p>
+    <p>Número: {{ selectedUser.addressNumber }}</p>
+    <p>Bairro: {{ selectedUser.province }}</p>
+    <p>Cidade: {{ selectedUser.city }}</p>
+    <p>Estado: {{ selectedUser.state }}</p>
+    <p>Complemento: {{ selectedUser.complement }}</p>
+    <p>Inscrição Municipal: {{ selectedUser.municipalInscription }}</p>
+    <p>Inscrição Estadual: {{ selectedUser.stateInscription }}</p>
     <!-- Adicione as demais informações do usuário aqui -->
     <button (click)="closePopup()">Fechar</button>
   </div>
@@ -79,23 +113,37 @@
     <div class="popup">
       <h2>Adicionar Usuário</h2>
       <!-- Adicione os campos necessários para criar um novo usuário -->
-      <input type="text" [(ngModel)]="name" placeholder="Nome">
-      <input type="email" [(ngModel)]="email" placeholder="Email">
-      <input type="tel" [(ngModel)]="phone" placeholder="Telefone">
-      <input type="text" [(ngModel)]="cpfCnpj" placeholder="CPF">
-      <input type="text" [(ngModel)]="mobilePhone" placeholder="Celular">
-      <input type="text" [(ngModel)]="postalCode" placeholder="CEP">
-      <input type="text" [(ngModel)]="address" placeholder="Endereço">
-      <input type="text" [(ngModel)]="addressNumber" placeholder="Número">
-      <input type="text" [(ngModel)]="complement" placeholder="Complemento">
-      <input type="text" [(ngModel)]="province" placeholder="Bairro">
-      <input type="text" [(ngModel)]="city" placeholder="Cidade">
-      <input type="text" [(ngModel)]="state" placeholder="Estado">
-      <input type="password" [(ngModel)]="password" placeholder="Senha">
+      <input type="text" [(ngModel)]="name" placeholder="Nome" (blur)="nameError = !name">
+      <p *ngIf="nameError" class="error-message">Nome é obrigatório.</p>
+      <input type="email" [(ngModel)]="email" placeholder="Email" (blur)="emailError = !email">>
+      <p *ngIf="emailError" class="error-message">Email é obrigatório.</p>
+      <input type="tel" [(ngModel)]="phone" placeholder="Telefone" (blur)="phoneError = !phone">>
+      <p *ngIf="phoneError" class="error-message">Telefone é obrigatório.</p>
+      <input type="text" [(ngModel)]="cpfCnpj" placeholder="CPF" (blur)="cpfCnpjError = !cpfCnpj">>
+      <p *ngIf="cpfCnpjError" class="error-message">CPF é obrigatório.</p>
+      <input type="text" [(ngModel)]="mobilePhone" placeholder="Celular" (blur)="mobilePhoneError = !mobilePhone">>
+      <p *ngIf="mobilePhoneError" class="error-message">Celular é obrigatório.</p>
+      <input type="text" [(ngModel)]="postalCode" placeholder="CEP" (blur)="postalCodeError = !postalCode">>
+      <p *ngIf="postalCodeError" class="error-message">CEP é obrigatório.</p>
+      <input type="text" [(ngModel)]="address" placeholder="Endereço" (blur)="addressError = !address">>
+      <p *ngIf="addressError" class="error-message">Endereço é obrigatório.</p>
+      <input type="text" [(ngModel)]="addressNumber" placeholder="Número" (blur)="addressNumberError = !addressNumber">>
+      <p *ngIf="addressNumberError" class="error-message">Número é obrigatório.</p>
+      <input type="text" [(ngModel)]="complement" placeholder="Complemento" (blur)="complementError = !complement">>
+      <p *ngIf="complementError" class="error-message">Complemento é obrigatório.</p>
+      <input type="text" [(ngModel)]="province" placeholder="Bairro" (blur)="provinceError = !province">>
+      <p *ngIf="provinceError" class="error-message">Bairro é obrigatório.</p>
+      <input type="text" [(ngModel)]="city" placeholder="Cidade" (blur)="cityError = !city">>
+      <p *ngIf="cityError" class="error-message">Cidade é obrigatório.</p>
+      <input type="text" [(ngModel)]="state" placeholder="Estado" (blur)="stateError = !state">>
+      <p *ngIf="stateError" class="error-message">Estado é obrigatório.</p>
+      <input type="password" [(ngModel)]="password" placeholder="Senha" (blur)="passwordError = !password">>
+      <p *ngIf="passwordError" class="error-message">Senha é obrigatório.</p>
 
 
       <!-- Botões para criar o usuário ou fechar o popup -->
-      <button (click)="createUser()">Criar</button>
+      <br>
+      <button (click)="createUser()">Criar Usuário</button>
       <button (click)="closeAddUserPopup()">Fechar</button>
     </div>
   </div>

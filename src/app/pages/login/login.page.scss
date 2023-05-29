@@ -138,9 +138,12 @@ ion-slide button {
     //height: 200px;
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 450px) {
     
 .container {
+    margin-top: 270px;
+    margin-left: auto;
+    margin-right: auto;
     background-image: url("../../../../src/assets/img/turbinas-3.jpg");
     background-size: cover;
     height: 500px;
@@ -1123,9 +1126,7 @@ a:hover, a:visited {
       
       }
   
-      @media (min-width: 601px){
-  
-      }
+     
   
     }
   

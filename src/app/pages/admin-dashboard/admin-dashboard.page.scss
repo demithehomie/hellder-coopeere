@@ -10,12 +10,19 @@
     justify-content: center;
     align-items: center;
   }
+
+  .error-message {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+  }
   
   .popup {
     background-color: #fff;
     padding: 20px;
     border-radius: 4px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    width: 750px
   }
   
   .popup h2 {

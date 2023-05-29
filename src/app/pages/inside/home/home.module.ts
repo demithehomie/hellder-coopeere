@@ -14,6 +14,7 @@ import { ClienteService } from 'src/app/services/cliente.service';
 import { UsuarioService } from 'src/app/services/usuario.service';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { AppStorageService } from 'src/app/services/app-storage.service';
+import { Clipboard } from '@ionic-native/clipboard/ngx';
 
 @NgModule({
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
@@ -27,7 +28,7 @@ import { AppStorageService } from 'src/app/services/app-storage.service';
   ],
   declarations: [HomePage ],
   providers: [
-    ProdistService, ClienteService, UsuarioService, AuthenticationService, AppStorageService, LoginPage // add the service here
+    ProdistService, ClienteService, UsuarioService, AuthenticationService, AppStorageService, LoginPage, Clipboard // add the service here
   ]
 })
 export class HomePageModule {}

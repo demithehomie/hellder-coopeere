@@ -672,13 +672,26 @@
     
     </div>
     <div *ngSwitchCase="'option6'" class="ngcontent">
-      Content for option 6
+      
+      <h1>Regulamento</h1>
+
     </div>
     <div *ngSwitchCase="'option7'" class="ngcontent">
-      Content for option 7
+      
+      <h1>Sorteio</h1>
+    
     </div>
     <div *ngSwitchCase="'option8'" class="ngcontent">
-      Content for option 8
+      
+      <h1>Convite</h1>
+      <h3>Clique no ícone para copiar o link</h3>
+      <ion-item style="max-width: 350px; display: flex; margin: auto;">
+       
+        <ion-label>https://coopeere-eco.web.app</ion-label>
+        <ion-icon name="copy" (click)="copiarLink()"></ion-icon>
+      </ion-item>
+      
+
     </div>
    
   </div>

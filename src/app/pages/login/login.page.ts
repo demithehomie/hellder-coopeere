@@ -143,10 +143,10 @@ async onSubmit() {
   const loading = await this.loadingController.create();
   await loading.present();
 
-  this.authenticationService.loginSimplificado(this.credentials.value).subscribe(
+  this.authenticationService.login(this.credentials.value).subscribe(
     async (res: any) => {
       this.router.navigateByUrl('/home', { replaceUrl: true });
-      this.setToken(res.token.accessToken)
+      //this.setToken(res.token.accessToken)
       this.setId(res.id)
       this.setUsername(res.name)
       this.setEmail(res.email)

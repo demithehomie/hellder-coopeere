@@ -12,15 +12,18 @@ import { Title } from '@angular/platform-browser'
 import { BehaviorSubject, take } from 'rxjs';
 import { from } from 'rxjs';
 import { saveAs } from 'file-saver';
+import { Clipboard } from '@capacitor/clipboard';
+//import { Clipboard } from '@ionic-native/clipboard/ngx';
+//import { Plugins } from '@capacitor/core';
 
-import { Plugins } from '@capacitor/core';
 import { HttpClient, HttpHeaders, HttpResponse, HttpParams } from '@angular/common/http';
 import { AppStorageService } from 'src/app/services/app-storage.service';
 import { Router } from '@angular/router';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 //import { FileTransfer, FileUploadOptions, FileTransferObject } from '@awesome-cordova-plugins/file-transfer/ngx';
 //import { File } from '@awesome-cordova-plugins/file';
 
-
+//const { Clipboard } = Plugins
 // const { Filesystem, Modals } = Plugins;
 // const { Directory, Encoding } = Filesystem;
 
@@ -80,6 +83,7 @@ export class HomePage implements OnInit {
   constructor(
     private appStorageService: AppStorageService,
     private router: Router,
+    private authService: AuthenticationService,
     private usuarioService: UsuarioService, 
     private alertController: AlertController,
     private clienteService: ClienteService,
@@ -89,8 +93,9 @@ export class HomePage implements OnInit {
     private loadingController: LoadingController,
     //private transfer: FileTransfer, 
     //private file: File,
-    private httpClient: HttpClient
-    //private prodistService: ProdistService
+    private httpClient: HttpClient,
+    //private prodistService: ProdistService,
+    private clipboard: Clipboard
     ) {
       this.titleController.setTitle('Home - Coopeere')
       this.operadoraSelecionada = 1; // Defina um valor padrão para a operadora selecionada
@@ -103,6 +108,23 @@ export class HomePage implements OnInit {
     }
 
 
+   async copiarLink() {
+      const link = 'https://coopeere-eco.web.app'; // Substitua pelo seu link
+    
+      Clipboard.write({
+        string: link
+      });
+    
+      const alert = this.alertController.create({
+        header: 'Link Copiado',
+        buttons: ['OK']
+      });
+    
+     (await alert).present();
+    }
+    
+
+    
     // O problema de "Data inválida" ocorre quando os valores passados para criar um objeto `Date` não correspondem a uma data válida. No código fornecido, a variável `selectedDay` é usada para criar a data `this.nextDueDate`. Se o valor de `selectedDay` for maior do que o número de dias no mês selecionado, ou menor do que 1, uma data inválida será criada.
 
     // Para resolver esse problema, você pode adicionar uma verificação para garantir que `selectedDay` esteja dentro do intervalo válido para o mês selecionado. Você pode fazer isso modificando a função `calculateNextDueDate()` da seguinte forma:
@@ -369,6 +391,7 @@ async removeValue(){
 
 async clearStorage(){
   this.router.navigateByUrl('/onboarding')
+  this.authService.logout()
   await this.appStorageService.clear()
 }
 

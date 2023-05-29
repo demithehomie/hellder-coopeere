@@ -39,6 +39,20 @@ export class AdminDashboardPage implements OnInit {
   password!: any
   observations: string = 'Cooperado da COOPEERE'
 
+  nameError!: boolean;
+  emailError!: boolean;
+  phoneError!: boolean;
+  cpfCnpjError!: boolean;
+  mobilePhoneError!: boolean;
+  postalCodeError!: boolean;
+  addressError!: boolean;
+  addressNumberError!: boolean;
+  complementError!: boolean;
+  provinceError!: boolean;
+  cityError!: boolean;
+  stateError!: boolean;
+  passwordError!: boolean;
+
   constructor(
     private adminService: AdminService,
     private usersService: UsuarioService,
@@ -85,12 +99,12 @@ refreshPage() {
   }
 
   closeAddUserPopup() {
-    this.showAddAdminPopup = false; // Fecha o popup de adicionar usuário
+    this.showAddUserPopup = false; // Fecha o popup de adicionar usuário
     this.newAdmin = {}; // Limpa os dados do novo usuário
   }
 
   closeAddAdminPopup() {
-    this.showAddUserPopup = false; // Fecha o popup de adicionar usuário
+    this.showAddAdminPopup = false; // Fecha o popup de adicionar usuário
     this.newUser = {}; // Limpa os dados do novo usuário
   }
 
@@ -124,7 +138,7 @@ refreshPage() {
           console.log('Admin criado com sucesso:', response);
           this.users.push(response); // Adiciona o novo usuário à lista
           this.closeAddAdminPopup(); // Fecha o popup de adicionar usuário
-          this.refreshPage()
+         // this.refreshPage()
         },
         error => {
           console.error('Erro ao criar admin:', error);
@@ -141,6 +155,20 @@ refreshPage() {
 
     const loading = await this.loadingController.create();
     await loading.present();
+
+    this.nameError = !this.name;
+    this.emailError = !this.email;
+    this.phoneError = !this.phone;
+    this.cpfCnpjError = !this.cpfCnpj;
+    this.mobilePhoneError = !this.mobilePhone;
+    this.postalCodeError = !this.postalCode;
+    this.addressError = !this.address;
+    this.addressNumberError = !this.addressNumber;
+    this.complementError = !this.complement;
+    this.provinceError = !this.province;
+    this.cityError = !this.city;
+    this.stateError = !this.state;
+    this.passwordError = !this.password;
 
     this.usersService.create(
       this.role,
@@ -168,7 +196,7 @@ refreshPage() {
           console.log('Usuário criado com sucesso:', response);
           this.users.push(response); // Adiciona o novo usuário à lista
           this.closeAddUserPopup(); // Fecha o popup de adicionar usuário
-          this.refreshPage()
+          //this.refreshPage()
         },
         error => {
           loading.dismiss();
@@ -207,7 +235,7 @@ refreshPage() {
     this.adminService.updateUser(userId, this.selectedUser)
       .subscribe(
         response => {
-          this.refreshPage()
+          //this.refreshPage()
           console.log('Usuário atualizado com sucesso:', response);
           this.closeEditUserPopup(); // Fecha o popup de edição de usuário
         },

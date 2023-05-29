@@ -7,6 +7,7 @@ import { AlertController, LoadingController, NavController } from '@ionic/angula
 import { Cliente } from 'src/app/interfaces/cliente';
 import { Login } from 'src/app/interfaces/login';
 import { Usuario } from 'src/app/interfaces/usuario';
+import { ViaCepService } from 'src/app/services/cep.service';
 import { ClienteService } from 'src/app/services/cliente.service';
 import { UsuarioService } from 'src/app/services/usuario.service';
 
@@ -20,6 +21,9 @@ export class SignupPage implements OnInit {
   cpfControl: FormControl = new FormControl('');
   mobilePhoneControl: FormControl = new FormControl('');
   fixoControl: FormControl = new FormControl('');
+
+buscaCep: FormGroup
+
   value!: any
   name!: any;
   cpfCnpj: any = '' 
@@ -45,7 +49,8 @@ export class SignupPage implements OnInit {
     private http: HttpClient,
     private title: Title,
     private alertController: AlertController,
-    private loadingController: LoadingController
+    private loadingController: LoadingController,
+    private viaCepService: ViaCepService
 
     ) {
       this.title.setTitle('Continue Seu Cadastro')
@@ -58,8 +63,35 @@ export class SignupPage implements OnInit {
       this.fixoControl.valueChanges.subscribe((value: string) => {
         this.formatarTelefoneFixo();
       });
+
+      this.buscaCep = this.formBuilder.group({
+        cep: [''],
+        logradouro: [''],
+        bairro: [''],
+        cidade: [''],
+        estado: ['']
+      });
+
+      
     }
   
+    searchCep() {
+      const cep = this.buscaCep.get('cep')?.value;
+      this.viaCepService.getAddressByCep(cep).subscribe(
+        (response) => {
+          this.buscaCep.patchValue({
+            logradouro: response.logradouro,
+            bairro: response.bairro,
+            cidade: response.localidade,
+            estado: response.uf
+          });
+        },
+        (error) => {
+          console.error('Erro ao buscar o CEP:', error);
+        }
+      );
+    }
+
     formatarCPF() {
       let cpfRegex = /^(\d{3})(\d{3})(\d{3})(\d{2})$/;
       if (this.cpfControl.value) {
@@ -86,7 +118,6 @@ export class SignupPage implements OnInit {
     
  
  
-  
  
 
 
@@ -155,7 +186,7 @@ cliente: Cliente = {
   additionalEmails: ['fale.conosco@coopeere.eco.br'],
   externalReference: " ",
   notificationDisabled: false,
-  observations: 'Usuário faz parte da COOPEERE, consulte fale.conosco@coopeere.eco.br para retirar dúvidas',
+  observations: 'Usuário faz parte da COOPEERE, consulte fale.conosco@coopeere.eco.br sobre dúvidas',
   id: ''
 }
 
