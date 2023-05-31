@@ -28,9 +28,9 @@
   </div>
 <div class="form-content col-sm-12">
   <div class="card p-4 mb-4 ">
-    <form [formGroup]="formulario" id="formulario-cadastro" (submit)="cadastro()">
+    <!-- <form  id="formulario-cadastro" (submit)="cadastro()">
       
-      <input type="hidden" name="_token" value="CsbBXaFkBxwza5YHajzScu1cX0T8qLxYMLNfdzDj" wfd-id="id0">        
+      <input type="hidden" name="_token" value="CsbBXaFkBxwza5YHajzScu1cX0T8qLxYMLNfdzDj" wfd-id="id0" >        
       <input type="hidden" name="_method" value="put" wfd-id="id1">                
       
       <div class="form-group-heading">Realize o cadastro e torne-se um Coopeerado</div>
@@ -40,16 +40,11 @@
         <div class="form-group-title">Dados Pessoais</div>
 
         
-       
-
-            <!--
-            <input formControlName="name"  formControlName="name" type="text" class="form-control" id="name" name="name" value="" required wfd-id="id2">
-            -->
           
-            <ion-item>
-              <ion-label position="floating">Nome Completo</ion-label>
-              <ion-input formControlName="name" placeholder="Insira seu nome completo" type="text" ></ion-input>
-            </ion-item>
+             
+              <label position="floating">Nome Completo</label>
+              <input [(ngModel)]="usuario.name" [(ngModel)]="cliente.name" placeholder="Insira seu nome completo" type="text" name="name" id="name"  > 
+             
             
             <div *ngIf="name.invalid && (name.dirty || name.touched)" class="errors">
               <span *ngIf="name.errors.required">Preencha seu nome</span>
@@ -58,29 +53,29 @@
             
        
 
-        <ion-item>
-          <ion-label position="floating">E-mail*</ion-label>
-          <ion-input formControlName="email" type="email" placeholder="example@example.com"></ion-input>
-        </ion-item>
+         
+          <label position="floating">E-mail*</label>
+          <input [(ngModel)]="usuario.email" [(ngModel)]="cliente.email" type="email" placeholder="example@example.com" name="email" id="email" [ngModelOptions]="{standalone: true}"> 
+         
         
         <div *ngIf="email.invalid && (email.dirty || email.touched)" class="errors">
           <span *ngIf="email.errors.required">Preencha seu e-mail</span>
           <span *ngIf="email.errors.email">E-mail inválido</span>
         </div>
         
-        <ion-item>
-          <ion-label position="floating">CPF/CNPJ*</ion-label>
-          <ion-input formControlName="cpfCnpj" id="cpfCnpj" name="cpfCnpj" appCpfFormat type="text" [formControl]="cpfControl" placeholder="Digite seu CPF"></ion-input>
-        </ion-item>
+         
+          <label position="floating">CPF/CNPJ*</label>
+          <input [(ngModel)]="usuario.cpfCnpj" [(ngModel)]="cliente.cpfCnpj" id="cpfCnpj" name="cpfCnpj"  type="text" placeholder="Digite seu CPF" [ngModelOptions]="{standalone: true}"> 
+         
         
         <div *ngIf="cpfCnpj.invalid && (cpfCnpj.dirty || cpfCnpj.touched)"  pattern="[0-9]{11}" class="errors">
           <span *ngIf="cpfCnpj.errors.required">Preencha seu CPF/CNPJ</span>
         </div>
         
-        <ion-item>
-          <ion-label position="floating">Telefone Celular*</ion-label>
-          <ion-input formControlName="mobilePhone" id="mobilePhone" name="mobilePhone" type="tel" placeholder="(00) 00000-0000" [formControl]="mobilePhoneControl"></ion-input>
-        </ion-item>
+         
+          <label position="floating">Telefone Celular*</label>
+          <input [(ngModel)]="usuario.mobilePhone" [(ngModel)]="cliente.mobilePhone" id="mobilePhone" name="mobilePhone" type="tel" placeholder="(00) 00000-0000"  [ngModelOptions]="{standalone: true}"> 
+         
         
         <div *ngIf="mobilePhone.invalid && (mobilePhone.dirty || mobilePhone.touched)" class="errors">
           <span *ngIf="mobilePhone.errors.required">Preencha seu telefone celular</span>
@@ -88,24 +83,24 @@
         
     
 
-        <ion-item>
-          <ion-label position="floating">Telefone Fixo</ion-label>
-          <ion-input formControlName="phone" id="phone" name="phone" type="tel" placeholder="(00) 0000-0000" [formControl]="fixoControl"></ion-input>
-        </ion-item>
+         
+          <label position="floating">Telefone Fixo</label>
+          <input [(ngModel)]="usuario.phone" [(ngModel)]="cliente.phone" id="phone" name="phone" type="tel" placeholder="(00) 0000-0000" [ngModelOptions]="{standalone: true}"> 
+         
         
-        <ion-item>
-          <ion-label position="floating">Senha*</ion-label>
-          <ion-input formControlName="password" type="password" required></ion-input>
-        </ion-item>
+         
+          <label position="floating">Senha*</label>
+          <input [(ngModel)]="usuario.password" type="password" id="name" name="name" [ngModelOptions]="{standalone: true}"  required> 
+         
         
         <div *ngIf="password.invalid && (password.dirty || password.touched)" class="errors">
           <span *ngIf="password.errors.required">Preencha sua senha</span>
         </div>
         
-        <ion-item>
-          <ion-label position="floating">Confirmar Senha*</ion-label>
-          <ion-input formControlName="confirm_password" type="password" required></ion-input>
-        </ion-item>
+         
+          <label position="floating">Confirmar Senha*</label>
+          <input [(ngModel)]="usuario.confirm_password" type="password" required> 
+         
         
         <div *ngIf="confirm_password.invalid && (confirm_password.dirty || confirm_password.touched)" class="errors">
           <span *ngIf="confirm_password.errors.required">Confirme sua senha</span>
@@ -113,63 +108,63 @@
 
         <div >
         <div class="form-group-title">Endereço*</div>
-<!-- (blur)="consultaCEP($event.target.value, f)" -->
-        <ion-item>
-          <ion-label position="floating">CEP*</ion-label>
-          <ion-input formControlName="postalCode" id="postalCode" name="postalCode"   type="text" placeholder="00000-000"></ion-input>
+(blur)="consultaCEP($event.target.value, f)"
+         
+          <label position="floating">CEP*</label>
+          <input  #searchCep (blur)="blur($event)" [(ngModel)]="usuario.postalCode" [(ngModel)]="cliente.postalCode" id="postalCode" name="postalCode"   type="text" placeholder="00000-000" [ngModelOptions]="{standalone: true}"> 
           <h6>  O mesmo que consta na conta de energia </h6>
-        </ion-item>
+         
 
         <div *ngIf="postalCode.invalid && (postalCode.dirty || postalCode.touched)" class="errors">
           <span *ngIf="postalCode.errors.required">Preencha seu CEP</span>
         </div>
       
-          <!-- <small class="text-muted">
+           <small class="text-muted">
             O mesmo que consta na conta de energia
-          </small> -->
+          </small> 
 
-          <ion-button color="warning" (click)="searchCep()">VALIDAR CEP</ion-button>
+           <ion-button color="warning" >VALIDAR CEP</ion-button> 
           
         
-          <ion-item>
-            <ion-label position="floating">Endereço*</ion-label>
-            <ion-input formControlName="address" id="address" name="address" type="text"></ion-input>
-          </ion-item>
+           
+            <label position="floating">Endereço*</label>
+            <input [(ngModel)]="usuario.address" [(ngModel)]="cliente.address" id="address" name="address" type="text" [ngModelOptions]="{standalone: true}"> 
+           
           
           <div *ngIf="address.invalid && (address.dirty || address.touched)" class="errors">
             <span *ngIf="address.errors.required">Preencha seu endereço</span>
           </div>
           
-          <ion-item>
-            <ion-label position="floating">Número*</ion-label>
-            <ion-input formControlName="addressNumber" id="addressNumber" type="text"></ion-input>
-          </ion-item>
+           
+            <label position="floating">Número*</label>
+            <input [(ngModel)]="usuario.addressNumber" [(ngModel)]="cliente.addressNumber" id="addressNumber" type="text" [ngModelOptions]="{standalone: true}"> 
+           
           
           <div *ngIf="addressNumber.invalid && (addressNumber.dirty || addressNumber.touched)" class="errors">
             <span *ngIf="addressNumber.errors.required">Preencha o número do endereço</span>
           </div>
           
-          <ion-item>
-            <ion-label position="floating">Bairro*</ion-label>
-            <ion-input formControlName="province" id="province" name="province" type="text"></ion-input>
-          </ion-item>
+           
+            <label position="floating">Bairro*</label>
+            <input [(ngModel)]="usuario.province" [(ngModel)]="cliente.province" id="province" name="province" type="text" [ngModelOptions]="{standalone: true}"> 
+           
           
           <div *ngIf="province.invalid && (province.dirty || province.touched)" class="errors">
             <span *ngIf="province.errors.required">Preencha o bairro</span>
           </div>
           
-          <ion-item>
-            <ion-label position="floating">Cidade*</ion-label>
-            <ion-input formControlName="city" id="city" name="city" type="text"></ion-input>
-          </ion-item>
+           
+            <label position="floating">Cidade*</label>
+            <input [(ngModel)]="usuario.city" [(ngModel)]="cliente.city" id="city" name="city" type="text" [ngModelOptions]="{standalone: true}"> 
+           
           
           <div *ngIf="city.invalid && (city.dirty || city.touched)" class="errors">
             <span *ngIf="city.errors.required">Preencha a cidade</span>
           </div>
           
-          <ion-item>
-            <ion-label position="floating">Estado*</ion-label>
-            <ion-select formControlName="state" id="state" name="state">
+           
+            <label position="floating">Estado*</label>
+            <ion-select [(ngModel)]="usuario.state" [(ngModel)]="cliente.state" id="state" name="state" [ngModelOptions]="{standalone: true}">
               <ion-select-option value="">UF</ion-select-option>
               <ion-select-option value="AC">Acre</ion-select-option>
               <ion-select-option value="AL">Alagoas</ion-select-option>
@@ -199,13 +194,13 @@
               <ion-select-option value="SE">Sergipe</ion-select-option>
               <ion-select-option value="TO">Tocantins</ion-select-option>
             </ion-select>
-          </ion-item>
+           
           
           <div *ngIf="state.invalid && (state.dirty || state.touched)" class="errors">
             <span *ngIf="state.errors.required">Selecione o estado</span>
           </div>
 
-        </div> <!-- FIM DA DIV DOS CEPS -->
+        </div>  FIM DA DIV DOS CEPS 
        
 
         <div class="form-actions mt-4">
@@ -213,7 +208,151 @@
         </div>
 
       </div>
+    </form> -->
+
+    <form id="formulario-cadastro" (submit)="cadastro()">
+      <input type="hidden" name="_token" value="CsbBXaFkBxwza5YHajzScu1cX0T8qLxYMLNfdzDj" wfd-id="id0">        
+      <input type="hidden" name="_method" value="put" wfd-id="id1">                
+      <div class="form-group-heading">Realize o cadastro e torne-se um Coopeerado</div>
+
+      <div class="form-group grid-cols-6 ">
+
+        <div class="form-group-title">Dados Pessoais</div>
+
+        <label class="form-label" for="nome">Nome Completo*</label>
+        <div class="col-span-5">
+          <div class="input-group">
+            <input [(ngModel)]="cliente.name"  [(ngModel)]="usuario.name" type="text" class="form-control" id="name" name="name" value="" required wfd-id="id2">
+          </div>
+        </div>
+
+        <label class="form-label" for="nome">Empresa*</label>
+        <div class="input-group w-60">
+          <div class="input-group">
+            <input [(ngModel)]="cliente.company"[(ngModel)]="usuario.company" type="text" class="form-control" id="company" name="company" value="" required wfd-id="id2">
+          </div>
+        </div>
+        <label class="form-label" for="email">E-mail*</label>
+        <div class="input-group">
+          <input [(ngModel)]="cliente.email" [(ngModel)]="usuario.email"  type="text" class="form-control" id="email" name="email" value="" required wfd-id="id3">
+        </div>
+
+        <label class="form-label" for="cpf_cnpj">CPF/CNPJ*</label>
+        <div class="input-group w-60">
+          <input (input)="onInput($event)" [(ngModel)]="cliente.cpfCnpj" [(ngModel)]="usuario.cpfCnpj" type="text" placeholder="Digite seu CPF" class="form-control cliente-documento" id="cpfCnpj" name="cpfCnpj" value="" size="25" required maxlength="14" wfd-id="id4">
+          <!-- <p *ngIf="formulario.get('cliente.cpfcnpj').touched && formulario.get('cliente.cpfcnpj').errors?.cliente.cpfcnpj">CPF inválido.</p> -->
+        </div>
+
+        <label class="form-label" for="telefone_celular">Telefone Celular*</label>
+        <div class="input-group w-60">
+          <input [(ngModel)]="cliente.mobilePhone" [(ngModel)]="usuario.mobilePhone" type="text" class="form-control" id="mobilePhone" name="mobilePhone" size="16" value="" required placeholder="Insira aqui seu telefone" wfd-id="id5">
+        </div>
+
+        <label class="form-label" for="telefone_fixo">Telefone Fixo</label>
+        <div class="input-group w-60">
+          <input [(ngModel)]="cliente.phone" [(ngModel)]="usuario.phone" type="text" class="form-control" id="phone" name="phone" size="16" value="" wfd-id="id6">
+        </div>
+
+        <label class="form-label" for="senha">Senha*</label>
+        <div class="input-group">
+          <input [(ngModel)]="usuario.password" type="password" class="form-control" id="password" name="password" required wfd-id="id7">
+        </div>
+
+        <label class="form-label" for="confirm_password">Confirmar Senha*</label>
+        <div class="input-group">
+          <input [(ngModel)]="usuario.confirm_password" type="password" class="form-control" id="confirm_password" name="confirm_password" required wfd-id="id8">
+        </div>
+
+        <div class="form-group-title">Endereço*</div>
+
+        <label class="form-label" for="cep">CEP*</label>
+        <div class="col-span-5">
+          <div class="flex">
+            <div class="input-group w-25">
+              <input [(ngModel)]="cliente.postalCode" [(ngModel)]="usuario.postalCode" onblur="pesquisacep(this.value);" class="form-control" type="text" id="postalCode" name="postalCode" size="10" required wfd-id="id9">
+            </div>
+            <div class="p-2 d-none" id="loading-cep">
+              <div class="spinner-border spinner-border-sm" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+            </div>
+          </div>
+          <small class="text-muted">
+            O mesmo que consta na conta de energia
+          </small>
+        </div>
+        
+        <label class="form-label" for="endereco">Endereço*</label>
+        <div class="input-group">
+          <input [(ngModel)]="cliente.address" [(ngModel)]="usuario.address" type="text" class="form-control" id="address" name="address" required wfd-id="id10">
+        </div>
+
+        <label class="form-label" for="endereco">Número*</label>
+        <div class="input-group">
+          <input [(ngModel)]="cliente.addressNumber" [(ngModel)]="usuario.addressNumber" type="text" class="form-control" id="addressNumber" name="addressNumber" value="" required wfd-id="id11">
+        </div>
+
+        <label class="form-label" for="bairro">Bairro*</label>
+        <div class="input-group">
+          <input [(ngModel)]="cliente.province" [(ngModel)]="usuario.province" type="text" class="form-control" id="province" name="province" value="" required wfd-id="id12">
+        </div>
+
+        <label class="form-label" for="cidade">Cidade*</label>
+        <div class="input-group">
+          <input [(ngModel)]="cliente.city" [(ngModel)]="usuario.city" type="text" class="form-control" id="city" name="city" value="" required wfd-id="id13">
+        </div>
+        
+        <label class="form-label" for="estado">Estado*</label>
+        <div class="input-group">
+          <select [(ngModel)]="cliente.state" [(ngModel)]="usuario.state" class="form-select" id="state" name="state" required>
+            <option value="">UF</option>
+            <option value="AC">Acre</option>
+            <option value="AL">Alagoas</option>
+            <option value="AP">Amapá</option>
+            <option value="AM">Amazonas</option>
+            <option value="BA">Bahia</option>
+            <option value="CE">Ceará</option>
+            <option value="DF">Distrito Federal</option>
+            <option value="ES">Espírito Santo</option>
+            <option value="GO">Goiás</option>
+            <option value="MA">Maranhão</option>
+            <option value="MT">Mato Grosso</option>
+            <option value="MS">Mato Grosso do Sul</option>
+            <option value="MG">Minas Gerais</option>
+            <option value="PA">Pará</option>
+            <option value="PB">Paraíba</option>
+            <option value="PR">Paraná</option>
+            <option value="PE">Pernambuco</option>
+            <option value="PI">Piauí</option>
+            <option value="RJ">Rio de Janeiro</option>
+            <option value="RN">Rio Grande do Norte</option>
+            <option value="RS">Rio Grande do Sul</option>
+            <option value="RO">Rondônia</option>
+            <option value="RR">Roraima</option>
+            <option value="SC">Santa Catarina</option>
+            <option value="SP">São Paulo</option>
+            <option value="SE">Sergipe</option>
+            <option value="TO">Tocantins</option>
+          </select>
+        </div>
+
+        <label class="form-label" for="cidade">Emails Adicionais*</label>
+        <div class="input-group">
+          <input [(ngModel)]="cliente.additionalEmails" [(ngModel)]="usuario.additionalEmails" type="text" class="form-control" id="additionalEmails" name="additionalEmails" value="" required wfd-id="id13">
+        </div>
+
+        <label class="form-label" for="cidade">Observações*</label>
+        <div class="input-group">
+          <input [(ngModel)]="cliente.observations" [(ngModel)]="usuario.observations" type="text" class="form-control" id="observations" name="observations" value="" required wfd-id="id13">
+        </div>
+
+        <div class="form-actions mt-4">
+          <button type="submit" class="btn btn-primary">Enviar</button>
+        </div>
+
+      </div>
     </form>
+
   </div>
 </div>
 </div>

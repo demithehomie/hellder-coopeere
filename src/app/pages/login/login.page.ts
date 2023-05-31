@@ -170,19 +170,32 @@ async onSubmit() {
       
       console.log(res)
       await loading.dismiss();
-      this.presentSuccessAlert() 
-      
-    },  
-    async (res: { error: any; }) => {
+      if (res.status === 200) {
+        this.presentSuccessAlert();
+      } else if (res.status === 401) {
+        const alert = await this.alertController.create({
+          header: 'Não autorizado',
+          message: 'Usuário não cadastrado.',
+          buttons: ['OK']
+        });
+        await alert.present();
+      } else if (res.status === 400) {
+        const alert = await this.alertController.create({
+          header: 'Erro',
+          message: 'Email ou senha incorretos.',
+          buttons: ['OK']
+        });
+        await alert.present();
+      }
+    },
+    async (res: { error: any }) => {
       await loading.dismiss();
-     // this.presentErrorAlert()
       const alert = await this.alertController.create({
         header: 'Falha na autenticação',
-        message: 'Seu login não pôde ser autenticado.',
+        message: 'Verifique seu email ou senha.',
         buttons: ['OK']
       });
-
-      //await alert.present();
+      await alert.present();
     }
   );
 }

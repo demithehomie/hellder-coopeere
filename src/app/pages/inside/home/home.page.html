@@ -172,55 +172,50 @@
 
       <div class="container-step-content">
 
-        <form class="triagemForm" method="POST" id="regForm" action="">
-
+        <form class="triagemForm" [formGroup]="triagemForm" (ngSubmit)="submitTriagemForm()" id="regForm">
           <fieldset class="fieldset">
-
             <h3 class="tab-title">Triagem</h3>
-
             <p for="operadora">Escolha a sua distribuidora (de acordo com sua conta de luz):</p>
             <div class="operadora_field mb-5">
-              
-                <label class="form-check-label checked" for="operadora1" id="operadora1_nome">
-                  <input class="form-check-input" checked="" type="radio" id="operadora1" name="idoperadora" value="1" wfd-id="id17">
-                  <span>Enel-RJ</span>
-                </label>
-              
-                <label class="form-check-label " for="operadora2" id="operadora2_nome">
-                  <input class="form-check-input" type="radio" id="operadora2" name="idoperadora" value="2" wfd-id="id18">
-                  <span>Light-RJ</span>
-                </label>
-              
-                <label class="form-check-label" for="operadora3" id="operadora3_nome">
-                  <input class="form-check-input" type="radio" id="operadora3" name="idoperadora" value="3" wfd-id="id19">
-                  <span>Enel-SP</span>
-                </label>
-                  </div>
+              <label class="form-check-label" for="operadora1" id="operadora1_nome">
+                <input class="form-check-input" type="radio" id="operadora1" formControlName="operadora" value="Enel-RJ">
+                <span>Enel-RJ</span>
+              </label>
+              <label class="form-check-label" for="operadora2" id="operadora2_nome">
+                <input class="form-check-input" type="radio" id="operadora2" formControlName="operadora" value="Light-RJ">
+                <span>Light-RJ</span>
+              </label>
+              <label class="form-check-label" for="operadora3" id="operadora3_nome">
+                <input class="form-check-input" type="radio" id="operadora3" formControlName="operadora" value="Enel-SP">
+                <span>Enel-SP</span>
+              </label>
+            </div>
         
-                                            
             <div class="row align-items-start md:align-items-center mb-3">
               <div class="col-auto">
-                <input class="form-check-input" type="radio" id="titular" checked="" name="eh_titular" value="true" wfd-id="id20">
+                <input class="form-check-input" type="radio" id="titular" formControlName="ehTitular" value="true">
               </div>
-        
               <div class="col">
-                <label class="form-check-label" for="titular" id="mensagem_triagem_titular">Tenho uma conta Enel-RJ em meu nome. (Preencha o formulário PRODIST ANEEL com os dados desta conta)</label>
+                <label class="form-check-label" for="titular" id="mensagem_triagem_titular">
+                  {{ getTitularLabel() }}
+                </label>
               </div>
-        
             </div>
         
             <div class="row align-items-start md:align-items-center">
               <div class="col-auto">
-                <input class="form-check-input" type="radio" id="ntitular" name="eh_titular" value="false" wfd-id="id21">
+                <input class="form-check-input" type="radio" id="ntitular" formControlName="ehTitular" value="false">
               </div>
-        
               <div class="col">
-                <label class="form-check-label" for="ntitular" id="mensagem_triagem_ntitular">Não sou titular de uma conta Enel-RJ, mas me cadastrarei com o Link convite que me foi enviado ou o farei sem convite por livre e espontânea vontade para apoiar a cooperativa. (você será um Cooperado Apoiador).</label>
+                <label class="form-check-label" for="ntitular" id="mensagem_triagem_ntitular">
+                  {{ getNaoTitularLabel() }}
+                </label>
               </div>
             </div>
-        
           </fieldset>
         </form>
+        
+        
       </div>
     </div>
 
@@ -449,7 +444,7 @@
 
 <ion-button type="submit" color="success" (click)="cadastroProdist()"  >ATUALIZAR FORMULÁRIO</ion-button>
 <br>
-<ion-button color="warning" (click)="gerarPDFSingle()">Emitir PDF</ion-button>
+<ion-button color="warning" (click)="gerarPDFSingle()">DOWNLOAD PDF</ion-button>
 
 </div>
 
@@ -647,7 +642,7 @@
         <div class="more-payment-options" style="display: flex">
           <ion-label style="text-align: center;">Periodicidade</ion-label>
           <select style="background-color: #fff; padding: 10px; border: 1px solid #000; border-radius: 5px;"  placeholder=""  name="cycle" [(ngModel)]="subs.cycle" >
-            <option value="">Escolha o Tipo de Cobrança</option>
+            <option value="" selected>Escolha o Tipo de Cobrança</option>
             <option value="MONTHLY">Mensal</option>
             <option value="BIWEEKLY">Quinzenal</option>
             <option value="QUARTERLY">Trimestral</option>
@@ -659,7 +654,7 @@
         <div class="more-payment-options">
           <ion-label>Escolha o seu plano (de acordo com o escolhido acima)</ion-label>
           <select  style="background-color: #fff; padding: 10px; border: 1px solid #000; border-radius: 5px;"  placeholder="" name="value" [(ngModel)]="subs.value">
-            <option value="">Escolher plano</option>
+            <option value="" selected>Escolher plano</option>
             <option value="3.5">R$ 3,50 - Mensal</option>
             <option value="7.5">R$ 7,50 - Quinzenal</option>
             <option value="10.00">R$ 10,00 - Trimestral</option>
@@ -672,7 +667,7 @@
         <div class="more-payment-options">
           <ion-label>Escolha a forma de pagamento</ion-label>
           <select [(ngModel)]="subs.billingType" name="billingType" style="background-color: #fff; padding: 10px; border: 1px solid #000; border-radius: 5px;">
-            <option value="">Escolher Pagamento</option>
+            <option value="" selected>Escolher Pagamento</option>
             <option value="PIX">Pix</option>
             <option value="BOLETO">Boleto</option>
             </select>
@@ -705,8 +700,8 @@
       <h3>Clique no ícone para copiar o link</h3>
       <ion-item style="max-width: 350px; display: flex; margin: auto;">
        
-        <ion-label style="font-size: 35px;">https://coopeere-eco.web.app</ion-label>
-        <ion-icon style="font-size: 35px;" name="copy" (click)="copiarLink()"></ion-icon>
+        <ion-label style="font-size: 15px;">https://coopeere-eco.web.app</ion-label>
+        <ion-icon style="font-size: 15px;" name="copy" (click)="copiarLink()"></ion-icon>
       </ion-item>
       
 
@@ -740,7 +735,7 @@
     </ion-buttons>
   
     <ion-buttons slot="end" class="save">
-      <ion-button>
+      <ion-button (click)="multipleUpdate()">
         <ion-label>Salvar</ion-label>
         <ion-icon name="save"></ion-icon>
       </ion-button>

@@ -12,6 +12,12 @@ import { Title } from '@angular/platform-browser';
 })
 export class OnboardingPage implements OnInit  {
 
+  isDropdownOpen: boolean = false;
+
+  toggleDropdown() {
+    this.isDropdownOpen = !this.isDropdownOpen;
+  }
+
   pesquisaPagina: any;
 
   filtros: any;
@@ -61,6 +67,19 @@ closeSearchInput(){
     ) {
       this.titleController.setTitle('Home - Coopeere')
     }
+
+    ionViewDidEnter() {
+      //this.refreshPage();
+    
+      setInterval(() => {
+        this.refreshPage();
+      }, 3 * 60 * 1000); // Executa a cada 3 minutos (3 minutos * 60 segundos * 1000 milissegundos)
+    }
+    
+    refreshPage() {
+      window.location.reload();
+    }
+    
 
     search() {
       this.searchService.searchTerm = this.searchTerm;

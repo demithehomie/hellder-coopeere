@@ -37,5 +37,9 @@ export class ProdistService {
       return this.obterDados(data)
     }
 
+    cadastrarNoBancoDeDados(dadosFormulario: any){
+
+    }
+
     
 }

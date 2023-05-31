@@ -80,6 +80,9 @@ export class HomePage implements OnInit {
   dataHoje: Date;
   dataDaquiA30Dias: Date;
 
+  triagemForm!: FormGroup;
+  selectedOperadora!: string;
+
   constructor(
     private appStorageService: AppStorageService,
     private router: Router,
@@ -107,6 +110,7 @@ export class HomePage implements OnInit {
       const data_selecionada = this.dataDaquiA30Dias.setDate(this.dataDaquiA30Dias.getDate() + 30);
     }
 
+    
     sairDaSessao() {
       this.alertController.create({
         header: 'Você está prestes a deixar a sessão',
@@ -232,6 +236,9 @@ export class HomePage implements OnInit {
     }
     
     
+    multipleUpdate(){
+
+    }
 //     const fileTransfer: FileTransferObject = this.transfer.create();
 
 // // Upload a file:
@@ -632,10 +639,22 @@ previousPage() {
           console.log(res);
           console.log("Pagamento efetuado cadastrado com sucesso")
          // this.navCtrl.navigateForward('/sms');
+         const alert = this.alertController.create({
+          header: `Pagamento Concluído com Sucesso!`,
+          message: `Verifique seu email para mais informações`,
+          buttons: ['OK']
+        });
+        (await alert).present()
         },
         async (res: { error: any}) => {
           console.log(res.error)
           console.log(datapayment)
+          const alert = this.alertController.create({
+            header: `Pagamento não-concluído`,
+            message: `Verifique o formulário e tente novamente`,
+            buttons: ['OK']
+          });
+          (await alert).present()
         }
     
         );
@@ -715,17 +734,130 @@ cadastroProdist(): void{
     async (res: any) => {
       this.setNumeroDoCliente(res.NumeroDoCliente)
       console.log(res)
+      const alert = this.alertController.create({
+        header: `Formulário Atualizado com Sucesso`,
+        message: `Se desejar, faça o download agora mesmo`,
+        buttons: ['OK']
+      });
+      
+      (await alert).present()
       
     },
     async (res: { error: any}) => {
       console.log(res.error)
+      const alert = this.alertController.create({
+        header: `O formulário não foi atualizado`,
+        message: `Verifique as informações inserida e tente novamente`,
+        buttons: ['OK']
+      });
+      (await alert).present()
     }
   )
 
   }
 
+  async submitTriagemForm() {
+    if (this.triagemForm.valid) {
+      const operadora = this.triagemForm.value.operadora;
+      const tipoConta = this.triagemForm.value.tipoConta;
+
+      // Enviar dados para o serviço e salvar no banco de dados
+      try {
+        const loading = await this.loadingController.create();
+        await loading.present();
+
+        // Aqui você precisa adaptar para os campos corretos do seu formulário
+        const dadosFormulario = {
+          operadora: operadora,
+          tipoConta: tipoConta
+        };
+
+        await this.prodistService.cadastrarNoBancoDeDados(dadosFormulario); // Chame o método apropriado do seu serviço
+
+        await loading.dismiss();
+
+        // Exiba um alerta de sucesso ou redirecione para outra página
+        const alert = await this.alertController.create({
+          header: 'Tudo certo!',
+          message: 'Dados cadastrados com sucesso.',
+          buttons: ['OK']
+        });
+
+        await alert.present();
+      } catch (error) {
+        // Trate qualquer erro que possa ocorrer durante o envio dos dados
+        const loading = await this.loadingController.create();
+        await loading.present();
+
+        await loading.dismiss();
+
+        // Exiba um alerta de erro ou tome outras ações necessárias
+        const alert = await this.alertController.create({
+          header: 'Falha no cadastro',
+          message: 'Não foi possível cadastrar os dados.',
+          buttons: ['OK']
+        });
+
+        await alert.present();
+      }
+    }
+  }
+
+
+
+  getTitularLabel() {
+    return this.triagemForm.get('mensagemTriagemTitular')?.value;
+  }
+  
+  getNaoTitularLabel() {
+    return this.triagemForm.get('mensagemTriagemNaoTitular')?.value;
+  }
+  
+  updateFormLabels() {
+    const ehTitular = this.triagemForm.get('ehTitular')?.value;
+    const operadora = this.triagemForm.get('operadora')?.value;
+  
+    if (operadora === 'Enel-RJ') {
+      if (ehTitular === 'true') {
+        this.triagemForm.get('mensagemTriagemTitular')?.setValue('Tenho uma conta Enel-RJ em meu nome. (Preencha o formulário PRODIST ANEEL com os dados desta conta)');
+        this.triagemForm.get('mensagemTriagemNaoTitular')?.setValue('Não sou titular de uma conta Enel-RJ, mas me cadastrarei com o Link convite que me foi enviado ou o farei sem convite por livre e espontânea vontade para apoiar a cooperativa. (você será um Cooperado Apoiador)');
+      } else {
+        this.triagemForm.get('mensagemTriagemTitular')?.setValue('');
+        this.triagemForm.get('mensagemTriagemNaoTitular')?.setValue('');
+      }
+    } else if (operadora === 'Light-RJ') {
+      if (ehTitular === 'true') {
+        this.triagemForm.get('mensagemTriagemTitular')?.setValue('Tenho uma conta Light-RJ em meu nome. (Preencha o formulário PRODIST ANEEL com os dados desta conta)');
+        this.triagemForm.get('mensagemTriagemNaoTitular')?.setValue('Não sou titular de uma conta Light-RJ, mas me cadastrarei com o Link convite que me foi enviado ou o farei sem convite por livre e espontânea vontade para apoiar a cooperativa. (você será um Cooperado Apoiador)');
+      } else {
+        this.triagemForm.get('mensagemTriagemTitular')?.setValue('');
+        this.triagemForm.get('mensagemTriagemNaoTitular')?.setValue('');
+      }
+    } else if (operadora === 'Enel-SP') {
+      if (ehTitular === 'true') {
+        this.triagemForm.get('mensagemTriagemTitular')?.setValue('Tenho uma conta Enel-SP em meu nome. (Preencha o formulário PRODIST ANEEL com os dados desta conta)');
+        this.triagemForm.get('mensagemTriagemNaoTitular')?.setValue('Não sou titular de uma conta Enel-SP, mas me cadastrarei com o Link convite que me foi enviado ou o farei sem convite por livre e espontânea vontade para apoiar a cooperativa. (você será um Cooperado Apoiador)');
+      } else {
+        this.triagemForm.get('mensagemTriagemTitular')?.setValue('');
+        this.triagemForm.get('mensagemTriagemNaoTitular')?.setValue('');
+      }
+    }
+  }
+  
+  
 
   ngOnInit() {
+
+    this.triagemForm = this.formBuilder.group({
+      operadora: ['Enel-RJ'],
+      ehTitular: ['true'],
+      mensagemTriagemTitular: ['Tenho uma conta Enel-RJ em meu nome. (Preencha o formulário PRODIST ANEEL com os dados desta conta)'],
+      mensagemTriagemNaoTitular: ['Não sou titular de uma conta Enel-RJ, mas me cadastrarei com o Link convite que me foi enviado ou o farei sem convite por livre e espontânea vontade para apoiar a cooperativa. (você será um Cooperado Apoiador)']
+  });    
+
+    this.triagemForm.get('operadora')?.valueChanges.subscribe((value) => {
+      this.updateFormLabels();
+    });
  
     this.validaFormProdist();
    
@@ -774,16 +906,35 @@ cadastroProdist(): void{
       const headers = new HttpHeaders({ 'Content-Type': 'application/pdf' });
   
       this.httpClient.get(url, { headers, responseType: 'blob' })
-        .subscribe((response: Blob) => {
-          const filename = 'usuario.pdf';
+        .subscribe(async (response: Blob) => {
+          const filename = `FormularioPRODIST-${NumeroDoCliente}-${id}.pdf`;
           saveAs(response, filename);
           console.log(url, id, NumeroDoCliente, response);
-        }, (error) => {
+          const alert = this.alertController.create({
+            header: `Baixando PDF do Formulário PRODIST!`,
+            message: `O download iniciara´em alguns instantes`,
+            buttons: ['OK']
+          });
+          (await alert).present()
+          
+        }, async (error) => {
           // Trate os erros da requisição GET
           console.log(error);
+          const alert = this.alertController.create({
+            header: `Não foi possível baixar o PDF!`,
+            message: `Erro na requisição GET`,
+            buttons: ['OK']
+          });
+          (await alert).present()
         });
     } else {
       // Trate o caso em que os valores não estão armazenados
+      const alert = this.alertController.create({
+        header: `Não foi possível baixar o PDF!`,
+        message: `Não existem valores armazenados`,
+        buttons: ['OK']
+      });
+      (await alert).present()
     }
   
     }

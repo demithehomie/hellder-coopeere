@@ -54,7 +54,7 @@ export class ResetPasswordPage implements OnInit {
   });
 
   this.emailFinalReset.controls['forgetVerificationCode'].valueChanges
-    .pipe(debounceTime(300))
+    .pipe(debounceTime(3000))
     .subscribe(() => {
     //  loading.dismiss();
       if (this.emailFinalReset.controls['forgetVerificationCode'].invalid) {
@@ -63,7 +63,7 @@ export class ResetPasswordPage implements OnInit {
     });
 
   this.emailFinalReset.controls['password'].valueChanges
-    .pipe(debounceTime(300))
+    .pipe(debounceTime(3000))
     .subscribe(() => {
  //     loading.dismiss();
       if (this.emailFinalReset.controls['password'].invalid) {

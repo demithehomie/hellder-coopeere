@@ -22,7 +22,7 @@ export class AuthGuard implements CanLoad {
           if (token !== null) {
             // Se o token estiver presente, consideramos o usuário autenticado
             this.authService.isAuthenticated.next(true);
-            this.router.navigateByUrl('/home');
+            //this.router.navigateByUrl('/home');
             return true;
           } else {
             // Se o token não estiver presente, redirecionamos para a página de login
