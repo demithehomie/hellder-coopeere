@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { AlertController, LoadingController } from '@ionic/angular';
+import { Usuario } from 'src/app/interfaces/usuario';
 import { AdminService } from 'src/app/services/admin.service';
 import { AppStorageService } from 'src/app/services/app-storage.service';
 import { UsuarioService } from 'src/app/services/usuario.service';
@@ -113,7 +114,29 @@ refreshPage() {
     const loading = await this.loadingController.create();
     await loading.present();
 
-    const data = {}
+    const data = {
+      role: this.usuario.role,
+      name: this.usuario.name,
+      email: this.usuario.email, 
+      phone: this.usuario.phone,
+      company: this.usuario.company,
+      additionalEmails: this.usuario.additionalEmails,
+      mobilePhone: this.usuario.mobilePhone, 
+      cpfCnpj: this.usuario.cpfCnpj,
+      postalCode: this.usuario.postalCode,
+      
+      addressNumber: this.usuario.addressNumber,
+      complement: this.usuario.complement,
+  
+      province: this.usuario.province,
+      address: this.usuario.address,
+      city: this.usuario.city,
+      state: this.usuario.state,
+  
+      password: this.usuario.password,
+      observations: this.usuario.observations
+      
+    };
     
     this.usersService.create(data)
       .subscribe(
@@ -134,7 +157,96 @@ refreshPage() {
       );
   }
 
+  usuario: Usuario = {
+    id: 0,
+    email: "",
+    password: "",
+    confirm_password: "",
+    role: 1,
+    name: '',
+    company: 'COOPEERE',
+    cpfCnpj: null,
+    mobilePhone: '',
+    phone: '',
+    postalCode: '',
+    address: '',
+    state: '',
+    province: '',
+    city: '',
+    addressNumber: '',
+    complement: 'Usuário da COOPEERE',
+    municipalInscription: '',
+    stateInscription: '',
+    additionalEmails: 'fale.conosco@coopeere.eco.br',
+    externalReference: null,
+    notificationDisabled: null,
+    observations: 'Usuário faz parte da COOPEERE, consulte fale.conosco@coopeere.eco.br para retirar dúvidas'
+  }
+
+  async createUser() {
+
+    const loading = await this.loadingController.create();
+    await loading.present();
+
+    const data = {
+      role: this.usuario.role,
+      name: this.usuario.name,
+      email: this.usuario.email, 
+      phone: this.usuario.phone,
+      company: this.usuario.company,
+      additionalEmails: this.usuario.additionalEmails,
+      mobilePhone: this.usuario.mobilePhone, 
+      cpfCnpj: this.usuario.cpfCnpj,
+      postalCode: this.usuario.postalCode,
+      
+      addressNumber: this.usuario.addressNumber,
+      complement: this.usuario.complement,
   
+      province: this.usuario.province,
+      address: this.usuario.address,
+      city: this.usuario.city,
+      state: this.usuario.state,
+  
+      password: this.usuario.password,
+      observations: this.usuario.observations
+      
+    };
+
+    this.nameError = !this.name;
+    this.emailError = !this.email;
+    this.phoneError = !this.phone;
+    this.cpfCnpjError = !this.cpfCnpj;
+    this.mobilePhoneError = !this.mobilePhone;
+    this.postalCodeError = !this.postalCode;
+    this.addressError = !this.address;
+    this.addressNumberError = !this.addressNumber;
+    this.complementError = !this.complement;
+    this.provinceError = !this.province;
+    this.cityError = !this.city;
+    this.stateError = !this.state;
+    this.passwordError = !this.password;
+
+    this.usersService.create(data)
+      .subscribe(
+        response => {
+          loading.dismiss();
+          console.log('Usuário criado com sucesso:', response);
+          this.users.push(response); // Adiciona o novo usuário à lista
+          this.closeAddUserPopup(); // Fecha o popup de adicionar usuário
+          //this.refreshPage()
+        },
+        error => {
+          loading.dismiss();
+          console.error('Erro ao criar usuário:', error);
+          this.alertController.create({
+            header: 'Erro ao cadastrar usuário',
+            message: 'Reveja suas informações',
+            buttons: ['OK']
+          })
+        }
+      );
+  }
+
   editUser(user: any) {
     this.selectedUser = { ...user };
     this.showEditUserPopup = true; // Exibe o popup de edição de usuário
