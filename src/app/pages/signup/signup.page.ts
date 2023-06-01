@@ -323,47 +323,6 @@ equalTo(field_name: string) {
   };
 }
 
-// pesquisacep(cep: string) {
-//   cep = cep.replace(/\D/g, '');
-
-//   if (cep != '') {
-//     const validacep = /^[0-9]{8}$/;
-
-//     if (validacep.test(cep)) {
-//       const script = document.createElement('script');
-//       script.src = 'https://viacep.com.br/ws/' + cep + '/json/?callback=meu_callback';
-//       document.body.appendChild(script);
-//     } else {
-//       this.limpaFormularioCep();
-//       alert('Formato de CEP inválido.');
-//     }
-//   } else {
-//     this.limpaFormularioCep();
-//   }
-// }
-
-// limpaFormularioCep() {
-//   this.formulario.patchValue({
-//     address: '',
-//     province: '',
-//     city: '',
-//     state: ''
-//   });
-// }
-
-// meu_callback(conteudo: any) {
-//   if (!('erro' in conteudo)) {
-//     this.endereco = {
-//       logradouro: conteudo.logradouro,
-//       bairro: conteudo.bairro,
-//       localidade: conteudo.localidade,
-//       uf: conteudo.uf
-//     };
-//   } else {
-//     this.endereco = null;
-//     alert('CEP não encontrado.');
-//   }
-// }
 checkEmpty(input: EventTarget | null) {
   if (input instanceof HTMLInputElement) {
     if (input.value.trim() === "") {
@@ -392,72 +351,102 @@ addressNumberClicked = false;
 
 //
 
-async cadastro(){
-   const loading = await this.loadingController.create();
-  await loading.present();
-
-
-
-  const data = {
-    role: this.usuario.role,
-    name: this.usuario.name,
-    email: this.usuario.email, 
-    phone: this.usuario.phone,
-    company: this.usuario.company,
-    additionalEmails: this.usuario.additionalEmails,
-    mobilePhone: this.usuario.mobilePhone, 
-    cpfCnpj: this.usuario.cpfCnpj,
-    postalCode: this.usuario.postalCode,
-    
-    addressNumber: this.usuario.addressNumber,
-    complement: this.usuario.complement,
-
-    province: this.usuario.province,
-    address: this.usuario.address,
-    city: this.usuario.city,
-    state: this.usuario.state,
-
-    password: this.usuario.password,
-    observations: this.usuario.observations
-    
-  };
-
+async cadastro() {
 
   
-  this.usuarioService.create(data).subscribe(
-    async (res: any) => {
-     // this.router.navigateByUrl('/home', { replaceUrl: true });
-      this.cadastroCliente()
-      this.navCtrl.navigateForward('/email'); //
-      console.log(res)
+    const loading = await this.loadingController.create();
+    await loading.present();
+
+    const data = {
+      role: this.usuario.role,
+      name: this.usuario.name,
+      email: this.usuario.email,
+      phone: this.usuario.phone,
+      company: this.usuario.company,
+      additionalEmails: this.usuario.additionalEmails,
+      mobilePhone: this.usuario.mobilePhone,
+      cpfCnpj: this.usuario.cpfCnpj,
+      postalCode: this.usuario.postalCode,
+      addressNumber: this.usuario.addressNumber,
+      complement: this.usuario.complement,
+      province: this.usuario.province,
+      address: this.usuario.address,
+      city: this.usuario.city,
+      state: this.usuario.state,
+      password: this.usuario.password,
+      observations: this.usuario.observations,
+    };
+
+    this.usuarioService.create(data).subscribe(
+      async (res: any) => {
+        this.cadastroCliente();
+        this.navCtrl.navigateForward('/email');
+        console.log(res);
+        console.log('Usuário cadastrado com Sucesso');
+        await loading.dismiss();
+        const alert = await this.alertController.create({
+          header: 'Tudo certo!',
+          message: 'Usuário cadastrado com sucesso.',
+          buttons: ['OK'],
+        });
+        await alert.present();
+        
+      },
+      async (res: { error: any }) => {
+        await loading.dismiss();
+        console.log(res.error);
+        console.log(data);
+        const alert = await this.alertController.create({
+          header: 'Falha na autenticação',
+          message: 'Seu cadastro não pôde ser autorizado.',
+          buttons: ['OK'],
+        });
+        await alert.present(); 
+
+        const camposVazios: string[] = [];
+
+        // Itera sobre todos os campos do formulário
+        if (this.name === "" ) {
+          camposVazios.push('Nome');
+        }
+    
+        if (this.email === "") {
+          camposVazios.push('Email');
+        }
+    
+        if (this.cpfCnpj === "") {
+          camposVazios.push('CPF/CNPJ');
+        }
+    
+        if (this.mobilePhone === "") {
+          camposVazios.push('Telefone Celular');
+        }
       
-      console.log('Usuário cadastrado com Sucesso')
-      await loading.dismiss();
-       const alert = await this.alertController.create({
-        header: 'Tudo certo!',
-        message: 'Usuário cadastrado com sucesso.',
-        buttons: ['OK']
-      });
+        // Verifica se existem campos vazios
+        if (camposVazios.length > 0) {
+          this.exibirAlertaCamposFaltando(camposVazios);
+          return;
+        }
+      }
 
-      await alert.present();
+
       
-    },  
-    async (res: { error: any; }) => {
-      await loading.dismiss();
-      console.log(res.error)
-      console.log(data)
-     // this.presentErrorAlert()
-      const alert = await this.alertController.create({
-        header: 'Falha na autenticação',
-        message: 'Seu cadastro não pôde ser autorizado.',
-        buttons: ['OK']
-      });
-
-      await alert.present();
-    }
-  );
-
+    );
+    
+     
+    
 }
+
+async exibirAlertaCamposFaltando(campos: string[]) {
+  const alert = await this.alertController.create({
+    header: 'Campos faltando',
+    message: `Os seguintes campos precisam ser preenchidos: ${campos.join(', ')}.`,
+    buttons: ['OK'],
+  });
+
+  await alert.present();
+}
+
 
 async cadastroCliente(){
   const loading = await this.loadingController.create();
