@@ -364,13 +364,25 @@ equalTo(field_name: string) {
 //     alert('CEP não encontrado.');
 //   }
 // }
+checkEmpty(input: EventTarget | null) {
+  if (input instanceof HTMLInputElement) {
+    if (input.value.trim() === "") {
+      input.classList.add("empty");
+    } else {
+      input.classList.remove("empty");
+    }
+  }
+}
+
+nameClicked = false;
+  
+//
 
 async cadastro(){
    const loading = await this.loadingController.create();
   await loading.present();
 
-  // const cep = `${this.usuario.postalCode}`;
-  // this.pesquisacep(cep);
+
 
   const data = {
     role: this.usuario.role,
@@ -396,12 +408,7 @@ async cadastro(){
     
   };
 
-  // this.formulario.patchValue({
-  //   address: data.address,
-  //   city: data.city,
-  //   state: data.state,
-  //   province: data.province
-  // });
+
   
   this.usuarioService.create(data).subscribe(
     async (res: any) => {
@@ -435,7 +442,7 @@ async cadastro(){
       await alert.present();
     }
   );
-  
+
 }
 
 async cadastroCliente(){

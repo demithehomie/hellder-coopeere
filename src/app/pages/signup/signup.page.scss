@@ -1,5 +1,28 @@
-
+.error {
+    border: 2px solid red;
+  }
   
+  .error-message {
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
+  }
+  
+  .error:after {
+    content: "Campo obrigatório";
+    position: absolute;
+    top: 100%;
+    left: 0;
+    color: red;
+    font-size: 20px;
+    margin-top: 5px;
+  }
+  
+  .error.empty:after {
+    content: "Campo vazio";
+  }
+
+  ///////////////////
 
 .errors {
 	font-size:medium;

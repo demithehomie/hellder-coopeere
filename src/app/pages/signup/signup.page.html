@@ -24,191 +24,11 @@
 
   <div class="form-with-bg ">
   <div class="bg-background">
-      <img class="background" src="https://coopeere.microcampos.com.br/img/turbinas-4.jfif">  
+      <img class="background" src="../../../../src/assets/images-coopeere/turbinas.png">  
   </div>
 <div class="form-content col-sm-12">
   <div class="card p-4 mb-4 ">
-    <!-- <form  id="formulario-cadastro" (submit)="cadastro()">
-      
-      <input type="hidden" name="_token" value="CsbBXaFkBxwza5YHajzScu1cX0T8qLxYMLNfdzDj" wfd-id="id0" >        
-      <input type="hidden" name="_method" value="put" wfd-id="id1">                
-      
-      <div class="form-group-heading">Realize o cadastro e torne-se um Coopeerado</div>
 
-      <div class="form-group grid-cols-6 ">
-
-        <div class="form-group-title">Dados Pessoais</div>
-
-        
-          
-             
-              <label position="floating">Nome Completo</label>
-              <input [(ngModel)]="usuario.name" [(ngModel)]="cliente.name" placeholder="Insira seu nome completo" type="text" name="name" id="name"  > 
-             
-            
-            <div *ngIf="name.invalid && (name.dirty || name.touched)" class="errors">
-              <span *ngIf="name.errors.required">Preencha seu nome</span>
-              <span *ngIf="name.errors.name">Nome inválido</span>
-            </div>
-            
-       
-
-         
-          <label position="floating">E-mail*</label>
-          <input [(ngModel)]="usuario.email" [(ngModel)]="cliente.email" type="email" placeholder="example@example.com" name="email" id="email" [ngModelOptions]="{standalone: true}"> 
-         
-        
-        <div *ngIf="email.invalid && (email.dirty || email.touched)" class="errors">
-          <span *ngIf="email.errors.required">Preencha seu e-mail</span>
-          <span *ngIf="email.errors.email">E-mail inválido</span>
-        </div>
-        
-         
-          <label position="floating">CPF/CNPJ*</label>
-          <input [(ngModel)]="usuario.cpfCnpj" [(ngModel)]="cliente.cpfCnpj" id="cpfCnpj" name="cpfCnpj"  type="text" placeholder="Digite seu CPF" [ngModelOptions]="{standalone: true}"> 
-         
-        
-        <div *ngIf="cpfCnpj.invalid && (cpfCnpj.dirty || cpfCnpj.touched)"  pattern="[0-9]{11}" class="errors">
-          <span *ngIf="cpfCnpj.errors.required">Preencha seu CPF/CNPJ</span>
-        </div>
-        
-         
-          <label position="floating">Telefone Celular*</label>
-          <input [(ngModel)]="usuario.mobilePhone" [(ngModel)]="cliente.mobilePhone" id="mobilePhone" name="mobilePhone" type="tel" placeholder="(00) 00000-0000"  [ngModelOptions]="{standalone: true}"> 
-         
-        
-        <div *ngIf="mobilePhone.invalid && (mobilePhone.dirty || mobilePhone.touched)" class="errors">
-          <span *ngIf="mobilePhone.errors.required">Preencha seu telefone celular</span>
-        </div>
-        
-    
-
-         
-          <label position="floating">Telefone Fixo</label>
-          <input [(ngModel)]="usuario.phone" [(ngModel)]="cliente.phone" id="phone" name="phone" type="tel" placeholder="(00) 0000-0000" [ngModelOptions]="{standalone: true}"> 
-         
-        
-         
-          <label position="floating">Senha*</label>
-          <input [(ngModel)]="usuario.password" type="password" id="name" name="name" [ngModelOptions]="{standalone: true}"  required> 
-         
-        
-        <div *ngIf="password.invalid && (password.dirty || password.touched)" class="errors">
-          <span *ngIf="password.errors.required">Preencha sua senha</span>
-        </div>
-        
-         
-          <label position="floating">Confirmar Senha*</label>
-          <input [(ngModel)]="usuario.confirm_password" type="password" required> 
-         
-        
-        <div *ngIf="confirm_password.invalid && (confirm_password.dirty || confirm_password.touched)" class="errors">
-          <span *ngIf="confirm_password.errors.required">Confirme sua senha</span>
-        </div>
-
-        <div >
-        <div class="form-group-title">Endereço*</div>
-(blur)="consultaCEP($event.target.value, f)"
-         
-          <label position="floating">CEP*</label>
-          <input  #searchCep (blur)="blur($event)" [(ngModel)]="usuario.postalCode" [(ngModel)]="cliente.postalCode" id="postalCode" name="postalCode"   type="text" placeholder="00000-000" [ngModelOptions]="{standalone: true}"> 
-          <h6>  O mesmo que consta na conta de energia </h6>
-         
-
-        <div *ngIf="postalCode.invalid && (postalCode.dirty || postalCode.touched)" class="errors">
-          <span *ngIf="postalCode.errors.required">Preencha seu CEP</span>
-        </div>
-      
-           <small class="text-muted">
-            O mesmo que consta na conta de energia
-          </small> 
-
-           <ion-button color="warning" >VALIDAR CEP</ion-button> 
-          
-        
-           
-            <label position="floating">Endereço*</label>
-            <input [(ngModel)]="usuario.address" [(ngModel)]="cliente.address" id="address" name="address" type="text" [ngModelOptions]="{standalone: true}"> 
-           
-          
-          <div *ngIf="address.invalid && (address.dirty || address.touched)" class="errors">
-            <span *ngIf="address.errors.required">Preencha seu endereço</span>
-          </div>
-          
-           
-            <label position="floating">Número*</label>
-            <input [(ngModel)]="usuario.addressNumber" [(ngModel)]="cliente.addressNumber" id="addressNumber" type="text" [ngModelOptions]="{standalone: true}"> 
-           
-          
-          <div *ngIf="addressNumber.invalid && (addressNumber.dirty || addressNumber.touched)" class="errors">
-            <span *ngIf="addressNumber.errors.required">Preencha o número do endereço</span>
-          </div>
-          
-           
-            <label position="floating">Bairro*</label>
-            <input [(ngModel)]="usuario.province" [(ngModel)]="cliente.province" id="province" name="province" type="text" [ngModelOptions]="{standalone: true}"> 
-           
-          
-          <div *ngIf="province.invalid && (province.dirty || province.touched)" class="errors">
-            <span *ngIf="province.errors.required">Preencha o bairro</span>
-          </div>
-          
-           
-            <label position="floating">Cidade*</label>
-            <input [(ngModel)]="usuario.city" [(ngModel)]="cliente.city" id="city" name="city" type="text" [ngModelOptions]="{standalone: true}"> 
-           
-          
-          <div *ngIf="city.invalid && (city.dirty || city.touched)" class="errors">
-            <span *ngIf="city.errors.required">Preencha a cidade</span>
-          </div>
-          
-           
-            <label position="floating">Estado*</label>
-            <ion-select [(ngModel)]="usuario.state" [(ngModel)]="cliente.state" id="state" name="state" [ngModelOptions]="{standalone: true}">
-              <ion-select-option value="">UF</ion-select-option>
-              <ion-select-option value="AC">Acre</ion-select-option>
-              <ion-select-option value="AL">Alagoas</ion-select-option>
-              <ion-select-option value="AP">Amapá</ion-select-option>
-              <ion-select-option value="AM">Amazonas</ion-select-option>
-              <ion-select-option value="BA">Bahia</ion-select-option>
-              <ion-select-option value="CE">Ceará</ion-select-option>
-              <ion-select-option value="DF">Distrito Federal</ion-select-option>
-              <ion-select-option value="ES">Espírito Santo</ion-select-option>
-              <ion-select-option value="GO">Goiás</ion-select-option>
-              <ion-select-option value="MA">Maranhão</ion-select-option>
-              <ion-select-option value="MT">Mato Grosso</ion-select-option>
-              <ion-select-option value="MS">Mato Grosso do Sul</ion-select-option>
-              <ion-select-option value="MG">Minas Gerais</ion-select-option>
-              <ion-select-option value="PA">Pará</ion-select-option>
-              <ion-select-option value="PB">Paraíba</ion-select-option>
-              <ion-select-option value="PR">Paraná</ion-select-option>
-              <ion-select-option value="PE">Pernambuco</ion-select-option>
-              <ion-select-option value="PI">Piauí</ion-select-option>
-              <ion-select-option value="RJ">Rio de Janeiro</ion-select-option>
-              <ion-select-option value="RN">Rio Grande do Norte</ion-select-option>
-              <ion-select-option value="RS">Rio Grande do Sul</ion-select-option>
-              <ion-select-option value="RO">Rondônia</ion-select-option>
-              <ion-select-option value="RR">Roraima</ion-select-option>
-              <ion-select-option value="SC">Santa Catarina</ion-select-option>
-              <ion-select-option value="SP">São Paulo</ion-select-option>
-              <ion-select-option value="SE">Sergipe</ion-select-option>
-              <ion-select-option value="TO">Tocantins</ion-select-option>
-            </ion-select>
-           
-          
-          <div *ngIf="state.invalid && (state.dirty || state.touched)" class="errors">
-            <span *ngIf="state.errors.required">Selecione o estado</span>
-          </div>
-
-        </div>  FIM DA DIV DOS CEPS 
-       
-
-        <div class="form-actions mt-4">
-          <ion-button type="submit" expand="block"  class="btn btn-primary">Enviar</ion-button>
-        </div>
-
-      </div>
-    </form> -->
 
     <form id="formulario-cadastro" (submit)="cadastro()">
       <input type="hidden" name="_token" value="CsbBXaFkBxwza5YHajzScu1cX0T8qLxYMLNfdzDj" wfd-id="id0">        
@@ -222,7 +42,8 @@
         <label class="form-label" for="name">Nome Completo*</label>
         <div class="col-span-5">
           <div class="input-group">
-            <input [(ngModel)]="cliente.name"  [(ngModel)]="usuario.name" type="text" class="form-control" id="name" name="name"  required wfd-id="id2">
+            <input [(ngModel)]="cliente.name"  [(ngModel)]="usuario.name" type="text" class="form-control error" id="name" name="name"  required wfd-id="id2" (click)="nameClicked = true" (blur)="checkEmpty($event.target)">
+            <p class="error-message" *ngIf="nameClicked && cliente.name.trim() === ''">Campo obrigatório.</p>
           </div>
         </div>
 
