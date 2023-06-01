@@ -112,27 +112,10 @@ refreshPage() {
 
     const loading = await this.loadingController.create();
     await loading.present();
+
+    const data = {}
     
-    this.usersService.create(
-      this.role = 2,
-      this.name,
-      this.email,
-      this.phone,
-      this.company,
-      this.additionalEmails,
-      this.mobilePhone,
-      this.cpfCnpj,
-      this.postalCode,
-      this.address,
-      this.addressNumber,
-      this.complement,
-      this.province,
-      this.city,
-      this.state,
-      this.password,
-      this.observations
-     
-    )
+    this.usersService.create(data)
       .subscribe(
         response => {
           console.log('Admin criado com sucesso:', response);
@@ -151,65 +134,7 @@ refreshPage() {
       );
   }
 
-  async createUser() {
-
-    const loading = await this.loadingController.create();
-    await loading.present();
-
-    this.nameError = !this.name;
-    this.emailError = !this.email;
-    this.phoneError = !this.phone;
-    this.cpfCnpjError = !this.cpfCnpj;
-    this.mobilePhoneError = !this.mobilePhone;
-    this.postalCodeError = !this.postalCode;
-    this.addressError = !this.address;
-    this.addressNumberError = !this.addressNumber;
-    this.complementError = !this.complement;
-    this.provinceError = !this.province;
-    this.cityError = !this.city;
-    this.stateError = !this.state;
-    this.passwordError = !this.password;
-
-    this.usersService.create(
-      this.role,
-      this.name,
-      this.email,
-      this.phone,
-      this.company,
-      this.additionalEmails,
-      this.mobilePhone,
-      this.cpfCnpj,
-      this.postalCode,
-      this.address,
-      this.addressNumber,
-      this.complement,
-      this.province,
-      this.city,
-      this.state,
-      this.password,
-      this.observations
-     
-    )
-      .subscribe(
-        response => {
-          loading.dismiss();
-          console.log('Usuário criado com sucesso:', response);
-          this.users.push(response); // Adiciona o novo usuário à lista
-          this.closeAddUserPopup(); // Fecha o popup de adicionar usuário
-          //this.refreshPage()
-        },
-        error => {
-          loading.dismiss();
-          console.error('Erro ao criar usuário:', error);
-          this.alertController.create({
-            header: 'Erro ao cadastrar usuário',
-            message: 'Reveja suas informações',
-            buttons: ['OK']
-          })
-        }
-      );
-  }
-
+  
   editUser(user: any) {
     this.selectedUser = { ...user };
     this.showEditUserPopup = true; // Exibe o popup de edição de usuário

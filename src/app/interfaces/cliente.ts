@@ -18,7 +18,7 @@ export interface Cliente{
 	complement : string,
 	municipalInscription: string,
 	stateInscription: string,
-	additionalEmails: Array<string>
+	additionalEmails: string,//Array<string>
     externalReference: string | null,
     notificationDisabled: boolean | null,
     observations: string,

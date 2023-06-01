@@ -14,7 +14,7 @@
         "^/api": ""
       },
       "headers": {
-        "Access-Control-Allow-Origin": "https://viacep.com.br"
+        "Access-Control-Allow-Origin": [ "http://localhost:8100/", "http://localhost:8100","https://viacep.com.br", "https://viacep.com.br/ws/undefined/json/" , "https://viacep.com.br/ws/"]
       }
     }
     

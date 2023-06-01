@@ -219,38 +219,33 @@
 
         <div class="form-group-title">Dados Pessoais</div>
 
-        <label class="form-label" for="nome">Nome Completo*</label>
+        <label class="form-label" for="name">Nome Completo*</label>
         <div class="col-span-5">
           <div class="input-group">
-            <input [(ngModel)]="cliente.name"  [(ngModel)]="usuario.name" type="text" class="form-control" id="name" name="name" value="" required wfd-id="id2">
+            <input [(ngModel)]="cliente.name"  [(ngModel)]="usuario.name" type="text" class="form-control" id="name" name="name"  required wfd-id="id2">
           </div>
         </div>
 
-        <label class="form-label" for="nome">Empresa*</label>
-        <div class="input-group w-60">
-          <div class="input-group">
-            <input [(ngModel)]="cliente.company"[(ngModel)]="usuario.company" type="text" class="form-control" id="company" name="company" value="" required wfd-id="id2">
-          </div>
-        </div>
+       
         <label class="form-label" for="email">E-mail*</label>
         <div class="input-group">
-          <input [(ngModel)]="cliente.email" [(ngModel)]="usuario.email"  type="text" class="form-control" id="email" name="email" value="" required wfd-id="id3">
+          <input [(ngModel)]="cliente.email" [(ngModel)]="usuario.email"  type="email" class="form-control" id="email" name="email"  required wfd-id="id3">
         </div>
 
-        <label class="form-label" for="cpf_cnpj">CPF/CNPJ*</label>
+        <label class="form-label" for="cpfCnpj">CPF/CNPJ*</label>
         <div class="input-group w-60">
-          <input (input)="onInput($event)" [(ngModel)]="cliente.cpfCnpj" [(ngModel)]="usuario.cpfCnpj" type="text" placeholder="Digite seu CPF" class="form-control cliente-documento" id="cpfCnpj" name="cpfCnpj" value="" size="25" required maxlength="14" wfd-id="id4">
-          <!-- <p *ngIf="formulario.get('cliente.cpfcnpj').touched && formulario.get('cliente.cpfcnpj').errors?.cliente.cpfcnpj">CPF inválido.</p> -->
+          <input #searchCep  [(ngModel)]="cliente.cpfCnpj" [(ngModel)]="usuario.cpfCnpj" type="text" placeholder="Digite seu CPF" class="form-control cliente-documento" id="cpfCnpj" name="cpfCnpj"  size="25" required maxlength="14" wfd-id="id4" (blur)="blur($event)">
+          <!-- (input)="onInput($event)"<p *ngIf="formulario.get('cliente.cpfcnpj').touched && formulario.get('cliente.cpfcnpj').errors?.cliente.cpfcnpj">CPF inválido.</p> -->
         </div>
 
         <label class="form-label" for="telefone_celular">Telefone Celular*</label>
         <div class="input-group w-60">
-          <input [(ngModel)]="cliente.mobilePhone" [(ngModel)]="usuario.mobilePhone" type="text" class="form-control" id="mobilePhone" name="mobilePhone" size="16" value="" required placeholder="Insira aqui seu telefone" wfd-id="id5">
+          <input [(ngModel)]="cliente.mobilePhone" [(ngModel)]="usuario.mobilePhone" type="text" class="form-control" id="mobilePhone" name="mobilePhone" size="16"  required placeholder="Insira aqui seu telefone" wfd-id="id5">
         </div>
 
         <label class="form-label" for="telefone_fixo">Telefone Fixo</label>
         <div class="input-group w-60">
-          <input [(ngModel)]="cliente.phone" [(ngModel)]="usuario.phone" type="text" class="form-control" id="phone" name="phone" size="16" value="" wfd-id="id6">
+          <input [(ngModel)]="cliente.phone" [(ngModel)]="usuario.phone" type="text" class="form-control" id="phone" name="phone" size="16"  wfd-id="id6">
         </div>
 
         <label class="form-label" for="senha">Senha*</label>
@@ -289,23 +284,23 @@
 
         <label class="form-label" for="endereco">Número*</label>
         <div class="input-group">
-          <input [(ngModel)]="cliente.addressNumber" [(ngModel)]="usuario.addressNumber" type="text" class="form-control" id="addressNumber" name="addressNumber" value="" required wfd-id="id11">
+          <input [(ngModel)]="cliente.addressNumber" [(ngModel)]="usuario.addressNumber" type="text" class="form-control" id="addressNumber" name="addressNumber"  required wfd-id="id11">
         </div>
 
         <label class="form-label" for="bairro">Bairro*</label>
         <div class="input-group">
-          <input [(ngModel)]="cliente.province" [(ngModel)]="usuario.province" type="text" class="form-control" id="province" name="province" value="" required wfd-id="id12">
+          <input [(ngModel)]="cliente.province" [(ngModel)]="usuario.province" type="text" class="form-control" id="province" name="province"  required wfd-id="id12">
         </div>
 
         <label class="form-label" for="cidade">Cidade*</label>
         <div class="input-group">
-          <input [(ngModel)]="cliente.city" [(ngModel)]="usuario.city" type="text" class="form-control" id="city" name="city" value="" required wfd-id="id13">
+          <input [(ngModel)]="cliente.city" [(ngModel)]="usuario.city" type="text" class="form-control" id="city" name="city"  required wfd-id="id13">
         </div>
         
         <label class="form-label" for="estado">Estado*</label>
         <div class="input-group">
-          <select [(ngModel)]="cliente.state" [(ngModel)]="usuario.state" class="form-select" id="state" name="state" required>
-            <option value="">UF</option>
+          <select style="background-color: #fff; color: black" [(ngModel)]="cliente.state" [(ngModel)]="usuario.state" class="form-select" id="state" name="state" required>
+            <option style="color: black" value="">UF</option>
             <option value="AC">Acre</option>
             <option value="AL">Alagoas</option>
             <option value="AP">Amapá</option>
@@ -336,15 +331,7 @@
           </select>
         </div>
 
-        <label class="form-label" for="cidade">Emails Adicionais*</label>
-        <div class="input-group">
-          <input [(ngModel)]="cliente.additionalEmails" [(ngModel)]="usuario.additionalEmails" type="text" class="form-control" id="additionalEmails" name="additionalEmails" value="" required wfd-id="id13">
-        </div>
-
-        <label class="form-label" for="cidade">Observações*</label>
-        <div class="input-group">
-          <input [(ngModel)]="cliente.observations" [(ngModel)]="usuario.observations" type="text" class="form-control" id="observations" name="observations" value="" required wfd-id="id13">
-        </div>
+       
 
         <div class="form-actions mt-4">
           <button type="submit" class="btn btn-primary">Enviar</button>

@@ -530,7 +530,7 @@ previousPage() {
     complement: "",
     municipalInscription: "",
     stateInscription: "",
-    additionalEmails: [],
+    additionalEmails: "",
     externalReference: "",
     notificationDisabled: false,
     observations: "",

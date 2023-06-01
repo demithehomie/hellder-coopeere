@@ -25,7 +25,7 @@
         </a>
 
         
-        <ion-button (click)="addUser()">Criar Novo Usuário</ion-button>
+   
         <ion-button (click)="addAdmin()">Criar Novo Admin</ion-button>
         <ion-button color="danger" (click)="clearStorage()">Sair</ion-button>
       </div>
@@ -108,45 +108,7 @@
   </div>
 </div>
 
-  <!-- Popup para adicionar usuário -->
-  <div class="popup-overlay" *ngIf="showAddUserPopup">
-    <div class="popup">
-      <h2>Adicionar Usuário</h2>
-      <!-- Adicione os campos necessários para criar um novo usuário -->
-      <input type="text" [(ngModel)]="name" placeholder="Nome" (blur)="nameError = !name">
-      <p *ngIf="nameError" class="error-message">Nome é obrigatório.</p>
-      <input type="email" [(ngModel)]="email" placeholder="Email" (blur)="emailError = !email">>
-      <p *ngIf="emailError" class="error-message">Email é obrigatório.</p>
-      <input type="tel" [(ngModel)]="phone" placeholder="Telefone" (blur)="phoneError = !phone">>
-      <p *ngIf="phoneError" class="error-message">Telefone é obrigatório.</p>
-      <input type="text" [(ngModel)]="cpfCnpj" placeholder="CPF" (blur)="cpfCnpjError = !cpfCnpj">>
-      <p *ngIf="cpfCnpjError" class="error-message">CPF é obrigatório.</p>
-      <input type="text" [(ngModel)]="mobilePhone" placeholder="Celular" (blur)="mobilePhoneError = !mobilePhone">>
-      <p *ngIf="mobilePhoneError" class="error-message">Celular é obrigatório.</p>
-      <input type="text" [(ngModel)]="postalCode" placeholder="CEP" (blur)="postalCodeError = !postalCode">>
-      <p *ngIf="postalCodeError" class="error-message">CEP é obrigatório.</p>
-      <input type="text" [(ngModel)]="address" placeholder="Endereço" (blur)="addressError = !address">>
-      <p *ngIf="addressError" class="error-message">Endereço é obrigatório.</p>
-      <input type="text" [(ngModel)]="addressNumber" placeholder="Número" (blur)="addressNumberError = !addressNumber">>
-      <p *ngIf="addressNumberError" class="error-message">Número é obrigatório.</p>
-      <input type="text" [(ngModel)]="complement" placeholder="Complemento" (blur)="complementError = !complement">>
-      <p *ngIf="complementError" class="error-message">Complemento é obrigatório.</p>
-      <input type="text" [(ngModel)]="province" placeholder="Bairro" (blur)="provinceError = !province">>
-      <p *ngIf="provinceError" class="error-message">Bairro é obrigatório.</p>
-      <input type="text" [(ngModel)]="city" placeholder="Cidade" (blur)="cityError = !city">>
-      <p *ngIf="cityError" class="error-message">Cidade é obrigatório.</p>
-      <input type="text" [(ngModel)]="state" placeholder="Estado" (blur)="stateError = !state">>
-      <p *ngIf="stateError" class="error-message">Estado é obrigatório.</p>
-      <input type="password" [(ngModel)]="password" placeholder="Senha" (blur)="passwordError = !password">>
-      <p *ngIf="passwordError" class="error-message">Senha é obrigatório.</p>
 
-
-      <!-- Botões para criar o usuário ou fechar o popup -->
-      <br>
-      <button (click)="createUser()">Criar Usuário</button>
-      <button (click)="closeAddUserPopup()">Fechar</button>
-    </div>
-  </div>
 
 
   <!-- Popup para adicionar administrador -->
