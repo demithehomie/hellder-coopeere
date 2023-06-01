@@ -375,7 +375,21 @@ checkEmpty(input: EventTarget | null) {
 }
 
 nameClicked = false;
-  
+emailClicked = false;
+passwordClicked = false;
+confirmPasswordClicked = false;
+cpfClicked = false;
+mobilePhoneClicked = false;
+phoneClicked = false;
+postalCodeClicked = false;
+addressClicked = false;
+stateClicked = false;
+provinceClicked = false;
+cityClicked = false;
+addressNumberClicked = false;
+
+
+
 //
 
 async cadastro(){

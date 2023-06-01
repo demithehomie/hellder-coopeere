@@ -42,7 +42,7 @@
         <label class="form-label" for="name">Nome Completo*</label>
         <div class="col-span-5">
           <div class="input-group">
-            <input [(ngModel)]="cliente.name"  [(ngModel)]="usuario.name" type="text" class="form-control error" id="name" name="name"  required wfd-id="id2" (click)="nameClicked = true" (blur)="checkEmpty($event.target)">
+            <input [(ngModel)]="cliente.name"  [(ngModel)]="usuario.name" type="text" class="form-control error" id="name" name="name"  required wfd-id="id2" placeholder="Insira seu nome" (click)="nameClicked = true" (blur)="checkEmpty($event.target)">
             <p class="error-message" *ngIf="nameClicked && cliente.name.trim() === ''">Campo obrigatório.</p>
           </div>
         </div>
@@ -50,33 +50,38 @@
        
         <label class="form-label" for="email">E-mail*</label>
         <div class="input-group">
-          <input [(ngModel)]="cliente.email" [(ngModel)]="usuario.email"  type="email" class="form-control" id="email" name="email"  required wfd-id="id3">
+          <input [(ngModel)]="cliente.email" [(ngModel)]="usuario.email"  type="email" class="form-control error" id="email" name="email" placeholder="Insira seu email" required wfd-id="id3" (click)="emailClicked = true" (blur)="checkEmpty($event.target)">
+          <p class="error-message" *ngIf="emailClicked && cliente.email.trim() === ''">Campo obrigatório.</p>
         </div>
 
         <label class="form-label" for="cpfCnpj">CPF/CNPJ*</label>
         <div class="input-group w-60">
-          <input #searchCep  [(ngModel)]="cliente.cpfCnpj" [(ngModel)]="usuario.cpfCnpj" type="text" placeholder="Digite seu CPF" class="form-control cliente-documento" id="cpfCnpj" name="cpfCnpj"  size="25" required maxlength="14" wfd-id="id4" (blur)="blur($event)">
-          <!-- (input)="onInput($event)"<p *ngIf="formulario.get('cliente.cpfcnpj').touched && formulario.get('cliente.cpfcnpj').errors?.cliente.cpfcnpj">CPF inválido.</p> -->
+          <input   [(ngModel)]="cliente.cpfCnpj" [(ngModel)]="usuario.cpfCnpj" type="text" placeholder="Digite seu CPF" class="form-control cliente-documento error" id="cpfCnpj" name="cpfCnpj"  size="25" required maxlength="14" wfd-id="id4" placeholder="Insira seu CPF" (blur)="blur($event)" (click)="cpfClicked = true" (blur)="checkEmpty($event.target)">
+          <p class="error-message" *ngIf="cpfClicked && cliente?.cpfCnpj?.trim() === ''">Campo obrigatório.</p>
         </div>
 
         <label class="form-label" for="telefone_celular">Telefone Celular*</label>
         <div class="input-group w-60">
-          <input [(ngModel)]="cliente.mobilePhone" [(ngModel)]="usuario.mobilePhone" type="text" class="form-control" id="mobilePhone" name="mobilePhone" size="16"  required placeholder="Insira aqui seu telefone" wfd-id="id5">
+          <input [(ngModel)]="cliente.mobilePhone" [(ngModel)]="usuario.mobilePhone" type="text" class="form-control error" id="mobilePhone" name="mobilePhone" size="16"  required placeholder="Insira aqui seu celular" wfd-id="id5" (click)="mobilePhoneClicked = true" (blur)="checkEmpty($event.target)">
+          <p class="error-message" *ngIf="mobilePhoneClicked && cliente.mobilePhone.trim() === ''">Campo obrigatório.</p>
         </div>
 
         <label class="form-label" for="telefone_fixo">Telefone Fixo</label>
         <div class="input-group w-60">
-          <input [(ngModel)]="cliente.phone" [(ngModel)]="usuario.phone" type="text" class="form-control" id="phone" name="phone" size="16"  wfd-id="id6">
+          <input [(ngModel)]="cliente.phone" [(ngModel)]="usuario.phone" type="text" class="form-control error" id="phone" name="phone" size="16"  wfd-id="id6" placeholder="Insira aqui seu telefone" (click)="phoneClicked = true" (blur)="checkEmpty($event.target)">
+          <p class="error-message" *ngIf="phoneClicked && cliente.phone.trim() === ''">Campo obrigatório.</p>
         </div>
 
         <label class="form-label" for="senha">Senha*</label>
         <div class="input-group">
-          <input [(ngModel)]="usuario.password" type="password" class="form-control" id="password" name="password" required wfd-id="id7">
+          <input [(ngModel)]="usuario.password" type="password" class="form-control error" id="password" name="password" required wfd-id="id7" placeholder="Insira aqui sua senha" (click)="passwordClicked = true" (blur)="checkEmpty($event.target)">
+          <p class="error-message" *ngIf="passwordClicked && usuario?.password?.trim() === ''">Campo obrigatório.</p>
         </div>
 
         <label class="form-label" for="confirm_password">Confirmar Senha*</label>
         <div class="input-group">
-          <input [(ngModel)]="usuario.confirm_password" type="password" class="form-control" id="confirm_password" name="confirm_password" required wfd-id="id8">
+          <input [(ngModel)]="usuario.confirm_password" type="password" class="form-control error" id="confirm_password" name="confirm_password" required wfd-id="id8" placeholder="Confirme aqui sua senha" (click)="confirmPasswordClicked = true" (blur)="checkEmpty($event.target)">
+          <p class="error-message" *ngIf="confirmPasswordClicked && usuario?.confirm_password?.trim() === ''">Campo obrigatório.</p>
         </div>
 
         <div class="form-group-title">Endereço*</div>
@@ -85,11 +90,12 @@
         <div class="col-span-5">
           <div class="flex">
             <div class="input-group w-25">
-              <input [(ngModel)]="cliente.postalCode" [(ngModel)]="usuario.postalCode" onblur="pesquisacep(this.value);" class="form-control" type="text" id="postalCode" name="postalCode" size="10" required wfd-id="id9">
+              <input [(ngModel)]="cliente.postalCode" [(ngModel)]="usuario.postalCode" onblur="pesquisacep(this.value);" class="form-control error" type="text" id="postalCode" name="postalCode" size="10" required wfd-id="id9" placeholder="Insira aqui seu CEP" (click)="postalCodeClicked = true" (blur)="checkEmpty($event.target)">
+              <p class="error-message" *ngIf="postalCodeClicked && cliente.postalCode.trim() === ''">Campo obrigatório.</p>
             </div>
             <div class="p-2 d-none" id="loading-cep">
               <div class="spinner-border spinner-border-sm" role="status">
-                <span class="visually-hidden">Loading...</span>
+                <span class="visually-hidden">Carregando...</span>
               </div>
             </div>
           </div>
@@ -100,27 +106,31 @@
         
         <label class="form-label" for="endereco">Endereço*</label>
         <div class="input-group">
-          <input [(ngModel)]="cliente.address" [(ngModel)]="usuario.address" type="text" class="form-control" id="address" name="address" required wfd-id="id10">
+          <input [(ngModel)]="cliente.address" [(ngModel)]="usuario.address" type="text" class="form-control error" id="address" name="address" required wfd-id="id10" placeholder="Insira aqui seu logradouro" (click)="addressClicked = true" (blur)="checkEmpty($event.target)">
+          <p class="error-message" *ngIf="addressClicked && cliente.address.trim() === ''">Campo obrigatório.</p>
         </div>
 
         <label class="form-label" for="endereco">Número*</label>
         <div class="input-group">
-          <input [(ngModel)]="cliente.addressNumber" [(ngModel)]="usuario.addressNumber" type="text" class="form-control" id="addressNumber" name="addressNumber"  required wfd-id="id11">
+          <input [(ngModel)]="cliente.addressNumber" [(ngModel)]="usuario.addressNumber" type="text" class="form-control error" id="addressNumber" name="addressNumber"  required wfd-id="id11" placeholder="Insira aqui seu número" (click)="addressNumberClicked = true" (blur)="checkEmpty($event.target)">
+          <p class="error-message" *ngIf="addressNumberClicked && cliente.addressNumber.trim() === ''">Campo obrigatório.</p>
         </div>
 
         <label class="form-label" for="bairro">Bairro*</label>
         <div class="input-group">
-          <input [(ngModel)]="cliente.province" [(ngModel)]="usuario.province" type="text" class="form-control" id="province" name="province"  required wfd-id="id12">
+          <input [(ngModel)]="cliente.province" [(ngModel)]="usuario.province" type="text" class="form-control error" id="province" name="province"  required wfd-id="id12" placeholder="Insira aqui seu bairro" (click)="provinceClicked = true" (blur)="checkEmpty($event.target)">
+          <p class="error-message" *ngIf="provinceClicked && cliente.province.trim() === ''">Campo obrigatório.</p>
         </div>
 
         <label class="form-label" for="cidade">Cidade*</label>
         <div class="input-group">
-          <input [(ngModel)]="cliente.city" [(ngModel)]="usuario.city" type="text" class="form-control" id="city" name="city"  required wfd-id="id13">
+          <input [(ngModel)]="cliente.city" [(ngModel)]="usuario.city" type="text" class="form-control error" id="city" name="city"  required wfd-id="id13" placeholder="Insira aqui seu telefone" (click)="cityClicked = true" (blur)="checkEmpty($event.target)">
+          <p class="error-message" *ngIf="cityClicked && cliente.city.trim() === ''">Campo obrigatório.</p>
         </div>
         
         <label class="form-label" for="estado">Estado*</label>
         <div class="input-group">
-          <select style="background-color: #fff; color: black" [(ngModel)]="cliente.state" [(ngModel)]="usuario.state" class="form-select" id="state" name="state" required>
+          <select style="background-color: #fff; color: black" [(ngModel)]="cliente.state" [(ngModel)]="usuario.state" class="form-select" id="state" name="state" required placeholder="Insira aqui seu estado" (click)="stateClicked = true" (blur)="checkEmpty($event.target)">
             <option style="color: black" value="">UF</option>
             <option value="AC">Acre</option>
             <option value="AL">Alagoas</option>
@@ -150,6 +160,7 @@
             <option value="SE">Sergipe</option>
             <option value="TO">Tocantins</option>
           </select>
+          <p class="error-message" *ngIf="stateClicked && cliente.state.trim() === ''">Campo obrigatório.</p>
         </div>
 
        
