@@ -37,32 +37,35 @@
 
   
   <ion-content>
+    <div class="background">
     <br>  
     <br>
     <br>
 <div class="container-code">
   <form  (submit)="confirmEmailCode()">
-    <h2>Seja Bem-Vindo a COOPEERE!</h2>
-    <h4 style="display: flex; margin: auto;">Insira o código enviado via E-Mail</h4>
-    <ion-item>
-      <ion-label style="font-size: x-large;"  position="stacked">Verificação por E-Mail</ion-label>
-      <ion-input [(ngModel)]="email.emailVerificationCode" style="font-size: 40px;" placeholder=" * * * * * " maxlength="5" type="text"  [ngModelOptions]="{standalone: true}" maxlength="5" name="emailVerificationCode"  id="emailVerificationCode" ></ion-input>
-    </ion-item>
-<ion-button type="submit" >Confirmar código</ion-button>
-    
-   
+    <h2 class="title">Seja Bem-Vindo a COOPEERE!</h2>
+    <h4 class="subtitle" >Insira o código enviado via E-Mail</h4>
+      <br>
+      <br>
+      <h6 class="input-title">Verificação por E-Mail</h6>
+      <input [(ngModel)]="email.emailVerificationCode" style="font-size: 40px; text-align: center;" placeholder=" * * * * * " maxlength="5" type="text"  [ngModelOptions]="{standalone: true}" maxlength="5" name="emailVerificationCode"  id="emailVerificationCode" >
+      
+      <div *ngIf="errorMessage" class="error-message">
+        {{ errorMessage }}
+      </div>
+      
+      <div *ngIf="successMessage" class="success-message">
+        {{ successMessage }}
+      </div>
+
+<ion-button type="submit" fill="clear" >Confirmar código</ion-button>
+       
   </form>
 
+  <ion-button style=" display: flex;" (click)="executeBoth()" color="danger"  fill="clear">Reenviar código</ion-button>
+  <ion-button style=" display: flex;" (click)="forward()" (click)="shootSMS(body)" color="success"  *ngIf="successMessage" fill="clear">Próximo passo</ion-button>
 
-  <div *ngIf="errorMessage" class="error-message">
-    {{ errorMessage }}
-  </div>
-  
-  <div *ngIf="successMessage" class="success-message">
-    {{ successMessage }}
-  </div>
-  <ion-button style=" display: flex;" (click)="executeBoth()" color="danger" position="end">Reenviar código</ion-button>
-  <ion-button style=" display: flex;" (click)="forward()" (click)="shootSMS(body)" color="success" position="end">Próximo passo</ion-button>
+</div>
 
 </div>
 

@@ -19,7 +19,7 @@ export class ProdistService {
         ehTitular: ehTitular
       };
   
-      return this.httpClient.post(clienteURL, formData);
+      return this.httpClient.post(clienteURL+'/triagem/criar', formData);
 
     }
 
@@ -37,9 +37,9 @@ export class ProdistService {
       return this.obterDados(data)
     }
 
-    cadastrarNoBancoDeDados(dadosFormulario: any){
+    // enviarDadosTriagem(: any){
 
-    }
+    // }
 
     
 }

@@ -149,30 +149,35 @@ endereco: any;
 
     formatarCPF() {
       let cpfRegex = /^(\d{3})(\d{3})(\d{3})(\d{2})$/;
-      if (this.cpfControl.value) {
-        this.cpfControl.setValue(this.cpfControl.value.replace(cpfRegex, '$1.$2.$3-$4'));
+      if (this.cliente.cpfCnpj) {
+        this.cliente.cpfCnpj = this.cliente.cpfCnpj.replace(cpfRegex, '$1.$2.$3-$4');
       }
     }
     
+    
     formatarTelefone() {
       let celularRegex = /^(\d{2})(\d{5})(\d{4})$/;
-      if (this.mobilePhone !== null) {
-        this.mobilePhoneControl.setValue(this.mobilePhoneControl.value.replace(celularRegex, '($1) $2-$3'));
+      if (this.cliente.mobilePhone) {
+        this.cliente.mobilePhone = this.cliente.mobilePhone.replace(celularRegex, '($1) $2-$3');
       }
     }
     
     
     formatarTelefoneFixo() {
       let fixoRegex = /^(\d{2})(\d{4})(\d{4})$/;
-      if (this.phone !== null) {
-        this.fixoControl.setValue(this.fixoControl.value.replace(fixoRegex, '($1) $2-$3'));
+      if (this.cliente.phone) {
+        this.cliente.phone = this.cliente.phone.replace(fixoRegex, '($1) $2-$3');
       }
     }
     
     
     
  
- 
+    isValidPassword(password: string): boolean {
+      const passwordRegex = /^(?=.*[A-Z])(?=.*\d)(?=.*[^a-zA-Z0-9])(?=.*[^ ]).{8,}$/;
+      return passwordRegex.test(password);
+    }
+    
  
 
 
@@ -390,7 +395,19 @@ provinceInputClicked = false;
 cityInputClicked = false;
 addressNumberInputClicked = false;
 
-//
+async verifyAndSubmit(){
+  if (this.usuario.password !== this.usuario.confirm_password){
+    const alert = this.alertController.create({
+      header: `As senhas não coincidem`,
+      message: `Verifique a senha e tente novamente`,
+      buttons: ['OK']
+    })
+
+    ;(await alert).present()
+  } else {
+    this.cadastro()
+  }
+}
 
 async cadastro() {
 

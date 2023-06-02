@@ -765,27 +765,27 @@ cadastroProdist(): void{
   async submitTriagemForm() {
     if (this.triagemForm.valid) {
       const operadora = this.triagemForm.value.operadora;
-      const tipoConta = this.triagemForm.value.tipoConta;
+      const ehTitular = this.triagemForm.value.ehTitular;
 
       // Enviar dados para o serviço e salvar no banco de dados
       try {
         const loading = await this.loadingController.create();
         await loading.present();
 
-        // Aqui você precisa adaptar para os campos corretos do seu formulário
-        const dadosFormulario = {
-          operadora: operadora,
-          tipoConta: tipoConta
-        };
+        // // Aqui você precisa adaptar para os campos corretos do seu formulário
+        // const dadosFormulario = {
+        //   operadora: operadora,
+        //   ehTitular: ehTitular
+        // };
 
-        await this.prodistService.cadastrarNoBancoDeDados(dadosFormulario); // Chame o método apropriado do seu serviço
+        await this.prodistService.enviarDadosTriagem(operadora, ehTitular); // Chame o método apropriado do seu serviço
 
         await loading.dismiss();
 
         // Exiba um alerta de sucesso ou redirecione para outra página
         const alert = await this.alertController.create({
           header: 'Tudo certo!',
-          message: 'Dados cadastrados com sucesso.',
+          message: 'Dados de Triagem cadastrados com sucesso.',
           buttons: ['OK']
         });
 

@@ -73,7 +73,7 @@ closeSearchInput(){
     
       setInterval(() => {
         this.refreshPage();
-      }, 3 * 60 * 1000); // Executa a cada 3 minutos (3 minutos * 60 segundos * 1000 milissegundos)
+      }, 1 * 60 * 1000); // Executa a cada 1 minuto (1 minutos * 60 segundos * 1000 milissegundos)
     }
     
     refreshPage() {

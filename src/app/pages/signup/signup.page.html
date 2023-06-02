@@ -22,15 +22,15 @@
 
 <ion-content>
 
-  <div class="form-with-bg ">
+  <div class="form-with-bg">
   <div class="bg-background">
       <img class="background" src="../../../assets/images-coopeere/turbinas.png">  
   </div>
-<div class="form-content col-sm-12">
-  <div class="card p-4 mb-4 ">
+    <div class="form-content col-sm-12">
+      <div class="card p-4 mb-4 ">
 
 
-    <form id="formulario-cadastro" (submit)="cadastro()">
+    <form id="formulario-cadastro" (submit)="verifyAndSubmit()">
       <input type="hidden" name="_token" value="CsbBXaFkBxwza5YHajzScu1cX0T8qLxYMLNfdzDj" wfd-id="id0">        
       <input type="hidden" name="_method" value="put" wfd-id="id1">                
       <div class="form-group-heading">Realize o cadastro e torne-se um Coopeerado</div>
@@ -56,32 +56,35 @@
 
         <label class="form-label" for="cpfCnpj">CPF/CNPJ*</label>
         <div class="input-group w-60">
-          <input   [(ngModel)]="cliente.cpfCnpj" [(ngModel)]="usuario.cpfCnpj" type="text" placeholder="Digite seu CPF" class="form-control cliente-documento error" id="cpfCnpj" name="cpfCnpj"  size="25" required maxlength="14" wfd-id="id4" placeholder="Insira seu CPF" (blur)="blur($event)" (click)="cpfClicked = true" (blur)="checkEmpty($event.target)">
+          <input   [(ngModel)]="cliente.cpfCnpj" [(ngModel)]="usuario.cpfCnpj" type="text" placeholder="Digite seu CPF" class="form-control cliente-documento error" id="cpfCnpj" name="cpfCnpj"  size="25" required maxlength="14" wfd-id="id4" placeholder="Insira seu CPF" (blur)="formatarCPF()"  (click)="cpfClicked = true" (blur)="checkEmpty($event.target)">
           <p class="error-message" *ngIf="cpfClicked && cliente?.cpfCnpj?.trim() === ''">Campo obrigatório.</p>
         </div>
 
         <label class="form-label" for="telefone_celular">Telefone Celular*</label>
         <div class="input-group w-60">
-          <input [(ngModel)]="cliente.mobilePhone" [(ngModel)]="usuario.mobilePhone" type="text" class="form-control error" id="mobilePhone" name="mobilePhone" size="16"  required placeholder="Insira aqui seu celular" wfd-id="id5" (click)="mobilePhoneClicked = true" (blur)="checkEmpty($event.target)">
+          <input [(ngModel)]="cliente.mobilePhone" [(ngModel)]="usuario.mobilePhone" type="text" class="form-control error" id="mobilePhone" name="mobilePhone" size="16"  required placeholder="Insira aqui seu celular" wfd-id="id5" (click)="mobilePhoneClicked = true" (blur)="checkEmpty($event.target)" (blur)="formatarTelefone()">
           <p class="error-message" *ngIf="mobilePhoneClicked && cliente.mobilePhone.trim() === ''">Campo obrigatório.</p>
         </div>
 
         <label class="form-label" for="telefone_fixo">Telefone Fixo</label>
         <div class="input-group w-60">
-          <input [(ngModel)]="cliente.phone" [(ngModel)]="usuario.phone" type="text" class="form-control error" id="phone" name="phone" size="16"  wfd-id="id6" placeholder="Insira aqui seu telefone" (click)="phoneClicked = true" (blur)="checkEmpty($event.target)">
-          <p class="error-message" *ngIf="phoneClicked && cliente.phone.trim() === ''">Campo obrigatório.</p>
+          <input [(ngModel)]="cliente.phone" [(ngModel)]="usuario.phone" type="text" class="form-control error" id="phone" name="phone" size="16"  wfd-id="id6" placeholder="Insira aqui seu telefone" (click)="phoneClicked = true" (blur)="checkEmpty($event.target)" (blur)="formatarTelefoneFixo()">
+          
         </div>
 
         <label class="form-label" for="senha">Senha*</label>
         <div class="input-group">
-          <input [(ngModel)]="usuario.password" type="password" class="form-control error" id="password" name="password" required wfd-id="id7" placeholder="Insira aqui sua senha" (click)="passwordClicked = true" (blur)="checkEmpty($event.target)">
+          <input [(ngModel)]="usuario.password" type="password" class="form-control error" id="password" name="password" required wfd-id="id7" placeholder="Insira aqui sua senha" (click)="passwordClicked = true" (blur)="checkEmpty($event.target)" pattern="^(?=.*[A-Z])(?=.*\d)(?=.*[^a-zA-Z0-9])(?=.*[^ ]).{8,}$">
           <p class="error-message" *ngIf="passwordClicked && usuario?.password?.trim() === ''">Campo obrigatório.</p>
+          <p class="error-message" *ngIf="passwordClicked && (!usuario?.password || (usuario.password && !isValidPassword(usuario.password)))"> A senha deve ter no mínimo 8 caracteres, pelo menos uma letra maiúscula, dois caracteres especiais e não pode conter espaços.</p>
         </div>
-
-        <label class="form-label" for="confirm_password">Confirmar Senha*</label>
+        
+          <label class="form-label" for="confirm_password">Confirmar Senha*</label>
         <div class="input-group">
           <input [(ngModel)]="usuario.confirm_password" type="password" class="form-control error" id="confirm_password" name="confirm_password" required wfd-id="id8" placeholder="Confirme aqui sua senha" (click)="confirmPasswordClicked = true" (blur)="checkEmpty($event.target)">
           <p class="error-message" *ngIf="confirmPasswordClicked && usuario?.confirm_password?.trim() === ''">Campo obrigatório.</p>
+          <p class="error-message" *ngIf="confirmPasswordClicked && usuario.confirm_password !== usuario.password">
+            As senhas não coincidem.</p>
         </div>
 
         <div class="form-group-title">Endereço*</div>
@@ -90,7 +93,7 @@
         <div class="col-span-5">
           <div class="flex">
             <div class="input-group w-25">
-              <input [(ngModel)]="cliente.postalCode" [(ngModel)]="usuario.postalCode" onblur="pesquisacep(this.value);" class="form-control error" type="text" id="postalCode" name="postalCode" size="10" required wfd-id="id9" placeholder="Insira aqui seu CEP" (click)="postalCodeClicked = true" (blur)="checkEmpty($event.target)">
+              <input [(ngModel)]="cliente.postalCode" [(ngModel)]="usuario.postalCode" onblur="pesquisacep(this.value);" class="form-control error" type="text" id="postalCode" name="postalCode" size="10" required wfd-id="id9" placeholder="Insira aqui seu CEP" (click)="postalCodeClicked = true" (blur)="checkEmpty($event.target)" (blur)="blur($event)">
               <p class="error-message" *ngIf="postalCodeClicked && cliente.postalCode.trim() === ''">Campo obrigatório.</p>
             </div>
             <div class="p-2 d-none" id="loading-cep">
