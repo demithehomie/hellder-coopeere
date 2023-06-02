@@ -237,7 +237,13 @@ export class HomePage implements OnInit {
     
     
     multipleUpdate(){
-
+      this.submitTriagemForm()
+      this.cadastroProdist()
+      this.alertController.create({
+        header: ``,
+        message: ``,
+        buttons: ['OK']
+      })
     }
 //     const fileTransfer: FileTransferObject = this.transfer.create();
 
@@ -707,10 +713,10 @@ previousPage() {
   }
 
 
-  bigProdist!: FormGroup;
+  TriagemProdist!: FormGroup;
 
 validaFormProdist(){
-  this.bigProdist = this.formBuilder.group({
+  this.TriagemProdist = this.formBuilder.group({
  
    ContaDeLuz: ['', [Validators.required]],
    NumeroDoCliente: ['', [Validators.required]],
@@ -730,12 +736,12 @@ validaFormProdist(){
 
 cadastroProdist(): void{
   
-  this.prodistService.create(this.bigProdist.value).subscribe(
+  this.prodistService.create(this.TriagemProdist.value).subscribe(
     async (res: any) => {
       this.setNumeroDoCliente(res.NumeroDoCliente)
       console.log(res)
       const alert = this.alertController.create({
-        header: `Formulário Atualizado com Sucesso`,
+        header: `Formulário PRODIST Atualizado com Sucesso`,
         message: `Se desejar, faça o download agora mesmo`,
         buttons: ['OK']
       });
@@ -746,8 +752,8 @@ cadastroProdist(): void{
     async (res: { error: any}) => {
       console.log(res.error)
       const alert = this.alertController.create({
-        header: `O formulário não foi atualizado`,
-        message: `Verifique as informações inserida e tente novamente`,
+        header: `O Formulário PRODIST não foi atualizado`,
+        message: `Verifique as informações inseridas e tente novamente`,
         buttons: ['OK']
       });
       (await alert).present()
@@ -822,24 +828,24 @@ cadastroProdist(): void{
         this.triagemForm.get('mensagemTriagemTitular')?.setValue('Tenho uma conta Enel-RJ em meu nome. (Preencha o formulário PRODIST ANEEL com os dados desta conta)');
         this.triagemForm.get('mensagemTriagemNaoTitular')?.setValue('Não sou titular de uma conta Enel-RJ, mas me cadastrarei com o Link convite que me foi enviado ou o farei sem convite por livre e espontânea vontade para apoiar a cooperativa. (você será um Cooperado Apoiador)');
       } else {
-        this.triagemForm.get('mensagemTriagemTitular')?.setValue('');
-        this.triagemForm.get('mensagemTriagemNaoTitular')?.setValue('');
+        this.triagemForm.get('mensagemTriagemTitular')?.setValue('Tenho uma conta Enel-RJ em meu nome. (Preencha o formulário PRODIST ANEEL com os dados desta conta)');
+        this.triagemForm.get('mensagemTriagemNaoTitular')?.setValue('Não sou titular de uma conta Enel-RJ, mas me cadastrarei com o Link convite que me foi enviado ou o farei sem convite por livre e espontânea vontade para apoiar a cooperativa. (você será um Cooperado Apoiador)');
       }
     } else if (operadora === 'Light-RJ') {
       if (ehTitular === 'true') {
         this.triagemForm.get('mensagemTriagemTitular')?.setValue('Tenho uma conta Light-RJ em meu nome. (Preencha o formulário PRODIST ANEEL com os dados desta conta)');
         this.triagemForm.get('mensagemTriagemNaoTitular')?.setValue('Não sou titular de uma conta Light-RJ, mas me cadastrarei com o Link convite que me foi enviado ou o farei sem convite por livre e espontânea vontade para apoiar a cooperativa. (você será um Cooperado Apoiador)');
       } else {
-        this.triagemForm.get('mensagemTriagemTitular')?.setValue('');
-        this.triagemForm.get('mensagemTriagemNaoTitular')?.setValue('');
+        this.triagemForm.get('mensagemTriagemTitular')?.setValue('Tenho uma conta Light-RJ em meu nome. (Preencha o formulário PRODIST ANEEL com os dados desta conta)');
+        this.triagemForm.get('mensagemTriagemNaoTitular')?.setValue('Não sou titular de uma conta Light-RJ, mas me cadastrarei com o Link convite que me foi enviado ou o farei sem convite por livre e espontânea vontade para apoiar a cooperativa. (você será um Cooperado Apoiador)');
       }
     } else if (operadora === 'Enel-SP') {
       if (ehTitular === 'true') {
         this.triagemForm.get('mensagemTriagemTitular')?.setValue('Tenho uma conta Enel-SP em meu nome. (Preencha o formulário PRODIST ANEEL com os dados desta conta)');
         this.triagemForm.get('mensagemTriagemNaoTitular')?.setValue('Não sou titular de uma conta Enel-SP, mas me cadastrarei com o Link convite que me foi enviado ou o farei sem convite por livre e espontânea vontade para apoiar a cooperativa. (você será um Cooperado Apoiador)');
       } else {
-        this.triagemForm.get('mensagemTriagemTitular')?.setValue('');
-        this.triagemForm.get('mensagemTriagemNaoTitular')?.setValue('');
+        this.triagemForm.get('mensagemTriagemTitular')?.setValue('Tenho uma conta Enel-SP em meu nome. (Preencha o formulário PRODIST ANEEL com os dados desta conta)');
+        this.triagemForm.get('mensagemTriagemNaoTitular')?.setValue('Não sou titular de uma conta Enel-SP, mas me cadastrarei com o Link convite que me foi enviado ou o farei sem convite por livre e espontânea vontade para apoiar a cooperativa. (você será um Cooperado Apoiador)');
       }
     }
   }

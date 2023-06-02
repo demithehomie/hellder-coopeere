@@ -168,7 +168,11 @@
       <p>A função <strong>"Deletar conta"</strong>. Clique em deletar conta para remover todos seus dados e sair da cooperativa. Agradecemos se deixar um feedback sobre as razões de sua saída.</p>
     </div>
   </div>
-    <div *ngSwitchCase="'option3'" class="option-content">
+
+  <!-- FORMULÁRIO TRIAGEM PRODIST-->
+
+  
+    <div [formGroup]="TriagemProdist" (ngSubmit)="cadastroProdist()" *ngSwitchCase="'option3'" class="option-content">
 
       <div class="container-step-content">
 
@@ -212,6 +216,9 @@
                 </label>
               </div>
             </div>
+
+            <button type="submit">Atualizar</button>
+
           </fieldset>
         </form>
         
@@ -219,9 +226,9 @@
       </div>
     </div>
 
-<!-- FORMULÁRIO PRODIST-->
 
-<div [formGroup]="bigProdist" (ngSubmit)="cadastroProdist()" *ngSwitchCase="'option4'" class="ngcontent">
+
+<div  *ngSwitchCase="'option4'" class="ngcontent">
   
 
 <div style="padding: 50px; border-radius: 30px;">

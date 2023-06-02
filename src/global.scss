@@ -30,6 +30,36 @@
 }
 
 ion-card {
-    color: #000000
+    color: black;
+    background-color: #ffffff;
+
 }
 
+ion-card-title {
+    color: rgb(54, 54, 54);
+
+}
+
+ion-card-subtitle {
+     color: rgb(54, 54, 54);
+}
+
+ion-item ion-label {
+    color: black;
+    background-color: #ffffff;
+}
+
+ion-item ion-input {
+    color: black;
+    background-color: #ffffff;
+}
+
+ion-label {
+    color: black;
+    
+}
+
+ion-input {
+    color: black;
+
+}

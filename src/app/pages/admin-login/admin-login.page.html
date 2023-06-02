@@ -43,19 +43,19 @@
           <h4 style="display: flex; margin: auto;">Insira suas credenciais</h4>
           <br>
 
-        <ion-item>
-          <ion-label style="font-size: x-large;"   position="stacked">Insira seu email</ion-label>
-          <ion-input  style="font-size: 20px;" placeholder=" email@email.com "  type="email" formControlName="email" ></ion-input>
-        </ion-item>
+        
+          <label style="font-size: x-large;"   position="stacked">Insira seu email</label>
+          <input  style="font-size: 20px;" placeholder=" email@email.com "  type="email" formControlName="email" >
+        
         <div *ngIf="(email?.dirty || email?.touched) && email?.errors" class="errors">
           <span *ngIf="email?.errors?.['required']">Email is required</span>
           <span *ngIf="email?.errors?.['email']">Email is invalid</span>
         </div>
 
-        <ion-item>
-          <ion-label style="font-size: x-large;"   position="stacked">Insira sua senha</ion-label>
-          <ion-input  style="font-size: 20px;" placeholder=" ******** "  type="password" formControlName="password" ></ion-input>
-        </ion-item>
+        
+          <label style="font-size: x-large;"   position="stacked">Insira sua senha</label>
+          <input  style="font-size: 20px;" placeholder=" ******** "  type="password" formControlName="password" >
+        
         <div *ngIf="(password?.dirty || password?.touched) && password?.errors" class="errors">
           <span *ngIf="password?.errors?.['required']">Você precisa inserir sua senha</span>
           <span *ngIf="password?.errors?.['minlength']">A senha consiste no mínimo em 6 caracteres</span>

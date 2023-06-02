@@ -112,7 +112,11 @@ endereco: any;
 
       console.log(this.searchCep);
   }
+
+  showEmptyBorders: boolean = false;
     
+ 
+  
     
     // consultaCEP() {
     //   const cep = this.formulario.get('endereco.cep').value;
@@ -333,6 +337,8 @@ checkEmpty(input: EventTarget | null) {
   }
 }
 
+
+
 nameClicked = false;
 emailClicked = false;
 passwordClicked = false;
@@ -347,7 +353,42 @@ provinceClicked = false;
 cityClicked = false;
 addressNumberClicked = false;
 
+checkFields() {
+  if (this.usuario?.name?.trim() === '') {
+    this.nameInputClicked = true;
+  }
+  
+  if (this.email.trim() === '') {
+    // Email está vazio
+  }
+  
+  // Verificar outros campos
+}
 
+checkFieldss(input: EventTarget | null) {
+  if (input instanceof HTMLInputElement) {
+    if (input.value.trim() === "") {
+      input.classList.add("empty");
+    } else {
+      input.classList.remove("empty");
+    }
+  }
+}
+
+
+nameInputClicked = false;
+emailInputClicked = false;
+passwordInputClicked = false;
+confirmPasswordInputClicked = false;
+cpfInputClicked = false;
+mobilePhoneInputClicked = false;
+phoneInputClicked = false;
+postalCodeInputClicked = false;
+addressInputClicked = false;
+stateInputClicked = false;
+provinceInputClicked = false;
+cityInputClicked = false;
+addressNumberInputClicked = false;
 
 //
 
@@ -403,30 +444,22 @@ async cadastro() {
         });
         await alert.present(); 
 
-        const camposVazios: string[] = [];
+        let camposVazios: string[] = [];
 
         // Itera sobre todos os campos do formulário
-        if (this.name === "" ) {
-          camposVazios.push('Nome');
-        }
-    
-        if (this.email === "") {
-          camposVazios.push('Email');
-        }
-    
-        if (this.cpfCnpj === "") {
-          camposVazios.push('CPF/CNPJ');
-        }
-    
-        if (this.mobilePhone === "") {
-          camposVazios.push('Telefone Celular');
-        }
-      
-        // Verifica se existem campos vazios
-        if (camposVazios.length > 0) {
-          this.exibirAlertaCamposFaltando(camposVazios);
-          return;
-        }
+  Object.keys(this.formulario.controls).forEach((campo) => {
+    const valorCampo = this.formulario.get(campo)?.value;
+    if (!valorCampo || valorCampo.trim() === "") {
+      camposVazios.push(campo);
+    }
+  });
+
+  // Verifica se existem campos vazios
+  if (camposVazios.length > 0) {
+    this.exibirAlertaCamposFaltando(camposVazios);
+   // camposVazios = [];
+    return;
+  }
       }
 
 

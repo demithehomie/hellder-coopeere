@@ -1,3 +1,27 @@
+
+.empty {
+    border: 2px solid red;
+  }
+  
+  .empty-message {
+    color: red;
+    font-size: 15px;
+    font-weight: bold;
+    margin-left: 5px;
+    margin-top: 5px;
+  }
+  
+  .empty:after {
+    content: "Campo vazio";
+    position: absolute;
+    top: 100%;
+    left: 0;
+    color: red;
+    font-size: 20px;
+    margin-top: 5px;
+  }
+  
+
 .error {
     border: 2px solid red;
   }
@@ -666,8 +690,8 @@ ion-input {
         position: absolute;
         left: 0;
         top: 0;
-        height: 1400px;
-        width: 500%;
+        height: 1800px;
+        width: 700%;
         margin: 0;
         padding: 0;
     }
