@@ -1,6 +1,6 @@
 
 
-
+import { HttpErrorResponse } from '@angular/common/http';
 
 import { HttpClient } from '@angular/common/http';
 import { Component, HostListener, OnInit } from '@angular/core';
@@ -146,13 +146,15 @@ endereco: any;
     //   // console.log(form);
     // }
 
-
     formatarCPF() {
       let cpfRegex = /^(\d{3})(\d{3})(\d{3})(\d{2})$/;
       if (this.cliente.cpfCnpj) {
         this.cliente.cpfCnpj = this.cliente.cpfCnpj.replace(cpfRegex, '$1.$2.$3-$4');
       }
     }
+    
+    
+    
     
     
     formatarTelefone() {
@@ -231,7 +233,7 @@ cliente: Cliente = {
   name: "",
   email: "",
   company: "COOPEERE",
-  //	password : "",
+
   cpfCnpj: "",
   mobilePhone: "",
   phone: "",
@@ -259,7 +261,7 @@ usuario: Usuario = {
   role: 1,
   name: '',
   company: 'COOPEERE',
-  cpfCnpj: null,
+  cpfCnpj: "",
   mobilePhone: '',
   phone: '',
   postalCode: '',
@@ -531,7 +533,7 @@ async cadastroCliente(){
       await loading.dismiss();
        const alert = await this.alertController.create({
         header: 'Seja bem-vindo!',
-        message: 'Conta Asaas configurada com sucesso.',
+        message: 'Sua conta está sendo configurada...',
         buttons: ['OK']
       });
 
@@ -558,11 +560,99 @@ async cadastroCliente(){
 @HostListener('input', ['$event'])
 onInput(event: Event) {
   const input = event.target as HTMLInputElement;
-  if (input.value === '0') {
-    this.cliente.cpfCnpj = null;
+ 
+}
+
+
+  strCPF = this.cliente.cpfCnpj; 
+
+async testarCPF(strCPF: string ) {
+  let Soma: number;
+  let Resto: number;
+  Soma = 0;
+
+  if (strCPF == '00000000000') return this.showAlert('Cpf Inválido'); // console.log(false);
+
+  for (let i = 1; i <= 9; i++)
+    Soma += parseInt(strCPF.substring(i - 1, i)) * (11 - i);
+  Resto = (Soma * 10) % 11;
+
+  if (Resto == 10 || Resto == 11) Resto = 0;
+  if (Resto != parseInt(strCPF.substring(9, 10))) return this.showAlert('Cpf Inválido'); // console.log(false);
+
+  Soma = 0;
+  for (let i = 1; i <= 10; i++)
+    Soma += parseInt(strCPF.substring(i - 1, i)) * (12 - i);
+  Resto = (Soma * 10) % 11;
+
+  if (Resto == 10 || Resto == 11) Resto = 0;
+  if (Resto != parseInt(strCPF.substring(10, 11))) return this.showAlert('Cpf Inválido'); // console.log(false);
+
+  return this.showAlert('Cpf Validado com Sucesso');//console.log(true);
+}
+
+async showAlert(message: string) {
+
+//  setInterval(async () => {
+// }, 0.1 * 60 * 1000);
+ 
+  const alert = await this.alertController.create({
+    header: 'Alerta',
+    message: message,
+    buttons: ['OK'],
+  });
+
+  alert.present();
+
+}
+
+async verificarCPF(strCPF: string) {
+  const isValid = await this.testarCPF(strCPF);
+
+  if (isValid!) {
+    this.showAlert('CPF válido');
+  } else {
+    this.showAlert('CPF inválido');
   }
 }
 
+// (blur)="verificarUsuarioExistente(email?)"
+
+//inputEmail : any
+
+verificarUsuarioExistente(inputEmail: string) {
+  const email = inputEmail;
+  this.usuarioService.verificarUsuarioExistente(email).subscribe(async (res: any) => {
+    if (res && res.name) {
+      const userName = res.name;
+      const alert = await this.alertController.create({
+        header: `Usuário já cadastrado. Faça o Login`,
+        message: `O email ${email} já existe em nossa base de dados.\n\nNome: ${userName}`,
+        buttons: ['OK']
+      });
+      await alert.present();
+    } else {
+      const alert = await this.alertController.create({
+        header: `Bom ter você por aqui!`,
+        message: `Prossiga para a conclusão do cadastro`,
+        buttons: ['OK']
+      });
+      await alert.present();
+    }
+  }, async (error: HttpErrorResponse) => {
+    if (error.status === 404) {
+      const alert = await this.alertController.create({
+        header: `Bom ter você por aqui!`,
+        message: `Prossiga para a conclusão do cadastro`,
+        buttons: ['OK']
+      });
+      await alert.present();
+    } else {
+      // Lida com outros erros
+      console.error(error);
+    }
+  });
+}
 
 }
 

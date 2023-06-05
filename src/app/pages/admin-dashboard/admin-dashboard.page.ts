@@ -63,7 +63,7 @@ export class AdminDashboardPage implements OnInit {
     private router: Router,
     private appStorageService: AppStorageService
 
-    // https://grandfinale.onrender.com
+    // http://localhost:3001
      
     ) {
       this.title.setTitle('Área de Admin')

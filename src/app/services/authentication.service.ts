@@ -7,7 +7,7 @@ import { NewAppStorageService } from './new-app-storage.service';
 import { Router } from '@angular/router';
 
 const TOKEN_KEY = 'token';
-const baseApiUrl = 'https://grandfinale.onrender.com';
+const baseApiUrl = 'http://localhost:3001';
 
 @Injectable({
   providedIn: 'root'

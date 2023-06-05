@@ -8,7 +8,7 @@ import { Observable } from "rxjs";
 })
 export class AdminService {
 
-    private apiUrl = 'https://grandfinale.onrender.com';
+    private apiUrl = 'http://localhost:3001';
 
     constructor (
         private httpClient: HttpClient

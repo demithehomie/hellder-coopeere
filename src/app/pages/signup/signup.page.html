@@ -50,14 +50,15 @@
        
         <label class="form-label" for="email">E-mail*</label>
         <div class="input-group">
-          <input [(ngModel)]="cliente.email" [(ngModel)]="usuario.email"  type="email" class="form-control error" id="email" name="email" placeholder="Insira seu email" required wfd-id="id3" (click)="emailClicked = true" (blur)="checkEmpty($event.target)">
+          <input [(ngModel)]="cliente.email" [(ngModel)]="usuario.email"  type="email" class="form-control error" id="email" name="email" placeholder="Insira seu email" required wfd-id="id3" (click)="emailClicked = true" (blur)="checkEmpty($event.target)" (blur)="verificarUsuarioExistente(cliente.email)">
           <p class="error-message" *ngIf="emailClicked && cliente.email.trim() === ''">Campo obrigatório.</p>
         </div>
 
-        <label class="form-label" for="cpfCnpj">CPF/CNPJ*</label>
+        <label class="form-label" for="cpfCnpj">CPF/CNPJ*</label>  
         <div class="input-group w-60">
-          <input   [(ngModel)]="cliente.cpfCnpj" [(ngModel)]="usuario.cpfCnpj" type="text" placeholder="Digite seu CPF" class="form-control cliente-documento error" id="cpfCnpj" name="cpfCnpj"  size="25" required maxlength="14" wfd-id="id4" placeholder="Insira seu CPF" (blur)="formatarCPF()"  (click)="cpfClicked = true" (blur)="checkEmpty($event.target)">
+          <input (blur)="formatarCPF()"  [(ngModel)]="strCPF" [(ngModel)]="cliente.cpfCnpj" [(ngModel)]="usuario.cpfCnpj" type="text" placeholder="Digite seu CPF" class="form-control error" id="cpfCnpj" name="cpfCnpj"   required maxlength="14" wfd-id="id4" placeholder="Insira seu CPF" (blur)="testarCPF(strCPF!)" (click)="cpfClicked = true" (blur)="checkEmpty($event.target)">
           <p class="error-message" *ngIf="cpfClicked && cliente?.cpfCnpj?.trim() === ''">Campo obrigatório.</p>
+      
         </div>
 
         <label class="form-label" for="telefone_celular">Telefone Celular*</label>

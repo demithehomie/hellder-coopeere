@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient} from '@angular/common/http'
-import { Observable } from 'rxjs';
+import { Observable, catchError, map, of, throwError } from 'rxjs';
 
 
-const base_URL = 'https://grandfinale.onrender.com';
+const base_URL = 'http://localhost:3001';
 
 @Injectable({
   providedIn: 'root' 
@@ -14,6 +14,21 @@ export class UsuarioService {
  
 
   constructor(private httpClient: HttpClient) { }
+
+
+  // SABER SE UM EMAIL É EXISTENTE OU NÃO
+
+  verificarUsuarioExistente(email: string): Observable<any> {
+    return this.httpClient.get(`${base_URL}/auth/get-by-email/${email}`).pipe(
+      catchError((error) => {
+        return throwError(error); // Lança o erro para ser tratado posteriormente
+      })
+    );
+  }
+  
+  
+  
+
 
   // CRIAR USUÁRIO - SELF-SIGN-IN 
   create(data: any) : Observable<any>  {
