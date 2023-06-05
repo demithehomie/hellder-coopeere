@@ -631,6 +631,7 @@ verificarUsuarioExistente(inputEmail: string) {
         buttons: ['OK']
       });
       await alert.present();
+      this.router.navigateByUrl('/login')
     } else {
       const alert = await this.alertController.create({
         header: `Bom ter você por aqui!`,
