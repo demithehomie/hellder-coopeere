@@ -3,7 +3,7 @@ import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-const APIUrl = "http://localhost:3001"
+const APIUrl = "https://grandfinale.onrender.com"
 
 @Injectable({
     providedIn: 'root'

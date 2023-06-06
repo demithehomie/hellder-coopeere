@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { FilterPipe } from 'src/app/pipes/filter.pipes';
+import { NewAppStorageService } from 'src/app/services/new-app-storage.service';
 import { SearchService } from 'src/app/services/search.service';
 
 @Component({
@@ -10,7 +12,19 @@ import { SearchService } from 'src/app/services/search.service';
 })
 export class ResultadosPage {
 
-  constructor(private route: ActivatedRoute, private searchService: SearchService ) {}
+pesquisa: any
+
+  constructor(
+    private route: ActivatedRoute, 
+    private searchService: SearchService,
+    private appStorageService: NewAppStorageService,
+    private title: Title
+    ) {
+      this.title.setTitle(`Pesquisando por ${this.appStorageService.get(`pesquisa`)}`)
+    }
+
+
+resultado = this.appStorageService.get(`pesquisa`)
 
  pesquisaPagina: any;
  conteudo: any[] | undefined;

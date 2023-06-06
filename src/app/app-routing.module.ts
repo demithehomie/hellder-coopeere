@@ -303,9 +303,14 @@ export const routes: Routes = [
     path: 'admin-dashboard',
     loadChildren: () => import('./pages/admin-dashboard/admin-dashboard.module').then( m => m.AdminDashboardPageModule),
    // canLoad: [AdminAuthGuard]
-  },  {
+  },
+  {
     path: 'novo-cadastro',
     loadChildren: () => import('./pages/novo-cadastro/novo-cadastro.module').then( m => m.NovoCadastroPageModule)
+  },
+  {
+    path: 'personal-info',
+    loadChildren: () => import('./personal-info/personal-info.module').then( m => m.PersonalInfoPageModule)
   },
 
 

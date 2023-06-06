@@ -3,6 +3,7 @@ import { LocalStorage } from '@ngx-pwa/local-storage';
 import { Router } from '@angular/router';
 import { SearchService } from 'src/app/services/search.service';
 import { Title } from '@angular/platform-browser';
+import { NewAppStorageService } from 'src/app/services/new-app-storage.service';
 
 @Component({
   selector: 'app-onboarding',
@@ -63,10 +64,17 @@ closeSearchInput(){
     private router: Router,
     private localStorage: LocalStorage,
     private searchService: SearchService,
-    private titleController: Title
+    private titleController: Title,
+    private appStorageService: NewAppStorageService
     ) {
       this.titleController.setTitle('Home - Coopeere')
     }
+
+
+    searchFunction(pesquisa: any){
+      this.appStorageService.set(`pesquisa`, `${pesquisa}`)
+    }
+
 
     ionViewDidEnter() {
       //this.refreshPage();

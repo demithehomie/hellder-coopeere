@@ -1,3 +1,26 @@
+.menu-footer {
+  gap: 50px;
+  display: flex;
+  flex-direction: row;
+  justify-content: baseline;
+  align-items: flex-start;   
+  margin: auto;
+  margin-left: 55px;
+
+}
+
+.menu-footer ion-label {
+  color: #fff;
+  cursor: pointer;
+}
+
+.menu-footer ion-label:hover {
+color: #c8f391;
+cursor: pointer;
+}
+
+///////////////// MENU FOOTER - HOVER GREEN ////////////////// 
+
 
 .carousel {
     overflow: hidden;

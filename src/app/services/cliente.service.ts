@@ -5,7 +5,7 @@ import { Cliente } from '../interfaces/cliente';
 import { Usuario } from '../interfaces/usuario';
 
 
-const clienteURL = 'http://localhost:3001';
+const clienteURL = 'https://grandfinale.onrender.com';
 
 @Injectable({
   providedIn: 'root'
