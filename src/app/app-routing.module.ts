@@ -7,10 +7,7 @@ import { AdminAuthGuard } from './guards/admin-auth.guard';
 
 
 export const routes: Routes = [
-/*   {
-    path: '',
-    loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
-  }, */
+
   {
     path: 'info',
     loadChildren: () => import('./pages/info/info.module').then( m => m.InfoPageModule)

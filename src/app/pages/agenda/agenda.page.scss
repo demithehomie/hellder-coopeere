@@ -201,6 +201,54 @@
         }
     }
 
+    .menu-lateral{
+      text-transform: uppercase;
+      list-style: none;
+      background-color: #fff;
+      display: flex;
+      flex-direction: column;
+      
+      
+      ion-label{
+          cursor: pointer;
+          margin: 0;
+          width: 300px;
+          position: relative;
+          color: #2a302f;
+          font-size: 1rem;
+          font-family: "Open Sans", Sans-serif;
+          font-weight: 400;
+          padding: 13px 20px;
+          transition: .4s;
+  
+          &:hover {
+              color: #7B9A6E;
+              
+          }
+  
+          &::before {
+              content: '';
+              position: absolute;
+              
+              width: 0;
+              right: 0;
+              bottom: 0;
+              height: 3px;
+              background: #7B9A6E;
+  
+          }
+          &:hover::before {
+              width: 100%;
+          }
+      }
+      .active-link:before {
+      
+          width: 100%;
+          color: #7B9A6E;
+      
+      }
+  }
+
     ion-list{
         text-transform: uppercase;
         list-style: none;

@@ -3,12 +3,12 @@
   
   <div [routerLink]="['/login']">
     <ion-icon style="color:#fff;" name="person"></ion-icon>
-    <ion-label style="color:#fff;" class="label-header" >Login</ion-label>
+    <ion-label style="color:#fff;" class="label-header" >LOGIN</ion-label>
   </div>
     |
     <div style="padding-left: 18px;" [routerLink]="['/signup']" >
       <ion-icon style="color:#fff;" name="pencil"></ion-icon>
-      <ion-label style="color: #fff;" >Cadastro</ion-label>
+      <ion-label style="color: #fff;" >CADASTRO</ion-label>
     </div>
     
     
@@ -111,52 +111,3 @@
 </ion-content>
 
 
-
-<ion-footer class="footer"> 
-
-    
-    
-  <section class="p-menu1">
-    <nav id="navbar" class="navigation" role="navigation">
-      <input id="toggle1" type="checkbox" />
-      <label class="hamburger1" for="toggle1">
-        <div class="top"></div>
-        <div class="meat"></div>
-        <div class="bottom"></div>
-      </label>
-
-      <nav class="menu1" >
-        <ion-label style="padding-left: 20px;" [routerLink]="['/eventos']">EVENTOS</ion-label>
-        <ion-label style="padding-left: 20px;" [routerLink]="['/publicacoes']">PUBLICAÇÕES</ion-label>
-        <ion-label style="padding-left: 20px;" [routerLink]="['/agenda']">AGENDA</ion-label>
-        <ion-label style="padding-left: 20px;" [routerLink]="['/galeria']" >GALERIA DE FOTOS</ion-label>
-        <ion-label style="padding-left: 20px;" [routerLink]="['/faleconosco']">FALE CONOSCO</ion-label>
-      </nav>
-  </nav>
-
-  
-
-  </section>
-  
-    <div class="menu-footer">
-      <ion-label [routerLink]="['/eventos']">EVENTOS</ion-label>
-      <ion-label [routerLink]="['/publicacoes']">PUBLICAÇÕES</ion-label>
-      <ion-label [routerLink]="['/agenda']">AGENDA</ion-label>
-      <ion-label [routerLink]="['/galeria']" >GALERIA DE FOTOS</ion-label>
-      <ion-label [routerLink]="['/faleconosco']">FALE CONOSCO</ion-label>
-    </div>
-  
-    <div class="social-media-icons">
-
-      <!-- ROUTER LINKS NÃO FUNCIONAM COM LINKS DE VERDADE  -->
-      
-      <!-- MAS DEU PRA RESOLVER USANDO UMA FUNÇÃO COM TYPESCRIPT -->
-            
-            <ion-label (click)="openExternalLinkFacebook()">  <ion-img class="new-social-icons" src="../../../assets/images-coopeere/facebook.png"></ion-img>  </ion-label>
-            <ion-label (click)="openExternalLinkInstagram()"> <ion-img class="new-social-icons" src="../../../assets/images-coopeere/instagram.png"></ion-img> </ion-label>
-            <ion-label (click)="openExternalLinkYouTube()"> <ion-img class="new-social-icons" src="../../../assets/images-coopeere/youtube.png"></ion-img> </ion-label>
-          </div>
-          
-    
-    
-  </ion-footer>

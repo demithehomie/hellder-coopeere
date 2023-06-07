@@ -1,0 +1,107 @@
+@media screen and (max-width: 765px) {
+    
+    .footer {
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin: auto;
+
+    }
+}
+
+@media screen and (min-width: 765px) {
+    
+    .footer {
+
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        margin: auto;
+
+    }
+}
+
+
+.background {
+    position: relative;
+  }
+  
+  .background::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("../../assets/images-coopeere/turbinas.png");
+    background-size: cover;
+    opacity: 0.5;
+    z-index: 1;
+  }
+  
+  .background > * {
+    position: relative;
+    z-index: 2;
+  }
+  
+
+.usuario {
+    box-shadow: inset;
+    padding: 45px;
+}
+
+.usuario-nome {
+    font-size: 40px;
+    font-weight: bold;
+
+}
+
+.usuario-dados {
+    font-size: 20px;
+}
+
+.usuario-documento {
+    font-size: 20px;
+}
+
+.botao-cancelar {
+    border: 1px crimson solid;
+    background-color: #ffffff;
+    color: crimson;
+    font-weight: bold;
+    padding: 10px;
+    width: 250px;
+    border-radius: 20px;
+    margin-bottom: 10px;
+    
+
+}
+
+.botao-editar {
+    border: 1px rgb(4, 168, 12) solid;
+    color: rgb(4, 168, 12);
+    background-color: #ffffff;
+    font-weight: bold;
+    padding: 10px;
+    width: 300px;
+    border-radius: 20px;
+    margin-right: 40px;
+    margin-bottom: 10px;
+
+}
+
+.botao-voltar {
+    border: 1px rgb(40, 4, 168) solid;
+    color: rgb(40, 4, 168);
+    font-weight: bold;
+    background-color: #ffffff;
+    padding: 10px;
+    width: 150px;
+    border-radius: 20px;
+    margin-left: 40px;
+    margin-bottom: 10px;
+
+}

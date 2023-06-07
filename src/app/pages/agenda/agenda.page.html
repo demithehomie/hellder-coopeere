@@ -185,13 +185,13 @@
           </section>
         
           <div class="menu-lateral-x">
-          <ion-list>
-            <ion-label fill="clear" [routerLink]="['/eventos']" >Eventos</ion-label>
-            <ion-label fill="clear" [routerLink]="['/publicacoes']">Publicações</ion-label>
-            <ion-label style="color: #7b9a6e;" fill="clear" [routerLink]="['/agenda']" routerLinkActive="active-link">Agenda</ion-label>
-            <ion-label fill="clear" [routerLink]="['/galeria']">Galeria de fotos</ion-label>
-            <ion-label fill="clear" [routerLink]="['/trabalheconosco']">Trabalhe Conosco</ion-label>
-          </ion-list>
-        </div>
+            <ion-list class="menu-lateral">
+              <ion-label fill="clear" [routerLink]="['/eventos']">Eventos</ion-label>
+              <ion-label  fill="clear" [routerLink]="['/publicacoes']" >Publicações</ion-label>
+              <ion-label fill="clear" style="color: #7b9a6e;" routerLinkActive="active-link" [routerLink]="['/agenda']">Agenda</ion-label>
+              <ion-label fill="clear" [routerLink]="['/galeria']">Galeria de fotos</ion-label>
+              <ion-label fill="clear" [routerLink]="['/trabalheconosco']">Trabalhe Conosco</ion-label>
+            </ion-list>
+          </div>
     </div>
   </ion-content>

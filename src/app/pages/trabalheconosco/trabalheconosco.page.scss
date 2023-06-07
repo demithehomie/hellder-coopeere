@@ -1,3 +1,137 @@
+.container{
+
+  display: flex;
+  position: relative;
+  margin-left: 10%;
+  max-width: 70%;
+  left: 25px;
+  top: 19px;
+  margin-top: 160px;
+  margin-bottom: 40px;
+  line-height: 2;
+  justify-content: space-between;
+
+  .title{
+  color: #6d7882;
+  font-size: 37px;
+  font-weight: 300;
+  //font-family: "Open Sans", "Sans-serif";
+  margin-bottom: 40px;
+  }
+  section{
+      line-height: 1.6em;      
+      //font-family: "Open Sans", "Sans-serif";
+      h2{
+          font-size: 32px;
+      }
+      h3{
+          font-size: 28px;
+      }
+      p{
+          font-size: 18px;
+          font-weight: 400;
+          line-height: 32.4px;
+      }
+  }
+
+  .menu-lateral{
+    text-transform: uppercase;
+    list-style: none;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    
+    
+    ion-label{
+        cursor: pointer;
+        margin: 0;
+        width: 300px;
+        position: relative;
+        color: #2a302f;
+        font-size: 1rem;
+        font-family: "Open Sans", Sans-serif;
+        font-weight: 400;
+        padding: 13px 20px;
+        transition: .4s;
+
+        &:hover {
+            color: #7B9A6E;
+            
+        }
+
+        &::before {
+            content: '';
+            position: absolute;
+            
+            width: 0;
+            right: 0;
+            bottom: 0;
+            height: 3px;
+            background: #7B9A6E;
+
+        }
+        &:hover::before {
+            width: 100%;
+        }
+    }
+    .active-link:before {
+    
+        width: 100%;
+        color: #7B9A6E;
+    
+    }
+}
+
+  ion-list{
+      text-transform: uppercase;
+      list-style: none;
+      background-color: #fff;
+      display: flex;
+      flex-direction: column;
+      padding-left: 10px;
+      
+      
+      ion-label{
+          cursor: pointer;
+          margin: 0;
+          width: 300px;
+          position: relative;
+          color: #2a302f;
+          font-size: 1rem;
+         // font-family: "Open Sans", "Sans-serif";
+          font-weight: 400;
+          padding: 13px 20px;
+          transition: .4s;
+  
+          &:hover {
+              color: #7B9A6E;
+              
+          }
+  
+          &::before {
+              content: '';
+              position: absolute;
+              width: 0;
+              right: 0;
+              bottom: 0;
+              height: 3px;
+              background: #7B9A6E;
+  
+          }
+          &:hover::before {
+              width: 100%;
+          }
+      }
+      .active-link:before {
+      
+          width: 100%;
+          color: #7B9A6E;
+      
+      }
+  }
+}
+
+
 
 .title {
   padding-left: 10%;

@@ -4,12 +4,12 @@
   
     <div [routerLink]="['/login']">
       <ion-icon style="color:#fff;" name="person"></ion-icon>
-      <ion-label style="color:#fff;" class="label-header" >Login</ion-label>
+      <ion-label style="color:#fff;" class="label-header" >LOGIN</ion-label>
     </div>
       |
       <div style="padding-left: 18px;" [routerLink]="['/signup']" >
         <ion-icon style="color:#fff;" name="pencil"></ion-icon>
-        <ion-label style="color: #fff;" >Cadastro</ion-label>
+        <ion-label style="color: #fff;" >CADASTRO</ion-label>
       </div>
       
       
@@ -45,9 +45,7 @@
     </ion-header>
   
   
-  <div class="container">
-  
-  </div>
+
   
   <div class="minimum-header">
   
@@ -100,7 +98,21 @@
     <ion-icon name="search" class="search-min-header">Procurar</ion-icon>
   </div>
 
+  <div class="container">
+
   <h1 class="title">Trabalhe Conosco</h1>
+
+ 
+  <div class="menu-lateral-x">
+    <ion-list class="menu-lateral">
+      <ion-label fill="clear" [routerLink]="['/eventos']">Eventos</ion-label>
+      <ion-label  fill="clear" [routerLink]="['/publicacoes']" >Publicações</ion-label>
+      <ion-label fill="clear"   [routerLink]="['/agenda']">Agenda</ion-label>
+      <ion-label fill="clear" [routerLink]="['/galeria']">Galeria de fotos</ion-label>
+      <ion-label fill="clear" style="color: #7b9a6e;" routerLinkActive="active-link" [routerLink]="['/trabalheconosco']">Trabalhe Conosco</ion-label>
+    </ion-list>
+  </div>
+  </div>
   
 </ion-content>
 
