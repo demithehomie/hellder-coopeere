@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 
 @Component({
@@ -21,7 +22,12 @@ export class EventosPage implements OnInit {
   }
    
  ////
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private title: Title
+    ) {
+      this.title.setTitle('Eventos - Coopeere')
+  }
 
   goToPage(option: string) {
     switch (option) {

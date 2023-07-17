@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { IonItem } from '@ionic/angular';
 
@@ -28,7 +29,11 @@ closeSearchInput(){
 }
  
  
-  constructor(private router: Router) {}
+  constructor(
+    private title: Title,
+    private router: Router) {
+      this.title.setTitle('Publicações - Coopeere')
+  }
 
   goToPage(option: string) {
     switch (option) {

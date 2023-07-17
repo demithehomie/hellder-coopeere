@@ -7,6 +7,7 @@ import { Injectable } from '@angular/core';
 export class NewAppStorageService {
 
   private _storage: Storage | null = null;
+  searchTerm: any;
 
   constructor(private storage: Storage) {
     this.init();

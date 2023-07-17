@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 
 @Component({
@@ -18,7 +19,12 @@ export class LegislacaoPage implements OnInit {
     this.showMenu = !this.showMenu;
   }
  
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private title: Title
+    ) {
+    this.title.setTitle('Legislação - Coopeere')
+  }
 
   goToPage(option: string) {
     switch (option) {

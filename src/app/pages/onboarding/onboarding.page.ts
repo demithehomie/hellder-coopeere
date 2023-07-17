@@ -1,9 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,  ViewChild, ElementRef } from '@angular/core';
 import { LocalStorage } from '@ngx-pwa/local-storage';
 import { Router } from '@angular/router';
 import { SearchService } from 'src/app/services/search.service';
 import { Title } from '@angular/platform-browser';
 import { NewAppStorageService } from 'src/app/services/new-app-storage.service';
+import { IonSlides, IonicSlides, ModalController } from '@ionic/angular';
+import Swiper from 'swiper';
+import { register } from 'swiper/element/bundle';
+
+register();
 
 @Component({
   selector: 'app-onboarding',
@@ -13,7 +18,16 @@ import { NewAppStorageService } from 'src/app/services/new-app-storage.service';
 })
 export class OnboardingPage implements OnInit  {
 
+  swiperModules = [IonicSlides];
+
+  private swiper?: Swiper;
+
+  @ViewChild('swiper')
+  swiperRef: ElementRef | undefined;
+
   isDropdownOpen: boolean = false;
+
+  /////////////////////////////////////////////////////////////
 
   toggleDropdown() {
     this.isDropdownOpen = !this.isDropdownOpen;
@@ -34,11 +48,7 @@ closeSearchInput(){
   this.router.navigateByUrl('/onboarding')
 }
 
-//enviarFormulario() {
 
-  //this.filtros = { /* ... */ };
-  //this.router.navigate(['/resultados'], { queryParams: this.filtros });
-//}
  
   slideOpts = {
     autoplay: {
@@ -70,11 +80,14 @@ closeSearchInput(){
       this.titleController.setTitle('Home - Coopeere')
     }
 
+    pesquisa: any
 
     searchFunction(pesquisa: any){
       this.appStorageService.set(`pesquisa`, `${pesquisa}`)
     }
 
+
+    /////////// opa opa opa
 
     ionViewDidEnter() {
       //this.refreshPage();
@@ -91,6 +104,7 @@ closeSearchInput(){
 
     search() {
       this.searchService.searchTerm = this.searchTerm;
+      //this.appStorageService.set(`pesquisa`, this.searchTerm)
       this.router.navigate(['/resultados']);
     }
 

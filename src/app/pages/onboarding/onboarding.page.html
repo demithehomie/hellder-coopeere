@@ -61,7 +61,7 @@
               <div class="modalcontent">
 
                 <form class="modalSearch"  >
-                  <input id="lista" (keydown.enter)="search()" placeholder="Procurar..." type="hidden" 
+                  <input id="lista" (keydown.enter)="searchFunction(pesquisa)" placeholder="Procurar..." type="hidden" 
                   
                     style ="background-color: transparent; 
                             text-align:center; 
@@ -169,85 +169,99 @@
     <!-- <a href="#modal_1" class="btn2"><ion-icon style="font-size: 25px; font-weight: bold;" name="search"></ion-icon></a> -->
   
 
-<ion-slides pager="true" [options]="slideOpts" class="ion-slides-x">
+<swiper-container autoplay pager="true" [options]="slideOpts" [loop]="true" class="ion-slides-x">
 
 
 
-  <div class="intro-text">
-  <ion-slide class="slide-c" >
+  <swiper-slide class="slide-c" >
     <img class="crescer" src="../../../assets/images-coopeere/coopeereslide2.png">
   
-    <h1 class="text-slider-c">Coopere você também, torne-se um cooperado</h1>
-    <button [routerLink]="['/signup']">CADASTRE-SE</button>  
-  </ion-slide>
-</div>
+    <h1 class="text-slides-above-button">Coopere você também,<br> torne-se um cooperado</h1>
+    <button [routerLink]="['/signup']" >CADASTRE-SE</button>  
+  </swiper-slide>
 
-  <ion-slide class="slide-c"> 
+
+  <swiper-slide class="slide-c"> 
     <img class="crescer" src="../../../assets/images-coopeere/coopeereslide1.png">
 
     <h1 class="text-slides-above-button">O que a sociedade <br> espera dos nossos <br> governantes?</h1>
     <button [routerLink]="['/signup']">CADASTRE-SE</button>
-  </ion-slide>
+  </swiper-slide>
 
-  <ion-slide class="slide-c">
+  <swiper-slide class="slide-c">
     <img class="crescer" src="../../../assets/images-coopeere/coopeereslide2.png">
   
     <h1 class="text-slides-above-button">O que nossos jovens <br> esperam do futuro?</h1>
     <button [routerLink]="['/signup']">CADASTRE-SE</button>  
-  </ion-slide>
+  </swiper-slide>
 
 
-  <ion-slide class="slide-c">
+  <swiper-slide class="slide-c">
     <img class="crescer" src="../../../assets/images-coopeere/coopeere-offshore.jpg">
    
     <h1 class="text-slides-above-button">Quantos milhares <br> de empregos  poderão <br> ser criados?</h1>
     <button [routerLink]="['/signup']">CADASTRE-SE</button>  
-  </ion-slide>
+  </swiper-slide>
 
 
  
 
 
-  </ion-slides>
+</swiper-container>
 
 <div style="display: flex; flex-direction: row;">
   <h1 style="text-align:start; padding: 10px;">Apoio:</h1> 
-  <ion-slides style="margin: 0px;"  [options]="slideOpts2" >
+  <swiper-container [loop]="true" autoplay  class="min-slides-container" slides-per-view="4">
+   
+    <swiper-slide >
+ 
+        <img style="min-width: 50%; padding: 10px;" src="../../../assets/img/cooopeerre.png">
+     
+    </swiper-slide>
+  
+    <swiper-slide >
 
-    <ion-slide>
-      <img style="min-width: 50%" src="../../../assets/img/cooopeerre.png">      
-    </ion-slide>
-  
-    <ion-slide>
-      <img style="min-width: 50%" src="../../../assets/img/fitmmrj.png">
-    </ion-slide>
-  
-    <ion-slide>
-      <img style="min-width: 50%" src="../../../assets/img/wipdev.jpg">
-    </ion-slide>
-  
-  
-    <ion-slide>
-      <img style="min-width: 50%" src="../../../assets/img/primesol.jpg">
-    </ion-slide>
-  
-    <ion-slide>
-      <img style="min-width: 50%" src="../../../assets/img/redeaurora.jpeg">
-    </ion-slide>
-  
-    <ion-slide>
-      <img style="min-width: 50%" src="../../../assets/img/fotonsolucoes.png">
-    </ion-slide>
-  
-    <ion-slide>
-      <img style="min-width: 50%" src="../../../assets/img/forcasindical.png">
-    </ion-slide>
+        <img style="min-width: 50%; padding: 10px;" src="../../../assets/img/fitmmrj.png">
 
-    <ion-slide>
-      <img class="logo-makrom" src="../../../assets/img/makrom.jpg">
-    </ion-slide>
+    </swiper-slide>
   
-    </ion-slides>
+    <swiper-slide >
+
+        <img style="min-width: 50%; padding: 10px;" src="../../../assets/img/wipdev.jpg">
+ 
+    </swiper-slide>
+  
+    <swiper-slide >
+
+        <img style="min-width: 50%; padding: 10px;" src="../../../assets/img/primesol.jpg">
+
+    </swiper-slide>
+  
+    <swiper-slide >
+  
+        <img style="min-width: 50%; padding: 10px;" src="../../../assets/img/redeaurora.jpeg">
+
+    </swiper-slide>
+  
+    <swiper-slide >
+    
+        <img style="min-width: 50%; padding: 10px;" src="../../../assets/img/fotonsolucoes.png">
+  
+    </swiper-slide>
+  
+    <swiper-slide >
+
+        <img style="min-width: 50%; padding: 10px;" src="../../../assets/img/forcasindical.png">
+
+    </swiper-slide>
+  
+    <swiper-slide >
+
+        <img class="logo-makrom" src="../../../assets/img/makrom.jpg">
+  
+    </swiper-slide>
+  </swiper-container>
+  
   </div>
 
     

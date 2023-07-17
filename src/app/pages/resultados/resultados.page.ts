@@ -59,7 +59,7 @@ resultado = this.appStorageService.get(`pesquisa`)
 
 {
   id: 3,
-  nome: "Agenda",
+  nome: "Publicações",
   titulo: "V CONGRESSO DE ENSINO, PESQUISA E EXTENSÃO(CONEPE)",
   conteudo: ""
 },
@@ -103,12 +103,12 @@ getFilteredItems() {
 */
 
 getFilteredItems() {
-  const searchTerm = this.searchService.searchTerm;
+  const searchTerm = this.appStorageService.get(`pesquisa`);
   if (!searchTerm) {
     return this.pages;
   }
-  return this.pages.filter(page => {
-    return page.nome.includes(searchTerm);
+  return this.pages.filter(async page => {
+    return page.nome.includes(await searchTerm);
   });
 }
 

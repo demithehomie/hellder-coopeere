@@ -66,13 +66,13 @@
 }
 
 
-ion-slide {
+swiper-slide {
    position: relative;
    
 
 }
 
-ion-slide h1, ion-slide p {
+swiper-slide h1, swiper-slide p {
     position: absolute;
     top: 30%;
     left: 35%;
@@ -87,7 +87,7 @@ ion-slide h1, ion-slide p {
 }
 
 @media screen and (max-width: 767px) {
-   ion-slide h1 {
+   swiper-slide h1 {
        font-size: 18px;
        position: absolute;
        top: 70%;
@@ -98,13 +98,13 @@ ion-slide h1, ion-slide p {
  }
 
  @media (max-width: 1366px) {
-    ion-slide h1 {
+    swiper-slide h1 {
         font-size: 20px;
      }
   }
  
 
-ion-slide button {
+swiper-slide button {
 
     position: absolute;
     top: 30%;
@@ -116,11 +116,12 @@ ion-slide button {
     margin-top: 200px;
     padding: 15px;
     border-radius: 50px;
+    color: #ffffff; 
     background-color: #2B571A;
 }
 
 @media (max-width: 767px) {
-    ion-slide button   {
+    swiper-slide button   {
       width: 25%;
       font-size: 85%;
       position: absolute;
@@ -133,7 +134,11 @@ ion-slide button {
  }
 
 
-
+.min-slides-x {
+  padding: 15px;
+  min-width: 200px;
+  max-width: 200px;
+}
 
 
 .logo {

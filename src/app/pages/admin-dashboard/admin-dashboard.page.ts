@@ -106,7 +106,7 @@ refreshPage() {
 
   closeAddAdminPopup() {
     this.showAddAdminPopup = false; // Fecha o popup de adicionar usuário
-    this.newUser = {}; // Limpa os dados do novo usuário
+    this.newUser = {}// Limpa os dados do novo usuário
   }
 
   async createAdmin(){

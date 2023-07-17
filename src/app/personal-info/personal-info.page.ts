@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { AppStorageService } from '../services/app-storage.service';
 import { Title } from '@angular/platform-browser';
-import { AlertController } from '@ionic/angular';
+import { AlertController, LoadingController } from '@ionic/angular';
 import { AdminService } from '../services/admin.service';
 import { Router } from '@angular/router';
+import { Usuario } from '../interfaces/usuario';
 
 @Component({
   selector: 'app-personal-info',
@@ -21,7 +22,7 @@ export class PersonalInfoPage implements OnInit {
   email: any;
   mobilePhone: any;
   phone: any;
-  company: any;
+  company: string = "COOPEERE";
   address: any;
   addressNumber: any;
   city: any;
@@ -36,7 +37,8 @@ export class PersonalInfoPage implements OnInit {
     private appStorageService: AppStorageService,
     private alertController: AlertController,
     private adminService: AdminService,
-    private router: Router 
+    private router: Router,
+    private loadingController: LoadingController,
     
   ) 
   { 
@@ -44,13 +46,54 @@ export class PersonalInfoPage implements OnInit {
   }
 
   ngOnInit() {
+    
+    this.adminService.showUsers().subscribe(
+      (response: any) => { // Update the parameter type to 'any'
+        this.users = response; // Assign the response to the users property
+      },
+      (error) => {
+        console.error('Error fetching users:', error);
+      }
+    );
 
+  }
+
+  usuario: Usuario = {
+    id: 0,
+    email: "",
+    password: "",
+    confirm_password: "",
+    role: 1,
+    name: '',
+    company: 'COOPEERE',
+    cpfCnpj: null,
+    mobilePhone: '',
+    phone: '',
+    postalCode: '',
+    address: '',
+    state: '',
+    province: '',
+    city: '',
+    addressNumber: '',
+    complement: 'Usuário da COOPEERE',
+    municipalInscription: '',
+    stateInscription: '',
+    additionalEmails: 'fale.conosco@coopeere.eco.br',
+    externalReference: null,
+    notificationDisabled: null,
+    observations: 'Usuário faz parte da COOPEERE, consulte fale.conosco@coopeere.eco.br para retirar dúvidas'
+  }
+
+  async clearStorage(){
+    this.router.navigateByUrl('/onboarding')
+    await this.appStorageService.clear()
   }
 
   closeEditUserPopup() {
     this.showEditUserPopup = false; // Fecha o popup de edição de usuário
   }
 
+  user: any;
   selectedUser: any = null;
   campoEditar: any
   showEditUserPopup = false;
@@ -122,8 +165,9 @@ export class PersonalInfoPage implements OnInit {
 
   async deleteUser(index: number) {
     const alert = await this.alertController.create({
-      header: 'Excluir Usuário',
-      message: 'Tem certeza de que deseja excluir sua conta?',
+      header: 'Tem certeza de que deseja excluir sua conta?',
+      message: ' Ao remover sua conta, todos os seus dados e informações serão permanentemente excluídos do nosso sistema. \n\nEsta ação não pode ser desfeita. Certifique-se de fazer backup de quaisquer dados importantes antes de prosseguir. \n\nEsta ação é irreversível.',
+      cssClass: 'custom-alert',
       buttons: [
         {
           text: 'Cancelar',

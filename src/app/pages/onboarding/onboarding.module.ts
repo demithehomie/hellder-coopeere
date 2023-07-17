@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { IonicModule } from '@ionic/angular';
 
 import { OnboardingPageRoutingModule } from './onboarding-routing.module';
@@ -18,6 +18,7 @@ import { ResultadosPageModule } from '../resultados/resultados.module';
     ReactiveFormsModule,
     //ResultadosPageModule
   ],
-  declarations: [OnboardingPage]
+  declarations: [OnboardingPage],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class OnboardingPageModule {}
