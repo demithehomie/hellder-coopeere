@@ -105,6 +105,22 @@ async resend(id: any){
       } else {
         if (this.minutos === 0) {
           clearInterval(this.interval);
+          this.alertController.create({
+            header: 'Tempo de envio expirado',
+            message: 'Tente novamente mais tarde',
+            buttons: [
+              {
+                text: 'OKAY',
+                handler: () => {
+                  //this.clearStorage();
+                  this.router.navigateByUrl('/onboarding'); // Substitua o caminho ("/") pela rota desejada
+                }
+              },
+            
+            ]
+          }).then(alert => {
+            alert.present();
+          });
         } else {
           this.minutos--;
           this.segundos = 59;

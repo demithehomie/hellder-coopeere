@@ -1,4 +1,9 @@
 
+// .login-cadastre-se {
+
+// }
+
+
 /// INÍCIO - IMAGEM COOPERE + MENU HAMBURGUER SUPERIOR DIREITO + LUPA COM SEARCH FEATURE
 
 @media screen and (max-width: 370px) {
@@ -180,6 +185,7 @@ padding-left: 150px;
       padding-left: 10px;
       color: #fff;
       z-index: 10;
+      cursor: pointer;
   }
 }
 
@@ -189,6 +195,7 @@ padding-left: 150px;
   padding-left: 10px;
   color: #fff;
   z-index: 10;
+  cursor: pointer;
 }
 
 .header {
@@ -675,7 +682,7 @@ a {
   .new-social-icons {
     width: 65%;
     max-width: 50px;
-
+    cursor: pointer;
   }
 
   // fim do esconder do menu hamb
@@ -1084,6 +1091,7 @@ a {
 
   @media screen and (max-width: 380px) {
     .login-icon {
+      cursor: pointer;
      // padding-right: 200px;
       z-index: 9999;
     }

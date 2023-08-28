@@ -157,7 +157,7 @@
       <h2 class="insertInfo">Informações de Preenchimento</h2>
       <p>Pedimos que use as funções a seguir durante o preenchimento:</p>
       
-      <p>A função <strong>"Enviar"</strong> deverá ser utilizada somente quando todo formulário estiver preenchido e ao menos uma mensalidade for paga clicando no último item da barra de opções. Havendo necessidade de mudança nos dados enviados, clique na função "Reeditar" e todas as lacunas de preenchimento estarão aptas a serem modificadas. Um link será enviado para o e-mail ou um código para o celular. Siga as instruções.</p>
+      <p>A função <strong>"Enviar"</strong> deverá ser utilizada somente quando todo formulário estiver preenchido. Havendo necessidade de mudança nos dados enviados, clique na função "Reeditar" e todas as lacunas de preenchimento estarão aptas a serem modificadas. Um link será enviado para o e-mail ou um código para o celular. Siga as instruções.</p>
       
       <p>A função <strong>"Salvar"</strong> poderá ser utilizada a qualquer momento durante o preenchimento e assim garantir o que já foi preenchido não será perdido. Usando esta função, você poderá concluir o preenchimento novamente quando desejar.</p>
       
@@ -385,7 +385,7 @@
   <label class="prodist-label" for="tipo_fonte_geracao">Tipo da Fonte de Geração</label>
   <br> <br>
   <div class="form-hint">
-      O padrão é Eólica
+      <!-- O padrão é Eólica -->
   </div>
 </div>
 <div class="input-group">
@@ -479,95 +479,12 @@
             <li>Opções de pagamento: Pix </li>
           </ul>
           
- <!--         <ion-button color="success" class="plan-buttons" routerLink="/mensal">Prosseguir</ion-button>
-
-          <ion-radio-group value="payment-options" style="background-color: blue;">
-            <ion-item>
-              <ion-label class="u-payment-options">Pix</ion-label>
-              <ion-radio [(ngModel)]="frequenciaPagamento" slot="start" value="pix"  class="radio-properties"></ion-radio>
-            </ion-item>
-        
-   
-          </ion-radio-group>
-
-
-   -->
         
         </ion-card>
       </div>
 
-      <div>
-        <ion-card class="class-of-row-of-payment-options">
-          <ion-label class="payment-options-h">Bimestral</ion-label>
-          
-       
-          <br> <br>
-          <ion-label class="price">R$ 7,50</ion-label>
 
-          <ul style="list-style-type: square;">
-            <li>Cobranças realizadas bimestralmente</li>
-            <li>Todos os benefícios de cooperado</li>
-            <li>Opções de pagamento: Pix ou Boleto</li>
-          </ul>
-
-  <!--        <ion-button color="success" class="plan-buttons" routerLink="/bimestral">Prosseguir</ion-button>
-          
-
-          <ion-radio-group [(ngModel)]="opcaoPagamento" type="boolean" >
-            <ion-item>
-              <ion-label>Pix</ion-label>
-              <ion-radio [(ngModel)]="frequenciaPagamento"class="radio-properties" slot="start" value="pix"  ></ion-radio>
-            </ion-item>
-            <ion-item>
-              <ion-label>Boleto Bancário</ion-label>
-              <ion-radio [(ngModel)]="frequenciaPagamento"class="radio-properties" slot="start" value="boleto"  ></ion-radio>
-            </ion-item>
-          </ion-radio-group> 
-          
-          <ion-button expand="block" (click)="verificarPagamento()">Enviar</ion-button>
-        -->
-
-        </ion-card>
-      </div>
-
-      <div>
-        <ion-card class="class-of-row-of-payment-options">
-          <ion-label class="payment-options-h">Trimestral</ion-label>
-          
-          <br> <br>
-
-
-          <ion-label class="price">R$ 10,00</ion-label>
-
-          <ul style="list-style-type: square;">
-            <li>Cobranças realizadas trimestralmente</li>
-            <li>Todos os benefícios de cooperado</li>
-            <li>Opções de pagamento: Pix ou Boleto</li>
-          </ul>
-          
-       <!--     <ion-button color="success" class="plan-buttons" routerLink="/trimestral">Prosseguir</ion-button>
-        
-          <ion-radio-group value="payment-options">
-            <ion-item>
-              <ion-radio [(ngModel)]="frequenciaPagamento"slot="start" value="pix"  class="radio-properties"></ion-radio>
-              <ion-label class="u-payment-options">Pix</ion-label>
-          
-            </ion-item>
-        
-        <ion-label></ion-label>
-
-            <ion-item>
-              <ion-radio [(ngModel)]="frequenciaPagamento"slot="start" value="boleto"  class="radio-properties"></ion-radio>
-              <ion-label class="u-payment-options">Boleto Bancário</ion-label>
-           
-            </ion-item>
-          </ion-radio-group>
--->
-
-        
-        
-        </ion-card>
-      </div>
+     
 
       <div>
         <ion-card class="class-of-row-of-payment-options">
@@ -577,7 +494,7 @@
           <br> <br>
 
 
-          <ion-label class="price">R$ 18,00</ion-label>
+          <ion-label class="price">R$ 27,00</ion-label>
 
           <ul style="list-style-type: square;">
             <li>Cobranças realizadas semestralmente</li>

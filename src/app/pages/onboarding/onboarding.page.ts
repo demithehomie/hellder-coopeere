@@ -87,14 +87,12 @@ closeSearchInput(){
     }
 
 
-    /////////// opa opa opa
 
     ionViewDidEnter() {
-      //this.refreshPage();
     
       setInterval(() => {
         this.refreshPage();
-      }, 1 * 60 * 1000); // Executa a cada 1 minuto (1 minutos * 60 segundos * 1000 milissegundos)
+      }, 1 * 60 * 1000); 
     }
     
     refreshPage() {
@@ -104,7 +102,6 @@ closeSearchInput(){
 
     search() {
       this.searchService.searchTerm = this.searchTerm;
-      //this.appStorageService.set(`pesquisa`, this.searchTerm)
       this.router.navigate(['/resultados']);
     }
 

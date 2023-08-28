@@ -4,6 +4,7 @@ import { Observable, catchError, map, of, throwError } from 'rxjs';
 
 
 const base_URL = 'https://grandfinale.onrender.com';
+const base_URL_dev = 'http://localhost:3001';
 
 @Injectable({
   providedIn: 'root' 
@@ -34,7 +35,7 @@ export class UsuarioService {
   create(data: any) : Observable<any>  {
  
     
-    return this.httpClient.post(base_URL+'/auth/register',data)
+    return this.httpClient.post(base_URL_dev+'/auth/register',data)
  
   }
 

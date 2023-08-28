@@ -34,7 +34,7 @@ export class SmsPage implements OnInit {
     ) { 
 
       this.title.setTitle('Confirme seu Celular')
-      this.minutos = 5;
+      this.minutos = 4;
       this.segundos = 0;
     }
 
@@ -98,6 +98,23 @@ startCronometro() {
     } else {
       if (this.minutos === 0) {
         clearInterval(this.interval);
+        this.alertController.create({
+          header: 'Tempo de envio expirado',
+          message: 'Tente novamente mais tarde',
+          buttons: [
+            {
+              text: 'OKAY',
+              handler: () => {
+                //this.clearStorage();
+                this.router.navigateByUrl('/onboarding'); // Substitua o caminho ("/") pela rota desejada
+              }
+            },
+          
+          ]
+        }).then(alert => {
+          alert.present();
+        });
+        
       } else {
         this.minutos--;
         this.segundos = 59;

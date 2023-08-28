@@ -115,36 +115,6 @@ endereco: any;
 
   showEmptyBorders: boolean = false;
     
- 
-  
-    
-    // consultaCEP() {
-    //   const cep = this.formulario.get('endereco.cep').value;
-  
-    //   if (cep != null && cep !== '') {
-    //     this.cepService.consultaCEP(cep)
-    //     .subscribe(dados => this.populaDadosForm(dados));
-    //   }
-    // }
-  
-    // populaDadosForm(dados) {
-    //   // this.formulario.setValue({});
-  
-    //   this.formulario.patchValue({
-    //     endereco: {
-    //       rua: dados.logradouro,
-    //       // cep: dados.cep,
-    //       complemento: dados.complemento,
-    //       bairro: dados.bairro,
-    //       cidade: dados.localidade,
-    //       estado: dados.uf
-    //     }
-    //   });
-  
-    //   //this.formulario.get('nome').setValue('Loiane');
-  
-    //   // console.log(form);
-    // }
 
     formatarCPF() {
       let cpfRegex = /^(\d{3})(\d{3})(\d{3})(\d{2})$/;
@@ -152,8 +122,11 @@ endereco: any;
         this.cliente.cpfCnpj = this.cliente.cpfCnpj.replace(cpfRegex, '$1.$2.$3-$4');
       }
     }
-    
-    
+
+    validarCNPJ(cnpj: string): boolean {
+      const cnpjRegex = /^\d{2}\.\d{3}\.\d{3}\/\d{4}\-\d{2}$/;
+      return cnpjRegex.test(cnpj);
+    }
     
     
     
@@ -308,19 +281,7 @@ validaForm(){
     confirm_password: ['', [Validators.required,  this.equalTo('password')]],
   });
 
-  // this.name = this.formulario.get('name');
-  // this.email = this.formulario.get('email');
-  // this.cpfCnpj = this.formulario.get('cpfCnpj');
-  // this.mobilePhone = this.formulario.get('mobilePhone');
-  // this.phone = this.formulario.get('phone');
-  // this.password = this.formulario.get('password');
-  // this.confirm_password = this.formulario.get('confirm_password');
-  // this.postalCode = this.formulario.get('postalCode');
-  // this.address = this.formulario.get('address');
-  // this.addressNumber = this.formulario.get('addressNumber');
-  // this.province = this.formulario.get('province');
-  // this.city = this.formulario.get('city');
-  // this.state = this.formulario.get('state');
+
 
 }
 
@@ -366,10 +327,9 @@ checkFields() {
   }
   
   if (this.email.trim() === '') {
-    // Email está vazio
-  }
   
-  // Verificar outros campos
+  }
+
 }
 
 checkFieldss(input: EventTarget | null) {
@@ -505,21 +465,21 @@ async cadastroCliente(){
   await loading.present();
 
   const datacliente = {
-    name: this.cliente.name,
-    email: this.cliente.email,
-    phone: this.cliente.phone,
-    mobilePhone: this.cliente.mobilePhone, 
-    cpfCnpj: this.cliente.cpfCnpj,
-    company: this.cliente.company,
-    additionalEmails: this.cliente.additionalEmails,
-    postalCode: this.cliente.postalCode,
-    address: this.cliente.address,
-    addressNumber: this.cliente.addressNumber,
-    complement: this.cliente.complement,
-    province: this.cliente.province,
-    city: this.cliente.city,
-    state: this.cliente.state,
-    observations: this.cliente.observations
+    name: this.usuario.name,
+    email: this.usuario.email,
+    phone: this.usuario.phone,
+    mobilePhone: this.usuario.mobilePhone,
+    cpfCnpj: this.usuario.cpfCnpj,
+    company: this.usuario.company,
+    additionalEmails: this.usuario.additionalEmails,
+    postalCode: this.usuario.postalCode,
+    address: this.usuario.address,
+    addressNumber: this.usuario.addressNumber,
+    complement: this.usuario.complement,
+    province: this.usuario.province,
+    city: this.usuario.city,
+    state: this.usuario.state,
+    observations: this.usuario.observations
   };
 
   this.clienteService.create(datacliente).subscribe( async (res: any) => {
@@ -546,8 +506,8 @@ async cadastroCliente(){
       
      // this.presentErrorAlert()
       const alert = await this.alertController.create({
-        header: 'Não foi possível configurar sua conta Asaas',
-        message: 'Verifique seus dados.',
+        header: 'Será necessário confirmar seus dados bancários',
+        message: 'Após o cadastro, confira seus dados.',
         buttons: ['OK']
       });
 
@@ -588,7 +548,7 @@ async testarCPF(strCPF: string ) {
   if (Resto == 10 || Resto == 11) Resto = 0;
   if (Resto != parseInt(strCPF.substring(10, 11))) return this.showAlert('Cpf Inválido'); // console.log(false);
 
-  return this.showAlert('Cpf Validado com Sucesso');//console.log(true);
+  return console.log(true);
 }
 
 async showAlert(message: string) {
