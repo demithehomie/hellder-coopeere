@@ -35,7 +35,7 @@ export class UsuarioService {
   create(data: any) : Observable<any>  {
  
     
-    return this.httpClient.post(base_URL_dev+'/auth/register',data)
+    return this.httpClient.post(base_URL+'/auth/register',data)
  
   }
 
